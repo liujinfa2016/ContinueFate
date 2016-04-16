@@ -35,10 +35,10 @@
 		05079BF91CC21D0F00E7CFC8 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079BF31CC21D0F00E7CFC8 /* libssl.a */; };
 		05079BFA1CC21D0F00E7CFC8 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079BF51CC21D0F00E7CFC8 /* Order.m */; };
 		05079BFE1CC21D2300E7CFC8 /* GBAlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079BFD1CC21D2300E7CFC8 /* GBAlipayManager.m */; };
-		05079C021CC21D5200E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C011CC21D5200E7CFC8 /* BasicEncodingRules.m */; };
 		05079C061CC21E9B00E7CFC8 /* RequestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C051CC21E9B00E7CFC8 /* RequestAPI.m */; };
 		05079C081CC21F2500E7CFC8 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C071CC21F2500E7CFC8 /* Openssl.framework */; };
 		05079C0A1CC21F6900E7CFC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */; };
+		05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */; };
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -114,13 +114,13 @@
 		05079BFB1CC21D2300E7CFC8 /* GBAlipayConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAlipayConfig.h; path = GBAlipay/GBAlipayManager/GBAlipayConfig.h; sourceTree = "<group>"; };
 		05079BFC1CC21D2300E7CFC8 /* GBAlipayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBAlipayManager.h; path = GBAlipay/GBAlipayManager/GBAlipayManager.h; sourceTree = "<group>"; };
 		05079BFD1CC21D2300E7CFC8 /* GBAlipayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBAlipayManager.m; path = GBAlipay/GBAlipayManager/GBAlipayManager.m; sourceTree = "<group>"; };
-		05079C001CC21D5200E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "../../../XuYuanProject/XuYuanProject/SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
-		05079C011CC21D5200E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "../../../XuYuanProject/XuYuanProject/SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
 		05079C031CC21D7E00E7CFC8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		05079C041CC21E9B00E7CFC8 /* RequestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestAPI.h; sourceTree = "<group>"; };
 		05079C051CC21E9B00E7CFC8 /* RequestAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestAPI.m; sourceTree = "<group>"; };
 		05079C071CC21F2500E7CFC8 /* Openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Openssl.framework; sourceTree = "<group>"; };
 		05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
+		05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
 		5FBB38391BABC808170B9BE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -347,8 +347,8 @@
 		05079BFF1CC21D3A00E7CFC8 /* SCZ-BasicEncodingRules */ = {
 			isa = PBXGroup;
 			children = (
-				05079C001CC21D5200E7CFC8 /* BasicEncodingRules.h */,
-				05079C011CC21D5200E7CFC8 /* BasicEncodingRules.m */,
+				05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */,
+				05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */,
 			);
 			name = "SCZ-BasicEncodingRules";
 			sourceTree = "<group>";
@@ -564,11 +564,11 @@
 				05079B8C1CC20F7000E7CFC8 /* AppDelegate.m in Sources */,
 				05079BE91CC21CF100E7CFC8 /* DataSigner.m in Sources */,
 				05079BFE1CC21D2300E7CFC8 /* GBAlipayManager.m in Sources */,
-				05079C021CC21D5200E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BCF1CC21A8E00E7CFC8 /* AppAPIClient.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
+				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
