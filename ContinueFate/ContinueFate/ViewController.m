@@ -24,4 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)loginAction:(id)sender forEvent:(UIEvent *)event {
+}
 @end
