@@ -16,6 +16,7 @@
 #import "NSString+Crypt.h"
 #import "NSData+Base64.h"
 #import "BasicEncodingRules.h"
+#import "Utilities.h"
 
 static SecKeyRef publicKey;
 static SecKeyRef privateKey;
@@ -316,7 +317,7 @@ static const UInt8 privateKeyIdentifier[] = "com.beily.sample.privatekey";
     
     NSData *targetData = [target dataUsingEncoding:NSUTF8StringEncoding];
     const void *bytes = [targetData bytes];
-    int length = (int)[targetData length];
+//    int length = (int)[targetData length];
     
     cipherBuffer = malloc(CIPHER_BUFFER_SIZE);
     memcpy(cipherBuffer, bytes, CIPHER_BUFFER_SIZE);
@@ -643,13 +644,8 @@ static NSString * AFBase64EncodedStringFromString(NSString *string) {
 {
     __autoreleasing NSString *encodedString;
     NSString *originalString = (NSString *)self;
-    encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
-                                                                                          NULL,
-                                                                                          (__bridge CFStringRef)originalString,
-                                                                                          NULL,
-                                                                                          (CFStringRef)@":!*();@/&?#[]+$,='%’\"",
-                                                                                          kCFStringEncodingUTF8
-                                                                                          );
+//    encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)originalString,NULL,(CFStringRef)@":!*();@/&?#[]+$,='%’\"",kCFStringEncodingUTF8);
+    encodedString = [originalString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@":!*();@/&?#[]+$,='%’\""]];
     return encodedString;
 }
 
@@ -657,12 +653,8 @@ static NSString * AFBase64EncodedStringFromString(NSString *string) {
 {
     __autoreleasing NSString *decodedString;
     NSString *originalString = (NSString *)self;
-    decodedString = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(
-                                                                                                          NULL,
-                                                                                                          (__bridge CFStringRef)originalString,
-                                                                                                          CFSTR(""),
-                                                                                                          kCFStringEncodingUTF8
-                                                                                                          );
+//    decodedString = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,(__bridge CFStringRef)originalString,CFSTR(""),kCFStringEncodingUTF8);
+    decodedString = [originalString stringByRemovingPercentEncoding];
     return decodedString;
 }
 
