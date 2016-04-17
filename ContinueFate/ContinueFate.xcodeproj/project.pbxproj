@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05060C311CC3270D00525F17 /* Question.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C301CC3270D00525F17 /* Question.storyboard */; };
+		05060C331CC327D600525F17 /* Sliding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C321CC327D600525F17 /* Sliding.storyboard */; };
+		05060C351CC3285200525F17 /* Article.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C341CC3285200525F17 /* Article.storyboard */; };
+		05060C371CC328A300525F17 /* Consulting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C361CC328A300525F17 /* Consulting.storyboard */; };
+		05060C391CC3292500525F17 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C381CC3292500525F17 /* TabBar.storyboard */; };
+		05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05060C3B1CC32DED00525F17 /* SlidingViewController.m */; };
+		05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05060C3F1CC32E5500525F17 /* TabBarViewController.m */; };
 		05079B891CC20F7000E7CFC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079B881CC20F7000E7CFC8 /* main.m */; };
 		05079B8C1CC20F7000E7CFC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079B8B1CC20F7000E7CFC8 /* AppDelegate.m */; };
 		05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079B8E1CC20F7000E7CFC8 /* ViewController.m */; };
@@ -62,6 +69,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05060C301CC3270D00525F17 /* Question.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Question.storyboard; sourceTree = "<group>"; };
+		05060C321CC327D600525F17 /* Sliding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sliding.storyboard; sourceTree = "<group>"; };
+		05060C341CC3285200525F17 /* Article.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Article.storyboard; sourceTree = "<group>"; };
+		05060C361CC328A300525F17 /* Consulting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Consulting.storyboard; sourceTree = "<group>"; };
+		05060C381CC3292500525F17 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		05060C3A1CC32DED00525F17 /* SlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingViewController.h; sourceTree = "<group>"; };
+		05060C3B1CC32DED00525F17 /* SlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingViewController.m; sourceTree = "<group>"; };
+		05060C3E1CC32E5500525F17 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		05060C3F1CC32E5500525F17 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		05079B841CC20F7000E7CFC8 /* ContinueFate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContinueFate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05079B881CC20F7000E7CFC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		05079B8A1CC20F7000E7CFC8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -250,9 +266,14 @@
 		05079BBF1CC2196900E7CFC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05079B981CC20F7000E7CFC8 /* LaunchScreen.storyboard */,
 				05079B901CC20F7000E7CFC8 /* Main.storyboard */,
 				05079B961CC20F7000E7CFC8 /* Assets.xcassets */,
-				05079B981CC20F7000E7CFC8 /* LaunchScreen.storyboard */,
+				05060C381CC3292500525F17 /* TabBar.storyboard */,
+				05060C321CC327D600525F17 /* Sliding.storyboard */,
+				05060C341CC3285200525F17 /* Article.storyboard */,
+				05060C301CC3270D00525F17 /* Question.storyboard */,
+				05060C361CC328A300525F17 /* Consulting.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -266,6 +287,10 @@
 				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
 				64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */,
 				64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */,
+				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
+				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
+				05060C3E1CC32E5500525F17 /* TabBarViewController.h */,
+				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -488,7 +513,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				05079B9A1CC20F7000E7CFC8 /* LaunchScreen.storyboard in Resources */,
+				05060C391CC3292500525F17 /* TabBar.storyboard in Resources */,
+				05060C311CC3270D00525F17 /* Question.storyboard in Resources */,
+				05060C371CC328A300525F17 /* Consulting.storyboard in Resources */,
+				05060C351CC3285200525F17 /* Article.storyboard in Resources */,
 				05079B971CC20F7000E7CFC8 /* Assets.xcassets in Resources */,
+				05060C331CC327D600525F17 /* Sliding.storyboard in Resources */,
 				05079BF61CC21D0F00E7CFC8 /* AlipaySDK.bundle in Resources */,
 				05079B921CC20F7000E7CFC8 /* Main.storyboard in Resources */,
 			);
@@ -582,6 +612,8 @@
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
+				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,
+				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
 				05079C061CC21E9B00E7CFC8 /* RequestAPI.m in Sources */,

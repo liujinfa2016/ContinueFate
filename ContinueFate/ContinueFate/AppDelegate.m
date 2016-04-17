@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "TabBarViewController.h"
+#import "SlidingViewController.h"
 
 @interface AppDelegate ()
-
+@property(strong, nonatomic)ECSlidingViewController *sligingVC;
 @end
 
 @implementation AppDelegate
@@ -17,6 +19,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    TabBarViewController *tabVc =[Utilities  getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"];
+    //初始化移门的门框
+    _sligingVC = [ECSlidingViewController slidingWithTopViewController:tabVc];
+    //设置开关的耗时
+    _sligingVC.defaultTransitionDuration = 0.25f;
+    //设置移门开关的手势(这里同时对触摸和拖拽响应)
+    _sligingVC.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping|ECSlidingViewControllerAnchoredGesturePanning;
+    //设置上诉手势的识别范围
+    [tabVc.view addGestureRecognizer:_sligingVC.panGesture];
+    //根据故事版中页面的名字左滑页面的示例
+    SlidingViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Slider"];
+    //设置移门靠左的那门
+    _sligingVC.underLeftViewController = leftVC;
+    //设置移门开闭层度(设置左侧页面被显示时，宽度能够显示频幕的1/4)
+    _sligingVC.anchorRightPeekAmount = UI_SCREEN_W /4 ;
+    
+    [self.window setRootViewController:_sligingVC];
     return YES;
 }
 

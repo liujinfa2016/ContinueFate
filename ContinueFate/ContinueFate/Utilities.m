@@ -43,7 +43,12 @@
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     return [storyboard instantiateViewControllerWithIdentifier:identity];
 }
++ (id)getStoryboardInstanceByIdentity:(NSString * )storyboard byIdentity:(NSString *) identity{
 
+    UIStoryboard* std = [UIStoryboard storyboardWithName:storyboard bundle:[NSBundle mainBundle]];
+    return [std instantiateViewControllerWithIdentifier:identity];
+
+}
 + (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString* )title onView:(UIViewController *)vc
 {
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title == nil ? @"提示" : title message:msg == nil ? @"操作失败" : msg preferredStyle:UIAlertControllerStyleAlert];
