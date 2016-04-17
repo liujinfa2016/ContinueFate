@@ -323,7 +323,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C6D0C676-7AD3-4EEF-8A05-E0AC12A136EC" translatesAutoresizingMaskIntoConstraints="NO" id="Ryf-6y-zd5">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="623556C0-E1B5-499C-9178-FCBEA08B0C62" translatesAutoresizingMaskIntoConstraints="NO" id="Ryf-6y-zd5">
                                                     <rect key="frame" x="253" y="78" width="15" height="10"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="对于爱情的起始，相信每一个人都曾经想象过属于自己的完美邂逅。现实当中也有不少的男女通过搭讪的方式，逐步的从陌生到熟悉而后相恋，最终走向了婚姻的殿堂。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hR6-zd-zmX">
@@ -515,7 +515,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C6D0C676-7AD3-4EEF-8A05-E0AC12A136EC" width="15" height="10">
+        <image name="623556C0-E1B5-499C-9178-FCBEA08B0C62" width="15" height="10">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
