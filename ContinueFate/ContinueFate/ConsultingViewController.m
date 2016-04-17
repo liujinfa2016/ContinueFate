@@ -1,23 +1,22 @@
 //
-//  SlidingViewController.m
+//  ConsultingViewController.m
 //  ContinueFate
 //
-//  Created by 刘金发 on 16/4/17.
+//  Created by px on 16/4/17.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "SlidingViewController.h"
+#import "ConsultingViewController.h"
 
-
-@interface SlidingViewController ()
+@interface ConsultingViewController ()
 
 @end
 
-@implementation SlidingViewController
+@implementation ConsultingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,14 +33,5 @@
     // Pass the selected object to the new view controller.
 }
 */
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
-    
-}
--(UITableViewCell *)tableView:(UITableView *)tableView  cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    return cell;
-}
+
 @end

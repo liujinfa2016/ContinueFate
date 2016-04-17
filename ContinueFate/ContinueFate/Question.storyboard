@@ -8,7 +8,7 @@
         <!--问答-->
         <scene sceneID="7UW-BZ-6iR">
             <objects>
-                <viewController id="jLw-qT-OJ6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jLw-qT-OJ6" customClass="QuestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fYF-Ni-omX"/>
                         <viewControllerLayoutGuide type="bottom" id="pS3-ox-AVN"/>
