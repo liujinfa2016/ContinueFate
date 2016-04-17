@@ -19,7 +19,6 @@
 		05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079B8E1CC20F7000E7CFC8 /* ViewController.m */; };
 		05079B921CC20F7000E7CFC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05079B901CC20F7000E7CFC8 /* Main.storyboard */; };
 		05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05079B931CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld */; };
-		05079B971CC20F7000E7CFC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05079B961CC20F7000E7CFC8 /* Assets.xcassets */; };
 		05079B9A1CC20F7000E7CFC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05079B981CC20F7000E7CFC8 /* LaunchScreen.storyboard */; };
 		05079BA51CC20F7000E7CFC8 /* ContinueFateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079BA41CC20F7000E7CFC8 /* ContinueFateTests.m */; };
 		05079BB01CC20F7000E7CFC8 /* ContinueFateUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079BAF1CC20F7000E7CFC8 /* ContinueFateUITests.m */; };
@@ -47,6 +46,8 @@
 		05079C0A1CC21F6900E7CFC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */; };
 		05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */; };
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
+		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
+		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
 /* End PBXBuildFile section */
@@ -86,7 +87,6 @@
 		05079B8E1CC20F7000E7CFC8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		05079B911CC20F7000E7CFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05079B941CC20F7000E7CFC8 /* ContinueFate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContinueFate.xcdatamodel; sourceTree = "<group>"; };
-		05079B961CC20F7000E7CFC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05079B991CC20F7000E7CFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05079B9B1CC20F7000E7CFC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05079BA01CC20F7000E7CFC8 /* ContinueFateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContinueFateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +140,9 @@
 		05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
 		05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
 		5FBB38391BABC808170B9BE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetViewController.h; sourceTree = "<group>"; };
@@ -268,7 +271,7 @@
 			children = (
 				05079B981CC20F7000E7CFC8 /* LaunchScreen.storyboard */,
 				05079B901CC20F7000E7CFC8 /* Main.storyboard */,
-				05079B961CC20F7000E7CFC8 /* Assets.xcassets */,
+				64BE16551CC37CF400B2FDB4 /* Assets.xcassets */,
 				05060C381CC3292500525F17 /* TabBar.storyboard */,
 				05060C321CC327D600525F17 /* Sliding.storyboard */,
 				05060C341CC3285200525F17 /* Article.storyboard */,
@@ -291,6 +294,8 @@
 				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
 				05060C3E1CC32E5500525F17 /* TabBarViewController.h */,
 				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
+				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
+				64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -517,9 +522,9 @@
 				05060C311CC3270D00525F17 /* Question.storyboard in Resources */,
 				05060C371CC328A300525F17 /* Consulting.storyboard in Resources */,
 				05060C351CC3285200525F17 /* Article.storyboard in Resources */,
-				05079B971CC20F7000E7CFC8 /* Assets.xcassets in Resources */,
 				05060C331CC327D600525F17 /* Sliding.storyboard in Resources */,
 				05079BF61CC21D0F00E7CFC8 /* AlipaySDK.bundle in Resources */,
+				64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */,
 				05079B921CC20F7000E7CFC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,6 +605,7 @@
 				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
+				64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */,
 				05079BEB1CC21CF100E7CFC8 /* MD5DataSigner.m in Sources */,
 				05079BEA1CC21CF100E7CFC8 /* DataVerifier.m in Sources */,
 				05079B8C1CC20F7000E7CFC8 /* AppDelegate.m in Sources */,
