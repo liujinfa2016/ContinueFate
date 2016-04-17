@@ -49,6 +49,12 @@
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
+		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
+		ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */; };
+		ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631831CC39B1E0000FB71 /* ArticleViewController.m */; };
+		ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */; };
+		ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631871CC39B1E0000FB71 /* QuestionViewController.m */; };
+		ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +152,17 @@
 		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
+		ED46316A1CC3888A0000FB71 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+NJ.h"; path = "MBProgressHUD/MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
+		ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+NJ.m"; path = "MBProgressHUD/MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
+		ED4631821CC39B1E0000FB71 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		ED4631831CC39B1E0000FB71 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingViewController.h; sourceTree = "<group>"; };
+		ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingViewController.m; sourceTree = "<group>"; };
+		ED4631861CC39B1E0000FB71 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		ED4631871CC39B1E0000FB71 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		ED46318C1CC39B480000FB71 /* XZMTabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMTabbarExtension.h; sourceTree = "<group>"; };
+		ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMTabbarExtension.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +265,8 @@
 		05079BBD1CC2193700E7CFC8 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				ED46318B1CC39B2D0000FB71 /* XZMTabbarExtension */,
+				ED4631681CC388730000FB71 /* MBProgressHUD */,
 				05079C071CC21F2500E7CFC8 /* Openssl.framework */,
 				05079BFF1CC21D3A00E7CFC8 /* SCZ-BasicEncodingRules */,
 				05079BD31CC21C0D00E7CFC8 /* GBAlipay */,
@@ -281,6 +300,12 @@
 		05079BC01CC2197E00E7CFC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ED4631821CC39B1E0000FB71 /* ArticleViewController.h */,
+				ED4631831CC39B1E0000FB71 /* ArticleViewController.m */,
+				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
+				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
+				ED4631861CC39B1E0000FB71 /* QuestionViewController.h */,
+				ED4631871CC39B1E0000FB71 /* QuestionViewController.m */,
 				05079B8D1CC20F7000E7CFC8 /* ViewController.h */,
 				05079B8E1CC20F7000E7CFC8 /* ViewController.m */,
 				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
@@ -406,6 +431,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED4631681CC388730000FB71 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */,
+				ED46316A1CC3888A0000FB71 /* MBProgressHUD+NJ.h */,
+				ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		ED46318B1CC39B2D0000FB71 /* XZMTabbarExtension */ = {
+			isa = PBXGroup;
+			children = (
+				ED46318C1CC39B480000FB71 /* XZMTabbarExtension.h */,
+				ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */,
+			);
+			name = XZMTabbarExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +563,7 @@
 				05060C351CC3285200525F17 /* Article.storyboard in Resources */,
 				05079B971CC20F7000E7CFC8 /* Assets.xcassets in Resources */,
 				05060C331CC327D600525F17 /* Sliding.storyboard in Resources */,
+				ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */,
 				05079BF61CC21D0F00E7CFC8 /* AlipaySDK.bundle in Resources */,
 				05079B921CC20F7000E7CFC8 /* Main.storyboard in Resources */,
 			);
@@ -598,6 +643,8 @@
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
 				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
+				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
+				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
 				05079BEB1CC21CF100E7CFC8 /* MD5DataSigner.m in Sources */,
@@ -610,8 +657,11 @@
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
+				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
+				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
+				ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */,
 				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
