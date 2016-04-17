@@ -8,7 +8,7 @@
         <!--咨询-->
         <scene sceneID="g5i-EF-6ZA">
             <objects>
-                <viewController id="8VW-Ak-n1D" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Consulting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8VW-Ak-n1D" customClass="ConsultingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1gP-rc-39D"/>
                         <viewControllerLayoutGuide type="bottom" id="DJc-EC-jbq"/>
