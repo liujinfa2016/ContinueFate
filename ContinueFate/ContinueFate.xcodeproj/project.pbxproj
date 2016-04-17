@@ -49,6 +49,8 @@
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
+		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
+		ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,9 @@
 		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
+		ED46316A1CC3888A0000FB71 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+NJ.h"; path = "MBProgressHUD/MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
+		ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+NJ.m"; path = "MBProgressHUD/MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +253,7 @@
 		05079BBD1CC2193700E7CFC8 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				ED4631681CC388730000FB71 /* MBProgressHUD */,
 				05079C071CC21F2500E7CFC8 /* Openssl.framework */,
 				05079BFF1CC21D3A00E7CFC8 /* SCZ-BasicEncodingRules */,
 				05079BD31CC21C0D00E7CFC8 /* GBAlipay */,
@@ -406,6 +412,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED4631681CC388730000FB71 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */,
+				ED46316A1CC3888A0000FB71 /* MBProgressHUD+NJ.h */,
+				ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +535,7 @@
 				05060C351CC3285200525F17 /* Article.storyboard in Resources */,
 				05079B971CC20F7000E7CFC8 /* Assets.xcassets in Resources */,
 				05060C331CC327D600525F17 /* Sliding.storyboard in Resources */,
+				ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */,
 				05079BF61CC21D0F00E7CFC8 /* AlipaySDK.bundle in Resources */,
 				05079B921CC20F7000E7CFC8 /* Main.storyboard in Resources */,
 			);
@@ -598,6 +615,7 @@
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
 				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
+				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
 				05079BEB1CC21CF100E7CFC8 /* MD5DataSigner.m in Sources */,

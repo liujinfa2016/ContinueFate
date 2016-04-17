@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MBProgressHUD+NJ.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    //显示加载
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    //加载完成
+    [MBProgressHUD hideHUDForView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
