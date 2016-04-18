@@ -30,4 +30,7 @@
 //根据URL下载图片并缓存
 + (UIImage *)imageUrl:(NSString *)url;
 
++ (NSString *)intervalSinceNow:(NSString *)dateStr;
++ (NSAttributedString *)getIntervalAttrStr:(NSString *)dateStr;
++ (NSAttributedString *)grayString:(NSString *)string fontName:(NSString *)fontName fontSize:(CGFloat)size;
 @end
