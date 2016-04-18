@@ -8,7 +8,10 @@
 
 #import "TabBarViewController.h"
 #import "XZMTabbarExtension.h"
-#import "ViewController.h"
+#import "FirstViewController.h"
+#import "ArticleViewController.h"
+#import "QuestionViewController.h"
+#import "ConsultingViewController.h"
 
 @interface TabBarViewController ()<XZMTabbarExtensionDelegate>
 @property (nonatomic, strong)NSMutableArray *itemArray;
@@ -26,13 +29,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ViewController *home = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Home"];
+    FirstViewController *home = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Home"];
     [self tabBarChildViewController:home norImage:[UIImage imageNamed:@"tabBar_0"] selImage:[UIImage imageNamed:@"tabBar_0_on"]];
-    ViewController *article = [Utilities getStoryboardInstanceByIdentity:@"Article" byIdentity:@"Article"];
+    ArticleViewController *article = [Utilities getStoryboardInstanceByIdentity:@"Article" byIdentity:@"Article"];
     [self tabBarChildViewController:article norImage:[UIImage imageNamed:@"tabBar_1"] selImage:[UIImage imageNamed:@"tabBar_1_on"]];
-    ViewController *question = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"Question"];
+    QuestionViewController *question = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"Question"];
     [self tabBarChildViewController:question norImage:[UIImage imageNamed:@"tabBar_2"] selImage:[UIImage imageNamed:@"tabBar_2_on"]];
-    ViewController *consulting = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Consulting"];
+    ConsultingViewController *consulting = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Consulting"];
     [self tabBarChildViewController:consulting norImage:[UIImage imageNamed:@"tabBar_3"] selImage:[UIImage imageNamed:@"tabBar_3_on"]];
     [self setTatBar];
     
