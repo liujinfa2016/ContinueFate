@@ -10,13 +10,10 @@
 
 @interface FirstViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)consulAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)successAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)answerAction:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UILabel *articleTitlelab;
-@property (weak, nonatomic) IBOutlet UILabel *contentLab;
 
-@property (weak, nonatomic) IBOutlet UILabel *readQuantitylab;
-@property (weak, nonatomic) IBOutlet UILabel *datelbe;
 
 @end
