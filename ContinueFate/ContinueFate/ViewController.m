@@ -18,18 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-<<<<<<< HEAD
 
-=======
->>>>>>> dddf6435403d5d35bbd5a586989c3bdd1271a738
     //显示加载
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     //加载完成
     [MBProgressHUD hideHUDForView:self.view];
-<<<<<<< HEAD
 
-=======
->>>>>>> dddf6435403d5d35bbd5a586989c3bdd1271a738
+
+
 }
 
 - (void)didReceiveMemoryWarning {
