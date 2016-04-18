@@ -18,10 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     //显示加载
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     //加载完成
     [MBProgressHUD hideHUDForView:self.view];
+
+
+
 }
 
 - (void)didReceiveMemoryWarning {
