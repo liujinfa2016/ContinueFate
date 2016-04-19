@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tabBar_1_on.png",
+      "filename" : "阅读4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tabBar_1_on@2x.png",
+      "filename" : "阅读2.png",
       "scale" : "2x"
     },
     {
