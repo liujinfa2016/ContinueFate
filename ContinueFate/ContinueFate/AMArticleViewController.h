@@ -1,14 +1,14 @@
 //
-//  ArticleViewController.h
+//  AMArticleViewController.h
 //  ContinueFate
 //
-//  Created by px on 16/4/17.
+//  Created by admin2015 on 16/4/19.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ArticleViewController : UIViewController
+@interface AMArticleViewController : UIViewController
 @property (nonatomic, copy) NSArray *viewControllers;
 @property (nonatomic, copy) NSArray *titles;
 
@@ -24,4 +24,6 @@
 @property (nonatomic, assign) CGFloat itemWidth;
 /** segment每一项的高 */
 @property (nonatomic, assign) CGFloat itemHeight;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
