@@ -18,10 +18,10 @@
     self.titlename = [dict[@"titlename"]isKindOfClass:[NSNull class]]?@"":dict[@"titlename"];
     self.substance = [dict[@"substance"]isKindOfClass:[NSNull class]]?@"":dict[@"substance"];
     self.edittime = [dict[@"edittime"]isKindOfClass:[NSNull class]]?@"":dict[@"edittime"];
+    self.time = [dict[@"time"]isKindOfClass:[NSNull class]]?@"":dict[@"time"];
     self.hits = [dict[@"hits"]isKindOfClass:[NSNull class]?0:dict[@"hits"]];
     self.usertype = [dict[@"usertype"]isKindOfClass:[NSNull class]?0:dict[@"usertype"]];
     self.username = [dict[@"username"]isKindOfClass:[NSNull class]]?@"":dict[@"username"];
-    
     return self;
 }
 

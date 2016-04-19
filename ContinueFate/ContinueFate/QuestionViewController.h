@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface QuestionViewController : UIViewController
+- (IBAction)chooseAction:(UIBarButtonItem *)sender;
+- (IBAction)askAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
