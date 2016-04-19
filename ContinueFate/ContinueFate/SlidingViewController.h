@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *imageLable;
+- (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UILabel *nameLbl;
 
 @end
