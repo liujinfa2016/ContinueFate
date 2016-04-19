@@ -64,6 +64,7 @@
     UIImage *image =info [UIImagePickerControllerEditedImage];
     //将上面拿到的图片设置为按钮的图片
     [_imageLable setBackgroundImage:image forState:UIControlStateNormal];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 //当取消选择后调用
@@ -72,6 +73,7 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
+//    [self :subView animated:YES];
     //提示框
     UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
