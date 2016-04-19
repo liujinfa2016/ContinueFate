@@ -51,6 +51,11 @@
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
+		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
+		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
+		8562A4051CC639E800288F16 /* QAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FE1CC639E800288F16 /* QAskViewController.m */; };
+		8562A4061CC639E800288F16 /* QProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A4001CC639E800288F16 /* QProblemViewController.m */; };
+		8562A4071CC639E800288F16 /* QDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A4021CC639E800288F16 /* QDetailViewController.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
@@ -164,6 +169,16 @@
 		64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetViewController.h; sourceTree = "<group>"; };
 		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8562A3F91CC639E800288F16 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
+		8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
+		8562A3FB1CC639E800288F16 /* QuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestViewController.h; sourceTree = "<group>"; };
+		8562A3FC1CC639E800288F16 /* QuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestViewController.m; sourceTree = "<group>"; };
+		8562A3FD1CC639E800288F16 /* QAskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAskViewController.h; sourceTree = "<group>"; };
+		8562A3FE1CC639E800288F16 /* QAskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAskViewController.m; sourceTree = "<group>"; };
+		8562A3FF1CC639E800288F16 /* QProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QProblemViewController.h; sourceTree = "<group>"; };
+		8562A4001CC639E800288F16 /* QProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QProblemViewController.m; sourceTree = "<group>"; };
+		8562A4011CC639E800288F16 /* QDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDetailViewController.h; sourceTree = "<group>"; };
+		8562A4021CC639E800288F16 /* QDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDetailViewController.m; sourceTree = "<group>"; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
@@ -345,6 +360,16 @@
 				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
 				ED4631861CC39B1E0000FB71 /* QuestionViewController.h */,
 				ED4631871CC39B1E0000FB71 /* QuestionViewController.m */,
+				8562A3F91CC639E800288F16 /* QuestionTableViewCell.h */,
+				8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */,
+				8562A3FB1CC639E800288F16 /* QuestViewController.h */,
+				8562A3FC1CC639E800288F16 /* QuestViewController.m */,
+				8562A3FD1CC639E800288F16 /* QAskViewController.h */,
+				8562A3FE1CC639E800288F16 /* QAskViewController.m */,
+				8562A3FF1CC639E800288F16 /* QProblemViewController.h */,
+				8562A4001CC639E800288F16 /* QProblemViewController.m */,
+				8562A4011CC639E800288F16 /* QDetailViewController.h */,
+				8562A4021CC639E800288F16 /* QDetailViewController.m */,
 				05079B8D1CC20F7000E7CFC8 /* ViewController.h */,
 				05079B8E1CC20F7000E7CFC8 /* ViewController.m */,
 				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
@@ -688,11 +713,13 @@
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
+				8562A4071CC639E800288F16 /* QDetailViewController.m in Sources */,
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
 				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
 				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
+				8562A4041CC639E800288F16 /* QuestViewController.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
 				F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */,
 				64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */,
@@ -704,6 +731,7 @@
 				F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */,
 				64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */,
 				05079BCF1CC21A8E00E7CFC8 /* AppAPIClient.m in Sources */,
+				8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */,
 				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
@@ -715,9 +743,11 @@
 				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
 				ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */,
 				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,
+				8562A4051CC639E800288F16 /* QAskViewController.m in Sources */,
 				C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */,
 				C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
+				8562A4061CC639E800288F16 /* QProblemViewController.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
 				05079C061CC21E9B00E7CFC8 /* RequestAPI.m in Sources */,

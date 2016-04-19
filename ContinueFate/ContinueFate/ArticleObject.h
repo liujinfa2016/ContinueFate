@@ -18,7 +18,7 @@
 @property (nonatomic) int hits;
 @property (nonatomic) int usertype;
 @property (strong, nonatomic) NSString *username;
-
+@property (strong,nonatomic)NSString *time;
 - (id)initWithDictionary:(NSDictionary *)dict;
 
 @end
