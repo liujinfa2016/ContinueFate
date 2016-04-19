@@ -59,6 +59,11 @@
 		ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */; };
 		ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631871CC39B1E0000FB71 /* QuestionViewController.m */; };
 		ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */; };
+		F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */; };
+		F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */; };
+		F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */; };
+		F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */; };
+		F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +180,16 @@
 		ED4631871CC39B1E0000FB71 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		ED46318C1CC39B480000FB71 /* XZMTabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMTabbarExtension.h; sourceTree = "<group>"; };
 		ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMTabbarExtension.m; sourceTree = "<group>"; };
+		F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMArticleViewController.h; sourceTree = "<group>"; };
+		F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMArticleViewController.m; sourceTree = "<group>"; };
+		F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSuccessAViewController.h; sourceTree = "<group>"; };
+		F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSuccessAViewController.m; sourceTree = "<group>"; };
+		F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMACellTableViewCell.h; sourceTree = "<group>"; };
+		F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMACellTableViewCell.m; sourceTree = "<group>"; };
+		F80DBBA71CC5CA2600EE39BD /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
+		F80DBBA91CC5CA2600EE39BD /* JRSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSegmentControl.h; sourceTree = "<group>"; };
+		F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSegmentControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +292,10 @@
 		05079BBD1CC2193700E7CFC8 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				F80DBBA71CC5CA2600EE39BD /* HMSegmentedControl.h */,
+				F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */,
+				F80DBBA91CC5CA2600EE39BD /* JRSegmentControl.h */,
+				F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */,
 				ED46318B1CC39B2D0000FB71 /* XZMTabbarExtension */,
 				ED4631681CC388730000FB71 /* MBProgressHUD */,
 				05079C071CC21F2500E7CFC8 /* Openssl.framework */,
@@ -336,6 +355,12 @@
 				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
 				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
 				05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */,
+				F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */,
+				F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */,
+				F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */,
+				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
+				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
+				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -661,20 +686,25 @@
 				05079BFA1CC21D0F00E7CFC8 /* Order.m in Sources */,
 				05079BE81CC21CF100E7CFC8 /* base64.m in Sources */,
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
+				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
+				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
 				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
 				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
+				F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */,
 				64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */,
 				05079BEB1CC21CF100E7CFC8 /* MD5DataSigner.m in Sources */,
 				05079BEA1CC21CF100E7CFC8 /* DataVerifier.m in Sources */,
 				05079B8C1CC20F7000E7CFC8 /* AppDelegate.m in Sources */,
 				05079BE91CC21CF100E7CFC8 /* DataSigner.m in Sources */,
 				05079BFE1CC21D2300E7CFC8 /* GBAlipayManager.m in Sources */,
+				F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */,
 				64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */,
 				05079BCF1CC21A8E00E7CFC8 /* AppAPIClient.m in Sources */,
+				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
