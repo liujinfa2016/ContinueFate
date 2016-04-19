@@ -49,8 +49,9 @@
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
+		64F4C5D91CC64C70009716F7 /* onePasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F4C5D81CC64C70009716F7 /* onePasswordResetViewController.m */; };
+		64F4C5DC1CC64C86009716F7 /* twoPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F4C5DB1CC64C86009716F7 /* twoPasswordResetViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
-		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
@@ -159,10 +160,12 @@
 		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		64F4C5D71CC64C70009716F7 /* onePasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = onePasswordResetViewController.h; sourceTree = "<group>"; };
+		64F4C5D81CC64C70009716F7 /* onePasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = onePasswordResetViewController.m; sourceTree = "<group>"; };
+		64F4C5DA1CC64C86009716F7 /* twoPasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoPasswordResetViewController.h; sourceTree = "<group>"; };
+		64F4C5DB1CC64C86009716F7 /* twoPasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoPasswordResetViewController.m; sourceTree = "<group>"; };
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetViewController.h; sourceTree = "<group>"; };
-		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
@@ -343,8 +346,6 @@
 				05079B8E1CC20F7000E7CFC8 /* ViewController.m */,
 				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
 				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
-				64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */,
-				64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */,
 				05060C3E1CC32E5500525F17 /* TabBarViewController.h */,
 				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
 				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
@@ -361,6 +362,10 @@
 				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
 				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
 				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
+				64F4C5D71CC64C70009716F7 /* onePasswordResetViewController.h */,
+				64F4C5D81CC64C70009716F7 /* onePasswordResetViewController.m */,
+				64F4C5DA1CC64C86009716F7 /* twoPasswordResetViewController.h */,
+				64F4C5DB1CC64C86009716F7 /* twoPasswordResetViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -687,10 +692,11 @@
 				05079BE81CC21CF100E7CFC8 /* base64.m in Sources */,
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
+				64F4C5DC1CC64C86009716F7 /* twoPasswordResetViewController.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
-				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
+				64F4C5D91CC64C70009716F7 /* onePasswordResetViewController.m in Sources */,
 				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,

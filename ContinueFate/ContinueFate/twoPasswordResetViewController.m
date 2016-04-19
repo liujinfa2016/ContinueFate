@@ -1,18 +1,20 @@
 //
-//  PasswordResetViewController.m
+//  twoPasswordResetViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/16.
+//  Created by demon on 16/4/19.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "PasswordResetViewController.h"
 
-@interface PasswordResetViewController ()
+//密码重置2
+#import "twoPasswordResetViewController.h"
+
+@interface twoPasswordResetViewController ()
 
 @end
 
-@implementation PasswordResetViewController
+@implementation twoPasswordResetViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,9 +36,6 @@
 }
 */
 
-- (IBAction)obtainAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-
-- (IBAction)ConfirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
+- (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
