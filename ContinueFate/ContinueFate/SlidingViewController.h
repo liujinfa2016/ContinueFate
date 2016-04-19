@@ -10,5 +10,4 @@
 
 @interface SlidingViewController : UIViewController
 
-
 @end
