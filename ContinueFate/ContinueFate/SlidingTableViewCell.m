@@ -9,9 +9,9 @@
 #import "SlidingTableViewCell.h"
 #import "SlidingViewController.h"
 @implementation SlidingTableViewCell
+
 - (void)awakeFromNib {
     // Initialization code
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

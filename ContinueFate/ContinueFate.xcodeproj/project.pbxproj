@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05060C311CC3270D00525F17 /* Question.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C301CC3270D00525F17 /* Question.storyboard */; };
+		05060C331CC327D600525F17 /* Sliding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C321CC327D600525F17 /* Sliding.storyboard */; };
 		05060C351CC3285200525F17 /* Article.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C341CC3285200525F17 /* Article.storyboard */; };
 		05060C371CC328A300525F17 /* Consulting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C361CC328A300525F17 /* Consulting.storyboard */; };
 		05060C391CC3292500525F17 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05060C381CC3292500525F17 /* TabBar.storyboard */; };
@@ -44,8 +45,7 @@
 		05079C081CC21F2500E7CFC8 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C071CC21F2500E7CFC8 /* Openssl.framework */; };
 		05079C0A1CC21F6900E7CFC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */; };
 		05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */; };
-		051428D41CC4A983003D04F3 /* SlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 051428D31CC4A983003D04F3 /* SlidingTableViewCell.m */; };
-		05743AA21CC4E7C400A762E3 /* Sliding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05743AA11CC4E7C400A762E3 /* Sliding.storyboard */; };
+		05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */; };
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
@@ -80,9 +80,11 @@
 
 /* Begin PBXFileReference section */
 		05060C301CC3270D00525F17 /* Question.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Question.storyboard; sourceTree = "<group>"; };
+		05060C321CC327D600525F17 /* Sliding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sliding.storyboard; sourceTree = "<group>"; };
 		05060C341CC3285200525F17 /* Article.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Article.storyboard; sourceTree = "<group>"; };
 		05060C361CC328A300525F17 /* Consulting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Consulting.storyboard; sourceTree = "<group>"; };
 		05060C381CC3292500525F17 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		05060C3A1CC32DED00525F17 /* SlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingViewController.h; sourceTree = "<group>"; };
 		05060C3B1CC32DED00525F17 /* SlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingViewController.m; sourceTree = "<group>"; };
 		05060C3E1CC32E5500525F17 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		05060C3F1CC32E5500525F17 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
@@ -146,8 +148,8 @@
 		05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
 		05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
-		051428D31CC4A983003D04F3 /* SlidingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingTableViewCell.m; sourceTree = "<group>"; };
-		05743AA11CC4E7C400A762E3 /* Sliding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sliding.storyboard; sourceTree = "<group>"; };
+		05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingTableViewCell.h; sourceTree = "<group>"; };
+		05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingTableViewCell.m; sourceTree = "<group>"; };
 		5FBB38391BABC808170B9BE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		C4C2F30E1CC48AB800F24727 /* ArticleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleObject.h; sourceTree = "<group>"; };
 		C4C2F30F1CC48AB800F24727 /* ArticleObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleObject.m; sourceTree = "<group>"; };
@@ -303,7 +306,7 @@
 				05060C341CC3285200525F17 /* Article.storyboard */,
 				05060C301CC3270D00525F17 /* Question.storyboard */,
 				05060C361CC328A300525F17 /* Consulting.storyboard */,
-				05743AA11CC4E7C400A762E3 /* Sliding.storyboard */,
+				05060C321CC327D600525F17 /* Sliding.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -327,6 +330,12 @@
 				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
 				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
 				64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */,
+				C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */,
+				C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */,
+				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
+				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
+				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
+				05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -572,10 +581,10 @@
 				05060C311CC3270D00525F17 /* Question.storyboard in Resources */,
 				05060C371CC328A300525F17 /* Consulting.storyboard in Resources */,
 				05060C351CC3285200525F17 /* Article.storyboard in Resources */,
+				05060C331CC327D600525F17 /* Sliding.storyboard in Resources */,
 				ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */,
 				05079BF61CC21D0F00E7CFC8 /* AlipaySDK.bundle in Resources */,
 				64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */,
-				05743AA21CC4E7C400A762E3 /* Sliding.storyboard in Resources */,
 				05079B921CC20F7000E7CFC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -669,6 +678,7 @@
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
+				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
@@ -681,7 +691,6 @@
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
 				05079C061CC21E9B00E7CFC8 /* RequestAPI.m in Sources */,
-				051428D41CC4A983003D04F3 /* SlidingTableViewCell.m in Sources */,
 				05079BC51CC21A6F00E7CFC8 /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@
 #import "SlidingViewController.h"
 #import "SlidingTableViewCell.h"
 
-
 @interface SlidingViewController ()
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
@@ -27,16 +26,13 @@
     UIImage *image6 =[UIImage imageNamed:@"预约咨询"];
     _imageBrr =@[image1,image2,image3,image4,image5,image6];
     _dict = @[@"预约管理",@"我的问答",@"我的收藏",@"我的投稿",@"专家入驻",@"建议反馈" ];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)slidingTableViewCell{
-  
-}
+
 /*
 #pragma mark - Navigation
 
@@ -53,11 +49,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView  cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SlidingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
     cell.Lable.text=_dict[indexPath.row];
     cell.image.image =_imageBrr[indexPath.row];
-    
-    
     return cell;
 }
 @end
