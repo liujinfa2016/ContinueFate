@@ -45,11 +45,14 @@
 		05079C081CC21F2500E7CFC8 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C071CC21F2500E7CFC8 /* Openssl.framework */; };
 		05079C0A1CC21F6900E7CFC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */; };
 		05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */; };
+		05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */; };
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
+		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
+		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
 		ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */; };
 		ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631831CC39B1E0000FB71 /* ArticleViewController.m */; };
@@ -145,6 +148,8 @@
 		05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
 		05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
+		05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingTableViewCell.h; sourceTree = "<group>"; };
+		05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingTableViewCell.m; sourceTree = "<group>"; };
 		5FBB38391BABC808170B9BE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -155,6 +160,10 @@
 		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
+		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
+		C4C2F30E1CC48AB800F24727 /* ArticleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleObject.h; sourceTree = "<group>"; };
+		C4C2F30F1CC48AB800F24727 /* ArticleObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleObject.m; sourceTree = "<group>"; };
 		ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		ED46316A1CC3888A0000FB71 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+NJ.h"; path = "MBProgressHUD/MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+NJ.m"; path = "MBProgressHUD/MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
@@ -281,6 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				05079B931CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld */,
+				C4C2F30E1CC48AB800F24727 /* ArticleObject.h */,
+				C4C2F30F1CC48AB800F24727 /* ArticleObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -315,12 +326,16 @@
 				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
 				64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */,
 				64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */,
-				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
-				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
 				05060C3E1CC32E5500525F17 /* TabBarViewController.h */,
 				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
 				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
 				64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */,
+				C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */,
+				C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */,
+				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
+				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
+				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
+				05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -663,12 +678,15 @@
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
+				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
 				ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */,
 				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,
+				C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */,
+				C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
