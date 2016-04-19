@@ -335,6 +335,12 @@
 			children = (
 				ED4631821CC39B1E0000FB71 /* ArticleViewController.h */,
 				ED4631831CC39B1E0000FB71 /* ArticleViewController.m */,
+				F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */,
+				F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */,
+				F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */,
+				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
+				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
+				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
 				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
 				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
 				ED4631861CC39B1E0000FB71 /* QuestionViewController.h */,
@@ -355,12 +361,6 @@
 				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
 				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
 				05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */,
-				F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */,
-				F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */,
-				F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */,
-				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
-				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
-				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

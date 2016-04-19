@@ -10,7 +10,10 @@
 
 @interface SlidingViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *imageLable;
+//图片按钮
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *nameLbl;
+//设置按钮
+- (IBAction)SetUpAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end
