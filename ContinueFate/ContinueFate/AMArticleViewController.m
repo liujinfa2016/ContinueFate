@@ -31,23 +31,34 @@
     
     
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"Four", @"Five", @"Six", @"Seven", @"Eight"]];
+    //设置筛选栏指示器的内容
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"挽回爱情", @"挽回婚姻", @"谈恋爱", @"婚姻讲座", @"实践总结"]];
+    
     segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+    //设置筛选栏指示器的位置
     segmentedControl.frame = CGRectMake(0, 0, viewWidth, 40);
+    
+    
     segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    //设置筛选栏指示器的风格（下划线、三角形、背影）
     segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
+    //设置筛选栏指示器的位置（在上、在下、默认）
     segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     segmentedControl.verticalDividerEnabled = YES;
-    segmentedControl.verticalDividerColor = [UIColor redColor];
+    //设置筛选栏分隔线的颜色
+    segmentedControl.verticalDividerColor = UIColorMajor;
     segmentedControl.verticalDividerWidth = 1.0f;
-    segmentedControl.backgroundColor = [UIColor redColor];
+    //设置筛选栏的背景颜色
+    segmentedControl.backgroundColor = UIColorBackground;
+    
     [segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
-        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor blueColor]}];
+        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         return attString;
     }];
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
     [self requestData];
+    
     
 }
 
