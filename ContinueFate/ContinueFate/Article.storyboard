@@ -63,8 +63,8 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="IhU-jR-heq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="cSY-f8-ogt">
@@ -95,9 +95,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="image" destination="cSY-f8-ogt" id="QhC-6O-N52"/>
-                                            <outlet property="introductioniLab" destination="H3H-Zf-h97" id="AC5-Sm-hAb"/>
                                             <outlet property="substance" destination="H3H-Zf-h97" id="u3a-cX-ymE"/>
-                                            <outlet property="titleLab" destination="jze-no-iYb" id="t69-3Z-4tv"/>
                                             <outlet property="titleName" destination="jze-no-iYb" id="J9y-08-iRp"/>
                                         </connections>
                                     </tableViewCell>
