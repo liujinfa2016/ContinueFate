@@ -227,7 +227,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfr-16-4bV">
                                                     <rect key="frame" x="0.0" y="0.0" width="160" height="147"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <state key="normal" image="预约咨询">
+                                                    <state key="normal" image="预约咨询-1">
                                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -248,7 +248,7 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="-10"/>
                                                             <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
-                                                            <state key="normal" image="成功案例"/>
+                                                            <state key="normal" image="成功案例-1"/>
                                                             <connections>
                                                                 <action selector="successAction:forEvent:" destination="kb8-yj-bbm" eventType="touchUpInside" id="8nk-PX-lsr"/>
                                                             </connections>
@@ -536,12 +536,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="成功案例" width="102" height="27"/>
+        <image name="成功案例-1" width="101" height="27"/>
         <image name="横线" width="553" height="1"/>
         <image name="竖线" width="1" height="330"/>
         <image name="问答" width="73" height="27"/>
         <image name="阅读量" width="15" height="10"/>
-        <image name="预约咨询" width="74" height="73"/>
+        <image name="预约咨询-1" width="70" height="70"/>
         <image name="首页" width="24" height="23"/>
     </resources>
 </document>
