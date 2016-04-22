@@ -45,6 +45,8 @@
 		05079C081CC21F2500E7CFC8 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C071CC21F2500E7CFC8 /* Openssl.framework */; };
 		05079C0A1CC21F6900E7CFC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */; };
 		05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */; };
+		050F17761CC9BA66004E93EE /* SlidingPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 050F17751CC9BA66004E93EE /* SlidingPersonalViewController.m */; };
+		050F17791CC9BE0C004E93EE /* SlidingCllectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 050F17781CC9BE0C004E93EE /* SlidingCllectionViewController.m */; };
 		05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */; };
 		05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */; };
 		05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */; };
@@ -162,6 +164,10 @@
 		05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
 		05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
+		050F17741CC9BA66004E93EE /* SlidingPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingPersonalViewController.h; sourceTree = "<group>"; };
+		050F17751CC9BA66004E93EE /* SlidingPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingPersonalViewController.m; sourceTree = "<group>"; };
+		050F17771CC9BE0C004E93EE /* SlidingCllectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingCllectionViewController.h; sourceTree = "<group>"; };
+		050F17781CC9BE0C004E93EE /* SlidingCllectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingCllectionViewController.m; sourceTree = "<group>"; };
 		05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingTableViewCell.h; sourceTree = "<group>"; };
 		05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingTableViewCell.m; sourceTree = "<group>"; };
 		05A15B391CC61AF200BEB367 /* SlidingSetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingSetUpViewController.h; sourceTree = "<group>"; };
@@ -394,6 +400,10 @@
 				64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */,
 				C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */,
 				C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */,
+				F80DBBB31CC64E3D00EE39BD /* CExpertsTableViewCell.h */,
+				F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */,
+				F80DBBB61CC64E4300EE39BD /* CEDetailsViewController.h */,
+				F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */,
 				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
 				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
 				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
@@ -402,10 +412,10 @@
 				05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */,
 				05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */,
 				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
-				F80DBBB31CC64E3D00EE39BD /* CExpertsTableViewCell.h */,
-				F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */,
-				F80DBBB61CC64E4300EE39BD /* CEDetailsViewController.h */,
-				F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */,
+				050F17741CC9BA66004E93EE /* SlidingPersonalViewController.h */,
+				050F17751CC9BA66004E93EE /* SlidingPersonalViewController.m */,
+				050F17771CC9BE0C004E93EE /* SlidingCllectionViewController.h */,
+				050F17781CC9BE0C004E93EE /* SlidingCllectionViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -755,6 +765,7 @@
 				8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */,
 				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
+				050F17761CC9BA66004E93EE /* SlidingPersonalViewController.m in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
@@ -769,6 +780,7 @@
 				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,
 				8562A4051CC639E800288F16 /* QAskViewController.m in Sources */,
 				C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */,
+				050F17791CC9BE0C004E93EE /* SlidingCllectionViewController.m in Sources */,
 				C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
 				8562A4061CC639E800288F16 /* QProblemViewController.m in Sources */,

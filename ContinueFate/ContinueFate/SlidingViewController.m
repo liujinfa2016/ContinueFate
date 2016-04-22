@@ -9,7 +9,7 @@
 #import "SlidingViewController.h"
 #import "SlidingTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-@interface SlidingViewController ()
+@interface SlidingViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
