@@ -9,6 +9,7 @@
 #import "QuestViewController.h"
 
 @interface QuestViewController ()
+@property (strong,nonatomic)NSMutableArray *objectsForShow;
 
 @end
 
@@ -24,6 +25,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    NSLog(@"%lu",(unsigned long)_objectsForShow.count);
+//    return _objectsForShow.count;
+//    
+//}
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+//    
+//    return cell;
+//}
 /*
 #pragma mark - Navigation
 

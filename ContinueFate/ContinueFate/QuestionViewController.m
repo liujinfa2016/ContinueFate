@@ -46,8 +46,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    QuestViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"questionDetail"];
-    [self.navigationController pushViewController:tabVC animated:YES];
+//    QuestViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"questionDetail"];
+//    [self.navigationController pushViewController:tabVC animated:YES];
 }
 
 - (void)requestData{
@@ -90,10 +90,11 @@
     NSLog(@"question = %@",obj);
     NSString *titlename = obj.titlename;
     NSString *substance = obj.substance;
-    NSString *date = obj.time;
+    NSString *date = [obj.time substringToIndex:19];
+    NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
     NSString *type =obj.type;
     cell.typeLbl.text = type;
-    cell.timeLbl.text = date;
+    cell.timeLbl.attributedText = inputDate;
     cell.tiltlename.text = titlename;
     cell.substance.text = substance;
     return cell;
@@ -106,7 +107,7 @@
 
 - (IBAction)askAction:(UIBarButtonItem *)sender {
     QAskViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"firstViewController"];
-    [self.navigationController pushViewController:tabVC animated:YES];
+    [self presentViewController:tabVC animated:YES completion:nil];
     
 }
 
