@@ -19,6 +19,7 @@
 @property (nonatomic) int usertype;
 @property (strong, nonatomic) NSString *username;
 @property (strong,nonatomic)NSString *time;
+@property (strong,nonatomic)NSString *type;
 - (id)initWithDictionary:(NSDictionary *)dict;
 
 @end

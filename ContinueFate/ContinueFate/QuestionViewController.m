@@ -91,6 +91,8 @@
     NSString *titlename = obj.titlename;
     NSString *substance = obj.substance;
     NSString *date = obj.time;
+    NSString *type =obj.type;
+    cell.typeLbl.text = type;
     cell.timeLbl.text = date;
     cell.tiltlename.text = titlename;
     cell.substance.text = substance;

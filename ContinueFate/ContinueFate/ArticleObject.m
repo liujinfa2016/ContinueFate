@@ -20,6 +20,7 @@
     self.edittime = [dict[@"edittime"]isKindOfClass:[NSNull class]]?@"":dict[@"edittime"];
     self.time = [dict[@"time"]isKindOfClass:[NSNull class]]?@"":dict[@"time"];
     self.hits = [dict[@"hits"]isKindOfClass:[NSNull class]?0:dict[@"hits"]];
+    self.type = [dict[@"type"]isKindOfClass:[NSNull class]]?@"":dict[@"type"];
     self.usertype = [dict[@"usertype"]isKindOfClass:[NSNull class]?0:dict[@"usertype"]];
     self.username = [dict[@"username"]isKindOfClass:[NSNull class]]?@"":dict[@"username"];
     return self;
