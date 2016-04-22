@@ -105,6 +105,7 @@
                                         </state>
                                         <connections>
                                             <action selector="SetUpAction:forEvent:" destination="91E-xJ-QA2" eventType="touchUpInside" id="mYU-fa-IXw"/>
+                                            <segue destination="4Hv-YZ-BWa" kind="show" id="kpH-SQ-McB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTB-iD-q8b">
@@ -204,6 +205,7 @@
                                 <state key="normal" title="个人资料"/>
                                 <connections>
                                     <action selector="Personal:forEvent:" destination="quU-Ze-Hoq" eventType="touchUpInside" id="sdk-GK-tF3"/>
+                                    <segue destination="4vE-zo-UAO" kind="show" id="TC9-RO-6fX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39G-do-gym">
@@ -246,12 +248,14 @@
                             <constraint firstAttribute="trailing" secondItem="39G-do-gym" secondAttribute="trailing" id="yw3-AK-EUo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设置" id="U0r-uh-QQt"/>
+                    <navigationItem key="navigationItem" title="设置" id="U0r-uh-QQt">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="mpG-4H-EqM"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YP3-BX-zrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-125" y="1103"/>
+            <point key="canvasLocation" x="-351" y="1088"/>
         </scene>
         <!--帮助-->
         <scene sceneID="GBf-Nv-0ge">
@@ -271,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hc-ne-pc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-125" y="1783"/>
+            <point key="canvasLocation" x="-351" y="1780"/>
         </scene>
         <!--个人资料-->
         <scene sceneID="olg-hz-C4t">
@@ -363,12 +367,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="x8F-K0-2IO">
-                                                    <rect key="frame" x="76" y="-77" width="236" height="197"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="482739390.05369401">
-                                                        <!--2016-04-19 06:16:30 +0000-->
-                                                    </date>
-                                                </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -385,9 +383,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2GX-Ul-ruA">
-                                                    <rect key="frame" x="25" y="-86" width="320" height="216"/>
-                                                </pickerView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -403,8 +398,11 @@
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIc-Og-Le2">
-                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.49142820259999997" blue="0.5992304517" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Dzh-fG-gIz"/>
+                                </constraints>
                                 <state key="normal" title="保存"/>
                             </button>
                         </subviews>
@@ -426,13 +424,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnc-4D-THz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="899" y="1089"/>
+            <point key="canvasLocation" x="235" y="1049"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="88s-Fl-YQV">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNj-j8-HPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Hv-YZ-BWa" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="FAX-Oq-22X"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PC0-wr-HhT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -443,9 +443,8 @@
                         <segue destination="quU-Ze-Hoq" kind="relationship" relationship="rootViewController" id="J8i-ts-LLR"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hNj-j8-HPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-541" y="1103"/>
+            <point key="canvasLocation" x="-823" y="1088"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5cM-Yg-x9s">
@@ -465,25 +464,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAG-9x-9mI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="125" y="333"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qK8-wt-6Fu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a49-Ro-5IH" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2yM-OX-acK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4vE-zo-UAO" kind="relationship" relationship="rootViewController" id="6jf-AY-3tX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U2N-a2-byS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="510" y="1089"/>
         </scene>
     </scenes>
 </document>
