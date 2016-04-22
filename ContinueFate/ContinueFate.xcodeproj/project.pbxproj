@@ -528,6 +528,14 @@
 			children = (
 				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
 				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
+				F80A88D81CCA3EB700D17D04 /* CExpertsTableViewCell.h */,
+				F80A88D91CCA3EB700D17D04 /* CExpertsTableViewCell.m */,
+				F80A88DA1CCA3EB700D17D04 /* CEDetailsViewController.h */,
+				F80A88DB1CCA3EB700D17D04 /* CEDetailsViewController.m */,
+				F80A88DC1CCA3EB700D17D04 /* CAConsultingViewController.h */,
+				F80A88DD1CCA3EB700D17D04 /* CAConsultingViewController.m */,
+				F80A88E11CCA430C00D17D04 /* CCDTableViewCell.h */,
+				F80A88E21CCA430C00D17D04 /* CCDTableViewCell.m */,
 			);
 			name = consulting;
 			sourceTree = "<group>";
