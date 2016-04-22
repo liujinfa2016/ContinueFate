@@ -70,6 +70,10 @@
 		ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */; };
 		ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631871CC39B1E0000FB71 /* QuestionViewController.m */; };
 		ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */; };
+		F80A88DE1CCA3EB700D17D04 /* CExpertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80A88D91CCA3EB700D17D04 /* CExpertsTableViewCell.m */; };
+		F80A88DF1CCA3EB700D17D04 /* CEDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80A88DB1CCA3EB700D17D04 /* CEDetailsViewController.m */; };
+		F80A88E01CCA3EB700D17D04 /* CAConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80A88DD1CCA3EB700D17D04 /* CAConsultingViewController.m */; };
+		F80A88E31CCA430C00D17D04 /* CCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80A88E21CCA430C00D17D04 /* CCDTableViewCell.m */; };
 		F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */; };
 		F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */; };
 		F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */; };
@@ -213,6 +217,14 @@
 		ED4631871CC39B1E0000FB71 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		ED46318C1CC39B480000FB71 /* XZMTabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMTabbarExtension.h; sourceTree = "<group>"; };
 		ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMTabbarExtension.m; sourceTree = "<group>"; };
+		F80A88D81CCA3EB700D17D04 /* CExpertsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpertsTableViewCell.h; sourceTree = "<group>"; };
+		F80A88D91CCA3EB700D17D04 /* CExpertsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpertsTableViewCell.m; sourceTree = "<group>"; };
+		F80A88DA1CCA3EB700D17D04 /* CEDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDetailsViewController.h; sourceTree = "<group>"; };
+		F80A88DB1CCA3EB700D17D04 /* CEDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDetailsViewController.m; sourceTree = "<group>"; };
+		F80A88DC1CCA3EB700D17D04 /* CAConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAConsultingViewController.h; sourceTree = "<group>"; };
+		F80A88DD1CCA3EB700D17D04 /* CAConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAConsultingViewController.m; sourceTree = "<group>"; };
+		F80A88E11CCA430C00D17D04 /* CCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDTableViewCell.h; sourceTree = "<group>"; };
+		F80A88E21CCA430C00D17D04 /* CCDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDTableViewCell.m; sourceTree = "<group>"; };
 		F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMArticleViewController.h; sourceTree = "<group>"; };
 		F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMArticleViewController.m; sourceTree = "<group>"; };
 		F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSuccessAViewController.h; sourceTree = "<group>"; };
@@ -538,6 +550,14 @@
 			children = (
 				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
 				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
+				F80A88D81CCA3EB700D17D04 /* CExpertsTableViewCell.h */,
+				F80A88D91CCA3EB700D17D04 /* CExpertsTableViewCell.m */,
+				F80A88DA1CCA3EB700D17D04 /* CEDetailsViewController.h */,
+				F80A88DB1CCA3EB700D17D04 /* CEDetailsViewController.m */,
+				F80A88DC1CCA3EB700D17D04 /* CAConsultingViewController.h */,
+				F80A88DD1CCA3EB700D17D04 /* CAConsultingViewController.m */,
+				F80A88E11CCA430C00D17D04 /* CCDTableViewCell.h */,
+				F80A88E21CCA430C00D17D04 /* CCDTableViewCell.m */,
 			);
 			name = consulting;
 			sourceTree = "<group>";
@@ -782,7 +802,9 @@
 				05079BE81CC21CF100E7CFC8 /* base64.m in Sources */,
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
+				F80A88E01CCA3EB700D17D04 /* CAConsultingViewController.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
+				F80A88DF1CCA3EB700D17D04 /* CEDetailsViewController.m in Sources */,
 				8562A4071CC639E800288F16 /* QDetailViewController.m in Sources */,
 				646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */,
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
@@ -791,6 +813,7 @@
 				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
+				F80A88DE1CCA3EB700D17D04 /* CExpertsTableViewCell.m in Sources */,
 				8562A4041CC639E800288F16 /* QuestViewController.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
 				F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */,
@@ -809,6 +832,7 @@
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
+				F80A88E31CCA430C00D17D04 /* CCDTableViewCell.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
