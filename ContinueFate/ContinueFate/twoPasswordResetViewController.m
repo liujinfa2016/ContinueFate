@@ -36,4 +36,13 @@
 
 - (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
+//隐藏键盘
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [self.view endEditing:YES];
+}
 @end
