@@ -1,18 +1,18 @@
 //
-//  RegisterViewController.m
+//  onePasswordResetViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/16.
+//  Created by demon on 16/4/22.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "RegisterViewController.h"
+#import "onePasswordResetViewController.h"
 
-@interface RegisterViewController ()
+@interface onePasswordResetViewController ()
 
 @end
 
-@implementation RegisterViewController
+@implementation onePasswordResetViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,8 +34,9 @@
 }
 */
 
-- (IBAction)Registered:(UIButton *)sender forEvent:(UIEvent *)event {
+- (IBAction)testGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
-- (IBAction)TestGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
+
+- (IBAction)nextAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
