@@ -7,9 +7,8 @@
 //
 
 #import "ConsultingViewController.h"
-#import "CExpertsTableViewCell.h"
-#import "CEDetailsViewController.h"
-@interface ConsultingViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@interface ConsultingViewController ()
 
 @end
 
@@ -17,8 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -26,20 +23,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CExpertsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CEDetailsViewController *date = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
-    date.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:date animated:YES];
-}
+
 /*
 #pragma mark - Navigation
 
