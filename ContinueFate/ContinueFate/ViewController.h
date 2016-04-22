@@ -10,9 +10,9 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *usernameTF;//用户名
-@property (weak, nonatomic) IBOutlet UITextField *passwordTF;//密码
-- (IBAction)loginAction:(id)sender forEvent:(UIEvent *)event;//登录
+@property (weak, nonatomic) IBOutlet UITextField *usernameTF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;
+- (IBAction)loginAction:(id)sender forEvent:(UIEvent *)event;
 
 @end
 
