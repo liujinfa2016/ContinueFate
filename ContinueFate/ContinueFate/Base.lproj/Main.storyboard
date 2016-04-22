@@ -269,7 +269,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWe-I0-atW">
                                 <rect key="frame" x="75" y="159" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="B5q-nK-jDQ" id="tL2-iP-oO1"/>
                                 </connections>
@@ -598,7 +598,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-em-aTc">
                                 <rect key="frame" x="75" y="184" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="cCy-he-RLf" id="JZ9-YD-tJh"/>
                                 </connections>
@@ -606,7 +606,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请确认密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8q-Jf-typ">
                                 <rect key="frame" x="75" y="229" width="215" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="cCy-he-RLf" id="5Hx-En-k3K"/>
                                 </connections>
@@ -767,7 +767,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqT-ag-qaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="868"/>
+
+            <point key="canvasLocation" x="125" y="941"/>
+
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KzO-dM-y59">
