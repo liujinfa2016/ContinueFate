@@ -36,6 +36,4 @@
 
 - (IBAction)Registered:(UIButton *)sender forEvent:(UIEvent *)event {
 }
-- (IBAction)verifyAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
 @end

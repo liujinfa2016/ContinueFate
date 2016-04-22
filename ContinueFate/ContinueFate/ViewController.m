@@ -11,6 +11,7 @@
 
 
 @interface ViewController ()
+
 @end
 
 @implementation ViewController
@@ -23,9 +24,9 @@
     //加载完成
     [MBProgressHUD hideHUDForView:self.view];
 
+
+
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
