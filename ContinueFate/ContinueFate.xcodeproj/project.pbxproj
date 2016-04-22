@@ -533,7 +533,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
+
 		850E45B51CCA3B3100BF8FE6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,8 +625,7 @@
 			name = Sliding;
 			sourceTree = "<group>";
 		};
-=======
->>>>>>> d4cd40ed82b21f67e28267ad02612c288319c7f1
+
 		ED4631681CC388730000FB71 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
