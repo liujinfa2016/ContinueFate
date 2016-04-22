@@ -18,6 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[AppAPIClient sharedClient]GET:@"http://192.168.61.85:8080/XuYuanProject/questionList" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error.description);
+    }];
 
     //显示加载
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
@@ -34,5 +39,7 @@
 }
 
 - (IBAction)loginAction:(id)sender forEvent:(UIEvent *)event {
+    
+
 }
 @end
