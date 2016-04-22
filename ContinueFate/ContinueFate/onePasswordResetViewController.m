@@ -35,8 +35,23 @@
 */
 
 - (IBAction)testGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    NSString *telTF = _telTF.text;
+    if (telTF.length != 11 ) {
+        [Utilities popUpAlertViewWithMsg:@"请输入11位手机号" andTitle:nil onView:self];
+        return;
+    }
+
 }
 
 - (IBAction)nextAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+//隐藏键盘
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [self.view endEditing:YES];
 }
 @end

@@ -1,18 +1,18 @@
 //
-//  twoPasswordResetViewController.m
+//  HomeTabViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/22.
+//  Created by 刘金发 on 16/4/22.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "twoPasswordResetViewController.h"
+#import "HomeTabViewController.h"
 
-@interface twoPasswordResetViewController ()
+@interface HomeTabViewController ()
 
 @end
 
-@implementation twoPasswordResetViewController
+@implementation HomeTabViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,15 +34,4 @@
 }
 */
 
-- (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-//隐藏键盘
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    return YES;
-}
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    [self.view endEditing:YES];
-}
 @end
