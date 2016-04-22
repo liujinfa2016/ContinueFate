@@ -1,18 +1,18 @@
 //
-//  HomeTabViewController.m
+//  SlidingDataViewController.m
 //  ContinueFate
 //
-//  Created by 刘金发 on 16/4/22.
+//  Created by demon on 16/4/22.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "HomeTabViewController.h"
+#import "SlidingDataViewController.h"
 
-@interface HomeTabViewController ()
+@interface SlidingDataViewController ()
 
 @end
 
-@implementation HomeTabViewController
+@implementation SlidingDataViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,4 +34,9 @@
 }
 */
 
+- (IBAction)saveBut:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)changeItem:(UIBarButtonItem *)sender {
+}
 @end

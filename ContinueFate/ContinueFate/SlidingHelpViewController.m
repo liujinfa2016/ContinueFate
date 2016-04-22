@@ -1,18 +1,18 @@
 //
-//  twoPasswordResetViewController.m
+//  SlidingHelpViewController.m
 //  ContinueFate
 //
 //  Created by demon on 16/4/22.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "twoPasswordResetViewController.h"
+#import "SlidingHelpViewController.h"
 
-@interface twoPasswordResetViewController ()
+@interface SlidingHelpViewController ()
 
 @end
 
-@implementation twoPasswordResetViewController
+@implementation SlidingHelpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +34,4 @@
 }
 */
 
-- (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
 @end
