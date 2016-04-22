@@ -71,6 +71,8 @@
 		F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */; };
 		F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */; };
 		F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */; };
+		F80DBBB51CC64E3D00EE39BD /* CExpertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */; };
+		F80DBBB81CC64E4300EE39BD /* CEDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +213,10 @@
 		F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		F80DBBA91CC5CA2600EE39BD /* JRSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSegmentControl.h; sourceTree = "<group>"; };
 		F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSegmentControl.m; sourceTree = "<group>"; };
+		F80DBBB31CC64E3D00EE39BD /* CExpertsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpertsTableViewCell.h; sourceTree = "<group>"; };
+		F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpertsTableViewCell.m; sourceTree = "<group>"; };
+		F80DBBB61CC64E4300EE39BD /* CEDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDetailsViewController.h; sourceTree = "<group>"; };
+		F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +402,10 @@
 				05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */,
 				05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */,
 				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
+				F80DBBB31CC64E3D00EE39BD /* CExpertsTableViewCell.h */,
+				F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */,
+				F80DBBB61CC64E4300EE39BD /* CEDetailsViewController.h */,
+				F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -748,8 +758,10 @@
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
+				F80DBBB51CC64E3D00EE39BD /* CExpertsTableViewCell.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
+				F80DBBB81CC64E4300EE39BD /* CEDetailsViewController.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */,
 				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
