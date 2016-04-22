@@ -49,10 +49,11 @@
 		05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */; };
 		05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */; };
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
+		646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */; };
+		646E30B21CC9C05A00093A33 /* twoPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
-		64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */; };
 		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
 		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
 		8562A4051CC639E800288F16 /* QAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FE1CC639E800288F16 /* QAskViewController.m */; };
@@ -71,8 +72,6 @@
 		F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */; };
 		F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */; };
 		F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */; };
-		F80DBBB51CC64E3D00EE39BD /* CExpertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */; };
-		F80DBBB81CC64E4300EE39BD /* CEDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,13 +168,15 @@
 		05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = slidingAppointmentViewController.h; sourceTree = "<group>"; };
 		05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = slidingAppointmentViewController.m; sourceTree = "<group>"; };
 		5FBB38391BABC808170B9BE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = onePasswordResetViewController.h; sourceTree = "<group>"; };
+		646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = onePasswordResetViewController.m; sourceTree = "<group>"; };
+		646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoPasswordResetViewController.h; sourceTree = "<group>"; };
+		646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoPasswordResetViewController.m; sourceTree = "<group>"; };
 		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetViewController.h; sourceTree = "<group>"; };
-		64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8562A3F91CC639E800288F16 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
 		8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
@@ -213,10 +214,6 @@
 		F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		F80DBBA91CC5CA2600EE39BD /* JRSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSegmentControl.h; sourceTree = "<group>"; };
 		F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSegmentControl.m; sourceTree = "<group>"; };
-		F80DBBB31CC64E3D00EE39BD /* CExpertsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpertsTableViewCell.h; sourceTree = "<group>"; };
-		F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpertsTableViewCell.m; sourceTree = "<group>"; };
-		F80DBBB61CC64E4300EE39BD /* CEDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDetailsViewController.h; sourceTree = "<group>"; };
-		F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,8 +383,6 @@
 				05079B8E1CC20F7000E7CFC8 /* ViewController.m */,
 				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
 				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
-				64F9E8B21CC2502900D805EF /* PasswordResetViewController.h */,
-				64F9E8B31CC2502900D805EF /* PasswordResetViewController.m */,
 				05060C3E1CC32E5500525F17 /* TabBarViewController.h */,
 				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
 				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
@@ -402,10 +397,10 @@
 				05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */,
 				05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */,
 				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
-				F80DBBB31CC64E3D00EE39BD /* CExpertsTableViewCell.h */,
-				F80DBBB41CC64E3D00EE39BD /* CExpertsTableViewCell.m */,
-				F80DBBB61CC64E4300EE39BD /* CEDetailsViewController.h */,
-				F80DBBB71CC64E4300EE39BD /* CEDetailsViewController.m */,
+				646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */,
+				646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */,
+				646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */,
+				646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -734,8 +729,8 @@
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
 				8562A4071CC639E800288F16 /* QDetailViewController.m in Sources */,
+				646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */,
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
-				64F9E8B41CC2502900D805EF /* PasswordResetViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
 				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */,
@@ -758,12 +753,11 @@
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
-				F80DBBB51CC64E3D00EE39BD /* CExpertsTableViewCell.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
-				F80DBBB81CC64E4300EE39BD /* CEDetailsViewController.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */,
+				646E30B21CC9C05A00093A33 /* twoPasswordResetViewController.m in Sources */,
 				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
 				ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */,
 				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,

@@ -1,18 +1,18 @@
 //
-//  ConsultingViewController.m
+//  onePasswordResetViewController.m
 //  ContinueFate
 //
-//  Created by px on 16/4/17.
+//  Created by demon on 16/4/22.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "ConsultingViewController.h"
+#import "onePasswordResetViewController.h"
 
-@interface ConsultingViewController ()
+@interface onePasswordResetViewController ()
 
 @end
 
-@implementation ConsultingViewController
+@implementation onePasswordResetViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,4 +34,9 @@
 }
 */
 
+- (IBAction)testGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)nextAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end

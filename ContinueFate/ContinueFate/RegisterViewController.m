@@ -36,4 +36,6 @@
 
 - (IBAction)Registered:(UIButton *)sender forEvent:(UIEvent *)event {
 }
+- (IBAction)TestGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end
