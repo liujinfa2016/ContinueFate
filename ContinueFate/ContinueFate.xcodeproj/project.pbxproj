@@ -61,6 +61,8 @@
 		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
 		8562A4051CC639E800288F16 /* QAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FE1CC639E800288F16 /* QAskViewController.m */; };
 		85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85640F8E1CCB128600BA9B90 /* DetailTableViewCell.m */; };
+		85640F981CCB749D00BA9B90 /* QTranfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85640F971CCB749D00BA9B90 /* QTranfViewController.m */; };
+		85640F9B1CCB7AD400BA9B90 /* QuestionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85640F9A1CCB7AD400BA9B90 /* QuestionObject.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
@@ -194,6 +196,10 @@
 		8562A3FE1CC639E800288F16 /* QAskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAskViewController.m; sourceTree = "<group>"; };
 		85640F8D1CCB128600BA9B90 /* DetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewCell.h; sourceTree = "<group>"; };
 		85640F8E1CCB128600BA9B90 /* DetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewCell.m; sourceTree = "<group>"; };
+		85640F961CCB749D00BA9B90 /* QTranfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTranfViewController.h; sourceTree = "<group>"; };
+		85640F971CCB749D00BA9B90 /* QTranfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTranfViewController.m; sourceTree = "<group>"; };
+		85640F991CCB7AD400BA9B90 /* QuestionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionObject.h; sourceTree = "<group>"; };
+		85640F9A1CCB7AD400BA9B90 /* QuestionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionObject.m; sourceTree = "<group>"; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
@@ -341,6 +347,8 @@
 				05079B931CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld */,
 				C4C2F30E1CC48AB800F24727 /* ArticleObject.h */,
 				C4C2F30F1CC48AB800F24727 /* ArticleObject.m */,
+				85640F991CCB7AD400BA9B90 /* QuestionObject.h */,
+				85640F9A1CCB7AD400BA9B90 /* QuestionObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -524,6 +532,8 @@
 				8562A3FE1CC639E800288F16 /* QAskViewController.m */,
 				85640F8D1CCB128600BA9B90 /* DetailTableViewCell.h */,
 				85640F8E1CCB128600BA9B90 /* DetailTableViewCell.m */,
+				85640F961CCB749D00BA9B90 /* QTranfViewController.h */,
+				85640F971CCB749D00BA9B90 /* QTranfViewController.m */,
 			);
 			name = Question;
 			sourceTree = "<group>";
@@ -777,10 +787,12 @@
 				05079BE81CC21CF100E7CFC8 /* base64.m in Sources */,
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
+				85640F981CCB749D00BA9B90 /* QTranfViewController.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
 				646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */,
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
+				85640F9B1CCB7AD400BA9B90 /* QuestionObject.m in Sources */,
 				647CDC021CCA2C7B00961111 /* SlidingDataViewController.m in Sources */,
 				ED4631891CC39B1E0000FB71 /* ConsultingViewController.m in Sources */,
 				05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */,
