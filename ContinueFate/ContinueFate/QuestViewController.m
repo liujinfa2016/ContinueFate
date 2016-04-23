@@ -7,7 +7,7 @@
 //
 
 #import "QuestViewController.h"
-
+#import "DetailTableViewCell.h"
 @interface QuestViewController ()
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
 
@@ -26,17 +26,17 @@
 }
 
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    NSLog(@"%lu",(unsigned long)_objectsForShow.count);
-//    return _objectsForShow.count;
-//    
-//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"%lu",(unsigned long)_objectsForShow.count);
+    return 1;
+    
+}
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-//    
-//    return cell;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+     DetailTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    return cell;
+}
 /*
 #pragma mark - Navigation
 

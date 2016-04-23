@@ -17,4 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *typeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *timeLbl;
+
+
 @end
