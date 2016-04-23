@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QAskViewController : UIViewController
+@interface QAskViewController : UIViewController<UITextViewDelegate,UIAlertViewDelegate>
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 - (IBAction)saveAction:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UITextView *titleView;
+@property (weak, nonatomic) IBOutlet UITextView *substanceView;
 
 @end

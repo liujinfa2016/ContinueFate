@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QuestionObject.h"
 @interface QuestViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *titlename;
@@ -17,6 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *typeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *timeLbl;
-
+@property (strong,nonatomic)QuestionObject *detail;
 
 @end
