@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface QuestViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *titlename;
+@property (weak, nonatomic) IBOutlet UILabel *substance;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *ansNumber;
 
+@property (weak, nonatomic) IBOutlet UILabel *typeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *timeLbl;
 @end

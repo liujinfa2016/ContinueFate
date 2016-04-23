@@ -60,8 +60,6 @@
 		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
 		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
 		8562A4051CC639E800288F16 /* QAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FE1CC639E800288F16 /* QAskViewController.m */; };
-		8562A4061CC639E800288F16 /* QProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A4001CC639E800288F16 /* QProblemViewController.m */; };
-		8562A4071CC639E800288F16 /* QDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A4021CC639E800288F16 /* QDetailViewController.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
@@ -193,10 +191,6 @@
 		8562A3FC1CC639E800288F16 /* QuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestViewController.m; sourceTree = "<group>"; };
 		8562A3FD1CC639E800288F16 /* QAskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAskViewController.h; sourceTree = "<group>"; };
 		8562A3FE1CC639E800288F16 /* QAskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAskViewController.m; sourceTree = "<group>"; };
-		8562A3FF1CC639E800288F16 /* QProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QProblemViewController.h; sourceTree = "<group>"; };
-		8562A4001CC639E800288F16 /* QProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QProblemViewController.m; sourceTree = "<group>"; };
-		8562A4011CC639E800288F16 /* QDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDetailViewController.h; sourceTree = "<group>"; };
-		8562A4021CC639E800288F16 /* QDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDetailViewController.m; sourceTree = "<group>"; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
@@ -366,56 +360,13 @@
 		05079BC01CC2197E00E7CFC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ED4631821CC39B1E0000FB71 /* ArticleViewController.h */,
-				ED4631831CC39B1E0000FB71 /* ArticleViewController.m */,
-				F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */,
-				F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */,
-				F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */,
-				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
-				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
-				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
-				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
-				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
-				ED4631861CC39B1E0000FB71 /* QuestionViewController.h */,
-				ED4631871CC39B1E0000FB71 /* QuestionViewController.m */,
-				8562A3F91CC639E800288F16 /* QuestionTableViewCell.h */,
-				8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */,
-				8562A3FB1CC639E800288F16 /* QuestViewController.h */,
-				8562A3FC1CC639E800288F16 /* QuestViewController.m */,
-				8562A3FD1CC639E800288F16 /* QAskViewController.h */,
-				8562A3FE1CC639E800288F16 /* QAskViewController.m */,
-				8562A3FF1CC639E800288F16 /* QProblemViewController.h */,
-				8562A4001CC639E800288F16 /* QProblemViewController.m */,
-				8562A4011CC639E800288F16 /* QDetailViewController.h */,
-				8562A4021CC639E800288F16 /* QDetailViewController.m */,
-				05079B8D1CC20F7000E7CFC8 /* ViewController.h */,
-				05079B8E1CC20F7000E7CFC8 /* ViewController.m */,
-				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
-				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
+				850E45B91CCA3B8B00BF8FE6 /* Sliding */,
+				850E45B81CCA3B5700BF8FE6 /* consulting */,
+				850E45B71CCA3B4D00BF8FE6 /* Question */,
+				850E45B61CCA3B3C00BF8FE6 /* Article */,
+				850E45B51CCA3B3100BF8FE6 /* Home */,
 				05060C3E1CC32E5500525F17 /* TabBarViewController.h */,
 				05060C3F1CC32E5500525F17 /* TabBarViewController.m */,
-				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
-				64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */,
-				C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */,
-				C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */,
-				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
-				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
-				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
-				05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */,
-				05A15B391CC61AF200BEB367 /* SlidingSetUpViewController.h */,
-				05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */,
-				05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */,
-				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
-				646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */,
-				646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */,
-				646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */,
-				646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */,
-				647CDC001CCA2C7B00961111 /* SlidingDataViewController.h */,
-				647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */,
-				647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */,
-				647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */,
-				647CDC061CCA309C00961111 /* SlidingDataTableViewCell.h */,
-				647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -529,6 +480,93 @@
 				749EE38E82DCC02178E6F2CB /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		850E45B51CCA3B3100BF8FE6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */,
+				64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */,
+				C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */,
+				C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		850E45B61CCA3B3C00BF8FE6 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				ED4631821CC39B1E0000FB71 /* ArticleViewController.h */,
+				ED4631831CC39B1E0000FB71 /* ArticleViewController.m */,
+				F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */,
+				F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */,
+				F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */,
+				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
+				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
+				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		850E45B71CCA3B4D00BF8FE6 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				ED4631861CC39B1E0000FB71 /* QuestionViewController.h */,
+				ED4631871CC39B1E0000FB71 /* QuestionViewController.m */,
+				8562A3F91CC639E800288F16 /* QuestionTableViewCell.h */,
+				8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */,
+				8562A3FB1CC639E800288F16 /* QuestViewController.h */,
+				8562A3FC1CC639E800288F16 /* QuestViewController.m */,
+				8562A3FD1CC639E800288F16 /* QAskViewController.h */,
+				8562A3FE1CC639E800288F16 /* QAskViewController.m */,
+			);
+			name = Question;
+			sourceTree = "<group>";
+		};
+		850E45B81CCA3B5700BF8FE6 /* consulting */ = {
+			isa = PBXGroup;
+			children = (
+				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
+				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
+				F80A88D81CCA3EB700D17D04 /* CExpertsTableViewCell.h */,
+				F80A88D91CCA3EB700D17D04 /* CExpertsTableViewCell.m */,
+				F80A88DA1CCA3EB700D17D04 /* CEDetailsViewController.h */,
+				F80A88DB1CCA3EB700D17D04 /* CEDetailsViewController.m */,
+				F80A88DC1CCA3EB700D17D04 /* CAConsultingViewController.h */,
+				F80A88DD1CCA3EB700D17D04 /* CAConsultingViewController.m */,
+				F80A88E11CCA430C00D17D04 /* CCDTableViewCell.h */,
+				F80A88E21CCA430C00D17D04 /* CCDTableViewCell.m */,
+			);
+			name = consulting;
+			sourceTree = "<group>";
+		};
+		850E45B91CCA3B8B00BF8FE6 /* Sliding */ = {
+			isa = PBXGroup;
+			children = (
+				05079B8D1CC20F7000E7CFC8 /* ViewController.h */,
+				05079B8E1CC20F7000E7CFC8 /* ViewController.m */,
+				05060C3A1CC32DED00525F17 /* SlidingViewController.h */,
+				05060C3B1CC32DED00525F17 /* SlidingViewController.m */,
+				05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */,
+				05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */,
+				05A15B391CC61AF200BEB367 /* SlidingSetUpViewController.h */,
+				05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */,
+				05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */,
+				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
+				646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */,
+				646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */,
+				646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */,
+				646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */,
+				647CDC001CCA2C7B00961111 /* SlidingDataViewController.h */,
+				647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */,
+				647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */,
+				647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */,
+				647CDC061CCA309C00961111 /* SlidingDataTableViewCell.h */,
+				647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */,
+				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
+				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
+			);
+			name = Sliding;
 			sourceTree = "<group>";
 		};
 		ED4631681CC388730000FB71 /* MBProgressHUD */ = {
@@ -743,7 +781,6 @@
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
-				8562A4071CC639E800288F16 /* QDetailViewController.m in Sources */,
 				646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */,
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
@@ -783,7 +820,6 @@
 				C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */,
 				C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
-				8562A4061CC639E800288F16 /* QProblemViewController.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
 				05079C061CC21E9B00E7CFC8 /* RequestAPI.m in Sources */,
