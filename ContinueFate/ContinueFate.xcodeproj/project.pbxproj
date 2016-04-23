@@ -60,6 +60,7 @@
 		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
 		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
 		8562A4051CC639E800288F16 /* QAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FE1CC639E800288F16 /* QAskViewController.m */; };
+		85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85640F8E1CCB128600BA9B90 /* DetailTableViewCell.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
@@ -191,6 +192,8 @@
 		8562A3FC1CC639E800288F16 /* QuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestViewController.m; sourceTree = "<group>"; };
 		8562A3FD1CC639E800288F16 /* QAskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAskViewController.h; sourceTree = "<group>"; };
 		8562A3FE1CC639E800288F16 /* QAskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAskViewController.m; sourceTree = "<group>"; };
+		85640F8D1CCB128600BA9B90 /* DetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewCell.h; sourceTree = "<group>"; };
+		85640F8E1CCB128600BA9B90 /* DetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewCell.m; sourceTree = "<group>"; };
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
@@ -519,6 +522,8 @@
 				8562A3FC1CC639E800288F16 /* QuestViewController.m */,
 				8562A3FD1CC639E800288F16 /* QAskViewController.h */,
 				8562A3FE1CC639E800288F16 /* QAskViewController.m */,
+				85640F8D1CCB128600BA9B90 /* DetailTableViewCell.h */,
+				85640F8E1CCB128600BA9B90 /* DetailTableViewCell.m */,
 			);
 			name = Question;
 			sourceTree = "<group>";
@@ -528,14 +533,6 @@
 			children = (
 				ED4631841CC39B1E0000FB71 /* ConsultingViewController.h */,
 				ED4631851CC39B1E0000FB71 /* ConsultingViewController.m */,
-				F80A88D81CCA3EB700D17D04 /* CExpertsTableViewCell.h */,
-				F80A88D91CCA3EB700D17D04 /* CExpertsTableViewCell.m */,
-				F80A88DA1CCA3EB700D17D04 /* CEDetailsViewController.h */,
-				F80A88DB1CCA3EB700D17D04 /* CEDetailsViewController.m */,
-				F80A88DC1CCA3EB700D17D04 /* CAConsultingViewController.h */,
-				F80A88DD1CCA3EB700D17D04 /* CAConsultingViewController.m */,
-				F80A88E11CCA430C00D17D04 /* CCDTableViewCell.h */,
-				F80A88E21CCA430C00D17D04 /* CCDTableViewCell.m */,
 			);
 			name = consulting;
 			sourceTree = "<group>";
@@ -803,6 +800,7 @@
 				05079BCF1CC21A8E00E7CFC8 /* AppAPIClient.m in Sources */,
 				8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */,
 				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,
+				85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
