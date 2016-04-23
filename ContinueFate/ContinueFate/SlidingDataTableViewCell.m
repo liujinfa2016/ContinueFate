@@ -25,6 +25,6 @@
 - (IBAction)sexTF:(UISwitch *)sender forEvent:(UIEvent *)event {
 }
 
-- (IBAction)datePcView:(UIDatePicker *)sender forEvent:(UIEvent *)event {
+- (IBAction)datePc:(UIDatePicker *)sender forEvent:(UIEvent *)event {
 }
 @end

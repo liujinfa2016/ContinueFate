@@ -1,18 +1,18 @@
 //
-//  SlidingDataViewController.m
+//  ExpertsJoinViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/22.
+//  Created by demon on 16/4/23.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "SlidingDataViewController.h"
+#import "ExpertsJoinViewController.h"
 
-@interface SlidingDataViewController ()
+@interface ExpertsJoinViewController ()
 
 @end
 
-@implementation SlidingDataViewController
+@implementation ExpertsJoinViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,12 +22,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
-    
 }
 
 /*
@@ -40,9 +34,4 @@
 }
 */
 
-- (IBAction)saveBut:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-
-- (IBAction)changeItem:(UIBarButtonItem *)sender {
-}
 @end

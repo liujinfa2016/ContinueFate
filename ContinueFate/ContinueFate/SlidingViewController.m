@@ -76,12 +76,32 @@
     UIImage *image6 =[UIImage imageNamed:@"意见反馈"];
     _imageBrr =@[image1,image2,image3,image4,image5,image6];
     _dict = @[@"预约管理",@"我的问答",@"我的收藏",@"我的投稿",@"专家入驻",@"建议反馈" ];
-
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+    
+    if(indexPath.row==0)
+    {
+        slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
+        
+        
+        [self presentViewController:sdf animated:YES completion:nil];
+        
+        
+    }else if(indexPath.row==2)
+    {
+        
+        
+    }
+    
+}
 
-/*
+  /*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
