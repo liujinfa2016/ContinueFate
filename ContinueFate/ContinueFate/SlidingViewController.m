@@ -8,6 +8,8 @@
 
 #import "SlidingViewController.h"
 #import "SlidingTableViewCell.h"
+#import "slidingAppointmentViewController.h"
+#import "SlidingAppointmentTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 
@@ -15,6 +17,9 @@
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
+@property(strong,nonatomic)NSMutableArray *menuList;
+
+
 @end
 
 @implementation SlidingViewController
@@ -59,7 +64,10 @@
     // Dispose of any resources that can be recreated.
 }
 //设置tableviewCell里面的图片和文字
+
+
 -(void)According{
+    
     UIImage *image1 =[UIImage imageNamed:@"预约管理"];
     UIImage *image2 =[UIImage imageNamed:@"我的问答"];
     UIImage *image3 =[UIImage imageNamed:@"我的收藏"];
@@ -70,6 +78,9 @@
     _dict = @[@"预约管理",@"我的问答",@"我的收藏",@"我的投稿",@"专家入驻",@"建议反馈" ];
 
 }
+
+
+
 /*
 #pragma mark - Navigation
 

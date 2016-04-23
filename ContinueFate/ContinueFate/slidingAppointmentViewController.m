@@ -38,4 +38,8 @@
 }
 */
 
+- (IBAction)SegmentAction:(id)sender {
+}
+- (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event {
+}
 @end

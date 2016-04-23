@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface slidingAppointmentViewController : UIViewController
+- (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event;
 
 @end

@@ -56,6 +56,7 @@
 		647CDC081CCA309C00961111 /* SlidingDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
+		64F86DED1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
 		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
@@ -185,6 +186,8 @@
 		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		64F86DEB1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingAppointmentTableViewCell.h; sourceTree = "<group>"; };
+		64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingAppointmentTableViewCell.m; sourceTree = "<group>"; };
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -560,16 +563,18 @@
 				05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */,
 				05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */,
 				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
-				646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */,
-				646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */,
-				646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */,
-				646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */,
+				64F86DEB1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.h */,
+				64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */,
 				647CDC001CCA2C7B00961111 /* SlidingDataViewController.h */,
 				647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */,
 				647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */,
 				647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */,
 				647CDC061CCA309C00961111 /* SlidingDataTableViewCell.h */,
 				647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */,
+				646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */,
+				646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */,
+				646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */,
+				646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */,
 				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
 				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
 			);
@@ -818,6 +823,7 @@
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
+				64F86DED1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */,
