@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface QuestionObject : NSObject
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *Id;
 @property (strong, nonatomic) NSString *titlename;
 @property (strong, nonatomic) NSString *substance;
 @property (strong,nonatomic)NSString *time;
