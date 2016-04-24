@@ -49,9 +49,9 @@
     [self loginWithUsername:username addpassword:password];
 }
 -(void)popUpHome{
-    UITableViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Home"];
-    
-    [self presentViewController:tabVc animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Home"];
+//    [self presentViewController:tabVc animated:YES completion:nil];
 }
 //记忆用户名
 -(void)viewWillAppear:(BOOL)animated{
@@ -91,25 +91,28 @@
     [RequestAPI postURL:@"/login" withParameters:parameters success:^(id responseObject) {
         [avi stopAnimating];
         NSLog(@"responseObject :%@",responseObject);
-        switch ([responseObject[@"resultFlag"]integerValue]) {
-            case 8001:
+        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
                 NSLog(@"登陆成功");
-                [Utilities popUpAlertViewWithMsg:@"登录成功" andTitle:nil onView:self];
                 //记忆用户名
                 [Utilities setUserDefaults:@"Username" content:username];
                 //将文本框的内容清除
                 _passwordTF.text = @"";
-                [self popUpHome];
-                break;
-            case 6001:
-                [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍候再试" andTitle:nil onView:self];
-                break;
-            default:break;
+                [Utilities popUpAlertViewWithTrue:@"登录成功" andTitle:@"确定" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [self popUpHome];
+                }];
+        } else{
+            [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍候再试" andTitle:nil onView:self];
+
         }
+    
+        
+        
         
     } failure:^(NSError *error) {
         NSLog(@"error:%@",error.description);
-        
+        [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍候再试" andTitle:nil onView:self];
+        [avi stopAnimating];
     }];
 
 }
