@@ -16,6 +16,9 @@
 @property (strong,nonatomic)NSString *type;
 @property (strong,nonatomic)NSString *name;
 @property (nonatomic) int hits;
-
+@property (strong,nonatomic)NSString *questionid;
+@property (strong,nonatomic)NSString *userid;
+@property (strong,nonatomic)NSString *userNickname;
+@property (strong,nonatomic)NSString *userHeadImage;
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end
