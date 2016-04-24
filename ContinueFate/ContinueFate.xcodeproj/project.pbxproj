@@ -57,6 +57,8 @@
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
 		64F86DED1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */; };
+		64F86DF21CCB7B0C00696CA5 /* ExpertsJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */; };
+		64F86DF51CCB96FC00696CA5 /* dateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DF41CCB96FC00696CA5 /* dateViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
 		8562A4041CC639E800288F16 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FC1CC639E800288F16 /* QuestViewController.m */; };
@@ -188,6 +190,10 @@
 		64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		64F86DEB1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingAppointmentTableViewCell.h; sourceTree = "<group>"; };
 		64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingAppointmentTableViewCell.m; sourceTree = "<group>"; };
+		64F86DF01CCB7B0C00696CA5 /* ExpertsJoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertsJoinViewController.h; sourceTree = "<group>"; };
+		64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertsJoinViewController.m; sourceTree = "<group>"; };
+		64F86DF31CCB96FC00696CA5 /* dateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dateViewController.h; sourceTree = "<group>"; };
+		64F86DF41CCB96FC00696CA5 /* dateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dateViewController.m; sourceTree = "<group>"; };
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,6 +583,10 @@
 				646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */,
 				64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */,
 				64F9E8B01CC24FD200D805EF /* RegisterViewController.m */,
+				64F86DF01CCB7B0C00696CA5 /* ExpertsJoinViewController.h */,
+				64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */,
+				64F86DF31CCB96FC00696CA5 /* dateViewController.h */,
+				64F86DF41CCB96FC00696CA5 /* dateViewController.m */,
 			);
 			name = Sliding;
 			sourceTree = "<group>";
@@ -811,12 +821,14 @@
 				647CDC051CCA2CAE00961111 /* SlidingHelpViewController.m in Sources */,
 				05079B8C1CC20F7000E7CFC8 /* AppDelegate.m in Sources */,
 				05079BE91CC21CF100E7CFC8 /* DataSigner.m in Sources */,
+				64F86DF21CCB7B0C00696CA5 /* ExpertsJoinViewController.m in Sources */,
 				05079BFE1CC21D2300E7CFC8 /* GBAlipayManager.m in Sources */,
 				F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */,
 				64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */,
 				05079BCF1CC21A8E00E7CFC8 /* AppAPIClient.m in Sources */,
 				8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */,
 				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,
+				64F86DF51CCB96FC00696CA5 /* dateViewController.m in Sources */,
 				85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,

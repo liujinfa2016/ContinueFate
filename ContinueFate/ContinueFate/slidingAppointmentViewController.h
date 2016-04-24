@@ -10,5 +10,6 @@
 
 @interface slidingAppointmentViewController : UIViewController
 - (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
