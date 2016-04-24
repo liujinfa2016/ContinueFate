@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "FirstTableViewCell.h"
 #import "ArticleObject.h"
+#import "ConsultingViewController.h"
 #import <SDCycleScrollView.h>
 #import "ArticleDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -249,10 +250,13 @@
 
 
 - (IBAction)consulAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.navigationController.tabBarController.selectedIndex = 3;
 }
 
 - (IBAction)successAction:(UIButton *)sender forEvent:(UIEvent *)event{
+    self.navigationController.tabBarController.selectedIndex = 1;
 }
 - (IBAction)answerAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.navigationController.tabBarController.selectedIndex = 2;
 }
 @end
