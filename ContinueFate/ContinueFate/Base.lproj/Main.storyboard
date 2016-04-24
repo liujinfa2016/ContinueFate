@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="446-2f-5HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="446-2f-5HF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -319,7 +319,7 @@
         <!--续缘-->
         <scene sceneID="UF6-Jn-UuT">
             <objects>
-                <viewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lpP-yQ-N60" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController id="lpP-yQ-N60" customClass="FirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j64-dH-YdN"/>
                         <viewControllerLayoutGuide type="bottom" id="3wF-qs-Ic3"/>
@@ -510,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pic-tJ-0db" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="515" y="861"/>
+            <point key="canvasLocation" x="501" y="959"/>
         </scene>
         <!--注册-->
         <scene sceneID="M3r-P3-GoJ">
@@ -751,7 +751,7 @@
         <!--首页-->
         <scene sceneID="p6r-Un-uqF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q5Y-K4-TcZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Home" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q5Y-K4-TcZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="首页" id="Axs-nx-UuL"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -767,7 +767,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqT-ag-qaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="941"/>
+            <point key="canvasLocation" x="38" y="959"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KzO-dM-y59">

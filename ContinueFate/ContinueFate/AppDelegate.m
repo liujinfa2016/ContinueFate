@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "TabBarViewController.h"
 #import "SlidingViewController.h"
-
+#import <SMS_SDK/SMSSDK.h>
 @interface AppDelegate ()
 @property(strong, nonatomic)ECSlidingViewController *sligingVC;
 @end
@@ -34,7 +34,8 @@
     _sligingVC.underLeftViewController = leftVC;
     //设置移门开闭层度(设置左侧页面被显示时，宽度能够显示频幕的1/4)
     _sligingVC.anchorRightPeekAmount = UI_SCREEN_W /4 ;
-    
+    [SMSSDK registerApp:@"120658fed6bce"
+             withSecret:@"ace3fc2f25c5ee177b1aeab16e1583ca"];
     [self.window setRootViewController:_sligingVC];
     return YES;
 }
