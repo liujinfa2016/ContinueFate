@@ -10,7 +10,7 @@
 
 @interface DetailTableViewCell : UITableViewCell
 
-- (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event;
+
 @property (weak, nonatomic) IBOutlet UILabel *expertName;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIImageView *expertImage;
