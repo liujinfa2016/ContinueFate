@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *typeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *timeLbl;
 @property (strong,nonatomic)QuestionObject *detail;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
