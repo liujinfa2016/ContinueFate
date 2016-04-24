@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9AE-XN-RRo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9AE-XN-RRo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -138,6 +138,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrW-EZ-wJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="307" y="447"/>
+        </scene>
+        <!--Article Detail View Controller-->
+        <scene sceneID="UMk-bw-ffy">
+            <objects>
+                <viewController storyboardIdentifier="detailArticle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xxL-Q7-iR3" customClass="ArticleDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3PJ-yC-SDg"/>
+                        <viewControllerLayoutGuide type="bottom" id="BHJ-5Y-2sD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nGO-j2-Seq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gQ-As-Gh4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0gQ-As-Gh4" firstAttribute="top" secondItem="nGO-j2-Seq" secondAttribute="top" id="51c-PW-wAl"/>
+                            <constraint firstAttribute="trailing" secondItem="0gQ-As-Gh4" secondAttribute="trailing" id="9gt-Ce-Uax"/>
+                            <constraint firstItem="BHJ-5Y-2sD" firstAttribute="top" secondItem="0gQ-As-Gh4" secondAttribute="bottom" id="MMH-tM-Lsb"/>
+                            <constraint firstItem="0gQ-As-Gh4" firstAttribute="leading" secondItem="nGO-j2-Seq" secondAttribute="leading" id="zRh-Gq-z1h"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="scrollView" destination="0gQ-As-Gh4" id="w9o-Hc-i3X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zwE-jF-1wJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="307" y="1029"/>
         </scene>
         <!--SuccessA View Controller-->
         <scene sceneID="2yr-nU-uvV">

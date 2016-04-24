@@ -14,4 +14,5 @@
 @property(strong, nonatomic) NSString *subStance;
 @property(strong, nonatomic) NSString *time;
 @property(strong, nonatomic) NSString *hits;
+@property(strong, nonatomic) NSString *writer;
 @end

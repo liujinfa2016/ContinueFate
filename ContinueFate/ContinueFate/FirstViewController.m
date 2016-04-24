@@ -61,6 +61,7 @@
     actView.subStance = obj.substance;
     actView.time = obj.edittime;
     actView.hits = [NSString stringWithFormat:@"阅读%d次",obj.hits];
+    actView.writer = [NSString stringWithFormat:@"作者:%@",obj.username];
     [self.navigationController pushViewController:actView animated:YES];
 }
 
@@ -176,7 +177,7 @@
             }
             [self.tableView reloadData];
             
-            totalPage = [pageDict[@"pageDict"]integerValue];
+            totalPage = [pageDict[@"totalPage"]integerValue];
             
         } else {
             [Utilities popUpAlertViewWithMsg:@"获取数据失败" andTitle:nil onView:self];
