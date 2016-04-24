@@ -37,7 +37,7 @@
     
     
     UIButton *activityBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,30, 30)];
-    activityBtn.titleLabel.font = [UIFont systemFontOfSize:B_Font];
+    activityBtn.titleLabel.font = [UIFont systemFontOfSize:A_Font];
     [activityBtn setTitle:@"筛选" forState:UIControlStateNormal];
     [activityBtn setTitleColor:[UIColor infoBlueColor] forState:UIControlStateNormal];
     [activityBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];

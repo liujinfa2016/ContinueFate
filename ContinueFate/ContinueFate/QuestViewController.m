@@ -11,6 +11,7 @@
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
 #import <UIImageView+WebCache.h>
+#import "CFillInformationViewController.h"
 @interface QuestViewController (){
     NSInteger page;
     NSInteger perpage;
@@ -156,4 +157,9 @@
     return cell;
 }
 
+- (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event {
+    CFillInformationViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Information"];
+    [self.navigationController pushViewController:tabVC animated:YES];
+    //[self presentViewController:tabVC animated:YES completion:nil];
+}
 @end
