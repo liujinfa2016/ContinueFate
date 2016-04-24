@@ -9,8 +9,8 @@
 #import "QuestionViewController.h"
 #import "QuestionTableViewCell.h"
 #import "QuestViewController.h"
-#import "QAskViewController.h"
-#import "ArticleObject.h"
+#import "QuestionObject.h"
+#import "QTranfViewController.h"
 @interface QuestionViewController (){
     NSString *tiltlename;
     NSString *detailTV;
@@ -34,8 +34,6 @@
     page = 1;
     perPage = 5;
     [self requestData];
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,8 +44,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    QuestViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"questionDetail"];
-    [self.navigationController pushViewController:tabVC animated:YES];
+//    QuestViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"questionDetail"];
+//    [self.navigationController pushViewController:tabVC animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detail"]) {
+        NSIndexPath *indexPath = _tableView.indexPathForSelectedRow;
+        QuestViewController *bdVC = segue.destinationViewController;
+        bdVC.detail = _objectsForShow[indexPath.row];
+    }
 }
 
 - (void)requestData{
@@ -64,7 +70,7 @@
                 
             }
             for(NSDictionary *question in data){
-                ArticleObject *quest = [[ArticleObject alloc]initWithDictionary:question];
+                QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                 [_objectsForShow addObject:quest];
                 NSLog(@"obj = %@",_objectsForShow);
             }
@@ -86,12 +92,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     QuestionTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    ArticleObject *obj = _objectsForShow[indexPath.row];
+    QuestionObject *obj = _objectsForShow[indexPath.row];
     NSLog(@"question = %@",obj);
     NSString *titlename = obj.titlename;
     NSString *substance = obj.substance;
-    NSString *date = obj.time;
-    cell.timeLbl.text = date;
+    NSString *date = [obj.time substringToIndex:19];
+    NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
+    NSString *type = obj.type;
+//    NSString *name = obj.name;
+//    cell.username.text = name;
+    cell.typeLbl.text = type;
+    cell.timeLbl.attributedText = inputDate;
     cell.tiltlename.text = titlename;
     cell.substance.text = substance;
     return cell;
@@ -103,8 +114,8 @@
 }
 
 - (IBAction)askAction:(UIBarButtonItem *)sender {
-    QAskViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"firstViewController"];
-    [self.navigationController pushViewController:tabVC animated:YES];
+    QTranfViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"tranf"];
+    [self presentViewController:tabVC animated:YES completion:nil];
     
 }
 

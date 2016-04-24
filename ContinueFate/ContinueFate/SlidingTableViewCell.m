@@ -8,11 +8,23 @@
 
 #import "SlidingTableViewCell.h"
 #import "SlidingViewController.h"
+#import "slidingAppointmentViewController.h"
 @implementation SlidingTableViewCell
+
 
 - (void)awakeFromNib {
     // Initialization code
+  
+ 
 }
+
+
+    
+    
+    
+
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

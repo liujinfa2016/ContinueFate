@@ -1,18 +1,18 @@
 //
-//  twoPasswordResetViewController.m
+//  QTranfViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/22.
+//  Created by hua on 16/4/23.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "twoPasswordResetViewController.h"
+#import "QTranfViewController.h"
 
-@interface twoPasswordResetViewController ()
+@interface QTranfViewController ()
 
 @end
 
-@implementation twoPasswordResetViewController
+@implementation QTranfViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +34,4 @@
 }
 */
 
-- (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
 @end

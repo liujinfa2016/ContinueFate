@@ -1,18 +1,18 @@
 //
-//  QProblemViewController.m
+//  SlidingHelpViewController.m
 //  ContinueFate
 //
-//  Created by hua on 16/4/19.
+//  Created by demon on 16/4/22.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "QProblemViewController.h"
+#import "SlidingHelpViewController.h"
 
-@interface QProblemViewController ()
+@interface SlidingHelpViewController ()
 
 @end
 
-@implementation QProblemViewController
+@implementation SlidingHelpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,17 +23,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    return cell;
-}
-
 
 /*
 #pragma mark - Navigation

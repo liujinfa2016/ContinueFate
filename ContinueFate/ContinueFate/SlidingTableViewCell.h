@@ -11,5 +11,6 @@
 @interface SlidingTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *Lable;
+@property(strong,nonatomic)NSMutableArray *menuList;
 
 @end

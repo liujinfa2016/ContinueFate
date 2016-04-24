@@ -1,26 +1,21 @@
 //
-//  ArticleObject.h
+//  QuestionObject.h
 //  ContinueFate
 //
-//  Created by jdld on 16/4/18.
+//  Created by hua on 16/4/23.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface ArticleObject : NSObject
-
+@interface QuestionObject : NSObject
 @property (strong, nonatomic) NSString *id;
-@property (nonatomic) int number;
 @property (strong, nonatomic) NSString *titlename;
 @property (strong, nonatomic) NSString *substance;
-@property (strong, nonatomic) NSString *edittime;
-@property (nonatomic) int hits;
-@property (nonatomic) int usertype;
-@property (strong, nonatomic) NSString *username;
 @property (strong,nonatomic)NSString *time;
 @property (strong,nonatomic)NSString *type;
 @property (strong,nonatomic)NSString *name;
-- (id)initWithDictionary:(NSDictionary *)dict;
+@property (nonatomic) int hits;
 
+- (id)initWithDictionary:(NSDictionary *)dict;
 @end

@@ -1,19 +1,18 @@
 //
-//  QDetailViewController.m
+//  ExpertsJoinViewController.m
 //  ContinueFate
 //
-//  Created by hua on 16/4/19.
+//  Created by demon on 16/4/23.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "QDetailViewController.h"
-#import "QProblemViewController.h"
-@interface QDetailViewController ()<UIScrollViewDelegate>
+#import "ExpertsJoinViewController.h"
 
+@interface ExpertsJoinViewController ()
 
 @end
 
-@implementation QDetailViewController
+@implementation ExpertsJoinViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,16 +22,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    return cell;
 }
 
 /*

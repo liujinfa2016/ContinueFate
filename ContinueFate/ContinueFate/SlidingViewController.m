@@ -8,11 +8,18 @@
 
 #import "SlidingViewController.h"
 #import "SlidingTableViewCell.h"
+#import "slidingAppointmentViewController.h"
+#import "SlidingAppointmentTableViewCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+
+
 @interface SlidingViewController ()
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
+@property(strong,nonatomic)NSMutableArray *menuList;
+
+
 @end
 
 @implementation SlidingViewController
@@ -20,25 +27,81 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self According];
+    [self setImageButtonStyle];
+    
 }
+
+
+-(void)setImageButtonStyle{
+    
+   
+    _imageLable.layer.borderColor = [[UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:0.5f] CGColor];
+    
+     _imageLable.layer.opacity = 1.0;
+    
+    /* _imageLable.layer.shadowColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f].CGColor;//shadowColor阴影颜色
+     _imageLable.layer.shadowOffset = CGSizeMake(-2,-2);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+     _imageLable.layer.shadowOpacity = 0.8;//阴影透明度，默认0
+     _imageLable.layer.shadowRadius = 3;//阴影半径，默认3
+    
+    
+    _imageLable.layer.shadowColor = [UIColor blueColor].CGColor;//shadowColor阴影颜色
+    _imageLable.layer.shadowOffset = CGSizeMake(0,-3);//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用
+    _imageLable.layer.shadowOpacity = 1;//阴影透明度，默认0
+    _imageLable.layer.shadowRadius = 3;//阴影半径，默认3
+    _imageLable.layer.masksToBounds = NO;
+    */
+    
+   
+    
+    
+   
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 //设置tableviewCell里面的图片和文字
+
+
 -(void)According{
-    UIImage *image1 =[UIImage imageNamed:@"预约咨询"];
-    UIImage *image2 =[UIImage imageNamed:@"预约咨询"];
-    UIImage *image3 =[UIImage imageNamed:@"预约咨询"];
-    UIImage *image4 =[UIImage imageNamed:@"预约咨询"];
-    UIImage *image5 =[UIImage imageNamed:@"预约咨询"];
-    UIImage *image6 =[UIImage imageNamed:@"预约咨询"];
+    
+    UIImage *image1 =[UIImage imageNamed:@"预约管理"];
+    UIImage *image2 =[UIImage imageNamed:@"我的问答"];
+    UIImage *image3 =[UIImage imageNamed:@"我的收藏"];
+    UIImage *image4 =[UIImage imageNamed:@"我的投稿"];
+    UIImage *image5 =[UIImage imageNamed:@"专家入驻"];
+    UIImage *image6 =[UIImage imageNamed:@"意见反馈"];
     _imageBrr =@[image1,image2,image3,image4,image5,image6];
     _dict = @[@"预约管理",@"我的问答",@"我的收藏",@"我的投稿",@"专家入驻",@"建议反馈" ];
-
 }
-/*
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+    
+    if(indexPath.row==0)
+    {
+        slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
+        
+        
+        [self presentViewController:sdf animated:YES completion:nil];
+        
+        
+    }else if(indexPath.row==2)
+    {
+        
+        
+    }
+    
+}
+
+  /*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -60,17 +123,21 @@
 }
 //当选择完媒体文件后调用
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+  
+    
     //根据UIImagePickerControllerEditedImage这个键去拿我们选中的已经编辑的图片
     UIImage *image =info [UIImagePickerControllerEditedImage];
     //将上面拿到的图片设置为按钮的图片
     [_imageLable setBackgroundImage:image forState:UIControlStateNormal];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    _imageLable.layer.masksToBounds = YES;
 }
 //当取消选择后调用
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     // 用model的方式返回上一页
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 //    [self :subView animated:YES];
@@ -92,6 +159,13 @@
     [actionShent addAction:cancelAction];
     [self presentViewController:actionShent animated:YES completion:nil];
 }
+
+
+
+
+
+
+
 -(void)pickImage:(UIImagePickerControllerSourceType)sourceType{
     //判断图片选择类型是否可用
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
