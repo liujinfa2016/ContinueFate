@@ -31,8 +31,8 @@
     AMSuccessAViewController *secondVC = [Utilities getStoryboardInstanceByIdentity:@"Article" byIdentity:@"AMArticle"];
     
     _viewControllers = @[secondVC,firstVC];
-    
     _titles = @[@"文章", @"成功案例"];
+ 
     [self setupScrollView];
     [self setupViewControllers];
     [self setupSegmentControl];
@@ -47,7 +47,7 @@
 - (CGFloat)itemWidth
 {
     if (_itemWidth == 0) {
-        _itemWidth = 60.0f;
+        _itemWidth = 64.0f;
     }
     return _itemWidth;
 }
@@ -81,7 +81,7 @@
     CGFloat Y = 0.0f;
     if (self.navigationController != nil && ![self.navigationController isNavigationBarHidden]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        Y = 64.0f;
+        Y = 60.0f;
     }
     
     vcWidth = self.view.frame.size.width;
@@ -113,20 +113,51 @@
 /** 设置segment */
 - (void)setupSegmentControl
 {
-    _itemWidth = 60.0f;
+    _itemWidth = 55.0f;
     // 设置titleView
     segment = [[JRSegmentControl alloc] initWithFrame:CGRectMake(0, 0, _itemWidth * 3, 30.0f)];
     segment.titles = self.titles;
     segment.cornerRadius = 5.0f;
     //导航条标题字体颜色
-    segment.titleColor = [UIColor blackColor];
+    segment.titleColor = UIColorBackground;
+    
+    
+    
+    
     //导航条标题选中颜色
-    segment.indicatorViewColor = [UIColor blueColor];
+    segment.indicatorViewColor = UIColorBackground;
     //导航条标题未选中颜色
-    segment.backgroundColor = [UIColor redColor];
+    segment.backgroundColor = [UIColor whiteColor];
+    
+    //设置导航条标题边框
+    segment.layer.borderColor = [[UIColor whiteColor] CGColor];
+    segment.layer.borderWidth=2.0;
+    segment.layer.opacity = 1.0;
+    
     
     segment.delegate = self;
     self.navigationItem.titleView = segment;
+    
+    
+   
+
+    
+    
+    /* _imageLable.layer.shadowColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f].CGColor;//shadowColor阴影颜色
+     _imageLable.layer.shadowOffset = CGSizeMake(-2,-2);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+     _imageLable.layer.shadowOpacity = 0.8;//阴影透明度，默认0
+     _imageLable.layer.shadowRadius = 3;//阴影半径，默认3
+     
+     
+     _imageLable.layer.shadowColor = [UIColor blueColor].CGColor;//shadowColor阴影颜色
+     _imageLable.layer.shadowOffset = CGSizeMake(0,-3);//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用
+     _imageLable.layer.shadowOpacity = 1;//阴影透明度，默认0
+     _imageLable.layer.shadowRadius = 3;//阴影半径，默认3
+     _imageLable.layer.masksToBounds = NO;
+     */
+    
+    
+    
 }
 
 
