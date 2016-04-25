@@ -56,11 +56,12 @@
 		05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A15B3A1CC61AF300BEB367 /* SlidingSetUpViewController.m */; };
 		05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */; };
 		0CD170DF0371A49FA4A7956A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 749EE38E82DCC02178E6F2CB /* libPods.a */; };
+		643E6EC51CCDB87F005FA605 /* SlidingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643E6EC41CCDB87F005FA605 /* SlidingCollectionViewController.m */; };
+		643E6EC81CCDB946005FA605 /* SlidingCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643E6EC71CCDB946005FA605 /* SlidingCollectionTableViewCell.m */; };
 		646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */; };
 		646E30B21CC9C05A00093A33 /* twoPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */; };
 		647CDC021CCA2C7B00961111 /* SlidingDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */; };
 		647CDC051CCA2CAE00961111 /* SlidingHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */; };
-		647CDC081CCA309C00961111 /* SlidingDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
 		64BE165F1CC39C1F00B2FDB4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */; };
 		64F86DED1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */; };
@@ -197,6 +198,10 @@
 		05A15B3C1CC6246900BEB367 /* slidingAppointmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = slidingAppointmentViewController.h; sourceTree = "<group>"; };
 		05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = slidingAppointmentViewController.m; sourceTree = "<group>"; };
 		5FBB38391BABC808170B9BE5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		643E6EC31CCDB87F005FA605 /* SlidingCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingCollectionViewController.h; sourceTree = "<group>"; };
+		643E6EC41CCDB87F005FA605 /* SlidingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingCollectionViewController.m; sourceTree = "<group>"; };
+		643E6EC61CCDB946005FA605 /* SlidingCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingCollectionTableViewCell.h; sourceTree = "<group>"; };
+		643E6EC71CCDB946005FA605 /* SlidingCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingCollectionTableViewCell.m; sourceTree = "<group>"; };
 		646E30AD1CC9C04200093A33 /* onePasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = onePasswordResetViewController.h; sourceTree = "<group>"; };
 		646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = onePasswordResetViewController.m; sourceTree = "<group>"; };
 		646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoPasswordResetViewController.h; sourceTree = "<group>"; };
@@ -205,8 +210,6 @@
 		647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingDataViewController.m; sourceTree = "<group>"; };
 		647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingHelpViewController.h; sourceTree = "<group>"; };
 		647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingHelpViewController.m; sourceTree = "<group>"; };
-		647CDC061CCA309C00961111 /* SlidingDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingDataTableViewCell.h; sourceTree = "<group>"; };
-		647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingDataTableViewCell.m; sourceTree = "<group>"; };
 		64BE16551CC37CF400B2FDB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64BE165D1CC39C1F00B2FDB4 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		64BE165E1CC39C1F00B2FDB4 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
@@ -649,12 +652,14 @@
 				647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */,
 				647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */,
 				647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */,
-				647CDC061CCA309C00961111 /* SlidingDataTableViewCell.h */,
-				647CDC071CCA309C00961111 /* SlidingDataTableViewCell.m */,
 				64F86DF01CCB7B0C00696CA5 /* ExpertsJoinViewController.h */,
 				64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */,
 				64F86DF31CCB96FC00696CA5 /* dateViewController.h */,
 				64F86DF41CCB96FC00696CA5 /* dateViewController.m */,
+				643E6EC31CCDB87F005FA605 /* SlidingCollectionViewController.h */,
+				643E6EC41CCDB87F005FA605 /* SlidingCollectionViewController.m */,
+				643E6EC61CCDB946005FA605 /* SlidingCollectionTableViewCell.h */,
+				643E6EC71CCDB946005FA605 /* SlidingCollectionTableViewCell.m */,
 			);
 			name = Sliding;
 			sourceTree = "<group>";
@@ -901,10 +906,12 @@
 				8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */,
 				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,
 				64F86DF51CCB96FC00696CA5 /* dateViewController.m in Sources */,
+				643E6EC51CCDB87F005FA605 /* SlidingCollectionViewController.m in Sources */,
 				85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
+				643E6EC81CCDB946005FA605 /* SlidingCollectionTableViewCell.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
 				855ABF3A1CCCCAEB006F3208 /* Colours.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
@@ -913,7 +920,6 @@
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */,
-				647CDC081CCA309C00961111 /* SlidingDataTableViewCell.m in Sources */,
 				646E30B21CC9C05A00093A33 /* twoPasswordResetViewController.m in Sources */,
 				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
 				ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */,

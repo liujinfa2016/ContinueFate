@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingHelpViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *agreementTV;
 
 @end
