@@ -22,6 +22,10 @@
     self.userid = [dict[@"userid"]isKindOfClass:[NSNull class]]?@"":dict[@"userid"];
     self.userNickname = [dict[@"userNickname"]isKindOfClass:[NSNull class]]?@"":dict[@"userNickname"];
     self.userHeadImage = [dict[@"userHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"userHeadImage"];
+    self.expertName = [dict[@"expertName"]isKindOfClass:[NSNull class]]?@"":dict[@"expertName"];
+
+    self.expertHeadImage = [dict[@"expertHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"expertHeadImage"];
+
     return self;
 }
 

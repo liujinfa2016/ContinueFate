@@ -20,5 +20,7 @@
 @property (strong,nonatomic)NSString *userid;
 @property (strong,nonatomic)NSString *userNickname;
 @property (strong,nonatomic)NSString *userHeadImage;
+@property (strong,nonatomic)NSString *expertName;
+@property (strong,nonatomic)NSString *expertHeadImage;
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end
