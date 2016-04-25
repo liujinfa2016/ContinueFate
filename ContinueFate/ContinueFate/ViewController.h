@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;//用户名
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;//密码
 - (IBAction)loginAction:(id)sender forEvent:(UIEvent *)event;//登录
+- (IBAction)ReturnAction:(UIBarButtonItem *)sender;//返回侧滑
 
 @end
 

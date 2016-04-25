@@ -162,7 +162,14 @@
                             <constraint firstItem="5Zh-z2-wu6" firstAttribute="top" secondItem="0dg-bi-aCs" secondAttribute="bottom" constant="15" id="iGZ-Gu-gs9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="密码重置" id="bC6-KI-W2h"/>
+                    <navigationItem key="navigationItem" title="密码重置" id="bC6-KI-W2h">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;返回" id="afJ-yE-W3N">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="Return:" destination="xED-4o-kII" id="RjF-he-13n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="TelLable" destination="TGn-wY-1PD" id="Mc6-qd-PRV"/>
@@ -177,7 +184,7 @@
         <!--登录-->
         <scene sceneID="yyc-ib-CD3">
             <objects>
-                <viewController id="B5q-nK-jDQ" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeTF" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B5q-nK-jDQ" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YPn-4v-A0n"/>
                         <viewControllerLayoutGuide type="bottom" id="xC3-QB-KRg"/>
@@ -305,7 +312,14 @@
                             <constraint firstItem="Arm-0g-3WS" firstAttribute="bottom" secondItem="Dgm-FT-KYn" secondAttribute="bottom" id="wqa-X2-eGj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="登录" id="e08-f9-RGa"/>
+                    <navigationItem key="navigationItem" title="登录" id="e08-f9-RGa">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;返回" id="Fed-fX-yPH">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="ReturnAction:" destination="B5q-nK-jDQ" id="RRy-SW-fpR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="passwordTF" destination="RWe-I0-atW" id="L2V-xc-4Ak"/>
@@ -772,7 +786,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KzO-dM-y59">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yrw-Ma-bbV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Reset" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yrw-Ma-bbV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="3Ke-91-udU">

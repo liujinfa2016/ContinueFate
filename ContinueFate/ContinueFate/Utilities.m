@@ -125,6 +125,7 @@
     return imageDownloaded;
 }
 
+
 + (NSAttributedString *)grayString:(NSString *)string fontName:(NSString *)fontName fontSize:(CGFloat)size
 {
     UIFont *font;
