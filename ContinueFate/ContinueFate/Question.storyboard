@@ -49,7 +49,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="预约咨询" translatesAutoresizingMaskIntoConstraints="NO" id="p76-H4-iwg">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p76-H4-iwg">
                                                     <rect key="frame" x="20" y="10" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="p76-H4-iwg" secondAttribute="height" multiplier="1:1" id="1eV-7G-0er"/>
@@ -171,7 +171,7 @@
                                     <rect key="frame" x="0.0" y="64" width="320" height="166"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="预约咨询" translatesAutoresizingMaskIntoConstraints="NO" id="PdV-sL-hMe">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PdV-sL-hMe">
                                             <rect key="frame" x="15" y="15" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="C36-ea-xSM"/>
@@ -426,7 +426,4 @@
             <point key="canvasLocation" x="1205" y="455"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="预约咨询" width="242" height="247"/>
-    </resources>
 </document>
