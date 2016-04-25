@@ -29,7 +29,7 @@
     _DetailsTV.userInteractionEnabled = NO;
     self.hidesBottomBarWhenPushed = true;
     _scrollView.scrollEnabled = YES;
-   self.navigationItem.title = _dict[@"name"];
+   self.navigationItem.title = @"专家主页";
     [self constant];
    
     //显示服务咨询

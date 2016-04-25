@@ -7,12 +7,15 @@
 //
 
 #import "CFillInformationViewController.h"
-
+#import "SimplePickerView.h"
+#import "CAgreementViewController.h"
 @interface CFillInformationViewController () <UITextViewDelegate> {
     //统计
     NSInteger statistical;
+    BOOL flag;
 }
-@property (strong ,nonatomic)NSString *greender;
+
+
 @end
 
 @implementation CFillInformationViewController
@@ -20,27 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"请填写资料";
     _DescribeTV.delegate = self;
    //将统计字数设为0
     statistical = 0;
     NSLog(@"_objectForShow  = %@, _expertsM = %@",_objectForShow,_expertsM);
-    //若希望在开关控件被打开或关闭时得到通知信息,就必须在你的类中,利用 UISwitch 的addTarget:action:forControlEvents:方法加上开关的 target。如下代码:
-   [_Swtich addTarget:self action:@selector(switchIsChanged:) forControlEvents:UIControlEventValueChanged];
-    
+  
 }
 
-//点击开关获取 “男 女”
--(void)switchIsChanged:(UISwitch *)swith
-{
-    if ([_Swtich isOn]){
-        NSLog(@"nv");
-        _greender = @"女";
-    } else {
-        NSLog(@"nan");
-        _greender = @"男";
-    }
-    
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -74,6 +64,7 @@
                 _PlaceholderLab.hidden=YES;
             }
         }
+    //剩余字数
     statistical = 300 - textView.text.length;
     [_LimitWN setText:[NSString stringWithFormat:@"(%ld/300}", (long)statistical]];  //_wordCount是一个显示剩余可输入数字的label
 }
@@ -142,12 +133,18 @@
     //订单号
     NSString *tradeNO = [self generateTradeNO];
     NSLog(@"tradeNO = %@",tradeNO);
+    //性别
+    NSString *grender = _GenderBut.titleLabel.text;
     //判断是否填写完整信息
-    if ([_greender isEqualToString:@""] || [cell isEqualToString:@""] ||[age isEqualToString:@""] ||[phoneNum isEqualToString:@""] || [Describe isEqualToString:@""]) {
+    if ([grender isKindOfClass:nil] || [cell isEqualToString:@""] ||[age isEqualToString:@""] ||[phoneNum isEqualToString:@""] || [Describe isEqualToString:@""]) {
         [Utilities popUpAlertViewWithMsg:@"请填写完整信息" andTitle:nil onView:self];
     }
+    if (flag == NO) {
+        [Utilities popUpAlertViewWithMsg:@"亲，您需要同意我们的协议才能更好为您服务哦" andTitle:nil onView:self];
+        return;
+    }
     //确认信息
-   NSString *str = [[NSString alloc]initWithFormat:@"您的称呼：%@\n您的年龄：%@\n您的性别：%@\n您的联系电话：%@" ,cell ,age ,_greender ,phoneNum] ;
+   NSString *str = [[NSString alloc]initWithFormat:@"您的称呼：%@\n您的年龄：%@\n您的性别：%@\n您的联系电话：%@" ,cell ,age ,grender ,phoneNum] ;
     //初始化提示框；
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认基本信息" message:str preferredStyle:  UIAlertControllerStyleAlert];
     
@@ -163,5 +160,47 @@
 
 
 }
+
+
+- (IBAction)AgreementFileAction:(UIButton *)sender forEvent:(UIEvent *)event {
+  
+    CAgreementViewController *data = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Agreement"];
+   
+    [self.navigationController pushViewController:data animated:YES];
+    
+}
+
+- (IBAction)AgreenmentAction:(UIButton *)sender forEvent:(UIEvent *)event {
+  
+    [sender setImage:[UIImage imageNamed:@"offA"] forState:UIControlStateNormal];
+    if (flag == YES) {
+        [sender setImage:[UIImage imageNamed:@"onA"] forState:UIControlStateNormal];
+        
+        flag = NO;
+    }else {
+         [sender setImage:[UIImage imageNamed:@"offA"] forState:UIControlStateSelected];
+        flag = YES;
+    }
+
+
+}
+- (IBAction)GreederChooseAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    [sender addTarget:self action:@selector(createPickerView) forControlEvents:UIControlEventTouchUpInside];
+
+}
+-(void)createPickerView {
+    NSArray *array = @[@[@"男", @"女"]];
+    SimplePickerView *pickerView = [[SimplePickerView alloc] initWithDataArray:array];
+    [pickerView didFinishSelected:^(NSArray *selected) {
+        if (selected) {
+            NSLog(@"selected = %@",selected[0]);
+            NSString *select = selected[0];
+            NSString *Str = [NSString stringWithFormat:@"%@",select];
+            [_GenderBut setTitle:Str forState:UIControlStateNormal];
+        }
+    }];
+}
+
 
 @end

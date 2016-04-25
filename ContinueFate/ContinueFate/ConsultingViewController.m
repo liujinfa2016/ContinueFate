@@ -36,7 +36,8 @@
     perPage = 4;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"专家榜";
+    //删除多余的线
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
@@ -90,13 +91,10 @@
 
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  //CExpertsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" ];
-   CExpertsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-  
 
-    
+   CExpertsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
     NSDictionary *dict = _objArr[indexPath.row];
-   
 
     cell.Username.text = [NSString stringWithFormat:@"%@",dict[@"name"]];
     
@@ -109,11 +107,14 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //页面跳转+传值
     CEDetailsViewController *date = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
     date.hidesBottomBarWhenPushed = YES;
-    //传值
+    //传值入口
      NSDictionary *dict = _objArr[indexPath.row];
      date.dict = dict;
+    //去除跳转后返回按钮的文字
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
      [self.navigationController pushViewController:date animated:YES];
 }
 
@@ -126,7 +127,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+//搜索
 - (IBAction)SearchAction:(UIBarButtonItem *)sender {
 
 
