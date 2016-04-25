@@ -81,7 +81,7 @@
     _substance.text = [NSString stringWithFormat:@"%@", _detail.substance];
     
     _typeLbl.text = [NSString stringWithFormat:@"%@", _detail.type];
-    NSLog(@"abc = %lu",(unsigned long)_objectsForShow.count);
+    
 }
 
 

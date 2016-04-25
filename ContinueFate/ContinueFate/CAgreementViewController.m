@@ -1,21 +1,23 @@
 //
-//  SlidingSetUpViewController.m
+//  CAgreementViewController.m
 //  ContinueFate
 //
-//  Created by 刘金发 on 16/4/19.
+//  Created by admin2015 on 16/4/25.
 //  Copyright © 2016年 XuYuan. All rights reserved.
-//  设置
+//
 
-#import "SlidingSetUpViewController.h"
+#import "CAgreementViewController.h"
 
-@interface SlidingSetUpViewController ()
+@interface CAgreementViewController ()
 
 @end
 
-@implementation SlidingSetUpViewController
+@implementation CAgreementViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"协议";
+    
     // Do any additional setup after loading the view.
 }
 
@@ -33,15 +35,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-//按个人资料按钮
-- (IBAction)Personal:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-//按帮助按钮
-- (IBAction)HlepAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-//当按了退出
-- (IBAction)Exit:(UIButton *)sender forEvent:(UIEvent *)event {
 
-    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"id"];
-}
 @end
