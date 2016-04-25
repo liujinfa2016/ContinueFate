@@ -43,16 +43,9 @@
         return;
         
     }
-    NSLog(@"%@",username);
-    NSLog(@"%@",password);
-    
     [self loginWithUsername:username addpassword:password];
 }
--(void)popUpHome{
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Home"];
-//    [self presentViewController:tabVc animated:YES completion:nil];
-}
+
 //记忆用户名
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -73,7 +66,6 @@
         [[StorageMgr singletonStorageMgr] addKey:@"SignUpSuccessfully" andValue:@NO];
         //在单例化全局变量中提取用户名和密码
         NSString *username =[[StorageMgr singletonStorageMgr] objectForKey:@"Username"];
-        
         NSString *password =[[StorageMgr singletonStorageMgr] objectForKey:@"Password"];
         
         //清除用完的用户名和密码
@@ -84,35 +76,41 @@
     }
     
 }
--(void)loginWithUsername:(NSString *)username addpassword:(NSString *)password{
+-(void)loginWithUsername:(NSString *)username addpassword:(NSString *)password {
     //菊花
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.self.userInteractionEnabled = NO;
     NSDictionary *parameters = @{@"code":username,@"pwd":password,@"loginType":@1};
     [RequestAPI postURL:@"/login" withParameters:parameters success:^(id responseObject) {
         [avi stopAnimating];
-        NSLog(@"responseObject :%@",responseObject);
+        self.navigationController.view.self.userInteractionEnabled = YES;
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
                 NSLog(@"登陆成功");
-                //记忆用户名
+            NSDictionary *dic = responseObject[@"result"];
+            NSArray *Arr =dic[@"models"];
+            NSDictionary *models = Arr[0] ;
+            NSLog(@"Arr  ==%@",Arr);
+            [[StorageMgr singletonStorageMgr]removeObjectForKey:@"UserID"];
+            [[StorageMgr singletonStorageMgr] addKey:@"UserID" andValue:models[@"id"]];
+            [[StorageMgr singletonStorageMgr] addKey:@"Nickname" andValue:models[@"nickname"]];
+            NSLog(@"idididid = %@",models[@"id"]);
+                           //记忆用户名
                 [Utilities setUserDefaults:@"Username" content:username];
                 //将文本框的内容清除
                 _passwordTF.text = @"";
                 [Utilities popUpAlertViewWithTrue:@"登录成功" andTitle:@"确定" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
                     [self dismissViewControllerAnimated:YES completion:nil];
-                    [self popUpHome];
+            
                 }];
         } else{
-            [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍候再试" andTitle:nil onView:self];
-
+            [Utilities popUpAlertViewWithMsg:@"用户名与密码不匹配" andTitle:nil onView:self];
         }
     
-        
-        
-        
     } failure:^(NSError *error) {
         NSLog(@"error:%@",error.description);
         [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍候再试" andTitle:nil onView:self];
         [avi stopAnimating];
+        self.navigationController.view.self.userInteractionEnabled = YES;
     }];
 
 }
@@ -125,5 +123,9 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
     [self.view endEditing:YES];
+}
+- (IBAction)ReturnAction:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 @end

@@ -46,11 +46,11 @@
         [Utilities popUpAlertViewWithMsg:@"请输入完整信息" andTitle:nil onView:self];
         return;
     }
-    if (TelTF.length != 11 ) {
-        [Utilities popUpAlertViewWithMsg:@"请输入11位手机号" andTitle:nil onView:self];
-        return;
-    }
     
+    if (password.length >= 6 || PasswordAgainTF.length >= 6) {
+        [Utilities popUpAlertViewWithMsg:@"请输入不少于6位密码" andTitle:nil onView:self];
+        return ;
+    }
     if (![password isEqualToString:PasswordAgainTF]) {
         [Utilities popUpAlertViewWithMsg:@"您两次输入的密码不同，请重新输入" andTitle:nil onView:self];
         return;
@@ -60,14 +60,29 @@
     NSLog(@"%@",TelTF);
     
     [SMSSDK commitVerificationCode:_registertf.text phoneNumber:_TelTF.text zone:@"86" result:^(NSError *error) {
-        NSLog(@"提交验证");
+        switch (error.code) {
+            case 456:
+                [Utilities popUpAlertViewWithMsg:@"您输入的手机号为空号" andTitle:nil onView:self];
+                break;
+            case 457:
+                [Utilities popUpAlertViewWithMsg:@"您输入的手机号格式不正确" andTitle:nil onView:self];
+                break;
+            case 467:
+                [Utilities popUpAlertViewWithMsg:@"请求校验验证码频繁" andTitle:nil onView:self];
+                break;
+            default:
+                break;
+        }
+
     }];
     //菊花
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.self.userInteractionEnabled = NO;
     NSDictionary *parameters = @{@"code":username,@"pwd":password,@"mobile":TelTF};
     [RequestAPI postURL:@"/register" withParameters:parameters success:^(id responseObject) {
         NSLog(@"responseObject :%@",responseObject);
         [avi stopAnimating];
+        self.navigationController.view.self.userInteractionEnabled = YES;
         switch ([responseObject[@"resultFlag"]integerValue]) {
             case 8001:
                 NSLog(@"注册成功");
@@ -81,6 +96,7 @@
                 //先将SignUpSuccessfully这个单例化全局变量中的folg删除以保证
                 [[StorageMgr singletonStorageMgr] removeObjectForKey:@"SignUpSuccessfully"];
                 //初始化一个bool格式的单例化全局标量来表示是否成功执行了注册  默认为否
+                
                 [[StorageMgr singletonStorageMgr] addKey:@"Username" andValue:username];
                 //在单例化全局变量中保存用户名和密码以供登录页面自动登录使用
                 [[StorageMgr singletonStorageMgr] addKey:@"Password" andValue:password];
@@ -89,7 +105,9 @@
                 break;
             case 6001:
                 [Utilities popUpAlertViewWithMsg:@"注册失败" andTitle:nil onView:self];
-                break;default:break;
+                break;
+            default:
+                break;
         }
         
     } failure:^(NSError *error) {
@@ -103,15 +121,26 @@
 //当按了验证码
 - (IBAction)TestGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *TelTF =_TelTF.text;
-    if (TelTF.length != 11 ) {
-        [Utilities popUpAlertViewWithMsg:@"请输入11位手机号" andTitle:nil onView:self];
-        return;
-    }
+    
     //菊花
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
-    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:_TelTF.text zone:@"86" customIdentifier:nil result:^(NSError *error) {
+self.navigationController.view.self.userInteractionEnabled = NO;
+    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:TelTF zone:@"86" customIdentifier:nil result:^(NSError *error) {
         [avi stopAnimating];
-        NSLog(@"发送成功");
+        self.navigationController.view.self.userInteractionEnabled=YES;
+        switch (error.code) {
+            case 200:
+                NSLog(@"验证成功");
+                break;
+            case 466:
+                [Utilities popUpAlertViewWithMsg:@"请输入验证码" andTitle:nil onView:self];
+                break;
+            case 468:
+                [Utilities popUpAlertViewWithMsg:@"输入的验证码错误" andTitle:nil onView:self];
+                break;
+            default:
+                break;
+        }
     }];
 
 }

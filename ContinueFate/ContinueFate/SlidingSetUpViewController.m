@@ -41,15 +41,7 @@
 }
 //当按了退出
 - (IBAction)Exit:(UIButton *)sender forEvent:(UIEvent *)event {
-//    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-//        if (!error) {
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        }else {
-//            
-//            [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
-//            
-//        }
-//    }];
 
+    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"id"];
 }
 @end

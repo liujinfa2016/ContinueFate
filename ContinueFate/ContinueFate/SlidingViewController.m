@@ -31,6 +31,12 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSString *name = [[StorageMgr singletonStorageMgr] objectForKey:@"Nickname"];
+    _nameLbl.text = name;
+    NSLog(@"username%@",name);
+}
 
 -(void)setImageButtonStyle{
     
@@ -89,9 +95,7 @@
     {
         slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
         
-        
         [self presentViewController:sdf animated:YES completion:nil];
-        
         
     }else if(indexPath.row==2)
     {
@@ -141,8 +145,16 @@
 }
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 //    [self :subView animated:YES];
+    NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    NSLog(@"id = %@",userid);
     //提示框
-    if (_nameLbl.text == 0) {
+    if (userid == Nil) {
+        
+        UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+       
+        [self presentViewController:tabVc animated:YES completion:nil];
+    }else{
+        
         
         UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -159,14 +171,9 @@
         [actionShent addAction:cancelAction];
         [self presentViewController:actionShent animated:YES   completion:nil];
         
-    }else{
         
-       
-        UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
-        
-        [self presentViewController:tabVc animated:YES completion:nil];
-
     }
+    
  }
 
 
