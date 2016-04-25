@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ConsultingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)SearchAction:(UIBarButtonItem *)sender;
+
 
 @end

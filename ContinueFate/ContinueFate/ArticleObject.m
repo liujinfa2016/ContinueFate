@@ -22,7 +22,7 @@
     self.hits = [dict[@"hits"]isKindOfClass:[NSNull class]?0:dict[@"hits"]];
     self.type = [dict[@"type"]isKindOfClass:[NSNull class]]?@"":dict[@"type"];
     self.usertype = [dict[@"usertype"]isKindOfClass:[NSNull class]?0:dict[@"usertype"]];
-    self.username = [dict[@"username"]isKindOfClass:[NSNull class]]?@"":dict[@"username"];
+    self.username = [dict[@"userid"]isKindOfClass:[NSNull class]]?@"":dict[@"userid"];
     self.name = [dict[@"name"]isKindOfClass:[NSNull class]]?@"":dict[@"name"];
     return self;
 }

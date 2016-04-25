@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSDropDownMenu.h"
+@interface QuestionViewController : UIViewController<FSDropDownMenuDataSource,FSDropDownMenuDelegate>
 
-@interface QuestionViewController : UIViewController
-- (IBAction)chooseAction:(UIBarButtonItem *)sender;
 - (IBAction)askAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

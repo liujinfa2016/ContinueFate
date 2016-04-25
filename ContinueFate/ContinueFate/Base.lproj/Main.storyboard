@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="446-2f-5HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q5Y-K4-TcZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ece-X3-HyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="-377"/>
+            <point key="canvasLocation" x="429" y="-423"/>
         </scene>
         <!--密码重置-->
         <scene sceneID="bmH-DM-51f">
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPh-Zm-3wf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="-421"/>
+            <point key="canvasLocation" x="1392" y="-36"/>
         </scene>
         <!--登录-->
         <scene sceneID="yyc-ib-CD3">
@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdq-V8-Qvj" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="234"/>
+            <point key="canvasLocation" x="-126" y="304"/>
         </scene>
         <!--续缘-->
         <scene sceneID="UF6-Jn-UuT">
@@ -449,11 +449,11 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="阅读量" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-N3-abD">
-                                                    <rect key="frame" x="256" y="79" width="15" height="10"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="阅读量" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-N3-abD">
+                                                    <rect key="frame" x="255" y="79" width="15" height="10"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="对于爱情的起始，相信每一个人都曾经想象过属于自己的完美邂逅。现实当中也有不少的男女通过搭讪的方式，逐步的从陌生到熟悉而后相恋，最终走向了婚姻的殿堂。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-lE-HZ1">
-                                                    <rect key="frame" x="150" y="33" width="150" height="32"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="对于爱情的起始，相信每一个人都曾经想象过属于自己的完美邂逅。现实当中也有不少的男女通过搭讪的方式，逐步的从陌生到熟悉而后相恋，最终走向了婚姻的殿堂。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-lE-HZ1">
+                                                    <rect key="frame" x="150" y="34" width="150" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -510,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pic-tJ-0db" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="515" y="861"/>
+            <point key="canvasLocation" x="461" y="959"/>
         </scene>
         <!--注册-->
         <scene sceneID="M3r-P3-GoJ">
@@ -723,12 +723,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qra-SR-02k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="515" y="234"/>
+            <point key="canvasLocation" x="397" y="329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HB7-jV-Iz7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="446-2f-5HF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Login" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="446-2f-5HF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="RtZ-Nf-8NY">
@@ -746,12 +746,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5od-TO-AlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="234"/>
+            <point key="canvasLocation" x="-543" y="304"/>
         </scene>
         <!--首页-->
         <scene sceneID="p6r-Un-uqF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q5Y-K4-TcZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q5Y-K4-TcZ" customClass="HomeViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="首页" id="Axs-nx-UuL"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -767,7 +767,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqT-ag-qaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="941"/>
+            <point key="canvasLocation" x="38" y="959"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KzO-dM-y59">
@@ -787,7 +787,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1h-rb-R0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="478" y="-421"/>
+            <point key="canvasLocation" x="925" y="-36"/>
         </scene>
     </scenes>
     <resources>

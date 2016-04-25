@@ -33,4 +33,11 @@
 + (NSString *)intervalSinceNow:(NSString *)dateStr;
 + (NSAttributedString *)getIntervalAttrStr:(NSString *)dateStr;
 + (NSAttributedString *)grayString:(NSString *)string fontName:(NSString *)fontName fontSize:(CGFloat)size;
+
+//截取文章图片
++ (NSURL *)getImageURL:(NSString *)aricle;
+//带有选择按钮的提示框
++ (void)popUpAlertViewWithMsg:(NSString *_Nonnull)msg andTitle:(NSString *_Nonnull)title onView:(UIViewController *_Nonnull)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action;
+//只有确定的提示框
++ (void)popUpAlertViewWithTrue:(NSString *_Nonnull)msg andTitle:(NSString *_Nonnull)title onView:(UIViewController *_Nonnull)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action;
 @end

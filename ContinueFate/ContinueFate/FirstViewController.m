@@ -9,7 +9,10 @@
 #import "FirstViewController.h"
 #import "FirstTableViewCell.h"
 #import "ArticleObject.h"
+#import "ConsultingViewController.h"
 #import <SDCycleScrollView.h>
+#import "ArticleDetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface FirstViewController ()<SDCycleScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     NSInteger page;
@@ -29,7 +32,7 @@
     _tableView.dataSource = self;
     _objArr = [NSMutableArray new];
     page = 1;
-    perPage = 3;
+    perPage = 4;
     
     [self cycleScrollBegin];
     [self refreshDownAndUp];
@@ -49,16 +52,36 @@
     return _objArr.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Article" bundle:nil];
+    ArticleDetailViewController *actView = [storyboard instantiateViewControllerWithIdentifier:@"detailArticle"];
+    ArticleObject *obj = _objArr[indexPath.row];
+    actView.articleId = obj.id;
+    actView.titleName = obj.titlename;
+    actView.subStance = obj.substance;
+    actView.time = obj.edittime;
+    actView.hits = [NSString stringWithFormat:@"阅读%d次",obj.hits];
+    actView.writer = [NSString stringWithFormat:@"作者:%@",obj.username];
+    [self.navigationController pushViewController:actView animated:YES];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     NSLog(@"%@",_objArr);
     ArticleObject *obj = _objArr[indexPath.row];
     
-    cell.datelbe.text = [obj.edittime substringToIndex:19];
+    cell.datelbe.attributedText = [Utilities getIntervalAttrStr:[obj.edittime substringToIndex:19]];
     cell.contentLab.text = obj.substance;
     cell.articleTitlelab.text = obj.titlename;
     cell.readQuantitylab.text = [NSString stringWithFormat:@"阅读%d次",obj.hits];
+    
+    NSDictionary *dic = [[Utilities getImageURL:obj.substance]copy];
+    NSString *imagrURL = dic[@"imageURL"];
+    NSURL *photoURL = [NSURL URLWithString:imagrURL];
+    [cell.headImage sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"横线"]];
+    cell.headImage.contentMode = UIViewContentModeScaleAspectFill | UIViewContentModeScaleAspectFit;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -112,11 +135,19 @@
     self.tableView.mj_header = header;
     ***********************/
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page = 1;
         [self netWorkRequest];
     }];
     
     _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [_tableView.mj_footer endRefreshing];
+        
+        if (page < totalPage) {
+            page ++;
+            
+            [self netWorkRequest];
+        } else {
+            [_tableView.mj_footer setState:MJRefreshStateNoMoreData];
+        }
     }];
     
 }
@@ -128,6 +159,8 @@
     NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/showArticle";
     NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+        [_tableView.mj_header endRefreshing];
+        [_tableView.mj_footer endRefreshing];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSArray *dataArr = result[@"models"];
@@ -136,6 +169,7 @@
             if (page == 1){
                 _objArr = nil;
                 _objArr = [NSMutableArray new];
+                perPage = 4;
             }
             
             for (NSDictionary *dict in dataArr) {
@@ -144,7 +178,7 @@
             }
             [self.tableView reloadData];
             
-            totalPage = [pageDict[@"pageDict"]integerValue];
+            totalPage = [pageDict[@"totalPage"]integerValue];
             
         } else {
             [Utilities popUpAlertViewWithMsg:@"获取数据失败" andTitle:nil onView:self];
@@ -165,25 +199,20 @@
 - (void) cycleScrollBegin {
     //设置所需显示的图片网址
     NSArray *imagesURLArr = @[
-                              @"http://g.hiphotos.baidu.com/zhidao/pic/item/cc11728b4710b912f6e3451dc7fdfc0392452236.jpg",
-                              @"http://www.6188.com/upload_6188s/flashAll/s800/20121126/1353916278md5Cri.jpg",
-                              @"http://pic.6188.com/upload_6188s/flashAll/s800/20120907/1346981960xNARbD.jpg",
-                              ];
-    //图片所配的图片
-    NSArray *titles = @[@"是不是喜欢",
-                        @"是不是非常喜欢",
-                        @"是不是更喜欢"
-                        ];
+                              @"http://www.wanhuiaiqing.com/wp-content/themes/wangwang-jssjkj/images/slide1.jpg",
+                              @"http://www.wanhuiaiqing.com/wp-content/themes/wangwang-jssjkj/images/slide2.jpg",
+                              @"http://www.wanhuiaiqing.com/wp-content/themes/wangwang-jssjkj/images/slide3.jpg",
+                              @"http://www.wanhuiaiqing.com/wp-content/themes/wangwang-jssjkj/images/slide4.jpg",
+                              ];    //图片所配的图片
     
     
     // 网络加载 --- 创建带标题的图片轮播器
     SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0,UI_SCREEN_W, UI_SCREEN_W*135/256) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
     
-    cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-    cycleScrollView2.titlesGroup = titles;
+    cycleScrollView2.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     cycleScrollView2.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     [_scrollView addSubview:cycleScrollView2];
-    
+    cycleScrollView2.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     cycleScrollView2.imageURLStringsGroup = imagesURLArr;
 }
 
@@ -221,10 +250,13 @@
 
 
 - (IBAction)consulAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.navigationController.tabBarController.selectedIndex = 3;
 }
 
 - (IBAction)successAction:(UIButton *)sender forEvent:(UIEvent *)event{
+    self.navigationController.tabBarController.selectedIndex = 1;
 }
 - (IBAction)answerAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.navigationController.tabBarController.selectedIndex = 2;
 }
 @end

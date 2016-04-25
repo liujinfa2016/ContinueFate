@@ -32,7 +32,7 @@
     
     _viewControllers = @[secondVC,firstVC];
     
-    _titles = @[@"热点", @"聚焦"];
+    _titles = @[@"文章", @"成功案例"];
     [self setupScrollView];
     [self setupViewControllers];
     [self setupSegmentControl];

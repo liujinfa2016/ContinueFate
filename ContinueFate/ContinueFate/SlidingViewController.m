@@ -13,7 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 
-@interface SlidingViewController ()
+@interface SlidingViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
@@ -142,28 +142,32 @@
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 //    [self :subView animated:YES];
     //提示框
-    UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self pickImage:UIImagePickerControllerSourceTypeCamera];
+    if (_nameLbl.text == 0) {
         
+        UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self pickImage:UIImagePickerControllerSourceTypeCamera];
+        }];
+        UIAlertAction *choosephoto = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self pickImage:UIImagePickerControllerSourceTypePhotoLibrary];
+            
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
+        [actionShent addAction:takephoto];
+        [actionShent addAction:choosephoto];
+        [actionShent addAction:cancelAction];
+        [self presentViewController:actionShent animated:YES   completion:nil];
         
-    }];
-    UIAlertAction *choosephoto = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }else{
         
-        [self pickImage:UIImagePickerControllerSourceTypePhotoLibrary];
+       
+        UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
         
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
-    [actionShent addAction:takephoto];
-    [actionShent addAction:choosephoto];
-    [actionShent addAction:cancelAction];
-    [self presentViewController:actionShent animated:YES completion:nil];
-}
+        [self presentViewController:tabVc animated:YES completion:nil];
 
-
-
-
-
+    }
+ }
 
 
 -(void)pickImage:(UIImagePickerControllerSourceType)sourceType{
