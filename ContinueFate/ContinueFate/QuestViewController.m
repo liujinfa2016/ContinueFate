@@ -67,6 +67,7 @@
 
 
 - (void)dataDataTransfer{
+    _objectsForShow = [NSMutableArray new];
     NSURL *URL = [NSURL URLWithString:_detail.userHeadImage];
     [_userImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"初始头像"]];
     
@@ -81,13 +82,14 @@
     _substance.text = [NSString stringWithFormat:@"%@", _detail.substance];
     
     _typeLbl.text = [NSString stringWithFormat:@"%@", _detail.type];
-    
+    NSLog(@"abc = %lu",(unsigned long)_objectsForShow.count);
 }
 
 
 - (void)requestData{
-    NSDictionary *parameters = @{@"questionid":_detail.Id,@"usertype":@1};
+    NSDictionary *parameters = @{@"questionid":_detail.Id,@"usertype":@2};
     [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/answerList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *dict = responseObject[@"result"];
             NSArray *data = dict[@"models"];
@@ -99,8 +101,9 @@
             for(NSDictionary *question in data){
                 QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                 [_objectsForShow addObject:quest];
-                NSLog(@"obj = %@",_objectsForShow);
+                _ansNumber.text = [NSString stringWithFormat:@"回答数：%lu",(unsigned long)_objectsForShow.count];
             }
+            NSLog(@"obj = %@",_objectsForShow);
             [_tableView reloadData];
         }else{
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
@@ -121,9 +124,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%lu",(unsigned long)_objectsForShow.count);
+    NSLog(@"objectsForShow = %lu",(unsigned long)_objectsForShow.count);
     return  _objectsForShow.count;
-    
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -149,7 +152,9 @@
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
-    NSString *name = obj.userNickname;
+    NSString *name = obj.expertName;
+    NSURL *url = [NSURL URLWithString:obj.expertHeadImage];
+    [cell.expertImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"初始头像"]];
     cell.expertName.text = name;
     cell.substance.text = substance;
     cell.time.attributedText = inputDate;

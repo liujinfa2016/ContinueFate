@@ -28,21 +28,26 @@
     perPage = 4;
     _objArr = [NSMutableArray new];
     
-    
+     
     
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"Four", @"Five", @"Six", @"Seven", @"Eight"]];
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"谈恋爱", @"挽回爱情", @"挽救婚姻", @"星座爱情", @"婚恋讲座", @"实践总结", @"客户心声"]];
     segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
     segmentedControl.frame = CGRectMake(0, 0, viewWidth, 40);
-    segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 20);
     segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
+    segmentedControl.selectionIndicatorColor=UIColorBackground;
+    segmentedControl.selectionIndicatorHeight=2.0;
     segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     segmentedControl.verticalDividerEnabled = YES;
-    segmentedControl.verticalDividerColor = [UIColor redColor];
+    segmentedControl.verticalDividerColor = UIColorMajor;
     segmentedControl.verticalDividerWidth = 1.0f;
-    segmentedControl.backgroundColor = [UIColor redColor];
+    segmentedControl.backgroundColor = UIColorMajor;
     [segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
-        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor blueColor]}];
+        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f],NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:13]}];
+        
+        
+        
         return attString;
     }];
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
