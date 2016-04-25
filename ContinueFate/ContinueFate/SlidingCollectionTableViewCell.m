@@ -1,15 +1,14 @@
 //
-//  SlidingDataTableViewCell.m
+//  SlidingCollectionTableViewCell.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/22.
+//  Created by demon on 16/4/25.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "SlidingDataTableViewCell.h"
-#import "SlidingDataViewController.h"
+#import "SlidingCollectionTableViewCell.h"
 
-@implementation SlidingDataTableViewCell
+@implementation SlidingCollectionTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -22,9 +21,4 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)sexTF:(UISwitch *)sender forEvent:(UIEvent *)event {
-}
-
-- (IBAction)datePc:(UIDatePicker *)sender forEvent:(UIEvent *)event {
-}
 @end
