@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CAConsultingViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *identity;
+@property (weak, nonatomic) IBOutlet UIImageView *image;//专家头像
+@property (weak, nonatomic) IBOutlet UILabel *name;//专家姓名
+@property (weak, nonatomic) IBOutlet UILabel *identity;//专家等级
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong ,nonatomic)NSDictionary *expertsM;
+@property (strong ,nonatomic)NSDictionary *expertsM;//传值（容器）
 
 
 

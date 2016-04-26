@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *typeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *timeLbl;
 @property (strong,nonatomic)QuestionObject *detail;
+@property (strong,nonatomic)NSString *nameID;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event;
 

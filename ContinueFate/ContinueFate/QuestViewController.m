@@ -52,14 +52,13 @@
     label.text = @"专家回答";
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:17];
+    label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:15];
     label.backgroundColor =  [UIColor colorWithRed:255.0f green:255.0f blue:255.0f alpha:0.0f];
     [headView addSubview:label];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 1, 20, 24)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 25)];
     label2.text = @"";
     label2.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:20];
     label2.backgroundColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f];
-    
     [headView addSubview:label2];
     return headView;
 }
@@ -82,7 +81,7 @@
     _substance.text = [NSString stringWithFormat:@"%@", _detail.substance];
     
     _typeLbl.text = [NSString stringWithFormat:@"%@", _detail.type];
-    NSLog(@"abc = %lu",(unsigned long)_objectsForShow.count);
+    
 }
 
 

@@ -21,12 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.navigationItem.title = @"预约咨询";
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.tableFooterView = [[UIView alloc]init];
     _objectForShow = [NSMutableArray new];
     // Do any additional setup after loading the view.
-    
+   
     _name.text = _expertsM[@"name"];
     _identity.text = _expertsM[@"expertlvName"];
     
@@ -41,8 +42,8 @@
 }
 
 - (void) requestData {
+    //入参
     NSDictionary *parameters = @{@"expertlvid":_expertsM[@"expertlvId"]};
-    
     // 获取请求地址
     NSString *url = @"http://192.168.61.85:8080/XuYuanProject/orderTypeList";
     
@@ -97,7 +98,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     CFillInformationViewController *date = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Information"];
-    
+    //传值入口
    NSDictionary *dictB = _objectForShow[indexPath.row];
     date.expertsM = _expertsM;
     date.objectForShow = dictB;
