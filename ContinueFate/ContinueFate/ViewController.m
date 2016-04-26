@@ -49,6 +49,7 @@
         switch ([responseObject[@"resultFlag"]integerValue]) {
             case 8001:
                 
+                
                 NSLog(@"登陆成功");
                 
                 break;
