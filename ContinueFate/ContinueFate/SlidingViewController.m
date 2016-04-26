@@ -86,25 +86,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    
-    
-    if(indexPath.row==0)
-    {
-        slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
-        
-        [self presentViewController:sdf animated:YES completion:nil];
-        
-    }else if(indexPath.row==2)
-    {
-        
-        
-    }
-    
-}
+
 
   /*
 #pragma mark - Navigation
@@ -125,6 +107,52 @@
     cell.Lable.text=_dict[indexPath.row];
     cell.image.image =_imageBrr[indexPath.row];
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+    UIViewController * TV0 = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
+    UITableViewController * TV1 = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
+    UIViewController * TV2 = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"];
+    UITableViewController * TV3 = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"];
+    UITableViewController * TV4 = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"];
+    UITableViewController * TV5 = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
+    switch (indexPath.row) {
+        case 0:
+            [self.navigationController presentViewController:TV0 animated:YES completion:nil];
+            NSLog(@"%ld",(long)indexPath.row);
+            break;
+         case 1:[self.navigationController pushViewController:TV1 animated:YES];
+            break;
+        case 2:[self.navigationController pushViewController:TV2 animated:YES];
+            break;
+        case 3:[self.navigationController pushViewController:TV3 animated:YES];
+            break;
+        case 4:[self.navigationController pushViewController:TV4 animated:YES];
+            break;
+        case 5:[self.navigationController pushViewController:TV5 animated:YES];
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+//    if(indexPath.row==0)
+//    {
+//        slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
+//        
+//        [self presentViewController:sdf animated:YES completion:nil];
+//        
+//    }else if(indexPath.row==2)
+//    {
+//        
+//        
+//    }
+    
 }
 //当选择完媒体文件后调用
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
@@ -203,6 +231,5 @@
     
 }
 
-- (IBAction)SetUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+
 @end

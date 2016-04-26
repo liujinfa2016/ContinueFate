@@ -38,8 +38,17 @@
 }
 */
 
-- (IBAction)SegmentAction:(id)sender {
-}
+
 - (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event {
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    UITableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    return cell;
+    
 }
 @end
