@@ -25,8 +25,6 @@
 //    //加载完成
 //    [MBProgressHUD hideHUDForView:self.view];
 
-
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +47,7 @@
 //记忆用户名
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     if (![[Utilities getUserDefaults:@"Username"] isKindOfClass:[NSNull class]]) {
         //如果有记忆就把记忆显示在用户名文本输入框中
         _usernameTF.text = [Utilities getUserDefaults:@"Username"];
@@ -89,13 +88,13 @@
             NSDictionary *dic = responseObject[@"result"];
             NSArray *Arr =dic[@"models"];
             NSDictionary *models = Arr[0] ;
-            NSLog(@"Arr  ==%@",Arr);
-            [[StorageMgr singletonStorageMgr]removeObjectForKey:@"UserID"];
+            
+            
             [[StorageMgr singletonStorageMgr] addKey:@"UserID" andValue:models[@"id"]];
+          
             [[StorageMgr singletonStorageMgr] addKey:@"Nickname" andValue:models[@"nickname"]];
-            NSLog(@"idididid = %@",models[@"id"]);
-                           //记忆用户名
-                [Utilities setUserDefaults:@"Username" content:username];
+                //记忆用户名
+            [Utilities setUserDefaults:@"Username" content:username];
                 //将文本框的内容清除
                 _passwordTF.text = @"";
                 [Utilities popUpAlertViewWithTrue:@"登录成功" andTitle:@"确定" onView:self tureAction:^(UIAlertAction * _Nonnull action) {

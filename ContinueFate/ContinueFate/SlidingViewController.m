@@ -36,6 +36,7 @@
     NSString *name = [[StorageMgr singletonStorageMgr] objectForKey:@"Nickname"];
     _nameLbl.text = name;
     NSLog(@"username%@",name);
+    
 }
 
 -(void)setImageButtonStyle{
