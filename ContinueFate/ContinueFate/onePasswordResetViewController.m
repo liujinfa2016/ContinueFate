@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,11 +38,6 @@
 //获取验证码
 - (IBAction)testGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *Tell = _telTF.text;
-   
-//    if (Tell.length != 11 ) {
-//        [Utilities popUpAlertViewWithMsg:@"请输入正确手机号" andTitle:nil onView:self];
-//    }
-    //菊花
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
     [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:Tell zone:@"86" customIdentifier:nil result:^(NSError *error) {
         //成功之后的回调
@@ -98,6 +93,15 @@
         }
 
     }];
-    }
+}
 
+//隐藏键盘
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [self.view endEditing:YES];
+}
 @end

@@ -36,8 +36,22 @@
     _sligingVC.anchorRightPeekAmount = UI_SCREEN_W /4 ;
     [SMSSDK registerApp:@"120658fed6bce"
              withSecret:@"ace3fc2f25c5ee177b1aeab16e1583ca"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableGestureAction) name:@"EnableGesture" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableGestureAction) name:@"DisableGesture" object:nil];
+    
     [self.window setRootViewController:_sligingVC];
     return YES;
+}
+
+//激活移门手势
+- (void)enableGestureAction {
+    _sligingVC.panGesture.enabled = YES;
+}
+
+//关闭移门手势
+- (void)disableGestureAction {
+    _sligingVC.panGesture.enabled = NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
