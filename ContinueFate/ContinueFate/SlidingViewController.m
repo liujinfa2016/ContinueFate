@@ -13,7 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 
-@interface SlidingViewController ()
+@interface SlidingViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
@@ -31,6 +31,13 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSString *name = [[StorageMgr singletonStorageMgr] objectForKey:@"Nickname"];
+    _nameLbl.text = name;
+    NSLog(@"username%@",name);
+    
+}
 
 -(void)setImageButtonStyle{
     
@@ -79,27 +86,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    
-    
-    if(indexPath.row==0)
-    {
-        slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
-        
-        
-        [self presentViewController:sdf animated:YES completion:nil];
-        
-        
-    }else if(indexPath.row==2)
-    {
-        
-        
-    }
-    
-}
+
 
   /*
 #pragma mark - Navigation
@@ -121,6 +108,33 @@
     cell.image.image =_imageBrr[indexPath.row];
     return cell;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+
+    switch (indexPath.row) {
+        case 0:
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            NSLog(@"%ld",(long)indexPath.row);
+            break;
+         case 1:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            break;
+        case 2:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"] animated:YES completion:nil];
+            break;
+        case 3:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"] animated:YES completion:nil];
+            break;
+        case 4:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"] animated:YES completion:nil];
+            break;
+        case 5:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            break;
+        default:
+            break;
+    }
+    
+}
 //当选择完媒体文件后调用
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
   
@@ -129,6 +143,8 @@
     UIImage *image =info [UIImagePickerControllerEditedImage];
     //将上面拿到的图片设置为按钮的图片
     [_imageLable setBackgroundImage:image forState:UIControlStateNormal];
+    NSString *url = [Utilities saveHeadImage:image];
+    NSLog(@"url === %@",url);
     
     [self dismissViewControllerAnimated:YES completion:nil];
     _imageLable.layer.masksToBounds = YES;
@@ -141,29 +157,36 @@
 }
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 //    [self :subView animated:YES];
+    NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    NSLog(@"id = %@",userid);
     //提示框
-    UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self pickImage:UIImagePickerControllerSourceTypeCamera];
+    if (userid == Nil) {
+        
+        UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+       
+        [self presentViewController:tabVc animated:YES completion:nil];
+    }else{
         
         
-    }];
-    UIAlertAction *choosephoto = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self pickImage:UIImagePickerControllerSourceTypeCamera];
+        }];
+        UIAlertAction *choosephoto = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self pickImage:UIImagePickerControllerSourceTypePhotoLibrary];
+            
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
+        [actionShent addAction:takephoto];
+        [actionShent addAction:choosephoto];
+        [actionShent addAction:cancelAction];
+        [self presentViewController:actionShent animated:YES   completion:nil];
         
-        [self pickImage:UIImagePickerControllerSourceTypePhotoLibrary];
         
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
-    [actionShent addAction:takephoto];
-    [actionShent addAction:choosephoto];
-    [actionShent addAction:cancelAction];
-    [self presentViewController:actionShent animated:YES completion:nil];
-}
-
-
-
-
-
+    }
+    
+ }
 
 
 -(void)pickImage:(UIImagePickerControllerSourceType)sourceType{
@@ -191,6 +214,5 @@
     
 }
 
-- (IBAction)SetUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+
 @end

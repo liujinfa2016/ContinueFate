@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <QiniuSDK.h>
 
 @interface Utilities : NSObject
 
@@ -36,6 +37,12 @@
 
 //截取文章图片
 + (NSURL *)getImageURL:(NSString *)aricle;
+
 //带有选择按钮的提示框
-+ (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action;
++ (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * action))action;
+//只有确定的提示框
++ (void)popUpAlertViewWithTrue:(NSString *_Nonnull)msg andTitle:(NSString *_Nonnull)title onView:(UIViewController *_Nonnull)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action;
+
+//自动存储图片至服务器
++ (NSString *)saveHeadImage:(UIImage *)imageData;
 @end

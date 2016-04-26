@@ -11,7 +11,12 @@
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
 #import <UIImageView+WebCache.h>
-@interface QuestViewController ()
+#import "CFillInformationViewController.h"
+@interface QuestViewController (){
+    NSInteger page;
+    NSInteger perpage;
+
+}
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
 
 @end
@@ -24,6 +29,9 @@
     [self dataDataTransfer];
     _objectsForShow = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
+    page = 1;
+    perpage = 5;
+    [self requestData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,19 +52,21 @@
     label.text = @"专家回答";
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:17];
+    label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:15];
     label.backgroundColor =  [UIColor colorWithRed:255.0f green:255.0f blue:255.0f alpha:0.0f];
     [headView addSubview:label];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 1, 20, 24)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 25)];
     label2.text = @"";
     label2.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:20];
     label2.backgroundColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f];
-    
     [headView addSubview:label2];
     return headView;
 }
 
+
+
 - (void)dataDataTransfer{
+    _objectsForShow = [NSMutableArray new];
     NSURL *URL = [NSURL URLWithString:_detail.userHeadImage];
     [_userImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"初始头像"]];
     
@@ -75,22 +85,24 @@
 }
 
 
-
-
-
 - (void)requestData{
-    NSDictionary *parameters = @{@"questionid":@"",@"usertype":@""};
-    [[AppAPIClient sharedClient]POST:@"192.168.61.85:8080/XuYuanProject/answerList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *parameters = @{@"questionid":_detail.Id,@"usertype":@2};
+    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/answerList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *dict = responseObject[@"result"];
             NSArray *data = dict[@"models"];
-            _objectsForShow = nil;
-            _objectsForShow = [NSMutableArray new];
+            if (page == 1) {
+                _objectsForShow = nil;
+                _objectsForShow = [NSMutableArray new];
+            }
+
             for(NSDictionary *question in data){
                 QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                 [_objectsForShow addObject:quest];
-                NSLog(@"obj = %@",_objectsForShow);
+                _ansNumber.text = [NSString stringWithFormat:@"回答数：%lu",(unsigned long)_objectsForShow.count];
             }
+            NSLog(@"obj = %@",_objectsForShow);
             [_tableView reloadData];
         }else{
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
@@ -98,26 +110,60 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error = %@",error.description);
+        [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
+
     }];
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+   ;
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%lu",(unsigned long)_objectsForShow.count);
+    NSLog(@"objectsForShow = %lu",(unsigned long)_objectsForShow.count);
     return  _objectsForShow.count;
-    
+
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    QuestionObject *question = [_objectsForShow objectAtIndex:indexPath.row];
+    DetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
+    CGSize substanceSize = [question.time boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.substance.font} context:nil].size;
+    return cell.substance.frame.origin.y + substanceSize.height + 16;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
     QuestionObject *obj = _objectsForShow[indexPath.row];
     NSLog(@"question = %@",obj);
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
+    NSString *name = obj.expertName;
+    NSURL *url = [NSURL URLWithString:obj.expertHeadImage];
+    [cell.expertImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"初始头像"]];
+    cell.expertName.text = name;
     cell.substance.text = substance;
     cell.time.attributedText = inputDate;
     
     return cell;
 }
 
+- (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event {
+    CFillInformationViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Information"];
+    [self.navigationController pushViewController:tabVC animated:YES];
+    //[self presentViewController:tabVC animated:YES completion:nil];
+}
 @end

@@ -122,6 +122,11 @@
 //        
 //        [self.superview addSubview:_rightTableView];
         
+        _leftTableView.layer.borderWidth=1.0;
+        _leftTableView.layer.borderColor=[[UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:0.5f] CGColor];
+        
+        
+        
         _leftTableView.alpha = 1.f;
 //        _rightTableView.alpha = 1.f;
 
@@ -181,13 +186,19 @@
 //        cell.backgroundColor = [UIColor whiteColor];
 //    }else{
         UIView *sView = [[UIView alloc] init];
-        sView.backgroundColor = [UIColor whiteColor];
+        sView.backgroundColor = UIColorMajor;
         cell.selectedBackgroundView = sView;
         [cell setSelected:YES animated:NO];
-        cell.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.f];
-//    }
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+    cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0] ;
+    //    }
+    cell.textLabel.font = [UIFont fontWithName:@"PingFang SC" size:14];
+    cell.textLabel.textColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f] ;
     cell.separatorInset = UIEdgeInsetsZero;
+    
+    cell.layer.borderWidth=0.5;
+    cell.layer.borderColor=[[UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:0.5f]  CGColor];
+    
+ 
     
     return cell;
 }

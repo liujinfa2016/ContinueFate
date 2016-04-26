@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "FirstTableViewCell.h"
 #import "ArticleObject.h"
+#import "ConsultingViewController.h"
 #import <SDCycleScrollView.h>
 #import "ArticleDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -61,6 +62,7 @@
     actView.subStance = obj.substance;
     actView.time = obj.edittime;
     actView.hits = [NSString stringWithFormat:@"阅读%d次",obj.hits];
+    actView.writer = [NSString stringWithFormat:@"作者:%@",obj.username];
     [self.navigationController pushViewController:actView animated:YES];
 }
 
@@ -176,7 +178,7 @@
             }
             [self.tableView reloadData];
             
-            totalPage = [pageDict[@"pageDict"]integerValue];
+            totalPage = [pageDict[@"totalPage"]integerValue];
             
         } else {
             [Utilities popUpAlertViewWithMsg:@"获取数据失败" andTitle:nil onView:self];
@@ -248,10 +250,13 @@
 
 
 - (IBAction)consulAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.navigationController.tabBarController.selectedIndex = 3;
 }
 
 - (IBAction)successAction:(UIButton *)sender forEvent:(UIEvent *)event{
+    self.navigationController.tabBarController.selectedIndex = 1;
 }
 - (IBAction)answerAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    self.navigationController.tabBarController.selectedIndex = 2;
 }
 @end

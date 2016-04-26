@@ -54,14 +54,14 @@ typedef enum {
 
 /*!
  @method    stringForKey:
- @abstract  get string by key;
+ @abstract  get string by key;得到字符串的关键
  @result    string;
  */
 - (id)objectForKey:(NSString*) key;
 
 /*!
  @method    stringForKey:Set:
- @abstract  set string by key;
+ @abstract  set string by key;设置字符串的关键
  @result    BOOL;
  */
 - (BOOL)stringForKey:(NSString*) key Set: (id) value;

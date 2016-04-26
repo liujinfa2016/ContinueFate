@@ -12,11 +12,12 @@
 #import "QuestionObject.h"
 #import "QTranfViewController.h"
 #import "FSDropDownMenu.h"
+#import "Colours.h"
 #import <UIImageView+WebCache.h>
 @interface QuestionViewController (){
     NSInteger page;
     NSInteger perPage;
-    BOOL isLoading;
+
 }
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
 @property (strong,nonatomic)NSArray *questArr;
@@ -31,22 +32,25 @@
     _objectsForShow = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
-    perPage = 5;
+    perPage = 10;
     [self requestData];
     
     
-    UIButton *activityBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 62, 30)];
+    UIButton *activityBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,30, 30)];
     activityBtn.titleLabel.font = [UIFont systemFontOfSize:B_Font];
-    [activityBtn setTitle:@"筛选" forState:UIControlStateNormal];
-    [activityBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [activityBtn setTitle:@"筛选" forState: UIControlStateNormal];
+    [activityBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [activityBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityBtn];
     _questArr = @[@"女生恋爱",@"男生恋爱",@"挽救爱情",@"拯救婚姻",@"婚姻家庭"];
-    FSDropDownMenu *menu = [[FSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:180];
+    FSDropDownMenu *menu = [[FSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:176];
+
     menu.tag = 1001;
     menu.dataSource = self;
     menu.delegate = self;
     [self.view addSubview:menu];
+    
+    
     
 }
 
@@ -85,8 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //    QuestViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"questionDetail"];
-    //    [self.navigationController pushViewController:tabVC animated:YES];
+//    QuestViewController *quest = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"quest"];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

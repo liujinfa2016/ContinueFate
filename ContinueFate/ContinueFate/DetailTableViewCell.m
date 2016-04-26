@@ -20,9 +20,5 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event {
-//     *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"firstViewController"];
-//    [self presentViewController:tabVC animated:YES completion:nil];
 
-}
 @end

@@ -11,7 +11,7 @@
 @implementation QuestionObject
 - (id)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
-    self.id = [dict[@"id"]isKindOfClass:[NSNull class]]?@"":dict[@"id"];
+    self.Id = [dict[@"id"]isKindOfClass:[NSNull class]]?@"":dict[@"id"];
     self.titlename = [dict[@"titlename"]isKindOfClass:[NSNull class]]?@"":dict[@"titlename"];
     self.substance = [dict[@"substance"]isKindOfClass:[NSNull class]]?@"":dict[@"substance"];
     self.time = [dict[@"time"]isKindOfClass:[NSNull class]]?@"":dict[@"time"];
@@ -22,6 +22,10 @@
     self.userid = [dict[@"userid"]isKindOfClass:[NSNull class]]?@"":dict[@"userid"];
     self.userNickname = [dict[@"userNickname"]isKindOfClass:[NSNull class]]?@"":dict[@"userNickname"];
     self.userHeadImage = [dict[@"userHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"userHeadImage"];
+    self.expertName = [dict[@"expertName"]isKindOfClass:[NSNull class]]?@"":dict[@"expertName"];
+
+    self.expertHeadImage = [dict[@"expertHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"expertHeadImage"];
+
     return self;
 }
 

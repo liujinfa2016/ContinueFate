@@ -15,5 +15,6 @@
 - (IBAction)HlepAction:(UIButton *)sender forEvent:(UIEvent *)event;
 //退出按钮
 - (IBAction)Exit:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)Return:(UIBarButtonItem *)sender;//返回
 
 @end

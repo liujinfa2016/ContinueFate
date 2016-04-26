@@ -15,8 +15,9 @@
     NSString *userid;
     Boolean flag;
 }
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (strong, nonatomic) UIBarButtonItem *barBut;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -42,6 +43,7 @@
     UILabel *text1 = [[UILabel alloc]init];
     text1.text = [[[NSString stringWithFormat:@"        %@",[_subStance substringToIndex:rangeFirst.location]]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
     text1.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    text1.textColor = [UIColor darkGrayColor];
     
     UIImageView *image = [[UIImageView alloc]init];
     [image sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"01"]];
@@ -49,6 +51,7 @@
     UILabel *text2 = [[UILabel alloc]init];
     text2.text = [[[[sub substringFromIndex:rangeLast.location]stringByReplacingOccurrencesOfString:@"&&" withString:@"        "]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
     text2.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    text2.textColor = [UIColor darkGrayColor];
     /*************************************************/
     UILabel *title = [[UILabel alloc]init];
     title.text = _titleName;
@@ -58,12 +61,15 @@
     time.text = [NSString stringWithFormat:@"发表于%@",[_time substringToIndex:10]];
     UILabel *hits = [[UILabel alloc]init];
     hits.text = _hits;
+    UILabel *writer = [[UILabel alloc]init];
+    writer.text = _writer;
     time.font = [UIFont fontWithName:@"Arial" size:13];
     hits.font = [UIFont fontWithName:@"Arial" size:13];
+    writer.font = [UIFont fontWithName:@"Arial" size:13];
     
     UIView *fristView = [UIView new];
     [_scrollView addSubview:fristView];
-    [fristView sd_addSubviews:@[title,time,hits,text1,image,text2]];
+    [fristView sd_addSubviews:@[title,time,writer,hits,text1,image,text2]];
     
     [_scrollView setupAutoContentSizeWithBottomView:fristView bottomMargin:10];
     
@@ -82,10 +88,15 @@
     .topSpaceToView(title,10).widthIs(80)
     .autoHeightRatio(0);
     
+    writer.sd_layout
+    .leftSpaceToView(fristView,0)
+    .topSpaceToView(time,10).widthIs(80)
+    .autoHeightRatio(0);
+    
     text1.sd_layout
     .rightSpaceToView(fristView,10)
     .leftSpaceToView(fristView,10)
-    .topSpaceToView(time,10)
+    .topSpaceToView(writer,10)
     .autoHeightRatio(0);
     
     image.sd_layout.topSpaceToView(text1,10).rightSpaceToView(fristView,20).leftSpaceToView(fristView,20).autoHeightRatio(0.75);
@@ -131,15 +142,13 @@
 //点击收藏按钮后触发的方法
 - (void) judegFlag {
     if (flag) {
-        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:nil onView:self tureAction:^(UIAlertAction * _Nonnull action) {
+        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             [self delCollection];
-            [self exists];
         }];
         
     }else {
-        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:nil onView:self tureAction:^(UIAlertAction * _Nonnull action) {
+        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             [self addCollection];
-            [self exists];
         }];
     }
 }
@@ -157,6 +166,7 @@
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil onView:self];
             flag = YES;
+            [self exists];
         }else{
             [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:nil onView:self];
             flag = NO;
@@ -179,6 +189,7 @@
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             [Utilities popUpAlertViewWithMsg:@"取消成功" andTitle:nil onView:self];
             flag = NO;
+            [self exists];
         }else{
             [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:nil onView:self];
             flag = YES;
@@ -197,10 +208,10 @@
     [[AppAPIClient sharedClient]GET:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _barBut = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(judegFlag)];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            [_barBut setImage:[UIImage imageNamed:@"yes"]];
+            [_barBut setImage:[UIImage imageNamed:@"我的收藏"]];
             flag = YES;
         }else {
-            [_barBut setImage:[UIImage imageNamed:@"no"]];
+            [_barBut setImage:[UIImage imageNamed:@"未收藏"]];
             flag = NO;
         }
         

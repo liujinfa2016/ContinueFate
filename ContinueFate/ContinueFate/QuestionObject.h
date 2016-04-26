@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface QuestionObject : NSObject
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *Id;
 @property (strong, nonatomic) NSString *titlename;
 @property (strong, nonatomic) NSString *substance;
 @property (strong,nonatomic)NSString *time;
@@ -20,5 +20,7 @@
 @property (strong,nonatomic)NSString *userid;
 @property (strong,nonatomic)NSString *userNickname;
 @property (strong,nonatomic)NSString *userHeadImage;
+@property (strong,nonatomic)NSString *expertName;
+@property (strong,nonatomic)NSString *expertHeadImage;
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end

@@ -9,7 +9,7 @@
 #import "SlidingSetUpViewController.h"
 
 @interface SlidingSetUpViewController ()
-
+@property(strong,nonatomic) NSString *lable;
 @end
 
 @implementation SlidingSetUpViewController
@@ -41,15 +41,29 @@
 }
 //当按了退出
 - (IBAction)Exit:(UIButton *)sender forEvent:(UIEvent *)event {
-//    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-//        if (!error) {
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        }else {
-//            
-//            [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
-//            
-//        }
-//    }];
+    NSString * userid =[[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    if (userid == NULL) {
+        [Utilities popUpAlertViewWithMsg:@"您还没有登录，请您先登录" andTitle:nil onView:self];
+        return;
+    }
+    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.self.userInteractionEnabled =NO;
+    NSDictionary *dic =@{@"userid":userid,@"logoutType":@1};
+    [RequestAPI postURL:@"/logout"withParameters:dic success:^(id responseObject) {
+        [avi stopAnimating];
+        self.navigationController.view.self.userInteractionEnabled = YES;
+        NSLog(@"responseObject = %@",responseObject);
+        [[StorageMgr singletonStorageMgr] removeObjectForKey:@"Nickname"];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    } failure:^(NSError *error) {
+        [avi stopAnimating];
+        self.navigationController.view.self.userInteractionEnabled = YES;
+        [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
+    }];
+    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"UserID"];
+}
 
+- (IBAction)Return:(UIBarButtonItem *)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 @end
