@@ -38,16 +38,19 @@
     
     UIButton *activityBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,30, 30)];
     activityBtn.titleLabel.font = [UIFont systemFontOfSize:B_Font];
-    [activityBtn setTitle:@"筛选" forState:UIControlStateNormal];
-    [activityBtn setTitleColor:[UIColor infoBlueColor] forState:UIControlStateNormal];
+    [activityBtn setTitle:@"筛选" forState: UIControlStateNormal];
+    [activityBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [activityBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityBtn];
     _questArr = @[@"女生恋爱",@"男生恋爱",@"挽救爱情",@"拯救婚姻",@"婚姻家庭"];
-    FSDropDownMenu *menu = [[FSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:180];
+    FSDropDownMenu *menu = [[FSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:176];
+
     menu.tag = 1001;
     menu.dataSource = self;
     menu.delegate = self;
     [self.view addSubview:menu];
+    
+    
     
 }
 
