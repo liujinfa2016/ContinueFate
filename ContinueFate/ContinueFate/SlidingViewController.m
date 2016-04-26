@@ -86,25 +86,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    
-    
-    if(indexPath.row==0)
-    {
-        slidingAppointmentViewController *sdf = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
-        
-        [self presentViewController:sdf animated:YES completion:nil];
-        
-    }else if(indexPath.row==2)
-    {
-        
-        
-    }
-    
-}
+
 
   /*
 #pragma mark - Navigation
@@ -126,6 +108,33 @@
     cell.image.image =_imageBrr[indexPath.row];
     return cell;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+
+    switch (indexPath.row) {
+        case 0:
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            NSLog(@"%ld",(long)indexPath.row);
+            break;
+         case 1:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            break;
+        case 2:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"] animated:YES completion:nil];
+            break;
+        case 3:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"] animated:YES completion:nil];
+            break;
+        case 4:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"] animated:YES completion:nil];
+            break;
+        case 5:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            break;
+        default:
+            break;
+    }
+    
+}
 //当选择完媒体文件后调用
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
   
@@ -134,6 +143,8 @@
     UIImage *image =info [UIImagePickerControllerEditedImage];
     //将上面拿到的图片设置为按钮的图片
     [_imageLable setBackgroundImage:image forState:UIControlStateNormal];
+    NSString *url = [Utilities saveHeadImage:image];
+    NSLog(@"url === %@",url);
     
     [self dismissViewControllerAnimated:YES completion:nil];
     _imageLable.layer.masksToBounds = YES;
@@ -203,6 +214,5 @@
     
 }
 
-- (IBAction)SetUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+
 @end

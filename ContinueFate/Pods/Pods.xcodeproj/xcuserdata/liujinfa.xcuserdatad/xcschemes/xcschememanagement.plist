@@ -8,51 +8,81 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>DateTools.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>ECSlidingViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Qiniu.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>SDAutoLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>SDCycleScrollView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>TTTAttributedLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -67,7 +97,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3C451CF27302EE1E8483DDB1EE026721</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5165009A4AA037060724C0808036FDDF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52228533427F325E7E2326392076EE73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5957A4D052447F8398FD19058CC30B18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6627E2CE58504A680DE862D5526B302C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>85BEB69AEEB90C74BBD5D69CBBCC879C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8DCED8791FC9C933286234894F84D8C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -88,6 +148,11 @@
 			<true/>
 		</dict>
 		<key>BB7B1C62152B69EA2D401D41989B0CD4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C66F42818BBF3CE72E7A8F62C3327FCB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
