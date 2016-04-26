@@ -198,4 +198,31 @@
     return dic;
 }
 
++ (NSString *)saveHeadImage:(UIImage *)imageData {
+    
+    NSData *data = [[NSData alloc]init];
+    if (UIImagePNGRepresentation(imageData) == nil) {
+        
+        data = UIImageJPEGRepresentation(imageData,0);
+        
+    } else {
+        
+        data = UIImagePNGRepresentation(imageData);
+    }
+    NSString *key = [NSString stringWithFormat:@"%@.jpg",[[StorageMgr singletonStorageMgr]objectForKey:@"userid"]];
+    NSDictionary *parameters = @{@"bucket":@"xyproject",@"key":key};
+    NSString *url = [NSString stringWithFormat:@"7xtaye.com1.z0.glb.clouddn.com/%@",key];
+    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/getToken" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *token = responseObject[@"Token"];
+        QNUploadManager *upManager = [[QNUploadManager alloc]init];
+        [upManager putData:data key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+            
+        } option:nil];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error.description);
+    }];
+    
+    return url;
+}
+
 @end

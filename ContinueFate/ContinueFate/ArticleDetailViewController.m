@@ -43,6 +43,7 @@
     UILabel *text1 = [[UILabel alloc]init];
     text1.text = [[[NSString stringWithFormat:@"        %@",[_subStance substringToIndex:rangeFirst.location]]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
     text1.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    text1.textColor = [UIColor darkGrayColor];
     
     UIImageView *image = [[UIImageView alloc]init];
     [image sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"01"]];
@@ -50,6 +51,7 @@
     UILabel *text2 = [[UILabel alloc]init];
     text2.text = [[[[sub substringFromIndex:rangeLast.location]stringByReplacingOccurrencesOfString:@"&&" withString:@"        "]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
     text2.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    text2.textColor = [UIColor darkGrayColor];
     /*************************************************/
     UILabel *title = [[UILabel alloc]init];
     title.text = _titleName;
