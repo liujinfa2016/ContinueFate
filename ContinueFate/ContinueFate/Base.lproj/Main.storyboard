@@ -765,7 +765,7 @@
         <!--首页-->
         <scene sceneID="p6r-Un-uqF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q5Y-K4-TcZ" customClass="HomeViewController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeTv" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q5Y-K4-TcZ" customClass="HomeViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="首页" id="Axs-nx-UuL"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

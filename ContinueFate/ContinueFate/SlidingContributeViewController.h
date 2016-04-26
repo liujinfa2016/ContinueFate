@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingContributeViewController : UIViewController
+- (IBAction)ReturnAction:(UIBarButtonItem *)sender;//返回
 
 @end

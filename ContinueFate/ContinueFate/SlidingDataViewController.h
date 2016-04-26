@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingDataViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)saveBut:(UIButton *)sender forEvent:(UIEvent *)event;
-- (IBAction)changeItem:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *image;//图片
+@property (weak, nonatomic) IBOutlet UITextField *nameFiet;//名字
+@property (weak, nonatomic) IBOutlet UILabel *ageText;//年龄
+@property (weak, nonatomic) IBOutlet UILabel *regiontext;//地区
+@property (weak, nonatomic) IBOutlet UITextView *textView;//简介输入框
+- (IBAction)imageAction:(UIButton *)sender forEvent:(UIEvent *)event;//图片按钮
+
+
+
 
 @end
