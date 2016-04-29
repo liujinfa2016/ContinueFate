@@ -45,4 +45,7 @@
 
 //自动存储图片至服务器
 + (NSString *)saveHeadImage:(UIImage *)imageData;
+
+//获取textView中文字高度
++ (double)getTextHeight:(NSString *)text textFont:(NSFont *)textFont toViewRange:(int)range;
 @end
