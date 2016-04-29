@@ -2,16 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "阅读3.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "阅读1.png",
+      "filename" : "阅读3.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "阅读1.png",
       "scale" : "3x"
     }
   ],

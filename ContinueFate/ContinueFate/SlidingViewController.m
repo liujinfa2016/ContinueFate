@@ -10,14 +10,13 @@
 #import "SlidingTableViewCell.h"
 #import "slidingAppointmentViewController.h"
 #import "SlidingAppointmentTableViewCell.h"
-#import <MobileCoreServices/MobileCoreServices.h>
 
 
-@interface SlidingViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+
+@interface SlidingViewController ()
 @property(strong,nonatomic) NSArray *dict;
 @property(strong,nonatomic) NSArray *imageBrr;
-@property(strong,nonatomic)UIImagePickerController *imagePc;
-@property(strong,nonatomic)NSMutableArray *menuList;
+
 
 
 @end
@@ -58,10 +57,7 @@
     _imageLable.layer.shadowRadius = 3;//阴影半径，默认3
     _imageLable.layer.masksToBounds = NO;
     */
-    
    
-    
-    
    
 }
 
@@ -112,19 +108,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selected = NO;
-
+    
+    NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    
     switch (indexPath.row) {
         case 0:
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
-            NSLog(@"%ld",(long)indexPath.row);
+            if (userid == nil) {
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
+            }else{
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];}
             break;
-         case 1:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+        case 1:if (userid == nil) {
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
+        }else{
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];}
             break;
-        case 2:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"] animated:YES completion:nil];
+        case 2:if (userid == nil) {
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
+        }else{
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"] animated:YES completion:nil];}
             break;
-        case 3:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"] animated:YES completion:nil];
+        case 3:if (userid == nil) {
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
+        }else{
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"] animated:YES completion:nil];}
             break;
         case 4:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"] animated:YES completion:nil];
             break;
@@ -135,26 +142,7 @@
     }
     
 }
-//当选择完媒体文件后调用
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-  
-    
-    //根据UIImagePickerControllerEditedImage这个键去拿我们选中的已经编辑的图片
-    UIImage *image =info [UIImagePickerControllerEditedImage];
-    //将上面拿到的图片设置为按钮的图片
-    [_imageLable setBackgroundImage:image forState:UIControlStateNormal];
-    NSString *url = [Utilities saveHeadImage:image];
-    NSLog(@"url === %@",url);
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    _imageLable.layer.masksToBounds = YES;
-}
-//当取消选择后调用
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    // 用model的方式返回上一页
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    
-}
+
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 //    [self :subView animated:YES];
     NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
@@ -167,52 +155,14 @@
         [self presentViewController:tabVc animated:YES completion:nil];
     }else{
         
-        
-        UIAlertController *actionShent = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"照相" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self pickImage:UIImagePickerControllerSourceTypeCamera];
-        }];
-        UIAlertAction *choosephoto = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            [self pickImage:UIImagePickerControllerSourceTypePhotoLibrary];
-            
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
-        [actionShent addAction:takephoto];
-        [actionShent addAction:choosephoto];
-        [actionShent addAction:cancelAction];
-        [self presentViewController:actionShent animated:YES   completion:nil];
-        
+        [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
         
     }
     
  }
 
 
--(void)pickImage:(UIImagePickerControllerSourceType)sourceType{
-    //判断图片选择类型是否可用
-    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
-        _imagePc =nil;
-        //初始化一个图片选择器控制器对象
-        _imagePc =[[UIImagePickerController alloc]init];
-        _imagePc .delegate =self;
-        //设置图片选择器控制类型
-        _imagePc.sourceType = sourceType;
-        //设置选中的媒体文件是否可以被编辑
-        _imagePc.allowsEditing =YES;
-        //设置可以选择的媒体文件的类型
-        _imagePc.mediaTypes =@[(NSString *)kUTTypeImage];
-        [self presentViewController:_imagePc animated:YES completion:nil];
-        
-    }else{
-        
-        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:sourceType ==UIImagePickerControllerSourceTypeCamera ? @"没有相机" : @"没有相册"  preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-        [alertView addAction:confirmAction];
-        [self presentViewController:alertView animated:YES completion:nil];
-    }
-    
-}
+
 
 
 @end

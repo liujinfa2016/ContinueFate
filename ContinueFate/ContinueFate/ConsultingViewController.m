@@ -41,6 +41,8 @@
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
+    
+    
 
 }
 
@@ -102,7 +104,7 @@
     cell.ReadingN.text= [NSString stringWithFormat:@"%@", dict[@"orderCount"]];
     NSURL *photoUrl = [NSURL URLWithString:dict[@"headimage"]];
     //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）
-    [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"初始头像"]];
+    [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

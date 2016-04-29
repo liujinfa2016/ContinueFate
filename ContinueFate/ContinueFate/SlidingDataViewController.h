@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *regiontext;//地区
 @property (weak, nonatomic) IBOutlet UITextView *textView;//简介输入框
 - (IBAction)imageAction:(UIButton *)sender forEvent:(UIEvent *)event;//图片按钮
+- (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event;//确定修改
+- (IBAction)modifyEiet:(UIBarButtonItem *)sender;//修改
 
 
 
