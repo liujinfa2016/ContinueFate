@@ -40,9 +40,7 @@
 }
 */
 
-- (IBAction)saveBut:(UIButton *)sender forEvent:(UIEvent *)event {
-}
 
-- (IBAction)changeItem:(UIBarButtonItem *)sender {
+- (IBAction)imageAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end

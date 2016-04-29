@@ -20,6 +20,7 @@
     NSString *tellArr =[[StorageMgr singletonStorageMgr] objectForKey:@"Tell"];
     _TelLable.text =tellArr;
     [[StorageMgr singletonStorageMgr] removeObjectForKey:@"Tell"];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,11 +41,15 @@
 - (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *pass = _nPasswordTF.text;
     NSString *passArr = _nPasswordAgainTF.text;
-    if (pass.length >= 6 || passArr.length >= 6) {
+    if (pass.length < 6 || passArr.length < 6) {
         [Utilities popUpAlertViewWithMsg:@"请输入不少于6位密码" andTitle:nil onView:self];
         return ;
     }
-    NSDictionary *dic = @{@"pwd":passArr,@"mobile":_Tell};
+    NSString *modulus = [[StorageMgr singletonStorageMgr] objectForKey:@"modulus"];
+    NSString *exponent = [[StorageMgr singletonStorageMgr] objectForKey:@"exponent"];
+    pass = [NSString encryptWithPublicKeyFromModulusAndExponent:[pass getMD5_32BitString].UTF8String modulus:modulus exponent:exponent];
+    
+    NSDictionary *dic = @{@"pwd":passArr,@"mobile":_Tell,@"deviceId":[Utilities uniqueVendor]};
     [RequestAPI postURL:@"/editPwd" withParameters:dic success:^(id responseObject) {
         NSLog(@"responseObject = %@ 成功",responseObject);
 //        UIViewController *view =[Utilities getStoryboardInstanceByIdentity:@"Mian" byIdentity:@"HomeTF"];
@@ -56,5 +61,15 @@
 }
 - (IBAction)Return:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//隐藏键盘
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [self.view endEditing:YES];
 }
 @end

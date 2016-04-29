@@ -45,6 +45,7 @@
 		05079C081CC21F2500E7CFC8 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C071CC21F2500E7CFC8 /* Openssl.framework */; };
 		05079C0A1CC21F6900E7CFC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */; };
 		05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */; };
+		05364E9E1CCF1D3400D83115 /* SlidingContributeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05364E9D1CCF1D3400D83115 /* SlidingContributeViewController.m */; };
 		053CF6801CCE2401007AEB33 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053CF67F1CCE2401007AEB33 /* AboutUsViewController.m */; };
 		05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05743AA41CC502C300A762E3 /* SlidingTableViewCell.m */; };
 		057D5C7E1CCC6C6400C72341 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057D5C7C1CCC6C6400C72341 /* MOBFoundation.framework */; };
@@ -187,6 +188,8 @@
 		05079C091CC21F6900E7CFC8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		05079C0E1CC2321400E7CFC8 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicEncodingRules.h; path = "SCZ-BasicEncodingRules/BasicEncodingRules.h"; sourceTree = "<group>"; };
 		05079C0F1CC2321400E7CFC8 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicEncodingRules.m; path = "SCZ-BasicEncodingRules/BasicEncodingRules.m"; sourceTree = "<group>"; };
+		05364E9C1CCF1D3400D83115 /* SlidingContributeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingContributeViewController.h; sourceTree = "<group>"; };
+		05364E9D1CCF1D3400D83115 /* SlidingContributeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingContributeViewController.m; sourceTree = "<group>"; };
 		053CF67E1CCE2401007AEB33 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		053CF67F1CCE2401007AEB33 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		05743AA31CC502C300A762E3 /* SlidingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingTableViewCell.h; sourceTree = "<group>"; };
@@ -675,6 +678,8 @@
 				643E6EC71CCDB946005FA605 /* SlidingCollectionTableViewCell.m */,
 				053CF67E1CCE2401007AEB33 /* AboutUsViewController.h */,
 				053CF67F1CCE2401007AEB33 /* AboutUsViewController.m */,
+				05364E9C1CCF1D3400D83115 /* SlidingContributeViewController.h */,
+				05364E9D1CCF1D3400D83115 /* SlidingContributeViewController.m */,
 			);
 			name = Sliding;
 			sourceTree = "<group>";
@@ -923,6 +928,7 @@
 				643E6EC51CCDB87F005FA605 /* SlidingCollectionViewController.m in Sources */,
 				85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
+				05364E9E1CCF1D3400D83115 /* SlidingContributeViewController.m in Sources */,
 				F8189A5E1CCE21BE00789B59 /* ConsultingViewController.m in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
 				F8189A611CCE21BE00789B59 /* CAConsultingViewController.m in Sources */,

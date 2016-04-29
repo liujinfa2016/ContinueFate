@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import <SMS_SDK/SMSSDK.h>
+#import "MBProgressHUD+NJ.h"
 @interface RegisterViewController ()
 
 @end
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
 }
 
@@ -47,7 +49,7 @@
         return;
     }
     
-    if (password.length >= 6 || PasswordAgainTF.length >= 6) {
+    if (password.length < 6 || PasswordAgainTF.length < 6) {
         [Utilities popUpAlertViewWithMsg:@"请输入不少于6位密码" andTitle:nil onView:self];
         return ;
     }
@@ -76,23 +78,24 @@
 
     }];
     //菊花
-    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.self.userInteractionEnabled = NO;
-    NSDictionary *parameters = @{@"code":username,@"pwd":password,@"mobile":TelTF};
+    
+    NSString *modulus = [[StorageMgr singletonStorageMgr] objectForKey:@"modulus"];
+    NSString *exponent = [[StorageMgr singletonStorageMgr] objectForKey:@"exponent"];
+    password = [NSString encryptWithPublicKeyFromModulusAndExponent:[password getMD5_32BitString].UTF8String modulus:modulus exponent:exponent];
+    NSDictionary *parameters = @{@"code":username,@"pwd":password,@"mobile":TelTF,@"deviceId":[Utilities uniqueVendor]};
     [RequestAPI postURL:@"/register" withParameters:parameters success:^(id responseObject) {
-        NSLog(@"responseObject :%@",responseObject);
-        [avi stopAnimating];
+        [MBProgressHUD hideHUDForView:self.view];
         self.navigationController.view.self.userInteractionEnabled = YES;
         switch ([responseObject[@"resultFlag"]integerValue]) {
             case 8001:
-                NSLog(@"注册成功");
                 //将文本框的内容清除
                 _UsernameTF.text = @"";
                 _PasswordAgainTF.text = @"";
                 _PasswordTF.text = @"";
                 _TelTF.text = @"";
                 _registertf.text = @"";
-                [Utilities popUpAlertViewWithMsg:@"注册成功" andTitle:nil onView:self];
                 //先将SignUpSuccessfully这个单例化全局变量中的folg删除以保证
                 [[StorageMgr singletonStorageMgr] removeObjectForKey:@"SignUpSuccessfully"];
                 //初始化一个bool格式的单例化全局标量来表示是否成功执行了注册  默认为否
@@ -104,7 +107,7 @@
                 [self.navigationController popViewControllerAnimated:YES];
                 break;
             case 6001:
-                [Utilities popUpAlertViewWithMsg:@"注册失败" andTitle:nil onView:self];
+                [MBProgressHUD showError:@"用户名或者手机号已经注册" toView:self.view];
                 break;
             default:
                 break;
@@ -122,11 +125,10 @@
 - (IBAction)TestGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *TelTF =_TelTF.text;
     
-    //菊花
-    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
-self.navigationController.view.self.userInteractionEnabled = NO;
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    self.navigationController.view.self.userInteractionEnabled = NO;
     [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:TelTF zone:@"86" customIdentifier:nil result:^(NSError *error) {
-        [avi stopAnimating];
+        [MBProgressHUD hideHUDForView:self.view];
         self.navigationController.view.self.userInteractionEnabled=YES;
         switch (error.code) {
             case 200:

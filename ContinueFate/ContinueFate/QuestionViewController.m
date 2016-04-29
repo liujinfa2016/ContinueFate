@@ -17,7 +17,7 @@
 @interface QuestionViewController (){
     NSInteger page;
     NSInteger perPage;
-
+    
 }
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
 @property (strong,nonatomic)NSArray *questArr;
@@ -44,7 +44,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityBtn];
     _questArr = @[@"女生恋爱",@"男生恋爱",@"挽救爱情",@"拯救婚姻",@"婚姻家庭"];
     FSDropDownMenu *menu = [[FSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:176];
-
+    
     menu.tag = 1001;
     menu.dataSource = self;
     menu.delegate = self;
@@ -89,7 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    QuestViewController *quest = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"quest"];
+    //    QuestViewController *quest = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"quest"];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -101,9 +101,13 @@
 }
 
 - (void)requestData{
+    
     NSDictionary *parameters = @{@"type":@"",@"page":@(page),@"perPaeg":@(perPage)};
+    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.userInteractionEnabled = NO;
     [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        self.navigationController.view.userInteractionEnabled = YES;
+        [avi stopAnimating];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *dict = responseObject[@"result"];
@@ -124,6 +128,7 @@
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [avi stopAnimating];
         NSLog(@"%@",error.description);
     }];
 }

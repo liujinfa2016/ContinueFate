@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingCollectionViewController : UIViewController
-
+- (IBAction)Return:(UIBarButtonItem *)sender;//返回
 
 @end
