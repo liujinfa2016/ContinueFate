@@ -7,6 +7,7 @@
 //
 
 #import "ArticleDetailViewController.h"
+#import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
 
@@ -49,7 +50,7 @@
     NSRange rangeLast = [sub rangeOfString:@"&&"];
     
     NSString *str1 = [[[NSString stringWithFormat:@"        %@",[_subStance substringToIndex:rangeFirst.location]]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-    UITextView *text1 = [[UITextView alloc]initWithFrame:CGRectMake(8, 110, UI_SCREEN_W-16, 20)];
+    UITextView *text1 = [[UITextView alloc]initWithFrame:CGRectMake(5, 110, UI_SCREEN_W-10, 20)];
     text1.text = str1;
     text1.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     text1.scrollEnabled = NO;    text1.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -57,12 +58,12 @@
     text1.editable = NO;
     text1.textColor = [UIColor darkGrayColor];
     
-    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(20, 125+text1.height, UI_SCREEN_W-40, (UI_SCREEN_W-40)*0.75)];
+    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(20, 140+text1.height, UI_SCREEN_W-40, (UI_SCREEN_W-40)*0.75)];
     image.contentMode = UIViewContentModeScaleToFill;
     [image sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"01"]];
     
     NSString *str2 = [[[[sub substringFromIndex:rangeLast.location]stringByReplacingOccurrencesOfString:@"&&" withString:@"        "]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-    UITextView *text2 = [[UITextView alloc]initWithFrame:CGRectMake(8, 110+(UI_SCREEN_W-40)*0.75+text1.height, UI_SCREEN_W-16, 20)];
+    UITextView *text2 = [[UITextView alloc]initWithFrame:CGRectMake(5, 110+(UI_SCREEN_W-40)*0.75+text1.height, UI_SCREEN_W-10, 20)];
     text2.text = str2;
     text2.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     text2.scrollEnabled = NO;
@@ -70,7 +71,6 @@
     text2.height = [Utilities getTextHeight:str2 textFont:text2.font.copy toViewRange:20];
     text2.editable = NO;
     text2.textColor = [UIColor darkGrayColor];
-
     /*************************************************/
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, UI_SCREEN_W, 30)];
     title.text = _titleName;
@@ -82,7 +82,7 @@
     time.font = [UIFont fontWithName:@"Arial" size:13];
     time.textColor = [UIColor grayColor];
     
-    UILabel *hits = [[UILabel alloc]initWithFrame:CGRectMake(UI_SCREEN_W/2, 40, UI_SCREEN_W/2-10, 30)];
+    UILabel *hits = [[UILabel alloc]initWithFrame:CGRectMake(UI_SCREEN_W/2, 40, UI_SCREEN_W/2-15, 30)];
     hits.textAlignment = NSTextAlignmentRight;
     hits.text = _hits;
     hits.font = [UIFont fontWithName:@"Arial" size:13];
@@ -131,6 +131,13 @@
 
 //点击收藏按钮后触发的方法
 - (void) judegFlag {
+    if ([[StorageMgr singletonStorageMgr]objectForKey:@"UserID"]==nil) {
+        [Utilities popUpAlertViewWithMsg:@"当前未登录,是否前往登录?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
+            ViewController *home = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            
+            [self.navigationController pushViewController:home animated:YES];
+        }];
+    }else {
     if (flag) {
         [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             [self delCollection];
@@ -140,6 +147,7 @@
         [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             [self addCollection];
         }];
+    }
     }
 }
 
