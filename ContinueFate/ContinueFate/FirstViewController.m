@@ -36,6 +36,7 @@
     
     [self cycleScrollBegin];
     [self refreshDownAndUp];
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     [self netWorkRequest];
 
     
@@ -100,7 +101,7 @@
     label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:17];
     label.backgroundColor =  [UIColor colorWithRed:255.0f green:255.0f blue:255.0f alpha:0.0f];
     [headView addSubview:label];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 1, 20, 24)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 25)];
     label2.text = @"";
     label2.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:20];
     label2.backgroundColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f];
@@ -113,16 +114,16 @@
 
 //下拉刷新及上拉刷新
 - (void) refreshDownAndUp {
-    /*************动画下拉功能********
-    UIImage *image1 = [UIImage imageNamed:@"01"];
-    UIImage *image2 = [UIImage imageNamed:@"02"];
-    UIImage *image3 = [UIImage imageNamed:@"03"];
-    UIImage *image4 = [UIImage imageNamed:@"04"];
+    //动画下拉功能
+    UIImage *image1 = [UIImage imageNamed:@"图1"];
+    UIImage *image2 = [UIImage imageNamed:@"图2"];
+    UIImage *image3 = [UIImage imageNamed:@"图3"];
+  /*  UIImage *image4 = [UIImage imageNamed:@"04"];
     UIImage *image5 = [UIImage imageNamed:@"05"];
     UIImage *image6 = [UIImage imageNamed:@"06"];
-    UIImage *image7 = [UIImage imageNamed:@"07"];
+    UIImage *image7 = [UIImage imageNamed:@"07"];*/
     
-    NSArray *image = @[image1,image2,image3,image4,image5,image6,image7];
+    NSArray *image = @[image1,image2,image3];
     
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(netWorkRequest)];
     // 设置普通状态的动画图片
@@ -133,12 +134,8 @@
     [header setImages:image forState:MJRefreshStateRefreshing];
     // 设置header
     self.tableView.mj_header = header;
-    ***********************/
-    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page = 1;
-        [self netWorkRequest];
-    }];
-    
+ 
+   
     _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
         if (page < totalPage) {
@@ -161,6 +158,7 @@
     [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSArray *dataArr = result[@"models"];

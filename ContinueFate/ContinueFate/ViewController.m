@@ -26,7 +26,6 @@
 //    [MBProgressHUD hideHUDForView:self.view];
     NSDictionary *parameters = @{@"deviceId":[Utilities uniqueVendor],@"deviceType":@"9001"};
     [RequestAPI postURL:@"/getKey" withParameters:parameters success:^(id responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
         NSString *modulus = responseObject[@"modulus"];
         NSString *exponent = responseObject[@"exponent"];
         [[StorageMgr singletonStorageMgr] addKey:@"modulus" andValue:modulus];
@@ -90,6 +89,10 @@
     self.navigationController.view.self.userInteractionEnabled = NO;
     NSString *modulus = [[StorageMgr singletonStorageMgr] objectForKey:@"modulus"];
     NSString *exponent = [[StorageMgr singletonStorageMgr] objectForKey:@"exponent"];
+    if (modulus == NULL || modulus.length == 0 || exponent == NULL || exponent.length == 0) {
+        [MBProgressHUD showMessage:@"您当前的网络状态不稳定，请稍后再试！" toView:self.view];
+        return ;
+    }
     password = [NSString encryptWithPublicKeyFromModulusAndExponent:[password getMD5_32BitString].UTF8String modulus:modulus exponent:exponent];
     NSDictionary *parameters = @{@"code":username,@"pwd":password,@"loginType":@1,@"deviceId":[Utilities uniqueVendor]};
     [RequestAPI postURL:@"/login" withParameters:parameters success:^(id responseObject) {
