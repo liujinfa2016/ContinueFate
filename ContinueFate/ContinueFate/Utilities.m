@@ -225,5 +225,13 @@
     return url;
 }
 
++ (BOOL)loginState {
+    NSString *userId = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    if (userId == NULL && userId.length == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 @end
