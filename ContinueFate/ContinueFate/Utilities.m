@@ -8,6 +8,7 @@
 
 #import "Utilities.h"
 
+
 @implementation Utilities
 
 + (id)getUserDefaults:(NSString *)key
@@ -216,7 +217,6 @@
         NSString *token = responseObject[@"Token"];
         QNUploadManager *upManager = [[QNUploadManager alloc]init];
         [upManager putData:data key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-            
         } option:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error = %@",error.description);
@@ -224,5 +224,6 @@
     
     return url;
 }
+
 
 @end

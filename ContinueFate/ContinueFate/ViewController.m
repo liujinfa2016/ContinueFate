@@ -24,7 +24,16 @@
 //    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
 //    //加载完成
 //    [MBProgressHUD hideHUDForView:self.view];
-
+    NSDictionary *parameters = @{@"deviceId":[Utilities uniqueVendor],@"deviceType":@"9001"};
+    [RequestAPI postURL:@"/getKey" withParameters:parameters success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        NSString *modulus = responseObject[@"modulus"];
+        NSString *exponent = responseObject[@"exponent"];
+        [[StorageMgr singletonStorageMgr] addKey:@"modulus" andValue:modulus];
+        [[StorageMgr singletonStorageMgr] addKey:@"exponent" andValue:exponent];
+    } failure:^(NSError *error) {
+        NSLog(@"error = %@",error.description);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,14 +86,16 @@
 }
 -(void)loginWithUsername:(NSString *)username addpassword:(NSString *)password {
     //菊花
-    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.self.userInteractionEnabled = NO;
-    NSDictionary *parameters = @{@"code":username,@"pwd":password,@"loginType":@1};
+    NSString *modulus = [[StorageMgr singletonStorageMgr] objectForKey:@"modulus"];
+    NSString *exponent = [[StorageMgr singletonStorageMgr] objectForKey:@"exponent"];
+    password = [NSString encryptWithPublicKeyFromModulusAndExponent:[password getMD5_32BitString].UTF8String modulus:modulus exponent:exponent];
+    NSDictionary *parameters = @{@"code":username,@"pwd":password,@"loginType":@1,@"deviceId":[Utilities uniqueVendor]};
     [RequestAPI postURL:@"/login" withParameters:parameters success:^(id responseObject) {
-        [avi stopAnimating];
+        [MBProgressHUD hideHUDForView:self.view];
         self.navigationController.view.self.userInteractionEnabled = YES;
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-                NSLog(@"登陆成功");
             NSDictionary *dic = responseObject[@"result"];
             NSArray *Arr =dic[@"models"];
             NSDictionary *models = Arr[0] ;
@@ -97,18 +108,15 @@
             [Utilities setUserDefaults:@"Username" content:username];
                 //将文本框的内容清除
                 _passwordTF.text = @"";
-                [Utilities popUpAlertViewWithTrue:@"登录成功" andTitle:@"确定" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-            
-                }];
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else{
-            [Utilities popUpAlertViewWithMsg:@"用户名与密码不匹配" andTitle:nil onView:self];
+            [MBProgressHUD showError:@"用户名或密码错误" toView:self.view];
         }
     
     } failure:^(NSError *error) {
         NSLog(@"error:%@",error.description);
-        [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍候再试" andTitle:nil onView:self];
-        [avi stopAnimating];
+        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
+        [MBProgressHUD hideHUDForView:self.view];
         self.navigationController.view.self.userInteractionEnabled = YES;
     }];
 
