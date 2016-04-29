@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Edetail;
 @property (weak, nonatomic) IBOutlet UILabel *ReadingN;
 
+@property (weak, nonatomic) IBOutlet UIView *styleView;
 
 @end

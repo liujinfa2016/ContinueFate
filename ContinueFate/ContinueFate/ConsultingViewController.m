@@ -41,6 +41,8 @@
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
+    
+    
 
 }
 

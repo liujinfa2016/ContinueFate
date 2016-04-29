@@ -105,6 +105,7 @@
                                             <outlet property="ReadingN" destination="f7g-yN-a1O" id="TcP-sR-y21"/>
                                             <outlet property="Username" destination="s8r-zv-o9U" id="fSO-7m-eoL"/>
                                             <outlet property="image" destination="DpM-g2-KQU" id="7AI-lK-cOl"/>
+                                            <outlet property="styleView" destination="zqe-Vj-B75" id="tKP-bU-AkZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
