@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIImageView *expertImage;
 @property (weak, nonatomic) IBOutlet UILabel *substance;
+@property (weak, nonatomic) IBOutlet UIButton *actBtn;
 
 @end

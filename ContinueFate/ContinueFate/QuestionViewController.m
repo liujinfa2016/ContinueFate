@@ -12,8 +12,8 @@
 #import "QuestionObject.h"
 #import "QTranfViewController.h"
 #import "FSDropDownMenu.h"
-#import <UIImageView+WebCache.h>
 #import "ViewController.h"
+
 @interface QuestionViewController (){
     NSInteger page;
     NSInteger perPage;
@@ -50,16 +50,14 @@
     [self.view addSubview:menu];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
-
+    
 }
 
-//每次页面出现后
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"EnableGesture" object:nil];
 }
 
-//第1次页面消失后
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
@@ -126,7 +124,7 @@
             if (page == 1) {
                 _objectsForShow = nil;
                 _objectsForShow = [NSMutableArray new];
-                perPage = 5;
+                perPage = 10;
                 
             }
             for(NSDictionary *question in data){
@@ -140,6 +138,7 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error.description);
+        [MBProgressHUD hideHUDForView:self.view];
     }];
 }
 
@@ -200,13 +199,15 @@
     
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
      UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Mian" byIdentity:@"HomeTF"];
-        [self.navigationController pushViewController:alert animated:YES];
+        ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+        [self presentViewController:alert animated:YES completion:nil];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
      [alertView addAction:confirmAction];
      [alertView addAction:cancelAction];
-     [self presentViewController:alertView animated:YES completion:nil];
+    [self presentViewController:alertView animated:YES completion:nil];
     }
+    QTranfViewController *tabVC =  [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"tranf"];
+    [self presentViewController:tabVC animated:YES completion:nil];
 }
 @end
