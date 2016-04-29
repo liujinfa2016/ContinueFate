@@ -135,7 +135,7 @@
         [Utilities popUpAlertViewWithMsg:@"当前未登录,是否前往登录?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             ViewController *home = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
             
-            [self.navigationController pushViewController:home animated:YES];
+            [self presentViewController:home animated:YES completion:nil];
         }];
     }else {
     if (flag) {
