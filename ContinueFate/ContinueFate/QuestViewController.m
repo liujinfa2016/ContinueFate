@@ -10,13 +10,13 @@
 #import "DetailTableViewCell.h"
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
-#import <UIImageView+WebCache.h>
 #import "CEDetailsViewController.h"
-
+#import "QAnswerViewController.h"
 @interface QuestViewController (){
     NSInteger page;
     NSInteger perpage;
     NSInteger total;
+    NSInteger type;
     
 }
 @property (strong,nonatomic)NSMutableArray *experts;
@@ -39,6 +39,8 @@
     perpage = 5;
     [self requestData];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -121,7 +123,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    ;
 }
 
 
@@ -188,6 +189,7 @@
     NSDictionary *dic = _objectsForShow[indexPath.section];
     //    NSLog(@"question = %@",obj);
     NSArray *arr = dic[@"usertype"];
+   
     QuestionObject *obj = arr[indexPath.row];
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
@@ -206,5 +208,10 @@
     
     self.navigationController.tabBarController.selectedIndex = 3;
     
+}
+
+- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+    QAnswerViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"answer"];
+    [self.navigationController pushViewController:tabVC animated:YES];
 }
 @end

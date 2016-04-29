@@ -21,5 +21,6 @@
 @property (strong,nonatomic)NSString *nameID;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end
