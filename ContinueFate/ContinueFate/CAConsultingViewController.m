@@ -32,7 +32,7 @@
     _identity.text = _expertsM[@"expertlvName"];
     
     NSURL *URL = [NSURL URLWithString:_expertsM[@"headimage"]];
-    [_image sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"初始头像"]];
+    [_image sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"文字信息咨询月卡"]];
     [self requestData];
 }
 
@@ -89,9 +89,7 @@
     NSDictionary *dict = _objectForShow[indexPath.row];
     NSURL *photoUrl = [NSURL URLWithString:dict[@"image"]];
     //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）
-    [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"初始头像"]];
-
-    
+    [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"文字信息咨询月卡"]];
     return cell;
 }
 

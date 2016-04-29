@@ -38,7 +38,7 @@
     
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     //设置分段选择栏内容
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"谈恋爱", @"挽回爱情", @"挽救婚姻", @"星座爱情", @"婚恋讲座", @"实践总结", @"客户心声"]];
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部",@"谈恋爱", @"挽回爱情", @"挽救婚姻", @"星座爱情", @"婚恋讲座", @"实践总结", @"客户心声"]];
     segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
     //设置分段选择的位置
     segmentedControl.frame = CGRectMake(0, 0, viewWidth, 40);
@@ -182,6 +182,9 @@
     NSString * substance = artObj.substance;
     cell.titleName.text = titlename;
     cell.substance.text = substance;
+    cell.dateLab.attributedText = [Utilities getIntervalAttrStr:[artObj.edittime substringToIndex:19]];
+    cell.readnumLab.text = [NSString stringWithFormat:@"阅读%d次",artObj.hits];
+    cell.readnumLab.textColor = [UIColor grayColor];
     
     NSDictionary *dic = [[Utilities getImageURL:artObj.substance]copy];
     NSString *imagrURL = dic[@"imageURL"];

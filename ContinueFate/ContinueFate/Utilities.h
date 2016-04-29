@@ -74,4 +74,10 @@
  *判断当前是否已经登录
  */
 + (BOOL)loginState;
+
+/**
+ *获取textView中文字高度
+ */
++ (double)getTextHeight:(NSString *)text textFont:(NSFont *)textFont toViewRange:(int)range;
+
 @end

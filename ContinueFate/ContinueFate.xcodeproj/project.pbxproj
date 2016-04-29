@@ -79,6 +79,7 @@
 		85640F981CCB749D00BA9B90 /* QTranfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85640F971CCB749D00BA9B90 /* QTranfViewController.m */; };
 		85640F9B1CCB7AD400BA9B90 /* QuestionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 85640F9A1CCB7AD400BA9B90 /* QuestionObject.m */; };
 		C424DC3D1CCC7A7300B39ED8 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C424DC3C1CCC7A7300B39ED8 /* ArticleDetailViewController.m */; };
+		C46B3CE81CD3637A009E98FD /* AMASucCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46B3CE71CD3637A009E98FD /* AMASucCellTableViewCell.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
@@ -249,6 +250,8 @@
 		9D00AF5AB518B5DFE20B2F07 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C424DC3B1CCC7A7300B39ED8 /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
 		C424DC3C1CCC7A7300B39ED8 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
+		C46B3CE61CD3637A009E98FD /* AMASucCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMASucCellTableViewCell.h; sourceTree = "<group>"; };
+		C46B3CE71CD3637A009E98FD /* AMASucCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMASucCellTableViewCell.m; sourceTree = "<group>"; };
 		C4C2F30B1CC489AA00F24727 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		C4C2F30E1CC48AB800F24727 /* ArticleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleObject.h; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 				F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */,
 				F80DBBA11CC5CA0800EE39BD /* AMACellTableViewCell.h */,
 				F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */,
+				C46B3CE61CD3637A009E98FD /* AMASucCellTableViewCell.h */,
+				C46B3CE71CD3637A009E98FD /* AMASucCellTableViewCell.m */,
 				C424DC3B1CCC7A7300B39ED8 /* ArticleDetailViewController.h */,
 				C424DC3C1CCC7A7300B39ED8 /* ArticleDetailViewController.m */,
 			);
@@ -896,6 +901,7 @@
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
 				85640F981CCB749D00BA9B90 /* QTranfViewController.m in Sources */,
+				C46B3CE81CD3637A009E98FD /* AMASucCellTableViewCell.m in Sources */,
 				05079BEF1CC21CF100E7CFC8 /* RSADataVerifier.m in Sources */,
 				F8189A621CCE21BE00789B59 /* CCDTableViewCell.m in Sources */,
 				646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */,
