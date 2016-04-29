@@ -26,13 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([[StorageMgr singletonStorageMgr]objectForKey:@"UserID"] == nil) {
-        userid = @"";
-        [self exists];
-    }else {
-        userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
-        [self exists];
-    }
     // Do any additional setup after loading the view.
     
     self.title = @"文章详情";
@@ -107,6 +100,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if ([Utilities loginState]) {
+        userid = @"";
+        [self exists];
+    }else {
+        userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+        [self exists];
+    }
+
     [self exists];
     
 }
@@ -131,13 +132,14 @@
 
 //点击收藏按钮后触发的方法
 - (void) judegFlag {
-    if ([[StorageMgr singletonStorageMgr]objectForKey:@"UserID"]==nil) {
+    if ([Utilities loginState]) {
         [Utilities popUpAlertViewWithMsg:@"当前未登录,是否前往登录?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             ViewController *home = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
             
             [self presentViewController:home animated:YES completion:nil];
         }];
     }else {
+         [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     if (flag) {
         [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
             [self delCollection];
@@ -161,16 +163,18 @@
     
     [[AppAPIClient sharedClient] POST:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSLog(@"add = %ld",[responseObject[@"resultFlag"]integerValue]);
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil onView:self];
+            [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
             flag = YES;
             [self exists];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:nil onView:self];
+            [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
             flag = NO;
         }
     } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
         NSLog(@"error = %@",error.description);
+        [MBProgressHUD hideHUDForView:self.view];
     }];
     
 }
@@ -184,16 +188,18 @@
     
     [[AppAPIClient sharedClient] POST:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSLog(@"delete = %ld",[responseObject[@"resultFlag"]integerValue]);
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            [Utilities popUpAlertViewWithMsg:@"取消成功" andTitle:nil onView:self];
+            [MBProgressHUD showSuccess:@"取消成功" toView:self.view];
             flag = NO;
             [self exists];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:nil onView:self];
+            [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
             flag = YES;
         }
     } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
         NSLog(@"error = %@",error.description);
+        [MBProgressHUD hideHUDForView:self.view];
     }];
     
 }
