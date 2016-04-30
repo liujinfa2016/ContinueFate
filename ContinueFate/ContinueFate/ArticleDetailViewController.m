@@ -100,6 +100,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
     if ([Utilities loginState]) {
         userid = @"";
         [self exists];
@@ -107,9 +108,14 @@
         userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
         [self exists];
     }
-
+    
     [self exists];
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"EnableGesture" object:nil];
 }
 
 - (void)setupAutoWidthLabel
@@ -141,13 +147,16 @@
     }else {
          [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     if (flag) {
-        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
+        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
             [self delCollection];
+        } flaseAction:^(UIAlertAction * _Nonnull action) {
+            [MBProgressHUD hideHUDForView:self.view];
         }];
-        
     }else {
-        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
-            [self addCollection];
+        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
+            [self delCollection];
+        } flaseAction:^(UIAlertAction * _Nonnull action) {
+            [MBProgressHUD hideHUDForView:self.view];
         }];
     }
     }

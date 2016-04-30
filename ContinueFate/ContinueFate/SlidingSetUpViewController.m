@@ -35,6 +35,9 @@
 */
 //按个人资料按钮
 - (IBAction)Personal:(UIButton *)sender forEvent:(UIEvent *)event {
+//    [self.navigationController pushViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES];
+    [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
+    
 }
 //按帮助按钮
 - (IBAction)HlepAction:(UIButton *)sender forEvent:(UIEvent *)event {
