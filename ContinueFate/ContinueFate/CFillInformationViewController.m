@@ -9,13 +9,22 @@
 #import "CFillInformationViewController.h"
 #import "SimplePickerView.h"
 #import "CAgreementViewController.h"
-@interface CFillInformationViewController () <UITextViewDelegate> {
+@interface CFillInformationViewController () <UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate> {
     //统计
     NSInteger statistical;
     BOOL flag;
+    // 例子需要的變數
+    UIDatePicker *datePicker;
+    
+    NSLocale *datelocale;
+    NSInteger page;
+    NSInteger perPage;
+    NSInteger totalPage;
+
 }
-
-
+@property (strong ,nonatomic)UIDatePicker *datepicker;
+@property (strong ,nonatomic)NSArray *arr;
+@property (strong ,nonatomic)UIPickerView *grenderView;
 @end
 
 @implementation CFillInformationViewController
@@ -24,18 +33,126 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"请填写资料";
+    _ordertimeTF.delegate = self;
+    _CellTF.delegate = self;
+    _PhoneNum.delegate = self;
+    _AgeTF.delegate = self;
     _DescribeTV.delegate = self;
-   //将统计字数设为0
+    _grenderTF.delegate = self;
+    _arr = [NSArray arrayWithObjects:@"男",@"女", nil];
+    NSLog(@"_getOrderState = %@ ,_objectForShow = %@,_expertsM = %@",_getOrderState,_objectForShow,_expertsM);
+    //将统计字数设为0
     statistical = 0;
-    NSLog(@"_objectForShow  = %@, _expertsM = %@",_objectForShow,_expertsM);
-  
+    [self requestData];
+    [self creatDate];
+    [self grenderTFC];
 }
+- (void) grenderTFC {
+    _grenderView = [[UIPickerView alloc] init];
+    _grenderView.dataSource = self;
+    _grenderView.delegate = self;
+    _grenderTF.inputView = _grenderView;
+    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // 选取日期完成钮并给他一個 selector
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDidEndEditing:)];
+    
+    // 把按钮加进 UIToolbar
+    toolBar.items = [NSArray arrayWithObject:right];
+    // 以下這行也是重點 (螢光筆畫兩行)
+    // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
+    _grenderTF.inputAccessoryView = toolBar;
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) requestData {
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/getPersonal";
+    //获取当前用户ID
+    NSString *userId = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    //POST请求数据
+    NSDictionary *pararmeters = @{@"userid":userId};
+    [[AppAPIClient sharedClient] POST:url parameters:pararmeters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //请求成功执行以下方法
+       
+        
+    if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+        
+         NSDictionary *result = responseObject[@"result"];
+         NSArray *models = result[@"models"];
+        for (NSDictionary *dict in models) {
+            _CellTF.text = dict[@"nickname"];
+            _grenderTF.text = [NSString stringWithFormat:@"%@",dict[@"sex"]];
+            _PhoneNum.text = dict[@"mobile"];
+            _AgeTF.text = dict[@"birthday"];
+        }
 
+        }else {
+            NSLog(@"shibai");
+        }
+   
+        //请求失败执行以下方法
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error.description);
+    }];
+}
+- (void)creatDate {
+    // 建立 UIDatePicker
+    _datepicker = [[UIDatePicker alloc]init];
+    // 時區的問題請再找其他協助 不是本篇重點
+    datelocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_TW"];
+    _datepicker.locale = datelocale;
+    _datepicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    _datepicker.datePickerMode = UIDatePickerModeDate;
+    _ordertimeTF.inputView = _datepicker;
+    // 建立 UIToolbar
+    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // 选取日期完成钮并给他一個 selector
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(ordertimeActionDatePick)];
+    // 把按钮加进 UIToolbar
+    toolBar.items = [NSArray arrayWithObject:right];
+    // 以下這行也是重點 (螢光筆畫兩行)
+    // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
+    _ordertimeTF.inputAccessoryView = toolBar;
+    
+}
+-(void)ordertimeActionDatePick {
+    
+    // endEditing: 是結束編輯狀態的 method
+    if ([self.view endEditing:NO]) {
+        //获取当前选择的年月日；
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        //设置年月日的格式
+        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:datelocale];
+        //formatter为有格式的年月日
+        [formatter setDateFormat:dateFormat];
+        //封装本地化相关的各种信息
+        [formatter setLocale:datelocale];
+        //NSString *chooseTimeS = [NSString stringWithFormat:@"%@",[formatter stringFromDate:_datepicker.date]];
+        NSString *chooseTimeS = [formatter stringFromDate: _datepicker.date];
+        NSString *strTime = [chooseTimeS stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
+        
+        NSDate *choosetimeD = [formatter dateFromString:chooseTimeS];
+        NSTimeInterval chooseTime = [choosetimeD timeIntervalSince1970]*1000;
+        
+        //获取系统的年月日
+        NSDateFormatter *sysFormatter =[[NSDateFormatter alloc] init];
+        [sysFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *sysDateTimeS = [sysFormatter stringFromDate:[NSDate date]];
+        
+        NSDate *sysDateTimeD = [sysFormatter dateFromString:sysDateTimeS];
+        NSTimeInterval sysDateTime = [sysDateTimeD timeIntervalSince1970]*1000;
+        
+        if (chooseTime <= sysDateTime) {
+            [Utilities popUpAlertViewWithMsg:@"时间过期" andTitle:nil onView:self];
+            return;
+        }else {
+            _ordertimeTF.text = strTime;
+        }
+        
+    }
+}
 
 //实现Placeholder属性执行以下方法（用label实现Placeholder，当textView输入内容时隐藏label）
 - (void)textViewDidChange:(UITextView *)textView
@@ -130,11 +247,22 @@
     NSString *phoneNum = _PhoneNum.text;
     //描述的问题
     NSString *Describe = _DescribeTV.text;
-    //订单号
+     //订单号
     NSString *tradeNO = [self generateTradeNO];
-    NSLog(@"tradeNO = %@",tradeNO);
+    //获取当前用户ID
+   NSString *userId = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    
+    NSLog(@"userId == %@",userId);
+    // 预约时间
+    NSString *ordertime = _ordertimeTF.text;
+    
     //性别
-    NSString *grender = _GenderBut.titleLabel.text;
+    NSString *grender = _grenderTF.text;
+    //预约状态
+    NSString *orderStateid = [NSString stringWithFormat:@"%@",_getOrderState[@"id"]];
+    //获取所选咨询类型
+    NSString *orderTypeid = [NSString stringWithFormat:@"%@",_objectForShow[@"id"]];
+    
     //判断是否填写完整信息
     if ([grender isKindOfClass:nil] || [cell isEqualToString:@""] ||[age isEqualToString:@""] ||[phoneNum isEqualToString:@""] || [Describe isEqualToString:@""]) {
         [Utilities popUpAlertViewWithMsg:@"请填写完整信息" andTitle:nil onView:self];
@@ -144,14 +272,30 @@
         return;
     }
     //确认信息
-   NSString *str = [[NSString alloc]initWithFormat:@"您的称呼：%@\n您的年龄：%@\n您的性别：%@\n您的联系电话：%@" ,cell ,age ,grender ,phoneNum] ;
+    NSString *str = [[NSString alloc]initWithFormat:@"您的称呼：%@\n您的年龄：%@\n您的性别：%@\n您的联系电话：%@\n您预约的时间：%@" ,cell ,age ,grender ,phoneNum,ordertime] ;
     //初始化提示框；
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认基本信息" message:str preferredStyle:  UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSDictionary *parameters = @{@"userid":userId,@"expertid":_expertsM[@"id"],@"orderTypeid":orderTypeid,@"number":tradeNO,@"ordertime":ordertime,@"orderStateid":orderStateid,@"remark":Describe};
+        NSLog(@"parameters    =========== %@",parameters);
+        NSString *url = @"http://192.168.61.85:8080/XuYuanProject/orderAppend";
+
+        [[AppAPIClient sharedClient] POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+                NSLog(@"success !!");
+                [self saveData];
+            }else {
+                NSLog(@"error !");
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"errorA = %@",error.description);
+        }];
+        
         NSLog(@"在这里存数据");
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         return ;
     }]];
 
@@ -160,7 +304,31 @@
 
 
 }
-
+- (void) saveData {
+    //称呼
+    NSString *cell = _CellTF.text;
+    //年龄
+    NSString *age = _AgeTF.text;
+    //手机号
+    NSString *phoneNum = _PhoneNum.text;
+    //性别
+    NSString *grender = _grenderTF.text;
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/userModification";
+    
+      //获取当前用户ID
+      NSString *userId = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+       NSLog(@"userId === %@",userId);
+       //POST请求数据
+       NSDictionary *pararmeters = @{@"userid":userId,@"cell":cell,@"age":age,@"mobile":phoneNum,@"sex":grender};
+    NSLog(@"pararmeters===== %@",pararmeters);
+       [[AppAPIClient sharedClient]POST:url parameters:pararmeters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+           if ([responseObject[@"resultFlag"]integerValue] ==8001) {
+               NSLog(@"responseObject  =========%@",responseObject);
+           }
+       }failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           NSLog(@"error = %@",error.description);
+       }];
+}
 
 - (IBAction)AgreementFileAction:(UIButton *)sender forEvent:(UIEvent *)event {
   
@@ -182,25 +350,23 @@
         flag = YES;
     }
 
-
 }
-- (IBAction)GreederChooseAction:(UIButton *)sender forEvent:(UIEvent *)event {
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return _arr.count;
+}
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component __TVOS_PROHIBITED {
+    return _arr[row];
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([self.view endEditing:NO]) {
+        NSInteger row = [_grenderView selectedRowInComponent:0];
+        _grenderTF.text = [_arr objectAtIndex:row];
+    }
     
-    [sender addTarget:self action:@selector(createPickerView) forControlEvents:UIControlEventTouchUpInside];
-
 }
--(void)createPickerView {
-    NSArray *array = @[@[@"男", @"女"]];
-    SimplePickerView *pickerView = [[SimplePickerView alloc] initWithDataArray:array];
-    [pickerView didFinishSelected:^(NSArray *selected) {
-        if (selected) {
-            NSLog(@"selected = %@",selected[0]);
-            NSString *select = selected[0];
-            NSString *Str = [NSString stringWithFormat:@"%@",select];
-            [_GenderBut setTitle:Str forState:UIControlStateNormal];
-        }
-    }];
-}
-
 
 @end

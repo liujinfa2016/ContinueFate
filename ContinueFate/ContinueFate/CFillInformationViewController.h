@@ -11,7 +11,10 @@
 @interface CFillInformationViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *CellTF;//称呼
 @property (weak, nonatomic) IBOutlet UILabel *LimitWN;//限制字数
-@property (weak, nonatomic) IBOutlet UIButton *GenderBut;//性别
+
+@property (weak, nonatomic) IBOutlet UITextField *ordertimeTF;//性别
+//预约时间
+@property (weak, nonatomic) IBOutlet UITextField *grenderTF;
 
 //年龄
 @property (weak, nonatomic) IBOutlet UITextField *AgeTF;
@@ -28,8 +31,9 @@
 //点击同意协议（打勾/去勾）
 - (IBAction)AgreenmentAction:(UIButton *)sender forEvent:(UIEvent *)event;
 //选择性别（点击弹出PickerView）
-- (IBAction)GreederChooseAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
 //接收传值 （传值入口）
 @property (strong ,nonatomic)NSDictionary *expertsM;
 @property (strong ,nonatomic)NSDictionary * objectForShow;
+@property (strong ,nonatomic)NSDictionary * getOrderState;
 @end
