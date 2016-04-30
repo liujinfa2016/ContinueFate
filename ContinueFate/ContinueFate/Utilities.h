@@ -62,6 +62,12 @@
  *带有选择按钮的提示框
  */
 + (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * action))action;
+
+/**
+ *带有选择按钮的提示框/执行取消操作
+ */
++ (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * action))action flaseAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))flaseAction;
+
 /**
  *只有确定的提示框
  */

@@ -58,10 +58,18 @@
     [vc presentViewController:alertView animated:YES completion:nil];
 }
 
-+ (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action{
++ (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action {
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title == nil ? @"提示" : title message:msg == nil ? @"操作失败" : msg preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *trueAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:action];
     UIAlertAction *falseAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    [alertView addAction:falseAction];
+    [alertView addAction:trueAction];
+    [vc presentViewController:alertView animated:YES completion:nil];
+}
++ (void)popUpAlertViewWithMsg:(NSString *)msg andTitle:(NSString *)title onView:(UIViewController *)vc tureAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))action flaseAction:(void(^ __nullable)(UIAlertAction * _Nonnull action))flaseAction{
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title == nil ? @"提示" : title message:msg == nil ? @"操作失败" : msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *trueAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:action];
+    UIAlertAction *falseAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:flaseAction];
     [alertView addAction:falseAction];
     [alertView addAction:trueAction];
     [vc presentViewController:alertView animated:YES completion:nil];

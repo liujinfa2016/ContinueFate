@@ -166,15 +166,16 @@
 //    [self :subView animated:YES];
     NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
     //提示框
-    if (userid == nil) {
+    if (userid == nil && userid.length == 0) {
         
         UIViewController *tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
        
         [self presentViewController:tabVc animated:YES completion:nil];
+        
     }else{
         
         [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
-        
+      
     }
     
  }
