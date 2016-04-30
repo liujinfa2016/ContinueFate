@@ -108,34 +108,53 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:
-            if (userid == nil) {
-                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
-            }else{
-                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];}
+            if ([Utilities loginState]) {
+                [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
+                    UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+                    [self presentViewController:loginVc animated:YES completion:nil];
+                }];
+            } else {
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            }
             break;
-        case 1:if (userid == nil) {
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
-        }else{
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];}
+         case 1:
+            if ([Utilities loginState]) {
+                [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
+                    UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+                    [self presentViewController:loginVc animated:YES completion:nil];
+                }];
+            } else {
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            }
             break;
-        case 2:if (userid == nil) {
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
-        }else{
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"] animated:YES completion:nil];}
+        case 2:
+            if ([Utilities loginState]) {
+                [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
+                    UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+                    [self presentViewController:loginVc animated:YES completion:nil];
+                }];
+            } else {
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Collection"] animated:YES completion:nil];
+            }
             break;
-        case 3:if (userid == nil) {
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"] animated:YES completion:nil];
-        }else{
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"] animated:YES completion:nil];}
+        case 3:
+            if ([Utilities loginState]) {
+                [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
+                    UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+                    [self presentViewController:loginVc animated:YES completion:nil];
+                }];
+            } else {
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Contribute"] animated:YES completion:nil];
+            }
             break;
-        case 4:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"] animated:YES completion:nil];
+        case 4:
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"] animated:YES completion:nil];
             break;
-        case 5:[self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+        case 5:
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
             break;
         default:
             break;
@@ -146,17 +165,17 @@
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 //    [self :subView animated:YES];
     NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
-    NSLog(@"id = %@",userid);
     //提示框
-    if (userid == Nil) {
+    if (userid == nil && userid.length == 0) {
         
-        UIViewController*tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+        UIViewController *tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
        
         [self presentViewController:tabVc animated:YES completion:nil];
+        
     }else{
         
         [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
-        
+      
     }
     
  }

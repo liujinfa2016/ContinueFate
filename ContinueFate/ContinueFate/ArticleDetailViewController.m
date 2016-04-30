@@ -7,6 +7,7 @@
 //
 
 #import "ArticleDetailViewController.h"
+#import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDAutoLayout/UIView+SDAutoLayout.h>
 
@@ -25,10 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    userid = @"145987302766822";
     // Do any additional setup after loading the view.
     
     self.title = @"文章详情";
+    NSDictionary *setColor = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = setColor;
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     
     /*****************处理文字***************************/
@@ -39,86 +42,80 @@
     NSRange rangeFirst = [_subStance rangeOfString:@"&"];
     NSRange rangeLast = [sub rangeOfString:@"&&"];
     
-    
-    UILabel *text1 = [[UILabel alloc]init];
-    text1.text = [[[NSString stringWithFormat:@"        %@",[_subStance substringToIndex:rangeFirst.location]]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    NSString *str1 = [[[NSString stringWithFormat:@"        %@",[_subStance substringToIndex:rangeFirst.location]]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    UITextView *text1 = [[UITextView alloc]initWithFrame:CGRectMake(5, 110, UI_SCREEN_W-10, 20)];
+    text1.text = str1;
     text1.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    text1.scrollEnabled = NO;    text1.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    text1.height = [Utilities getTextHeight:str1 textFont:text1.font.copy toViewRange:20];
+    text1.editable = NO;
     text1.textColor = [UIColor darkGrayColor];
     
-    UIImageView *image = [[UIImageView alloc]init];
+    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(20, 140+text1.height, UI_SCREEN_W-40, (UI_SCREEN_W-40)*0.75)];
+    image.contentMode = UIViewContentModeScaleToFill;
     [image sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"01"]];
     
-    UILabel *text2 = [[UILabel alloc]init];
-    text2.text = [[[[sub substringFromIndex:rangeLast.location]stringByReplacingOccurrencesOfString:@"&&" withString:@"        "]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    NSString *str2 = [[[[sub substringFromIndex:rangeLast.location]stringByReplacingOccurrencesOfString:@"&&" withString:@"        "]stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r        "] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    UITextView *text2 = [[UITextView alloc]initWithFrame:CGRectMake(5, 110+(UI_SCREEN_W-40)*0.75+text1.height, UI_SCREEN_W-10, 20)];
+    text2.text = str2;
     text2.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    text2.scrollEnabled = NO;
+    text2.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    text2.height = [Utilities getTextHeight:str2 textFont:text2.font.copy toViewRange:20];
+    text2.editable = NO;
     text2.textColor = [UIColor darkGrayColor];
     /*************************************************/
-    UILabel *title = [[UILabel alloc]init];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, UI_SCREEN_W, 30)];
     title.text = _titleName;
     title.font = [UIFont fontWithName:@"Helvetica" size:20];
+    title.textColor = [UIColor darkGrayColor];
     
-    UILabel *time = [[UILabel alloc]init];
+    UILabel *time = [[UILabel alloc]initWithFrame:CGRectMake(10, 40, UI_SCREEN_W/2, 30)];
     time.text = [NSString stringWithFormat:@"发表于%@",[_time substringToIndex:10]];
-    UILabel *hits = [[UILabel alloc]init];
-    hits.text = _hits;
-    UILabel *writer = [[UILabel alloc]init];
-    writer.text = _writer;
     time.font = [UIFont fontWithName:@"Arial" size:13];
+    time.textColor = [UIColor grayColor];
+    
+    UILabel *hits = [[UILabel alloc]initWithFrame:CGRectMake(UI_SCREEN_W/2, 40, UI_SCREEN_W/2-15, 30)];
+    hits.textAlignment = NSTextAlignmentRight;
+    hits.text = _hits;
     hits.font = [UIFont fontWithName:@"Arial" size:13];
-    writer.font = [UIFont fontWithName:@"Arial" size:13];
+    hits.textColor = [UIColor grayColor];
     
-    UIView *fristView = [UIView new];
-    [_scrollView addSubview:fristView];
-    [fristView sd_addSubviews:@[title,time,writer,hits,text1,image,text2]];
+    UILabel *writer = [[UILabel alloc]initWithFrame:CGRectMake(10, 75, UI_SCREEN_W/2, 30)];
+    writer.text = _writer;
+    writer.font = [UIFont fontWithName:@"Arial" size:15];
+    writer.textColor = [UIColor grayColor];
     
-    [_scrollView setupAutoContentSizeWithBottomView:fristView bottomMargin:10];
     
-    title.sd_layout
-    .rightSpaceToView(fristView,0)
-    .topSpaceToView(fristView,10)
-    .autoHeightRatio(0);
+    [_scrollView setupAutoContentSizeWithBottomView:text2 bottomMargin:5];
     
-    time.sd_layout
-    .leftSpaceToView(fristView,0)
-    .topSpaceToView(title,10).widthIs(250)
-    .autoHeightRatio(0);
-    
-    hits.sd_layout
-    .rightSpaceToView(fristView,10)
-    .topSpaceToView(title,10).widthIs(80)
-    .autoHeightRatio(0);
-    
-    writer.sd_layout
-    .leftSpaceToView(fristView,0)
-    .topSpaceToView(time,10).widthIs(80)
-    .autoHeightRatio(0);
-    
-    text1.sd_layout
-    .rightSpaceToView(fristView,10)
-    .leftSpaceToView(fristView,10)
-    .topSpaceToView(writer,10)
-    .autoHeightRatio(0);
-    
-    image.sd_layout.topSpaceToView(text1,10).rightSpaceToView(fristView,20).leftSpaceToView(fristView,20).autoHeightRatio(0.75);
-    
-    text2.sd_layout
-    .rightSpaceToView(fristView,10)
-    .leftSpaceToView(fristView,10)
-    .topSpaceToView(image,10)
-    .autoHeightRatio(0);
-    
-    fristView.sd_layout
-    .leftSpaceToView(_scrollView,10)
-    .rightSpaceToView(_scrollView,10)
-    .topSpaceToView(_scrollView,10);
-    [fristView setupAutoHeightWithBottomView:text1 bottomMargin:10];
-    [fristView setupAutoHeightWithBottomView:text2 bottomMargin:10];
+    [_scrollView addSubview:title];
+    [_scrollView addSubview:time];
+    [_scrollView addSubview:hits];
+    [_scrollView addSubview:writer];
+    [_scrollView addSubview:text1];
+    [_scrollView addSubview:image];
+    [_scrollView addSubview:text2];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
+    if ([Utilities loginState]) {
+        userid = @"";
+        [self exists];
+    }else {
+        userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+        [self exists];
+    }
+    
     [self exists];
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"EnableGesture" object:nil];
 }
 
 - (void)setupAutoWidthLabel
@@ -141,15 +138,27 @@
 
 //点击收藏按钮后触发的方法
 - (void) judegFlag {
-    if (flag) {
-        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
-            [self delCollection];
+    if ([Utilities loginState]) {
+        [Utilities popUpAlertViewWithMsg:@"当前未登录,是否前往登录?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
+            ViewController *home = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            
+            [self presentViewController:home animated:YES completion:nil];
         }];
-        
     }else {
-        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction * _Nonnull action) {
-            [self addCollection];
+         [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    if (flag) {
+        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
+            [self delCollection];
+        } flaseAction:^(UIAlertAction * _Nonnull action) {
+            [MBProgressHUD hideHUDForView:self.view];
         }];
+    }else {
+        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
+            [self delCollection];
+        } flaseAction:^(UIAlertAction * _Nonnull action) {
+            [MBProgressHUD hideHUDForView:self.view];
+        }];
+    }
     }
 }
 
@@ -163,16 +172,18 @@
     
     [[AppAPIClient sharedClient] POST:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSLog(@"add = %ld",[responseObject[@"resultFlag"]integerValue]);
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil onView:self];
+            [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
             flag = YES;
             [self exists];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:nil onView:self];
+            [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
             flag = NO;
         }
     } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
         NSLog(@"error = %@",error.description);
+        [MBProgressHUD hideHUDForView:self.view];
     }];
     
 }
@@ -186,22 +197,24 @@
     
     [[AppAPIClient sharedClient] POST:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSLog(@"delete = %ld",[responseObject[@"resultFlag"]integerValue]);
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            [Utilities popUpAlertViewWithMsg:@"取消成功" andTitle:nil onView:self];
+            [MBProgressHUD showSuccess:@"取消成功" toView:self.view];
             flag = NO;
             [self exists];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:nil onView:self];
+            [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
             flag = YES;
         }
     } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
         NSLog(@"error = %@",error.description);
+        [MBProgressHUD hideHUDForView:self.view];
     }];
     
 }
 //网络请求 判断是否已收藏当前文章
 - (void) exists {
-    NSDictionary *parameter = @{@"articleid":_articleId};
+    NSDictionary *parameter = @{@"articleid":_articleId,@"userid":userid};
     NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/existsCollection";
     
     NSLog(@"asdssadsadsadsadsa = %@",url);

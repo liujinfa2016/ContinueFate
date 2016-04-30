@@ -10,12 +10,13 @@
 #import "DetailTableViewCell.h"
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
-#import <UIImageView+WebCache.h>
 #import "CEDetailsViewController.h"
+#import "QAnswerViewController.h"
 @interface QuestViewController (){
     NSInteger page;
     NSInteger perpage;
     NSInteger total;
+    NSInteger type;
     
 }
 @property (strong,nonatomic)NSMutableArray *experts;
@@ -38,6 +39,8 @@
     perpage = 10;
     [self requestData];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -64,9 +67,11 @@
 
 - (void)requestData{
     NSDictionary *parameters = @{@"questionid":_detail.Id,@"usertype":@"usertype"};
+    [MBProgressHUD showMessage:@"正在刷新" toView:self.view];
     [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/answerList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSLog(@"%@",responseObject);
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *dict = responseObject[@"result"];
             NSArray *data = dict[@"models"];
@@ -118,7 +123,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    ;
 }
 
 
@@ -168,7 +172,7 @@
     DetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
     CGSize substanceSize = [question.time boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.substance.font} context:nil].size;
-    return cell.substance.frame.origin.y + substanceSize.height + 30;
+    return cell.substance.frame.origin.y + substanceSize.height + 15;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -185,10 +189,7 @@
     NSDictionary *dic = _objectsForShow[indexPath.section];
     //    NSLog(@"question = %@",obj);
     NSArray *arr = dic[@"usertype"];
-<<<<<<< HEAD
     
-=======
->>>>>>> 4c23c6e39faf26a84e8fe5ce3a97896d53c9bddb
     QuestionObject *obj = arr[indexPath.row];
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
@@ -207,5 +208,10 @@
     
     self.navigationController.tabBarController.selectedIndex = 3;
     
+}
+
+- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+    QAnswerViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"answer"];
+    [self.navigationController pushViewController:tabVC animated:YES];
 }
 @end

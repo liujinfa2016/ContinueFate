@@ -1,17 +1,16 @@
 //
-//  SlidingAppointmentTableViewCell.m
+//  AMASucCellTableViewCell.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/23.
+//  Created by jdld on 16/4/29.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "SlidingAppointmentTableViewCell.h"
+#import "AMASucCellTableViewCell.h"
 
-@implementation SlidingAppointmentTableViewCell
+@implementation AMASucCellTableViewCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
     // Initialization code
 }
 
@@ -21,11 +20,4 @@
     // Configure the view for the selected state
 }
 
-
-
-
-
-- (IBAction)OrderAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    
-}
 @end
