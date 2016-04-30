@@ -17,8 +17,6 @@
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
-    NSString *type;
-    NSString *subtype;
 }
 @property (strong ,nonatomic)NSMutableArray *objArr;
 @property (strong ,nonatomic)NSDictionary *parameters;
@@ -32,9 +30,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     page = 1;
-    perPage = 6;
-    type = @"";
-    subtype = @"";
+    perPage = 4;
     _objArr = [NSMutableArray new];
     [self refreshDownAndUp];
     
@@ -42,7 +38,7 @@
     
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     //设置分段选择栏内容
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"全部",@"谈恋爱", @"挽回爱情", @"挽救婚姻", @"星座爱情", @"婚恋讲座", @"实践总结", @"客户心声"]];
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"谈恋爱", @"挽回爱情", @"挽救婚姻", @"星座爱情", @"婚恋讲座", @"实践总结", @"客户心声"]];
     segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
     //设置分段选择的位置
     segmentedControl.frame = CGRectMake(0, 0, viewWidth, 40);
@@ -70,7 +66,6 @@
     }];
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
-    [MBProgressHUD showMessage:@"数据加载" toView:self.view];
     [self requestData];
     
 }
@@ -83,53 +78,37 @@
 //数据请求 设置入参
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
     NSLog(@"Selected index %ld (via UIControlEventValueChanged)", (long)segmentedControl.selectedSegmentIndex);
-    [MBProgressHUD showMessage:@"数据加载" toView:self.view];
     switch (segmentedControl.selectedSegmentIndex) {
         case 0:
-            type = @"";
-            subtype = @"";
+            _parameters = @{@"type":@"",@"subtype":@"",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 1:
-            page = 1;
-            type = @"谈恋爱";
-            subtype = @"如何谈恋爱";
+            _parameters = @{@"type":@"谈恋爱",@"subtype":@"如何谈恋爱",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 2:
-            page = 1;
-            type = @"挽回爱情";
-            subtype = @"挽回爱情的方法";
+            _parameters = @{@"type":@"挽回爱情",@"subtype":@"挽回爱情的方法",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 3:
-            page = 1;
-            type = @"挽救婚姻";
-            subtype = @"挽救婚姻的方法";
+            _parameters = @{@"type":@"挽救婚姻",@"subtype":@"挽救婚姻的方法",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 4:
-            page = 1;
-            type = @"星座爱情";
-            subtype = @"星座爱情";
+            _parameters = @{@"type":@"星座爱情",@"subtype":@"星座爱情",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 5:
-            page = 1;
-            type = @"婚恋讲座";
-            subtype = @"婚恋讲座";
+            _parameters = @{@"type":@"婚恋讲座",@"subtype":@"婚恋讲座",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 6:
-            page = 1;
-            type = @"实践总结";
-            subtype = @"实践总结";
+            _parameters = @{@"type":@"实践总结",@"subtype":@"实践总结",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
         case 7:
-            page = 1;
-            type = @"客户心声";
-            subtype = @"客户心声";
+            _parameters = @{@"type":@"客户心声",@"subtype":@"客户心声",@"page":@(page),@"perPage":@(perPage)};
             [self requestData];
             break;
             
@@ -150,13 +129,14 @@
  */
 //数据请求
 - (void)requestData {
-    _parameters = @{@"type":type,@"subtype":subtype,@"page":@(page),@"perPage":@(perPage)};
+    
     NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/showArticle";
     //  UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    
     [[AppAPIClient sharedClient] GET: url parameters:_parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+        //[avi stopAnimating];
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
-        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSArray *dataArr = result[@"models"];
@@ -166,13 +146,14 @@
                 _objArr = nil;
                 _objArr = [NSMutableArray new];
                 
-                perPage = 6;
+                perPage = 4;
             }
             for  (NSDictionary *art in dataArr) {
                 ArticleObject *artObj = [[ArticleObject alloc]initWithDictionary:art];
                 
                 [_objArr addObject:artObj];
                 
+                NSLog(@"_objectForShow = %@",_objArr);
             }
              totalPage = [pageDict[@"totalPage"]integerValue];
             
@@ -190,19 +171,17 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // NSLog(@"_objectForShow = %lu",(unsigned long)_objectForShow.count);
     return _objArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AMACellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
      ArticleObject *artObj = _objArr[indexPath.row];
-
+    NSLog(@"hwwhdiufvhdw = %@",artObj);
     NSString * titlename = artObj.titlename;
     NSString * substance = artObj.substance;
     cell.titleName.text = titlename;
     cell.substance.text = substance;
-    cell.dateLab.attributedText = [Utilities getIntervalAttrStr:[artObj.edittime substringToIndex:19]];
-    cell.readnumLab.text = [NSString stringWithFormat:@"阅读%d次",artObj.hits];
-    cell.readnumLab.textColor = [UIColor grayColor];
     
     NSDictionary *dic = [[Utilities getImageURL:artObj.substance]copy];
     NSString *imagrURL = dic[@"imageURL"];
@@ -238,6 +217,7 @@
         
         if (page < totalPage) {
             page ++;
+            
             [self requestData];
         } else {
             [_tableView.mj_footer setState:MJRefreshStateNoMoreData];

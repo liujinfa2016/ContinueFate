@@ -18,7 +18,6 @@
 - (IBAction)imageAction:(UIButton *)sender forEvent:(UIEvent *)event;//图片按钮
 - (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event;//确定修改
 - (IBAction)modifyEiet:(UIBarButtonItem *)sender;//修改
-- (IBAction)ReturnAction:(UIBarButtonItem *)sender;//返回
 
 
 

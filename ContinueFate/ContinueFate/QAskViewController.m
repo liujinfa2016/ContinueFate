@@ -57,6 +57,7 @@
 }
 
 
+
 - (void)addQuestion{
     NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
     NSLog(@"userid = %@",userid);
@@ -81,13 +82,16 @@
     
 }
 
+
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveAction:(UIBarButtonItem *)sender {
+
     
     [self addQuestion];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -12,8 +12,9 @@
 #import "QuestionObject.h"
 #import "QTranfViewController.h"
 #import "FSDropDownMenu.h"
+#import "Colours.h"
+#import <UIImageView+WebCache.h>
 #import "ViewController.h"
-
 @interface QuestionViewController (){
     NSInteger page;
     NSInteger perPage;
@@ -35,6 +36,7 @@
     page = 1;
     perPage = 5;
     [self requestData];
+
     [self refreshDownAndUp];
     [self screening];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
@@ -42,6 +44,7 @@
 }
 
 - (void)screening{
+
     UIButton *activityBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,30, 30)];
     activityBtn.titleLabel.font = [UIFont systemFontOfSize:B_Font];
     [activityBtn setTitle:@"筛选" forState: UIControlStateNormal];
@@ -55,19 +58,7 @@
     menu.dataSource = self;
     menu.delegate = self;
     [self.view addSubview:menu];
-    
 }
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"EnableGesture" object:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
-}
-
 
 -(void)btnPressed:(id)sender{
     FSDropDownMenu *menu = (FSDropDownMenu*)[self.view viewWithTag:1001];
@@ -89,7 +80,10 @@
 }
 
 - (void)menu:(FSDropDownMenu *)menu tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //  [menu.leftTableView reloadData];
+
+    [menu.leftTableView reloadData];
+    [self requestData];
+
     [_tableView reloadData];
 }
 
@@ -116,14 +110,16 @@
 
 - (void)requestData{
     
+
     NSDictionary *parameters = @{@"type":@"",@"page":@(page),@"perPage":@(perPage)};
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+
     self.navigationController.view.userInteractionEnabled = NO;
     [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
         self.navigationController.view.userInteractionEnabled = YES;
-        [MBProgressHUD hideHUDForView:self.view];
+
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *dict = responseObject[@"result"];
@@ -145,8 +141,8 @@
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+      
         NSLog(@"%@",error.description);
-        [MBProgressHUD hideHUDForView:self.view];
     }];
 }
 
@@ -218,10 +214,11 @@
     QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
     CGSize timeSize = [question.time boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.time.font} context:nil].size;
-    return cell.time.frame.origin.y + timeSize.height;
+    return cell.time.frame.origin.y + timeSize.height + 16;
 }
 
 - (IBAction)askAction:(UIBarButtonItem *)sender {
+
     if ([Utilities loginState]){
         NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
         
@@ -236,6 +233,8 @@
         [self presentViewController:alertView animated:YES completion:nil];
     }
     QTranfViewController *tabVC =  [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"tranf"];
+
     [self presentViewController:tabVC animated:YES completion:nil];
 }
+
 @end

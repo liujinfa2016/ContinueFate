@@ -36,7 +36,6 @@
     
     [self cycleScrollBegin];
     [self refreshDownAndUp];
-    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     [self netWorkRequest];
 
     
@@ -158,7 +157,6 @@
     [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
-        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *result = responseObject[@"result"];
             NSArray *dataArr = result[@"models"];
