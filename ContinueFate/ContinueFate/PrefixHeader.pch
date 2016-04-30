@@ -18,6 +18,4 @@
 #import "RequestAPI.h"
 #import <MJRefresh.h>
 #import "Constants.h"
-#import "MBProgressHUD+NJ.h"
-#import "Colours.h"
 #endif /* PrefixHeader_pch */
