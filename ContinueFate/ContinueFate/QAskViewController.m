@@ -55,11 +55,38 @@
     
 }
 
+- (void)addQuestion{
+    NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSLog(@"userid = %@",userid);
+    NSString *type = @"love";
+    NSString *titlename = _titleView.text;
+    NSString *substance = _substanceView.text;
+    NSLog(@"%@",titlename);
+    NSLog(@"%@",substance);
+       NSDictionary *parameters = @{@"titlename":titlename,@"substance":substance,@"type":type,@"userid":userid};
+    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionAdd" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+            NSNotification *note = [NSNotification notificationWithName:@"RefreshHome" object:nil];
+            [[NSNotificationCenter defaultCenter]performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+
+        }else{
+            NSLog(@"失败");
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error.description);
+    }];
+
+}
+
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveAction:(UIBarButtonItem *)sender {
+    [self addQuestion];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

@@ -19,5 +19,6 @@
 #import <MJRefresh.h>
 #import "Constants.h"
 #import "MBProgressHUD+NJ.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "Colours.h"
 #endif /* PrefixHeader_pch */
