@@ -219,6 +219,7 @@
     CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
     CGSize timeSize = [question.time boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.time.font} context:nil].size;
     return cell.time.frame.origin.y + timeSize.height;
+ 
 }
 
 - (IBAction)askAction:(UIBarButtonItem *)sender {
