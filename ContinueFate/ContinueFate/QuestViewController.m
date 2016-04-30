@@ -36,7 +36,7 @@
     _customer = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
-    perpage = 5;
+    perpage = 10;
     [self requestData];
 }
 
@@ -189,7 +189,7 @@
     NSDictionary *dic = _objectsForShow[indexPath.section];
     //    NSLog(@"question = %@",obj);
     NSArray *arr = dic[@"usertype"];
-   
+    
     QuestionObject *obj = arr[indexPath.row];
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];

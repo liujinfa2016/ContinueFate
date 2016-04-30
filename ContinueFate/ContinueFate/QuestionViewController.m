@@ -17,6 +17,7 @@
 @interface QuestionViewController (){
     NSInteger page;
     NSInteger perPage;
+    NSInteger totalPage;
     
 }
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
@@ -32,9 +33,15 @@
     _objectsForShow = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
-    perPage = 10;
+    perPage = 5;
     [self requestData];
+    [self refreshDownAndUp];
+    [self screening];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
+    
+}
 
+- (void)screening{
     UIButton *activityBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,30, 30)];
     activityBtn.titleLabel.font = [UIFont systemFontOfSize:B_Font];
     [activityBtn setTitle:@"筛选" forState: UIControlStateNormal];
@@ -48,8 +55,6 @@
     menu.dataSource = self;
     menu.delegate = self;
     [self.view addSubview:menu];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
     
 }
 
@@ -84,7 +89,7 @@
 }
 
 - (void)menu:(FSDropDownMenu *)menu tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [menu.leftTableView reloadData];
+    //  [menu.leftTableView reloadData];
     [_tableView reloadData];
 }
 
@@ -111,27 +116,30 @@
 
 - (void)requestData{
     
-    NSDictionary *parameters = @{@"type":@"",@"page":@(page),@"perPaeg":@(perPage)};
+    NSDictionary *parameters = @{@"type":@"",@"page":@(page),@"perPage":@(perPage)};
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.userInteractionEnabled = NO;
     [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [_tableView.mj_header endRefreshing];
+        [_tableView.mj_footer endRefreshing];
         self.navigationController.view.userInteractionEnabled = YES;
         [MBProgressHUD hideHUDForView:self.view];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSDictionary *dict = responseObject[@"result"];
             NSArray *data = dict[@"models"];
+            NSDictionary *pageDict = dict[@"paginginfo"];
+            totalPage = [pageDict[@"totalPage"]integerValue];
             if (page == 1) {
                 _objectsForShow = nil;
                 _objectsForShow = [NSMutableArray new];
-                perPage = 10;
-                
+                perPage = 5;
             }
             for(NSDictionary *question in data){
                 QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                 [_objectsForShow addObject:quest];
             }
-            NSLog(@"obj = %@",_objectsForShow);
+            
             [_tableView reloadData];
         }else{
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
@@ -140,6 +148,26 @@
         NSLog(@"%@",error.description);
         [MBProgressHUD hideHUDForView:self.view];
     }];
+}
+
+- (void)refreshDownAndUp {
+    
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page = 1;
+        [self requestData];
+    }];
+    
+    _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+        if (page < totalPage) {
+            page ++;
+            
+            [self requestData];
+        } else {
+            [_tableView.mj_footer setState:MJRefreshStateNoMoreData];
+        }
+    }];
+    
 }
 
 
@@ -166,7 +194,7 @@
     }
     
     QuestionObject *obj = _objectsForShow[indexPath.row];
-    NSLog(@"question = %@",obj);
+    
     NSString *titlename = obj.titlename;
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
@@ -194,18 +222,18 @@
 }
 
 - (IBAction)askAction:(UIBarButtonItem *)sender {
-    if ([[StorageMgr singletonStorageMgr]objectForKey:@"UserID"] == nil) {
-    NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
-    
-    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
-        [self presentViewController:alert animated:YES completion:nil];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-     [alertView addAction:confirmAction];
-     [alertView addAction:cancelAction];
-    [self presentViewController:alertView animated:YES completion:nil];
+    if ([Utilities loginState]){
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertView addAction:confirmAction];
+        [alertView addAction:cancelAction];
+        [self presentViewController:alertView animated:YES completion:nil];
     }
     QTranfViewController *tabVC =  [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"tranf"];
     [self presentViewController:tabVC animated:YES completion:nil];
