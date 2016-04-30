@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingAppointmentTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *ExpertsnameLab;
-@property (weak, nonatomic) IBOutlet UIImageView *cardIM;
+@property (weak, nonatomic) IBOutlet UILabel *ExpertsnameLab;//专家名称
+@property (weak, nonatomic) IBOutlet UIImageView *cardIM;//
 @property (weak, nonatomic) IBOutlet UILabel *CardLab;
 @property (weak, nonatomic) IBOutlet UILabel *MoneyLab;
 - (IBAction)OrderAction:(UIButton *)sender forEvent:(UIEvent *)event;

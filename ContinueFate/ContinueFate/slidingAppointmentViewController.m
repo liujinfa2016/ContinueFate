@@ -7,6 +7,7 @@
 //
 
 #import "slidingAppointmentViewController.h"
+#import "SlidingAppointmentTableViewCell.h"
 
 @interface slidingAppointmentViewController ()
 
@@ -18,12 +19,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self appointmentview];
+    _segment.selectedSegmentIndex = 0;
+    [self Request];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)appointmentview{
    
 
@@ -37,9 +42,39 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)Request{
+    NSString *userid =[[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+    NSDictionary *dic =@{@"userid":userid,@"typeid":@1};
+    [RequestAPI postURL:@"/getOrderList" withParameters:dic success:^(id responseObject) {
+        NSLog(@"000000000000 = %@",responseObject);
+        NSLog(@"111112====%@",userid);
+    } failure:^(NSError *error) {
+        NSLog(@"111111====%@",error.description);
+         NSLog(@"111112====%@",userid);
+    }];
 
+}
 
 - (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event {
+   
+    switch (_segment.selectedSegmentIndex) {
+        case 0:
+            NSLog(@"00000");
+         
+            break;
+        case 1:
+            NSLog(@"11111");
+            break;
+        case 2:
+            NSLog(@"22222");
+            break;
+        case 3:
+            NSLog(@"33333");
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

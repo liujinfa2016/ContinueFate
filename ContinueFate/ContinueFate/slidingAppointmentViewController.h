@@ -12,5 +12,6 @@
 - (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)ReturnAction:(UIBarButtonItem *)sender;//返回
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;//segment的设置
 
 @end
