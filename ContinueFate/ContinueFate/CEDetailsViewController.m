@@ -9,7 +9,7 @@
 #import "CEDetailsViewController.h"
 #import "CAConsultingViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "ViewController.h"
 @interface CEDetailsViewController () {
     NSInteger page;
     NSInteger perPage;
@@ -83,9 +83,22 @@
 */
 
 - (IBAction)ConsultingAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    if ([Utilities loginState]){
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertView addAction:confirmAction];
+        [alertView addAction:cancelAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }
     CAConsultingViewController *data = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"CCarda"];
     NSDictionary *dict = _dict;
     data.expertsM = dict;
-    [self.navigationController pushViewController:data animated:YES];
-}
+    [self.navigationController pushViewController:data animated:YES];}
 @end

@@ -15,6 +15,7 @@
     NSInteger perPage;
 }
 @property (strong ,nonatomic)NSMutableArray *objectForShow;
+@property (strong ,nonatomic)NSMutableArray *getOrderState;
 @end
 
 @implementation CAConsultingViewController
@@ -26,6 +27,7 @@
     _tableView.delegate = self;
     _tableView.tableFooterView = [[UIView alloc]init];
     _objectForShow = [NSMutableArray new];
+    _getOrderState = [NSMutableArray new];
     // Do any additional setup after loading the view.
    
     _name.text = _expertsM[@"name"];
@@ -34,6 +36,7 @@
     NSURL *URL = [NSURL URLWithString:_expertsM[@"headimage"]];
     [_image sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"文字信息咨询月卡"]];
     [self requestData];
+    [self getOrderStateList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,6 +79,35 @@
     }];
 }
 
+- (void)getOrderStateList {
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/getOrderStateList";
+    
+    [[AppAPIClient sharedClient] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+            NSLog(@"responseObject == %@",responseObject);
+            
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *models = result[@"models"];
+            if (page == 1){
+                _getOrderState = nil;
+                _getOrderState = [NSMutableArray new];
+                perPage = 4;
+            }
+            //遍历models的内容
+            for (NSDictionary *dic in models) {
+                [_getOrderState addObject:dic];
+                NSLog(@"dic ===%@",dic);
+            }
+            NSLog(@"_getOrderState ======= %@",_getOrderState);
+            
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"_objectForShow == %lu",(unsigned long)_objectForShow.count);
     return _objectForShow.count;
@@ -98,8 +130,10 @@
     CFillInformationViewController *date = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Information"];
     //传值入口
    NSDictionary *dictB = _objectForShow[indexPath.row];
+    NSDictionary *dictC = _getOrderState[indexPath.row];
     date.expertsM = _expertsM;
     date.objectForShow = dictB;
+    date.getOrderState = dictC;
     [self.navigationController pushViewController:date animated:YES];
 }
 
