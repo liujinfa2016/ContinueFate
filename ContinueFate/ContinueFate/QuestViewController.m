@@ -11,7 +11,7 @@
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
 #import "CEDetailsViewController.h"
-#import "QAnswerViewController.h"
+
 @interface QuestViewController (){
     NSInteger page;
     NSInteger perpage;
@@ -211,7 +211,6 @@
 }
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
-    QAnswerViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"answer"];
-    [self.navigationController pushViewController:tabVC animated:YES];
+   
 }
 @end
