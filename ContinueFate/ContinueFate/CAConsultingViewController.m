@@ -49,7 +49,7 @@
     //入参
     NSDictionary *parameters = @{@"expertlvid":_expertsM[@"expertlvId"]};
     // 获取请求地址
-    NSString *url = @"http://192.168.61.249:8080/XuYuanProject/orderTypeList";
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/orderTypeList";
     
    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
     //POST请求数据
@@ -82,8 +82,9 @@
 }
 
 - (void)getOrderStateList {
-
-    [RequestAPI postURL:@"/getOrderStateList" withParameters:nil success:^(id responseObject) {
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/getOrderStateList";
+    
+    [[AppAPIClient sharedClient] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSLog(@"responseObject == %@",responseObject);
             
@@ -99,15 +100,13 @@
                 [_getOrderState addObject:dic];
                 NSLog(@"dic ===%@",dic);
             }
+          
+            
         }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-    } failure:^(NSError *error) {
-        NSLog(@"error = %@",error.description);
-       
-        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-        [MBProgressHUD hideHUDForView:self.view];
-        self.navigationController.view.self.userInteractionEnabled = YES;
     }];
+    
     
 }
 

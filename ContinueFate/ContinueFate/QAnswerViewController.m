@@ -1,18 +1,18 @@
 //
-//  ExpertsJoinViewController.m
+//  QAnswerViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/4/23.
+//  Created by hua on 16/4/29.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "ExpertsJoinViewController.h"
+#import "QAnswerViewController.h"
 
-@interface ExpertsJoinViewController ()
+@interface QAnswerViewController ()
 
 @end
 
-@implementation ExpertsJoinViewController
+@implementation QAnswerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,9 +33,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)Return:(UIBarButtonItem *)sender {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

@@ -66,7 +66,8 @@
     NSString *substance = _substanceView.text;
     
     NSDictionary *parameters = @{@"titlename":titlename,@"substance":substance,@"type":typeChoose,@"userid":userid};
-    [RequestAPI postURL:@"/questionAdd" withParameters:parameters success:^(id responseObject) {
+    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionAdd" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSNotification *note = [NSNotification notificationWithName:@"RefreshHome" object:nil];
@@ -75,9 +76,10 @@
             NSLog(@"失败");
         }
         
-    } failure:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error = %@",error.description);
     }];
+    
 }
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {

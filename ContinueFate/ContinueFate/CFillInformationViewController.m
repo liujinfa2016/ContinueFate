@@ -9,7 +9,6 @@
 #import "CFillInformationViewController.h"
 #import "SimplePickerView.h"
 #import "CAgreementViewController.h"
-#import "slidingAppointmentViewController.h"
 @interface CFillInformationViewController () <UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate> {
     //统计
     NSInteger statistical;
@@ -57,13 +56,9 @@
     UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     // 选取日期完成钮并给他一個 selector
     UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDidEndEditing:)];
-    right.width = 80;
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
-    fixedSpace.width = self.view.frame.size.width - 80;
+    
     // 把按钮加进 UIToolbar
-    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
-    
-    
+    toolBar.items = [NSArray arrayWithObject:right];
     // 以下這行也是重點 (螢光筆畫兩行)
     // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
     _grenderTF.inputAccessoryView = toolBar;
@@ -74,31 +69,33 @@
     // Dispose of any resources that can be recreated.
 }
 - (void) requestData {
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/getPersonal";
+    //获取当前用户ID
     NSString *userId = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
     //POST请求数据
     NSDictionary *pararmeters = @{@"userid":userId};
-    [RequestAPI postURL:@"/getPersonal" withParameters:pararmeters success:^(id responseObject) {
-        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            
-            NSDictionary *result = responseObject[@"result"];
-            NSArray *models = result[@"models"];
-            for (NSDictionary *dict in models) {
-                _CellTF.text = dict[@"nickname"];
-                _grenderTF.text = [NSString stringWithFormat:@"%@",dict[@"sex"]];
-                _PhoneNum.text = dict[@"mobile"];
-                _AgeTF.text = dict[@"birthday"];
-            }
-            
+    [[AppAPIClient sharedClient] POST:url parameters:pararmeters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //请求成功执行以下方法
+       
+        
+    if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+        
+         NSDictionary *result = responseObject[@"result"];
+         NSArray *models = result[@"models"];
+        for (NSDictionary *dict in models) {
+            _CellTF.text = dict[@"nickname"];
+            _grenderTF.text = [NSString stringWithFormat:@"%@",dict[@"sex"]];
+            _PhoneNum.text = dict[@"mobile"];
+            _AgeTF.text = dict[@"birthday"];
+        }
+
         }else {
             NSLog(@"shibai");
         }
-        
+   
         //请求失败执行以下方法
-    } failure:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error = %@",error.description);
-        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-        [MBProgressHUD hideHUDForView:self.view];
-        self.navigationController.view.self.userInteractionEnabled = YES;
     }];
 }
 - (void)creatDate {
@@ -113,16 +110,9 @@
     // 建立 UIToolbar
     UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     // 选取日期完成钮并给他一個 selector
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
-    fixedSpace.width = self.view.frame.size.width - 80;
-
-   
-    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(ordertimeActionDatePick)];
-    
-   // UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(ordertimeActionDatePick)];
-    right.width = 80;
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(ordertimeActionDatePick)];
     // 把按钮加进 UIToolbar
-    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
+    toolBar.items = [NSArray arrayWithObject:right];
     // 以下這行也是重點 (螢光筆畫兩行)
     // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
     _ordertimeTF.inputAccessoryView = toolBar;
@@ -290,34 +280,20 @@
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         NSDictionary *parameters = @{@"userid":userId,@"expertid":_expertsM[@"id"],@"orderTypeid":orderTypeid,@"number":tradeNO,@"ordertime":ordertime,@"orderStateid":orderStateid,@"remark":Describe};
-        
-        //菊花
-        [MBProgressHUD showMessage:@"正在加载" toView:self.view];
-        //导航条不可用
-        self.navigationController.view.self.userInteractionEnabled = NO;
-        [RequestAPI postURL:@"/orderAppend" withParameters:parameters success:^(id responseObject) {
-            //停止
-            [MBProgressHUD hideHUDForView:self.view];
-            //恢复导航条可用
-            self.navigationController.view.self.userInteractionEnabled = YES;
+        NSLog(@"parameters    =========== %@",parameters);
+        NSString *url = @"http://192.168.61.85:8080/XuYuanProject/orderAppend";
+
+        [[AppAPIClient sharedClient] POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if ([responseObject[@"resultFlag"]integerValue] == 8001) {
                 NSLog(@"success !!");
                 [self saveData];
-       
             }else {
                 NSLog(@"error !");
             }
-
-        } failure:^(NSError *error) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"errorA = %@",error.description);
-            [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-            [MBProgressHUD hideHUDForView:self.view];
-            self.navigationController.view.self.userInteractionEnabled = NO;
         }];
-        slidingAppointmentViewController *toAppointment = [Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"];
         
-        [self presentViewController:toAppointment animated:YES completion:nil];
-
         NSLog(@"在这里存数据");
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -338,25 +314,21 @@
     NSString *phoneNum = _PhoneNum.text;
     //性别
     NSString *grender = _grenderTF.text;
-
+    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/userModification";
+    
       //获取当前用户ID
       NSString *userId = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
        NSLog(@"userId === %@",userId);
        //POST请求数据
        NSDictionary *pararmeters = @{@"userid":userId,@"cell":cell,@"age":age,@"mobile":phoneNum,@"sex":grender};
-        [RequestAPI postURL:@"/userModification" withParameters:pararmeters success:^(id responseObject) {
-        if ([responseObject[@"resultFlag"]integerValue] ==8001) {
-            NSLog(@"responseObject  =========%@",responseObject);
-
-        }
-
-    } failure:^(NSError *error) {
-        NSLog(@"error = %@",error.description);
-        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-        [MBProgressHUD hideHUDForView:self.view];
-        self.navigationController.view.self.userInteractionEnabled = YES;
-
-    }];
+    NSLog(@"pararmeters===== %@",pararmeters);
+       [[AppAPIClient sharedClient]POST:url parameters:pararmeters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+           if ([responseObject[@"resultFlag"]integerValue] ==8001) {
+               NSLog(@"responseObject  =========%@",responseObject);
+           }
+       }failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           NSLog(@"error = %@",error.description);
+       }];
 }
 
 - (IBAction)AgreementFileAction:(UIButton *)sender forEvent:(UIEvent *)event {

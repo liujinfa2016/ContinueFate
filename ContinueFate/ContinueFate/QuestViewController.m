@@ -11,7 +11,7 @@
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
 #import "CEDetailsViewController.h"
-
+#import "QAnswerViewController.h"
 @interface QuestViewController (){
     NSInteger page;
     NSInteger perpage;
@@ -69,7 +69,8 @@
 - (void)requestData{
     NSDictionary *parameters = @{@"questionid":_detail.Id,@"usertype":@"usertype"};
     [MBProgressHUD showMessage:@"正在刷新" toView:self.view];
-    [RequestAPI postURL:@"/answerList" withParameters:parameters success:^(id responseObject) {
+    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/answerList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         NSLog(@"%@",responseObject);
         [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
@@ -96,20 +97,22 @@
                 
                 NSDictionary *dic1 = @{@"group":@"用户回答",@"usertype":_customer};
                 NSDictionary *dic2 = @{@"group":@"专家回答",@"usertype":_experts};
-                _objectsForShow = [[NSMutableArray alloc] initWithObjects:dic2, dic1, nil];
+                _objectsForShow = [[NSMutableArray alloc] initWithObjects:dic1, dic2, nil];
                 
             }
             
             [_tableView reloadData];
         }else{
             NSLog(@"暂无更多评论！");
-            _ansNumber.text = [NSString stringWithFormat:@"暂无更多评论"];
+            
         }
         
-    } failure:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
         NSLog(@"error = %@",error.description);
         
         [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
+        
     }];
 }
 
@@ -189,9 +192,6 @@
     NSArray *arr = dic[@"usertype"];
     
     QuestionObject *obj = arr[indexPath.row];
-    if (obj.usertype.integerValue == 1) {
-        cell.actBtn.hidden = YES;
-    }
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
@@ -212,6 +212,7 @@
 }
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
-   
+    QAnswerViewController *tabVC = [Utilities getStoryboardInstanceByIdentity:@"Question" byIdentity:@"answer"];
+    [self.navigationController pushViewController:tabVC animated:YES];
 }
 @end
