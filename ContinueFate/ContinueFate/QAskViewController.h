@@ -13,5 +13,8 @@
 - (IBAction)saveAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITextView *titleView;
 @property (weak, nonatomic) IBOutlet UITextView *substanceView;
+- (IBAction)typeChoose:(UIButton *)sender forEvent:(UIEvent *)event;
+
+@property (weak, nonatomic) IBOutlet UIButton *tcBtn;
 
 @end
