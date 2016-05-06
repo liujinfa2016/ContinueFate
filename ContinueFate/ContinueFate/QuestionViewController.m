@@ -38,6 +38,7 @@
     [self refreshDownAndUp];
     [self screening];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 

@@ -38,6 +38,7 @@
     page = 1;
     perpage = 10;
     [self requestData];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 

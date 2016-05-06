@@ -37,6 +37,7 @@
     _substance.font = [UIFont systemFontOfSize:13];
     _substance.textColor = [UIColor lightGrayColor];
     [_substanceView addSubview:_substance];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 

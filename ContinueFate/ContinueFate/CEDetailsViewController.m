@@ -40,6 +40,7 @@
     NSURL *photoUrl = [NSURL URLWithString:_dict[@"headimage"]];
     //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）
     [_EImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 
    
 }

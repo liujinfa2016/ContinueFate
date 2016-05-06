@@ -37,6 +37,7 @@
     [_image sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"文字信息咨询月卡"]];
     [self requestData];
     [self getOrderStateList];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {

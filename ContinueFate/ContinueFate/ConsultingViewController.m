@@ -44,6 +44,7 @@
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 
 }
 - (void)viewWillDisappear:(BOOL)animated {

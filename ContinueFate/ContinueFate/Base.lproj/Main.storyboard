@@ -102,13 +102,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我们已将验证码发送至您的手机：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsR-z3-CWH">
                                 <rect key="frame" x="30" y="94" width="260" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.00063063835409999996" green="0.17438396780000001" blue="0.27888268290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15268657766" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGn-wY-1PD">
                                 <rect key="frame" x="50" y="117" width="260" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.8862745098" green="0.1450980392" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="设置新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-bi-aCs">
@@ -129,7 +129,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Cq-oW-R1D">
                                 <rect key="frame" x="50" y="243" width="220" height="30"/>
-                                <color key="backgroundColor" red="0.8862745098" green="0.1450980392" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.71632457314133546" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="确认修改">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -217,7 +217,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMM-fN-hjn">
                                 <rect key="frame" x="30" y="219" width="260" height="30"/>
-                                <color key="backgroundColor" red="0.8862745098" green="0.1450980392" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.71632457309999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="登录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -339,21 +339,21 @@
                         <viewControllerLayoutGuide type="bottom" id="3wF-qs-Ic3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w7d-6c-Q1i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NhL-uc-bzl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="uUE-ce-QKA">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="297"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVQ-3G-It1">
-                                            <rect key="frame" x="0.0" y="189" width="320" height="147"/>
+                                            <rect key="frame" x="0.0" y="169" width="320" height="128"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pml-1R-OBG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="147"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" image="预约咨询-1">
                                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -363,16 +363,16 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="竖线" translatesAutoresizingMaskIntoConstraints="NO" id="vw1-hq-7Tk">
-                                                    <rect key="frame" x="160" y="0.0" width="1" height="147"/>
+                                                    <rect key="frame" x="159.5" y="0.0" width="1" height="128"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="f1W-Ql-Etl"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tjk-u7-om2">
-                                                    <rect key="frame" x="161" y="0.0" width="159" height="147"/>
+                                                    <rect key="frame" x="160.5" y="0.0" width="159.5" height="128"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-0C-vrr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="159" height="73"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="159.5" height="63.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="-10"/>
                                                             <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
@@ -382,13 +382,13 @@
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="横线" translatesAutoresizingMaskIntoConstraints="NO" id="kX2-pB-TZA">
-                                                            <rect key="frame" x="0.0" y="73" width="159" height="1"/>
+                                                            <rect key="frame" x="0.0" y="63.5" width="159.5" height="1"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="kCx-94-Luz"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbc-46-XhC">
-                                                            <rect key="frame" x="0.0" y="74" width="159" height="73"/>
+                                                            <rect key="frame" x="0.0" y="64.5" width="159.5" height="63.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <inset key="contentEdgeInsets" minX="-29" minY="0.0" maxX="0.0" maxY="9"/>
                                                             <state key="normal" image="问答"/>
@@ -403,7 +403,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="ZVQ-3G-It1" secondAttribute="height" multiplier="320:147" id="14O-OJ-sNf"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pml-1R-OBG" secondAttribute="bottom" id="SCZ-r0-VxJ"/>
+                                                <constraint firstAttribute="width" secondItem="ZVQ-3G-It1" secondAttribute="height" multiplier="5:2" id="ow0-ko-67l"/>
                                                 <constraint firstItem="tjk-u7-om2" firstAttribute="width" secondItem="Pml-1R-OBG" secondAttribute="width" id="vrL-xN-VGN"/>
                                             </constraints>
                                         </stackView>
@@ -424,15 +425,14 @@
                                         <constraint firstItem="eGQ-Nb-MFV" firstAttribute="leading" secondItem="uUE-ce-QKA" secondAttribute="leading" id="5sj-Ue-QYi"/>
                                         <constraint firstAttribute="trailing" secondItem="ZVQ-3G-It1" secondAttribute="trailing" id="9pm-9b-26L"/>
                                         <constraint firstAttribute="trailing" secondItem="eGQ-Nb-MFV" secondAttribute="trailing" id="LrG-hy-zmk"/>
-                                        <constraint firstItem="ZVQ-3G-It1" firstAttribute="top" secondItem="eGQ-Nb-MFV" secondAttribute="bottom" constant="20" id="Rsa-0I-K2x"/>
-                                        <constraint firstAttribute="bottom" secondItem="ZVQ-3G-It1" secondAttribute="bottom" id="c6R-Bk-g3Q"/>
+                                        <constraint firstItem="ZVQ-3G-It1" firstAttribute="top" secondItem="eGQ-Nb-MFV" secondAttribute="bottom" id="Rsa-0I-K2x"/>
                                         <constraint firstItem="eGQ-Nb-MFV" firstAttribute="top" secondItem="uUE-ce-QKA" secondAttribute="top" id="kec-Is-Ldg"/>
                                         <constraint firstItem="ZVQ-3G-It1" firstAttribute="leading" secondItem="uUE-ce-QKA" secondAttribute="leading" id="tkj-1X-aCE"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="101" id="zMk-Sc-C8E" customClass="FirstTableViewCell">
-                                        <rect key="frame" x="0.0" y="428" width="320" height="101"/>
+                                        <rect key="frame" x="0.0" y="325" width="320" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zMk-Sc-C8E" id="4Ig-Sh-AqV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100.5"/>
@@ -568,7 +568,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOG-oi-Bl0">
                                 <rect key="frame" x="30" y="334" width="260" height="30"/>
-                                <color key="backgroundColor" red="0.8862745098" green="0.1450980392" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.71632457314133546" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
@@ -769,10 +769,10 @@
                     <tabBarItem key="tabBarItem" title="首页" image="首页" id="Axs-nx-UuL"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="jfX-IA-MCG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="jfX-IA-MCG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.8862745098" green="0.1450980392" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
