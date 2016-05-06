@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *substance;
 @property (strong,nonatomic)NSString *time;
 @property (strong,nonatomic)NSString *type;
+@property (strong,nonatomic)NSString *usertype;
 @property (strong,nonatomic)NSString *name;
 @property (nonatomic) int hits;
 @property (strong,nonatomic)NSString *questionid;

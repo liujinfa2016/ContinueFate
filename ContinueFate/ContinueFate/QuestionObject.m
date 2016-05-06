@@ -17,6 +17,7 @@
     self.time = [dict[@"time"]isKindOfClass:[NSNull class]]?@"":dict[@"time"];
     self.hits = [dict[@"hits"]isKindOfClass:[NSNull class]?0:dict[@"hits"]];
     self.type = [dict[@"type"]isKindOfClass:[NSNull class]]?@"":dict[@"type"];
+    self.usertype = [dict[@"usertype"]isKindOfClass:[NSNull class]]?@"":dict[@"usertype"];
     self.name = [dict[@"name"]isKindOfClass:[NSNull class]]?@"":dict[@"name"];
     self.questionid = [dict[@"questionid"]isKindOfClass:[NSNull class]]?@"":dict[@"questionid"];
     self.userid = [dict[@"userid"]isKindOfClass:[NSNull class]]?@"":dict[@"userid"];
