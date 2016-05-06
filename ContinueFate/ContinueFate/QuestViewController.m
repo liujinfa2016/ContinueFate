@@ -68,8 +68,7 @@
 - (void)requestData{
     NSDictionary *parameters = @{@"questionid":_detail.Id,@"usertype":@"usertype"};
     [MBProgressHUD showMessage:@"正在刷新" toView:self.view];
-    [[AppAPIClient sharedClient]POST:@"http://192.168.61.249:8080/XuYuanProject/answerList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    [RequestAPI postURL:@"/answerList" withParameters:parameters success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
@@ -106,12 +105,10 @@
             _ansNumber.text = [NSString stringWithFormat:@"暂无更多评论"];
         }
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
         
         [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
-        
     }];
 }
 
