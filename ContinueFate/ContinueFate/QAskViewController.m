@@ -37,7 +37,6 @@
     _substance.font = [UIFont systemFontOfSize:13];
     _substance.textColor = [UIColor lightGrayColor];
     [_substanceView addSubview:_substance];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 
@@ -66,8 +65,7 @@
     NSString *substance = _substanceView.text;
     
     NSDictionary *parameters = @{@"titlename":titlename,@"substance":substance,@"type":typeChoose,@"userid":userid};
-    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionAdd" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    [RequestAPI postURL:@"/questionAdd" withParameters:parameters success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             NSNotification *note = [NSNotification notificationWithName:@"RefreshHome" object:nil];
@@ -76,10 +74,9 @@
             NSLog(@"失败");
         }
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
     }];
-    
 }
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {

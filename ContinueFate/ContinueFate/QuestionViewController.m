@@ -38,7 +38,6 @@
     [self refreshDownAndUp];
     [self screening];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 
@@ -120,7 +119,7 @@
     NSDictionary *parameters = @{@"type":@"",@"page":@(page),@"perPage":@(perPage)};
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.userInteractionEnabled = NO;
-    [[AppAPIClient sharedClient]POST:@"http://192.168.61.85:8080/XuYuanProject/questionList" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [RequestAPI postURL:@"/questionList" withParameters:parameters success:^(id responseObject) {
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
         self.navigationController.view.userInteractionEnabled = YES;
@@ -145,9 +144,11 @@
         }else{
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    } failure:^(NSError *error) {
         NSLog(@"%@",error.description);
         [MBProgressHUD hideHUDForView:self.view];
+        
     }];
 }
 

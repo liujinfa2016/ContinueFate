@@ -41,9 +41,6 @@
 
     
     _tableView.tableFooterView = [[UIView alloc] init];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.layer.opacity=1.0;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,17 +94,17 @@
 {
     UIView *headView = [[UIView alloc] init];
     headView.backgroundColor =  [UIColor colorWithRed:244.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1.0f];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 6, 100, 15)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 6, 100, 15)];
     label.text = @"最新更新";
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:15];
+    label.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:17];
     label.backgroundColor =  [UIColor colorWithRed:255.0f green:255.0f blue:255.0f alpha:0.0f];
     [headView addSubview:label];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 25)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 25)];
     label2.text = @"";
     label2.font = [UIFont fontWithName:[[UIFont familyNames] objectAtIndex:10] size:20];
-    label2.backgroundColor = UIColorBackground;
+    label2.backgroundColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f];
     
     
     [headView addSubview:label2];

@@ -36,8 +36,6 @@
     [self setupScrollView];
     [self setupViewControllers];
     [self setupSegmentControl];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {

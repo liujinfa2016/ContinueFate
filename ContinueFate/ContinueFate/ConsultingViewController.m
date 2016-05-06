@@ -44,7 +44,6 @@
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -60,15 +59,20 @@
 }
 
 - (void) requestData {
-    //NSDictionary *parameters = @{@"name":@"",@"subtype":@"",@"page":@(page),@"perPage":@(perPage)};
-    
-    // 获取请求地址
-    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/expertsList";
-    //  UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *parameters = @{@"expertName":@"",@"page":@(page),@"perPage":@(perPage)};
+    //菊花
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    //导航条不可用
+    self.navigationController.view.self.userInteractionEnabled = NO;
     //POST请求数据
-    [[AppAPIClient sharedClient] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+    [RequestAPI postURL:@"/expertsList" withParameters:parameters success:^(id responseObject) {
         //请求成功执行以下方法
         //判断请求是否成功
+        //停止
+        [MBProgressHUD hideHUDForView:self.view];
+        //恢复导航条可用
+        self.navigationController.view.self.userInteractionEnabled = YES;
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             
             NSDictionary *result = responseObject[@"result"];
@@ -81,16 +85,19 @@
             //遍历models的内容
             for (NSDictionary *dic in models) {
                 [_objArr addObject:dic];
-            
+                
             }
             //重载表格
             [self.tableView reloadData];
             
             
         }
-        //请求失败执行以下方法
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
+        
+        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
+        [MBProgressHUD hideHUDForView:self.view];
+        self.navigationController.view.self.userInteractionEnabled = NO;
     }];
 }
 

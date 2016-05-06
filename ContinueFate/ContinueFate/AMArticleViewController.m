@@ -64,7 +64,7 @@
     segmentedControl.backgroundColor = UIColorMajor;
     [segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
         //设置分段选择栏内字体的风格和属性
-        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f],NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:13]}];
+        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f],NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:13]}];
         
         return attString;
     }];
