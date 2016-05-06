@@ -68,6 +68,7 @@
             for (NSDictionary *dic in models) {
                 [_objectForShow addObject:dic];
             }
+              NSLog(@"_getOrderState ======= %@",_objectForShow);
             //重载表格
             [self.tableView reloadData];
             
@@ -98,7 +99,7 @@
                 [_getOrderState addObject:dic];
                 NSLog(@"dic ===%@",dic);
             }
-            NSLog(@"_getOrderState ======= %@",_getOrderState);
+          
             
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -119,7 +120,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CCDTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSDictionary *dict = _objectForShow[indexPath.row];
-    NSURL *photoUrl = [NSURL URLWithString:dict[@"image"]];
+    NSURL *photoUrl = [NSURL URLWithString:dict[@"cardimage"]];
     //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）
     [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"文字信息咨询月卡"]];
     return cell;

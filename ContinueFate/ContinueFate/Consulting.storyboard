@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" maximumZoomScale="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="kyy-0F-72K">
-                                <rect key="frame" x="0.0" y="62" width="320" height="466"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59841人咨询过" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85R-Yc-mrZ">
                                         <rect key="frame" x="15" y="179" width="78" height="14"/>
@@ -304,7 +304,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="kyy-0F-72K" firstAttribute="top" secondItem="eh6-3B-GCX" secondAttribute="top" constant="62" id="BRa-wA-gHt"/>
+                            <constraint firstItem="kyy-0F-72K" firstAttribute="top" secondItem="eh6-3B-GCX" secondAttribute="top" id="BRa-wA-gHt"/>
                             <constraint firstItem="kyy-0F-72K" firstAttribute="leading" secondItem="eh6-3B-GCX" secondAttribute="leading" id="G6F-0V-IMM"/>
                             <constraint firstAttribute="bottom" secondItem="hJu-mH-bPr" secondAttribute="bottom" id="IuT-yA-uV3"/>
                             <constraint firstAttribute="trailing" secondItem="hJu-mH-bPr" secondAttribute="trailing" id="T2p-rT-qbs"/>

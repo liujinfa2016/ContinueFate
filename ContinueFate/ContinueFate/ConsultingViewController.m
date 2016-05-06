@@ -13,16 +13,19 @@
 #import "ArticleObject.h"
 
 
-@interface ConsultingViewController ()<UITableViewDataSource,UITableViewDelegate> {
+@interface ConsultingViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchControllerDelegate,UISearchResultsUpdating> {
     NSInteger page;
     NSInteger perPage;
-   
+    BOOL flag;
 }
 @property (strong ,nonatomic)NSMutableArray *objArr;
+@property (strong ,nonatomic)NSMutableArray *searchArr;
 @property (strong ,nonatomic)NSArray *cityArr;
 @property (strong ,nonatomic)NSArray *areaArr;
 @property(nonatomic,strong) NSArray *currentAreaArr;
 @property(nonatomic,strong) NSString *name;
+@property (strong ,nonatomic) UISearchController  *searchController;//声明一个搜索框
+
 @end
 
 @implementation ConsultingViewController
@@ -41,11 +44,15 @@
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
-    
-    
 
 }
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.searchController.active) {
+        self.searchController.active = NO;
+        [self.searchController.searchBar removeFromSuperview];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -89,24 +96,37 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _objArr.count;
+    if (!_searchController.active) {
+        NSLog(@"1");
+        return [_objArr count];
+    }else{
+        NSLog(@"2");
+        return [_searchArr count];
+    }
+       // return _objArr.count;
 
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
    CExpertsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDictionary *dict = _objArr[indexPath.row];
-
-    cell.Username.text = [NSString stringWithFormat:@"%@",dict[@"name"]];
-    
-    cell.Edetail.text = [NSString stringWithFormat:@"%@", dict[@"longevity"]];
-    cell.ReadingN.text= [NSString stringWithFormat:@"%@", dict[@"orderCount"]];
-    NSURL *photoUrl = [NSURL URLWithString:dict[@"headimage"]];
-    //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）
-    [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
-    return cell;
+    NSDictionary *dict = [[NSDictionary alloc]init];
+       dict = _objArr[indexPath.row];
+    if (!_searchController.active) {
+        dict = _objArr[indexPath.row];
+    }else {
+        dict = _searchArr[indexPath.row];
+    }
+        
+        cell.Username.text = [NSString stringWithFormat:@"%@",dict[@"name"]];
+        
+        cell.Edetail.text = [NSString stringWithFormat:@"%@", dict[@"longevity"]];
+        cell.ReadingN.text= [NSString stringWithFormat:@"%@", dict[@"orderCount"]];
+        NSURL *photoUrl = [NSURL URLWithString:dict[@"headimage"]];
+        [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
+        return cell;
 }
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //页面跳转+传值
@@ -120,18 +140,44 @@
      [self.navigationController pushViewController:date animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 //搜索
 - (IBAction)SearchAction:(UIBarButtonItem *)sender {
 
+    if (flag == NO) {
+        //设置搜索框的提示语
+        _searchController.searchBar.placeholder = @"搜索专家名";
+        //签协议
+        _searchController.delegate = self;
+        _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+        _searchController.searchResultsUpdater = self;
+        _searchController.dimsBackgroundDuringPresentation = NO;
+        _searchController.hidesNavigationBarDuringPresentation = NO;
+        _searchController.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
+        _tableView.tableHeaderView = _searchController.searchBar;
+        flag = YES;
+       
+    } else {
+        _tableView.tableHeaderView = [[UIView alloc]init];
+        flag = NO;
+        
+    }
+   
+    
+}
 
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchControlle {
+    
+    [_searchArr removeAllObjects];
+    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", self.searchController.searchBar.text];
+    _searchArr = [[_objArr filteredArrayUsingPredicate:searchPredicate] mutableCopy];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        
+        
+    });
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 @end
