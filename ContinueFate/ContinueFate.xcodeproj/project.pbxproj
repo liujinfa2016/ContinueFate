@@ -70,7 +70,6 @@
 		64F86DF21CCB7B0C00696CA5 /* ExpertsJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */; };
 		64F86DF51CCB96FC00696CA5 /* dateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DF41CCB96FC00696CA5 /* dateViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
-		85367DC81CD352F800F77CD2 /* QAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85367DC71CD352F800F77CD2 /* QAnswerViewController.m */; };
 		855ABF341CCC9289006F3208 /* FSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 855ABF331CCC9289006F3208 /* FSDropDownMenu.m */; };
 		855ABF3A1CCCCAEB006F3208 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 855ABF391CCCCAEB006F3208 /* Colours.m */; };
 		8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8562A3FA1CC639E800288F16 /* QuestionTableViewCell.m */; };
@@ -232,8 +231,6 @@
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		85367DC61CD352F800F77CD2 /* QAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAnswerViewController.h; sourceTree = "<group>"; };
-		85367DC71CD352F800F77CD2 /* QAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAnswerViewController.m; sourceTree = "<group>"; };
 		855ABF321CCC9289006F3208 /* FSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDropDownMenu.h; sourceTree = "<group>"; };
 		855ABF331CCC9289006F3208 /* FSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDropDownMenu.m; sourceTree = "<group>"; };
 		855ABF381CCCCAEB006F3208 /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
@@ -626,8 +623,6 @@
 				8562A3FE1CC639E800288F16 /* QAskViewController.m */,
 				85640F961CCB749D00BA9B90 /* QTranfViewController.h */,
 				85640F971CCB749D00BA9B90 /* QTranfViewController.m */,
-				85367DC61CD352F800F77CD2 /* QAnswerViewController.h */,
-				85367DC71CD352F800F77CD2 /* QAnswerViewController.m */,
 			);
 			name = Question;
 			sourceTree = "<group>";
@@ -903,7 +898,6 @@
 			files = (
 				05079BFA1CC21D0F00E7CFC8 /* Order.m in Sources */,
 				05079BE81CC21CF100E7CFC8 /* base64.m in Sources */,
-				85367DC81CD352F800F77CD2 /* QAnswerViewController.m in Sources */,
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
 				85640F981CCB749D00BA9B90 /* QTranfViewController.m in Sources */,
