@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     self.title = @"文章详情";
     NSDictionary *setColor = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     self.navigationController.navigationBar.titleTextAttributes = setColor;
