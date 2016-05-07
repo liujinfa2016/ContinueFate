@@ -42,6 +42,9 @@
     self.navigationItem.title = @"专家榜";
     //删除多余的线
     _tableView.tableFooterView = [[UIView alloc]init];
+    //删除分隔线
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
 
@@ -95,9 +98,6 @@
     } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
         
-        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-        [MBProgressHUD hideHUDForView:self.view];
-        self.navigationController.view.self.userInteractionEnabled = NO;
     }];
 }
 

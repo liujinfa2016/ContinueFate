@@ -92,14 +92,14 @@
 		F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */; };
 		F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */; };
 		F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */; };
-		F817EE761CDC962D0083C37C /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE691CDC962D0083C37C /* ConsultingViewController.m */; };
-		F817EE771CDC962D0083C37C /* CExpertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE6B1CDC962D0083C37C /* CExpertsTableViewCell.m */; };
-		F817EE781CDC962D0083C37C /* CEDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE6D1CDC962D0083C37C /* CEDetailsViewController.m */; };
-		F817EE791CDC962D0083C37C /* CAConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE6F1CDC962D0083C37C /* CAConsultingViewController.m */; };
-		F817EE7A1CDC962D0083C37C /* CCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE711CDC962D0083C37C /* CCDTableViewCell.m */; };
-		F817EE7B1CDC962D0083C37C /* CFillInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE731CDC962D0083C37C /* CFillInformationViewController.m */; };
-		F817EE7C1CDC962D0083C37C /* CAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F817EE751CDC962D0083C37C /* CAgreementViewController.m */; };
 		F8189A671CCE21E200789B59 /* SimplePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8189A661CCE21E200789B59 /* SimplePickerView.m */; };
+		F8ACC9951CDE09B4003CEEE1 /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC9881CDE09B4003CEEE1 /* ConsultingViewController.m */; };
+		F8ACC9961CDE09B4003CEEE1 /* CExpertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC98A1CDE09B4003CEEE1 /* CExpertsTableViewCell.m */; };
+		F8ACC9971CDE09B4003CEEE1 /* CEDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC98C1CDE09B4003CEEE1 /* CEDetailsViewController.m */; };
+		F8ACC9981CDE09B4003CEEE1 /* CAConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC98E1CDE09B4003CEEE1 /* CAConsultingViewController.m */; };
+		F8ACC9991CDE09B4003CEEE1 /* CCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC9901CDE09B4003CEEE1 /* CCDTableViewCell.m */; };
+		F8ACC99A1CDE09B4003CEEE1 /* CFillInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC9921CDE09B4003CEEE1 /* CFillInformationViewController.m */; };
+		F8ACC99B1CDE09B4003CEEE1 /* CAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC9941CDE09B4003CEEE1 /* CAgreementViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,22 +275,22 @@
 		F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		F80DBBA91CC5CA2600EE39BD /* JRSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSegmentControl.h; sourceTree = "<group>"; };
 		F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSegmentControl.m; sourceTree = "<group>"; };
-		F817EE681CDC962D0083C37C /* ConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingViewController.h; sourceTree = "<group>"; };
-		F817EE691CDC962D0083C37C /* ConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingViewController.m; sourceTree = "<group>"; };
-		F817EE6A1CDC962D0083C37C /* CExpertsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpertsTableViewCell.h; sourceTree = "<group>"; };
-		F817EE6B1CDC962D0083C37C /* CExpertsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpertsTableViewCell.m; sourceTree = "<group>"; };
-		F817EE6C1CDC962D0083C37C /* CEDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDetailsViewController.h; sourceTree = "<group>"; };
-		F817EE6D1CDC962D0083C37C /* CEDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDetailsViewController.m; sourceTree = "<group>"; };
-		F817EE6E1CDC962D0083C37C /* CAConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAConsultingViewController.h; sourceTree = "<group>"; };
-		F817EE6F1CDC962D0083C37C /* CAConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAConsultingViewController.m; sourceTree = "<group>"; };
-		F817EE701CDC962D0083C37C /* CCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDTableViewCell.h; sourceTree = "<group>"; };
-		F817EE711CDC962D0083C37C /* CCDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDTableViewCell.m; sourceTree = "<group>"; };
-		F817EE721CDC962D0083C37C /* CFillInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFillInformationViewController.h; sourceTree = "<group>"; };
-		F817EE731CDC962D0083C37C /* CFillInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFillInformationViewController.m; sourceTree = "<group>"; };
-		F817EE741CDC962D0083C37C /* CAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAgreementViewController.h; sourceTree = "<group>"; };
-		F817EE751CDC962D0083C37C /* CAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAgreementViewController.m; sourceTree = "<group>"; };
 		F8189A651CCE21E200789B59 /* SimplePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePickerView.h; sourceTree = "<group>"; };
 		F8189A661CCE21E200789B59 /* SimplePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePickerView.m; sourceTree = "<group>"; };
+		F8ACC9871CDE09B4003CEEE1 /* ConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingViewController.h; sourceTree = "<group>"; };
+		F8ACC9881CDE09B4003CEEE1 /* ConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingViewController.m; sourceTree = "<group>"; };
+		F8ACC9891CDE09B4003CEEE1 /* CExpertsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpertsTableViewCell.h; sourceTree = "<group>"; };
+		F8ACC98A1CDE09B4003CEEE1 /* CExpertsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpertsTableViewCell.m; sourceTree = "<group>"; };
+		F8ACC98B1CDE09B4003CEEE1 /* CEDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDetailsViewController.h; sourceTree = "<group>"; };
+		F8ACC98C1CDE09B4003CEEE1 /* CEDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDetailsViewController.m; sourceTree = "<group>"; };
+		F8ACC98D1CDE09B4003CEEE1 /* CAConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAConsultingViewController.h; sourceTree = "<group>"; };
+		F8ACC98E1CDE09B4003CEEE1 /* CAConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAConsultingViewController.m; sourceTree = "<group>"; };
+		F8ACC98F1CDE09B4003CEEE1 /* CCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDTableViewCell.h; sourceTree = "<group>"; };
+		F8ACC9901CDE09B4003CEEE1 /* CCDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDTableViewCell.m; sourceTree = "<group>"; };
+		F8ACC9911CDE09B4003CEEE1 /* CFillInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFillInformationViewController.h; sourceTree = "<group>"; };
+		F8ACC9921CDE09B4003CEEE1 /* CFillInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFillInformationViewController.m; sourceTree = "<group>"; };
+		F8ACC9931CDE09B4003CEEE1 /* CAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAgreementViewController.h; sourceTree = "<group>"; };
+		F8ACC9941CDE09B4003CEEE1 /* CAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAgreementViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -630,20 +630,20 @@
 		850E45B81CCA3B5700BF8FE6 /* consulting */ = {
 			isa = PBXGroup;
 			children = (
-				F817EE681CDC962D0083C37C /* ConsultingViewController.h */,
-				F817EE691CDC962D0083C37C /* ConsultingViewController.m */,
-				F817EE6A1CDC962D0083C37C /* CExpertsTableViewCell.h */,
-				F817EE6B1CDC962D0083C37C /* CExpertsTableViewCell.m */,
-				F817EE6C1CDC962D0083C37C /* CEDetailsViewController.h */,
-				F817EE6D1CDC962D0083C37C /* CEDetailsViewController.m */,
-				F817EE6E1CDC962D0083C37C /* CAConsultingViewController.h */,
-				F817EE6F1CDC962D0083C37C /* CAConsultingViewController.m */,
-				F817EE701CDC962D0083C37C /* CCDTableViewCell.h */,
-				F817EE711CDC962D0083C37C /* CCDTableViewCell.m */,
-				F817EE721CDC962D0083C37C /* CFillInformationViewController.h */,
-				F817EE731CDC962D0083C37C /* CFillInformationViewController.m */,
-				F817EE741CDC962D0083C37C /* CAgreementViewController.h */,
-				F817EE751CDC962D0083C37C /* CAgreementViewController.m */,
+				F8ACC9871CDE09B4003CEEE1 /* ConsultingViewController.h */,
+				F8ACC9881CDE09B4003CEEE1 /* ConsultingViewController.m */,
+				F8ACC9891CDE09B4003CEEE1 /* CExpertsTableViewCell.h */,
+				F8ACC98A1CDE09B4003CEEE1 /* CExpertsTableViewCell.m */,
+				F8ACC98B1CDE09B4003CEEE1 /* CEDetailsViewController.h */,
+				F8ACC98C1CDE09B4003CEEE1 /* CEDetailsViewController.m */,
+				F8ACC98D1CDE09B4003CEEE1 /* CAConsultingViewController.h */,
+				F8ACC98E1CDE09B4003CEEE1 /* CAConsultingViewController.m */,
+				F8ACC98F1CDE09B4003CEEE1 /* CCDTableViewCell.h */,
+				F8ACC9901CDE09B4003CEEE1 /* CCDTableViewCell.m */,
+				F8ACC9911CDE09B4003CEEE1 /* CFillInformationViewController.h */,
+				F8ACC9921CDE09B4003CEEE1 /* CFillInformationViewController.m */,
+				F8ACC9931CDE09B4003CEEE1 /* CAgreementViewController.h */,
+				F8ACC9941CDE09B4003CEEE1 /* CAgreementViewController.m */,
 			);
 			name = consulting;
 			sourceTree = "<group>";
@@ -897,6 +897,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05079BFA1CC21D0F00E7CFC8 /* Order.m in Sources */,
+				F8ACC9971CDE09B4003CEEE1 /* CEDetailsViewController.m in Sources */,
 				05079BE81CC21CF100E7CFC8 /* base64.m in Sources */,
 				05079B8F1CC20F7000E7CFC8 /* ViewController.m in Sources */,
 				F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */,
@@ -910,6 +911,7 @@
 				647CDC021CCA2C7B00961111 /* SlidingDataViewController.m in Sources */,
 				05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */,
 				05079BEE1CC21CF100E7CFC8 /* RSADataSigner.m in Sources */,
+				F8ACC9981CDE09B4003CEEE1 /* CAConsultingViewController.m in Sources */,
 				8562A4041CC639E800288F16 /* QuestViewController.m in Sources */,
 				05079BD11CC21A8E00E7CFC8 /* NSString+Crypt.m in Sources */,
 				F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */,
@@ -918,10 +920,10 @@
 				05079BEA1CC21CF100E7CFC8 /* DataVerifier.m in Sources */,
 				647CDC051CCA2CAE00961111 /* SlidingHelpViewController.m in Sources */,
 				05079B8C1CC20F7000E7CFC8 /* AppDelegate.m in Sources */,
+				F8ACC9961CDE09B4003CEEE1 /* CExpertsTableViewCell.m in Sources */,
 				05079BE91CC21CF100E7CFC8 /* DataSigner.m in Sources */,
 				64F86DF21CCB7B0C00696CA5 /* ExpertsJoinViewController.m in Sources */,
 				05079BFE1CC21D2300E7CFC8 /* GBAlipayManager.m in Sources */,
-				F817EE791CDC962D0083C37C /* CAConsultingViewController.m in Sources */,
 				F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */,
 				C424DC3D1CCC7A7300B39ED8 /* ArticleDetailViewController.m in Sources */,
 				64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */,
@@ -931,32 +933,30 @@
 				64F86DF51CCB96FC00696CA5 /* dateViewController.m in Sources */,
 				643E6EC51CCDB87F005FA605 /* SlidingCollectionViewController.m in Sources */,
 				85640F8F1CCB128600BA9B90 /* DetailTableViewCell.m in Sources */,
-				F817EE7B1CDC962D0083C37C /* CFillInformationViewController.m in Sources */,
-				F817EE771CDC962D0083C37C /* CExpertsTableViewCell.m in Sources */,
 				05079B951CC20F7000E7CFC8 /* ContinueFate.xcdatamodeld in Sources */,
 				05364E9E1CCF1D3400D83115 /* SlidingContributeViewController.m in Sources */,
 				05079BEC1CC21CF100E7CFC8 /* NSDataEx.m in Sources */,
-				F817EE7A1CDC962D0083C37C /* CCDTableViewCell.m in Sources */,
 				05079B891CC20F7000E7CFC8 /* main.m in Sources */,
 				643E6EC81CCDB946005FA605 /* SlidingCollectionTableViewCell.m in Sources */,
 				05743AA51CC502C300A762E3 /* SlidingTableViewCell.m in Sources */,
-				F817EE761CDC962D0083C37C /* ConsultingViewController.m in Sources */,
 				855ABF3A1CCCCAEB006F3208 /* Colours.m in Sources */,
 				ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */,
 				64F86DED1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m in Sources */,
+				F8ACC9991CDE09B4003CEEE1 /* CCDTableViewCell.m in Sources */,
 				855ABF341CCC9289006F3208 /* FSDropDownMenu.m in Sources */,
 				05079C101CC2321400E7CFC8 /* BasicEncodingRules.m in Sources */,
 				F8189A671CCE21E200789B59 /* SimplePickerView.m in Sources */,
 				05079BED1CC21CF100E7CFC8 /* openssl_wrapper.m in Sources */,
 				05A15B3E1CC6246900BEB367 /* slidingAppointmentViewController.m in Sources */,
+				F8ACC99A1CDE09B4003CEEE1 /* CFillInformationViewController.m in Sources */,
 				646E30B21CC9C05A00093A33 /* twoPasswordResetViewController.m in Sources */,
 				ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */,
+				F8ACC99B1CDE09B4003CEEE1 /* CAgreementViewController.m in Sources */,
 				ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */,
 				053CF6801CCE2401007AEB33 /* AboutUsViewController.m in Sources */,
 				05060C3C1CC32DED00525F17 /* SlidingViewController.m in Sources */,
 				8562A4051CC639E800288F16 /* QAskViewController.m in Sources */,
-				F817EE781CDC962D0083C37C /* CEDetailsViewController.m in Sources */,
-				F817EE7C1CDC962D0083C37C /* CAgreementViewController.m in Sources */,
+				F8ACC9951CDE09B4003CEEE1 /* ConsultingViewController.m in Sources */,
 				C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */,
 				C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
