@@ -47,6 +47,7 @@
     [self requestData];
     [self creatDate];
     [self grenderTFC];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 - (void) grenderTFC {
     _grenderView = [[UIPickerView alloc] init];
