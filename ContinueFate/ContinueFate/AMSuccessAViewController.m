@@ -35,6 +35,7 @@
     _objArr = [NSMutableArray new];
     [self refreshDownAndUp];
     [self requestData];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

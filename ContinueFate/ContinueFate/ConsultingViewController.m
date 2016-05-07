@@ -44,6 +44,7 @@
     _tableView.tableFooterView = [[UIView alloc]init];
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -59,15 +60,20 @@
 }
 
 - (void) requestData {
-    //NSDictionary *parameters = @{@"name":@"",@"subtype":@"",@"page":@(page),@"perPage":@(perPage)};
-    
-    // 获取请求地址
-    NSString *url = @"http://192.168.61.85:8080/XuYuanProject/expertsList";
-    //  UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *parameters = @{@"expertName":@"",@"page":@(page),@"perPage":@(perPage)};
+    //菊花
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    //导航条不可用
+    self.navigationController.view.self.userInteractionEnabled = NO;
     //POST请求数据
-    [[AppAPIClient sharedClient] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+    [RequestAPI postURL:@"/expertsList" withParameters:parameters success:^(id responseObject) {
         //请求成功执行以下方法
         //判断请求是否成功
+        //停止
+        [MBProgressHUD hideHUDForView:self.view];
+        //恢复导航条可用
+        self.navigationController.view.self.userInteractionEnabled = YES;
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             
             NSDictionary *result = responseObject[@"result"];
@@ -80,16 +86,19 @@
             //遍历models的内容
             for (NSDictionary *dic in models) {
                 [_objArr addObject:dic];
-            
+                
             }
             //重载表格
             [self.tableView reloadData];
             
             
         }
-        //请求失败执行以下方法
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
+        
+        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
+        [MBProgressHUD hideHUDForView:self.view];
+        self.navigationController.view.self.userInteractionEnabled = NO;
     }];
 }
 
@@ -119,8 +128,9 @@
         
         cell.Username.text = [NSString stringWithFormat:@"%@",dict[@"name"]];
         
-        cell.Edetail.text = [NSString stringWithFormat:@"%@", dict[@"longevity"]];
-        cell.ReadingN.text= [NSString stringWithFormat:@"%@", dict[@"orderCount"]];
+        cell.Edetail.text = [NSString stringWithFormat:@"专家资历：%@", dict[@"longevity"]];
+        cell.ReadingN.text= [NSString stringWithFormat:@"咨询人数：%@", dict[@"orderCount"]];
+    cell.Personality.text=[NSString stringWithFormat:@"个性签名%@",dict [@"descripition"]];
         NSURL *photoUrl = [NSURL URLWithString:dict[@"headimage"]];
         [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
         return cell;
@@ -144,17 +154,20 @@
 - (IBAction)SearchAction:(UIBarButtonItem *)sender {
 
     if (flag == NO) {
-        //设置搜索框的提示语
+        //设置搜索框的提示语\风格
         _searchController.searchBar.placeholder = @"搜索专家名";
+        _searchController.searchBar.searchBarStyle=UISearchBarStyleMinimal;
+        _searchController.searchBar.barStyle=UIBarStyleBlackOpaque;
         //签协议
         _searchController.delegate = self;
         _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
         _searchController.searchResultsUpdater = self;
         _searchController.dimsBackgroundDuringPresentation = NO;
-        _searchController.hidesNavigationBarDuringPresentation = NO;
+        _searchController. hidesNavigationBarDuringPresentation = NO;
         _searchController.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
         _tableView.tableHeaderView = _searchController.searchBar;
         flag = YES;
+        
        
     } else {
         _tableView.tableHeaderView = [[UIView alloc]init];
@@ -169,6 +182,7 @@
     
     [_searchArr removeAllObjects];
     NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", self.searchController.searchBar.text];
+    
     _searchArr = [[_objArr filteredArrayUsingPredicate:searchPredicate] mutableCopy];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
