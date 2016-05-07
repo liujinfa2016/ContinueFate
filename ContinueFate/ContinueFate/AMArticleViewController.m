@@ -51,20 +51,20 @@
     //设置分段选择栏选中的分格
     segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
     //设置分段选择栏的背景颜色
-    segmentedControl.selectionIndicatorColor=UIColorBackground;
+    segmentedControl.selectionIndicatorColor=UIColorMajor;
     //设置选中时底部横线的高度
     segmentedControl.selectionIndicatorHeight=2.0;
     //设置选中时底部横线的位置（上、下、没有横线）
     segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     segmentedControl.verticalDividerEnabled = YES;
     //设置分段选择栏分隔线的背景颜色
-    segmentedControl.verticalDividerColor = UIColorMajor;
+    segmentedControl.verticalDividerColor = UIColorBackground;
     segmentedControl.verticalDividerWidth = 1.0f;
     //设置分段选择栏的背景颜色
-    segmentedControl.backgroundColor = UIColorMajor;
+    segmentedControl.backgroundColor = UIColorBackground;
     [segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
         //设置分段选择栏内字体的风格和属性
-        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f],NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:13]}];
+        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f],NSFontAttributeName: [UIFont fontWithName:@"Helvetica Neue" size:13]}];
         
         return attString;
     }];

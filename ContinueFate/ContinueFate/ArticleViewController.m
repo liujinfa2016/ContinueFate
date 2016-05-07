@@ -31,11 +31,13 @@
     AMSuccessAViewController *secondVC = [Utilities getStoryboardInstanceByIdentity:@"Article" byIdentity:@"AMArticle"];
     
     _viewControllers = @[secondVC,firstVC];
-    _titles = @[@"文章", @"成功案例"];
+    _titles = @[@"文章", @"案例"];
  
     [self setupScrollView];
     [self setupViewControllers];
     [self setupSegmentControl];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,19 +115,20 @@
 /** 设置segment */
 - (void)setupSegmentControl
 {
-    _itemWidth = 55.0f;
+    _itemWidth = 40.0f;
     // 设置titleView
-    segment = [[JRSegmentControl alloc] initWithFrame:CGRectMake(0, 0, _itemWidth * 3, 30.0f)];
+    segment = [[JRSegmentControl alloc] initWithFrame:CGRectMake(0, 0, _itemWidth * 3, 26.0f)];
     segment.titles = self.titles;
     segment.cornerRadius = 5.0f;
     //导航条标题字体颜色
-    segment.titleColor = UIColorBackground;
+    segment.titleColor = UIColorMajor;
+   
     
     
     
     
     //导航条标题选中颜色
-    segment.indicatorViewColor = UIColorBackground;
+    segment.indicatorViewColor = UIColorMajor;
     //导航条标题未选中颜色
     segment.backgroundColor = [UIColor whiteColor];
     
@@ -137,11 +140,6 @@
     
     segment.delegate = self;
     self.navigationItem.titleView = segment;
-    
-    
-   
-
-    
     
     /* _imageLable.layer.shadowColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f].CGColor;//shadowColor阴影颜色
      _imageLable.layer.shadowOffset = CGSizeMake(-2,-2);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
