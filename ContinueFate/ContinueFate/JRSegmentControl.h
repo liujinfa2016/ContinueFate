@@ -43,6 +43,8 @@
 /** 未选中时的按钮文字颜色 */
 @property (nonatomic, strong) UIColor *titleColor;
 
+@property(nonatomic,strong) UIFont * titleFont;
+
 @property (nonatomic, weak) id<JRSegmentControlDelegate> delegate;
 
 /** 设置segment的索引为index的按钮处于选中状态 */

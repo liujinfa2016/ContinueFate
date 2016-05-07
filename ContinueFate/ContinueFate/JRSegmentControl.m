@@ -131,6 +131,8 @@
         JRSegmentButton *btn = self.buttons[i];
         [btn setTitleColor:_titleColor forState:UIControlStateNormal];
         [btn setTitleColor:_titleColor forState:UIControlStateHighlighted];
+        btn.titleLabel.font=[UIFont boldSystemFontOfSize:16];
+        
     }
     
     // 如果不设置backgroundColor，第一个按钮的文字颜色就会被设置为默认颜色
