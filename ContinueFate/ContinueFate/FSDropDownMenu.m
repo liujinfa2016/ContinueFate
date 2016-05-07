@@ -116,14 +116,14 @@
 - (void)animateTableViewShow:(BOOL)show complete:(void(^)())complete {
     if (show) {
 
-        _leftTableView.frame = CGRectMake(self.origin.x, self.frame.origin.y, UI_SCREEN_W*0.3, 0);
+        _leftTableView.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, UI_SCREEN_W*0.3, 0);
         [self.superview addSubview:_leftTableView];
 //        _rightTableView.frame = CGRectMake(self.origin.x+UI_SCREEN_W*0.3, self.frame.origin.y, UI_SCREEN_W*0.7, 0);
 //        
 //        [self.superview addSubview:_rightTableView];
         
         _leftTableView.layer.borderWidth=1.0;
-        _leftTableView.layer.borderColor=[[UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:0.5f] CGColor];
+        _leftTableView.layer.borderColor=[[UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f] CGColor];
         
         
         
@@ -131,7 +131,7 @@
 //        _rightTableView.alpha = 1.f;
 
         [UIView animateWithDuration:0.2 animations:^{
-            _leftTableView.frame = CGRectMake(self.origin.x, self.frame.origin.y, UI_SCREEN_W*0.3, _height);
+            _leftTableView.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, UI_SCREEN_W*0.3, _height);
 //            _rightTableView.frame = CGRectMake(self.origin.x+UI_SCREEN_W*0.3, self.frame.origin.y, UI_SCREEN_W*0.7, _height);
 //            
             if (self.transformView) {
@@ -186,18 +186,15 @@
 //        cell.backgroundColor = [UIColor whiteColor];
 //    }else{
         UIView *sView = [[UIView alloc] init];
-        sView.backgroundColor = UIColorMajor;
+    sView.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
         cell.selectedBackgroundView = sView;
         [cell setSelected:YES animated:NO];
     cell.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0] ;
     //    }
     cell.textLabel.font = [UIFont fontWithName:@"PingFang SC" size:14];
-    cell.textLabel.textColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f] ;
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.separatorInset = UIEdgeInsetsZero;
-    
-    cell.layer.borderWidth=0.5;
-    cell.layer.borderColor=[[UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:0.5f]  CGColor];
-    
+
  
     
     return cell;

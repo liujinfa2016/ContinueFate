@@ -59,9 +59,6 @@
     CGFloat contentHeight = contentSize.height;
     //将文本视图的高度约束设置为文字内容高度加上文本视图默认的上下留白长度（8）
     _tvHeight.constant = contentHeight + 17;
-    _tapTrick.enabled = NO;
-    _tapTrick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bgTap:)];
-    [self.view addGestureRecognizer:_tapTrick];
 }
 - (void )bgTap: (UITapGestureRecognizer *)sender{
     if (sender.state == UIGestureRecognizerStateRecognized) {

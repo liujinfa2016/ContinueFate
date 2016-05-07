@@ -38,6 +38,7 @@
     page = 1;
     perpage = 10;
     [self requestData];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 
@@ -87,6 +88,7 @@
                 if ([question[@"usertype"]  isEqual: @1]) {
                     QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                     [_customer addObject:quest];
+                    
                 }
                 if ([question[@"usertype"]  isEqual: @2]) {
                     QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];

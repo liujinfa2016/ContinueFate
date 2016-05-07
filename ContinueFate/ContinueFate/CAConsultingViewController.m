@@ -26,6 +26,9 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.tableFooterView = [[UIView alloc]init];
+    
+    //删除分隔线
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _objectForShow = [NSMutableArray new];
     _getOrderState = [NSMutableArray new];
     // Do any additional setup after loading the view.
@@ -121,6 +124,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CCDTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     NSDictionary *dict = _objectForShow[indexPath.row];
     NSURL *photoUrl = [NSURL URLWithString:dict[@"cardimage"]];
     //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）

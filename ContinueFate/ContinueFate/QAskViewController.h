@@ -16,5 +16,6 @@
 - (IBAction)typeChoose:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (weak, nonatomic) IBOutlet UIButton *tcBtn;
+@property (weak, nonatomic) IBOutlet UIView *footview;
 
 @end

@@ -12,8 +12,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *CellTF;//称呼
 @property (weak, nonatomic) IBOutlet UILabel *LimitWN;//限制字数
 
-@property (weak, nonatomic) IBOutlet UITextField *ordertimeTF;//性别
-//预约时间
+@property (weak, nonatomic) IBOutlet UITextField *ordertimeTF;//预约时间
+//性别
 @property (weak, nonatomic) IBOutlet UITextField *grenderTF;
 
 //年龄
@@ -31,6 +31,7 @@
 //点击同意协议（打勾/去勾）
 - (IBAction)AgreenmentAction:(UIButton *)sender forEvent:(UIEvent *)event;
 //选择性别（点击弹出PickerView）
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 //接收传值 （传值入口）
 @property (strong ,nonatomic)NSDictionary *expertsM;
