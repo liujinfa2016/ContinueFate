@@ -10,11 +10,12 @@
 
 @interface SlidingAppointmentTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *ExpertsnameLab;//专家名称
-@property (weak, nonatomic) IBOutlet UIImageView *cardIM;//
-@property (weak, nonatomic) IBOutlet UILabel *CardLab;
-@property (weak, nonatomic) IBOutlet UILabel *MoneyLab;
-- (IBAction)OrderAction:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UILabel *IfSuccessLab;
-@property (weak, nonatomic) IBOutlet UILabel *DateLab;
+@property (weak, nonatomic) IBOutlet UIImageView *cardIM;//图片
+@property (weak, nonatomic) IBOutlet UILabel *CardLab;//卡片类型
+@property (weak, nonatomic) IBOutlet UILabel *MoneyLab;//金额
+- (IBAction)OrderAction:(UIButton *)sender forEvent:(UIEvent *)event;//订单状态按钮
+@property (weak, nonatomic) IBOutlet UILabel *IfSuccessLab;//预约状态
+@property (weak, nonatomic) IBOutlet UILabel *DateLab;//剩余时间
+@property (weak, nonatomic) IBOutlet UIButton *ifsuccess;//订单状态
 
 @end

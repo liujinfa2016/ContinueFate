@@ -12,7 +12,7 @@
 @interface slidingAppointmentViewController ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSString *userid;
 }
-@property(strong,nonatomic)NSMutableArray *array;
+@property(strong,nonatomic)NSMutableArray *array;//声明一个数组用放预约信息
 @property(strong,nonatomic)NSDictionary *dic;
 
 @end
@@ -68,14 +68,14 @@
 */
 //请求卡片的所有信息
 -(void)Request{
-    
+    [_array removeAllObjects];
     [RequestAPI postURL:@"/getOrderList" withParameters:_dic success:^(id responseObject) {
-        if ([responseObject[@"resultFlag"]integerValue]  == 6002) {
-            return ;
-        }
+//        if ([responseObject[@"resultFlag"]integerValue]  == 6002) {
+//           
+//        }
         if ([responseObject[@"resultFlag"]integerValue]  == 8001) {
             NSDictionary *dic = responseObject[@"result"];
-            NSLog(@"jjj = %@",dic[@"models"]);
+            
             NSArray *arr = dic[@"models"];
             for (NSDictionary *dic in arr) {
                 [_array addObject:dic];
@@ -87,31 +87,31 @@
         
     } failure:^(NSError *error) {
         [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
-        
+       
     }];
     
 }
 //当按了segmentaction的不同控件时
 - (IBAction)SegmentAction:(UISegmentedControl *)sender forEvent:(UIEvent *)event {
-    
     switch (_segment.selectedSegmentIndex) {
            
         case 0:
-            NSLog(@"00000");
+           
             _dic = @{@"userid":userid,@"typeid":@1};
             [self Request];
             break;
         case 1:
-            NSLog(@"11111");
+            
             _dic = @{@"userid":userid,@"typeid":@1,@"ordername":@"待回复"};
              [self Request];
             break;
         case 2:
+           
             _dic = @{@"userid":userid,@"typeid":@1,@"ordername":@"待付款"};
              [self Request];
             break;
         case 3:
-            _dic = @{@"userid":userid,@"typeid":@1,@"ordername":@"已付款待咨询"};
+            _dic = @{@"userid":userid,@"typeid":@1,@"ordername":@"已付款待联系"};
              [self Request];
             break;
         default:
@@ -126,18 +126,20 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SlidingAppointmentTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSDictionary *dit = _array[indexPath.row];
-    NSLog(@"ddiicc = %@",dit);
+    NSLog(@"66666===%@",dit);
     cell.ExpertsnameLab.text = dit[@"expertName"];
     cell.IfSuccessLab.text = dit[@"orderStateName"];
+  
     [cell.cardIM sd_setImageWithURL:dit[@"orderTypeImage"] placeholderImage:[UIImage imageNamed:@"专家入驻"]];
     cell.MoneyLab.text = [NSString stringWithFormat:@"¥%@",dit[@"orderTypePrice"]];
+    cell.ifsuccess.titleLabel.text = dit[@"orderType"];
     return cell;
     
 }
 // 返回
 - (IBAction)ReturnAction:(UIBarButtonItem *)sender {
     
-  [self.navigationController presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"HomeTv"] animated:NO completion:nil];
+  [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"] animated:NO completion:nil];
 
 }
 @end
