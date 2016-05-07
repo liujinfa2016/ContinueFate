@@ -126,13 +126,31 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SlidingAppointmentTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSDictionary *dit = _array[indexPath.row];
-    NSLog(@"66666===%@",dit);
+     NSLog(@"66666===%@",dit);
+    if ([dit[@"orderStateName"] isEqual: @"待付款"]) {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = CGRectMake(cell.bounds.size.width-85, cell.bounds.size.height-60, 75, 75);
+    [button setTitle:@"去付款" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        //给button添加委托方法，即点击触发的事件。
+//        [button addTarget:selfaction:@selector(touchButton1:)  forControlEvents :UIControl EventTouchUp Inside];
+      [cell addSubview:button];
+        
+    }
+   
+    //专家名字
     cell.ExpertsnameLab.text = dit[@"expertName"];
+    //预约状态
     cell.IfSuccessLab.text = dit[@"orderStateName"];
-  
+    //卡片类型
+    cell.CardLab.text = dit[@"orderTypeName"];
+    //卡片的图片
     [cell.cardIM sd_setImageWithURL:dit[@"orderTypeImage"] placeholderImage:[UIImage imageNamed:@"专家入驻"]];
+//  专家头像
+    [cell.photo.imageView sd_setImageWithURL:dit[@"expertHeadImage"] placeholderImage:[UIImage imageNamed:@"图1"]];
+    //金额
     cell.MoneyLab.text = [NSString stringWithFormat:@"¥%@",dit[@"orderTypePrice"]];
-    cell.ifsuccess.titleLabel.text = dit[@"orderType"];
+    
     return cell;
     
 }

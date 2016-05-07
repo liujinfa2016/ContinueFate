@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-   _ifsuccess.adjustsImageWhenHighlighted = YES;  
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,8 +25,6 @@
 
 
 
-//订单状态按钮
-- (IBAction)OrderAction:(UIButton *)sender forEvent:(UIEvent *)event {
-   
+- (IBAction)photoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
