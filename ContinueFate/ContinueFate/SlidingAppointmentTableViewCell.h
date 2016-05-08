@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *DateLab;//剩余时间
 - (IBAction)photoAction:(UIButton *)sender forEvent:(UIEvent *)event;//专家头像按钮
 @property (weak, nonatomic) IBOutlet UIButton *photo;//专家头像
+@property (weak, nonatomic) IBOutlet UIButton *payment;//去付款
+
 
 
 @end
