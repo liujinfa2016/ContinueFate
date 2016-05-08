@@ -122,6 +122,23 @@
     }];
 }
 
+- (NSString *)answeridForTag:(NSInteger *)section row:(NSInteger *)row {
+    NSString *answerId = @"";
+    NSDictionary *dic1 = _objectsForShow[1];
+    NSDictionary *dic2 = _objectsForShow[0];
+    if (section == 0) {
+        NSArray *arr = dic2[@"usertype"];
+        QuestionObject *quest = arr[(long)row];
+        answerId = quest.Id;
+    }else{
+        NSArray *arr = dic1[@"usertype"];
+        QuestionObject *quest = arr[(long)row];
+        answerId = quest.Id;
+    }
+    return answerId;
+}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _objectsForShow.count;
@@ -130,7 +147,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSLog(@"sdsdsdsd");
 }
 
 
@@ -278,6 +294,7 @@
 
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+     NSLog(@"send = %ld, row = %ld",sender.tag%10,sender.tag/10);
     if ([Utilities loginState]){
         NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
         
