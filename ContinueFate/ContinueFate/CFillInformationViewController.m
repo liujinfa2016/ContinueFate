@@ -10,7 +10,7 @@
 #import "SimplePickerView.h"
 #import "CAgreementViewController.h"
 #import "slidingAppointmentViewController.h"
-@interface CFillInformationViewController () <UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate> {
+@interface CFillInformationViewController () <UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UIScrollViewDelegate> {
     //统计
     NSInteger statistical;
     BOOL flag;
@@ -21,11 +21,13 @@
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
+    
 
 }
 @property (strong ,nonatomic)UIDatePicker *datepicker;
 @property (strong ,nonatomic)NSArray *arr;
 @property (strong ,nonatomic)UIPickerView *grenderView;
+@property (strong , nonatomic)UITapGestureRecognizer *tapTrick;
 @end
 
 @implementation CFillInformationViewController
@@ -40,14 +42,90 @@
     _AgeTF.delegate = self;
     _DescribeTV.delegate = self;
     _grenderTF.delegate = self;
+    _scrollView.delegate = self;
     _arr = [NSArray arrayWithObjects:@"男",@"女", nil];
     NSLog(@"_getOrderState = %@ ,_objectForShow = %@,_expertsM = %@",_getOrderState,_objectForShow,_expertsM);
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+    _scrollView.contentSize  = CGSizeMake(UI_SCREEN_W,0);
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    //_scrollView.contentOffset=CGPointMake(0, 0);
+    _tapTrick.enabled = NO;
+    _tapTrick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bgTap:)];
+   
+    [self.view addGestureRecognizer:_tapTrick];
+    //监听键盘打开这一操作，打开后执行keyboardWillShow:方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    //监听键盘收起这一操作，收起后执行keyboardWillHide:方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
     //将统计字数设为0
     statistical = 0;
     [self requestData];
     [self creatDate];
     [self grenderTFC];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
+- (void )bgTap: (UITapGestureRecognizer *)sender{
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        [self.view endEditing:YES];
+    }
+}
+/*
+//键盘的高度计算
+-(CGFloat)keyboardEndingFrameHeight:(NSDictionary *)userInfo//计算键盘的高度
+{
+    CGRect keyboardEndingUncorrectedFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
+    CGRect keyboardEndingFrame = [self.view convertRect:keyboardEndingUncorrectedFrame fromView:nil];
+    return keyboardEndingFrame.size.height;
+}
+//当键盘消失后，视图需要恢复原状。
+-(void)keyboardWillDisappear:(NSNotification *)notification
+{
+    CGRect currentFrame = self.view.frame;
+    CGFloat change = [self keyboardEndingFrameHeight:[notification userInfo]];
+    currentFrame.origin.y = currentFrame.origin.y + change ;
+    self.view.frame = currentFrame;
+}
+//根据键盘高度将当前视图向上滚动同样高度
+-(void)keyboardWillAppear:(NSNotification *)notification
+{
+    CGRect currentFrame = self.view.frame;
+    CGFloat change = [self keyboardEndingFrameHeight:[notification userInfo]];
+    currentFrame.origin.y = currentFrame.origin.y - change ;
+    self.view.frame = currentFrame;
+}
+*/
+//键盘打开时的操作
+- (void)keyboardWillShow:(NSNotification *)notification{
+    NSLog(@"jian pan da kai le");
+    //获得键盘的位置
+    _tapTrick.enabled = YES;
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    NSLog(@"jian pan de gao du:%f",keyboardRect.size.height);
+    //计算键盘出现后，为确保_scrollView的内容都能显示，它应该滚动到的y轴位置
+    CGFloat newOffset = (_scrollView.contentSize.height - _scrollView.frame.size.height) + keyboardRect.size.height;
+    //将_scrollView滚动到上述位置
+    [_scrollView setContentOffset:CGPointMake(0, newOffset) animated:YES];
+}
+//键盘收起时的操作
+- (void)keyboardWillHide: (NSNotification *)notification{
+    NSLog(@"jian pan guan bi le");
+    //计算键盘消失后，_scrollView应该滚动回到的y轴位置
+    _tapTrick.enabled = NO;
+   // CGFloat newOffset = (_scrollView.contentSize.height - _scrollView.frame.size.height);
+    CGFloat newOffset = -64;
+    //将_scrollView滚动到上述位置
+    [_scrollView setContentOffset:CGPointMake(0, newOffset) animated:YES];
+}
+
+
+
+
+
+
+
+
 - (void) grenderTFC {
     _grenderView = [[UIPickerView alloc] init];
     _grenderView.dataSource = self;
@@ -199,14 +277,19 @@
 //如果输入超过规定的字数100，就不再让输入
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if (range.location >= 300)
-    {
-        [Utilities popUpAlertViewWithMsg:@"您已输入的字数据已达上限" andTitle:nil onView:self];
-        return  NO;
-    }
-    else
-    {
+    if ([text isEqualToString:@""] && range.length > 0) {
+       //[_DescribeTV resignFirstResponder];
+        //删除字符肯定是安全的
         return YES;
+    }
+    else {
+        if (_DescribeTV.text.length - range.length + text.length  > 300) {
+             [Utilities popUpAlertViewWithMsg:@"您已输入的字数据已达上限" andTitle:nil onView:self];
+            return NO;
+        }
+        else {
+            return YES;
+        }
     }
 }
 //创建随机订单号（不确保唯一性）
@@ -256,7 +339,8 @@
     //手机号
     NSString *phoneNum = _PhoneNum.text;
     //描述的问题
-    NSString *Describe = _DescribeTV.text;
+    NSString *Describe =  _DescribeTV.text;
+    
      //订单号
     NSString *tradeNO = [self generateTradeNO];
     //获取当前用户ID
@@ -351,10 +435,7 @@
 
     } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
-        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-        [MBProgressHUD hideHUDForView:self.view];
-        self.navigationController.view.self.userInteractionEnabled = YES;
-
+        
     }];
 }
 

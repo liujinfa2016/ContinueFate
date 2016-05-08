@@ -42,8 +42,12 @@
     self.navigationItem.title = @"专家榜";
     //删除多余的线
     _tableView.tableFooterView = [[UIView alloc]init];
+    //删除分隔线
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self requestData];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -95,9 +99,6 @@
     } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
         
-        [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
-        [MBProgressHUD hideHUDForView:self.view];
-        self.navigationController.view.self.userInteractionEnabled = NO;
     }];
 }
 
@@ -127,8 +128,9 @@
         
         cell.Username.text = [NSString stringWithFormat:@"%@",dict[@"name"]];
         
-        cell.Edetail.text = [NSString stringWithFormat:@"%@", dict[@"longevity"]];
-        cell.ReadingN.text= [NSString stringWithFormat:@"%@", dict[@"orderCount"]];
+        cell.Edetail.text = [NSString stringWithFormat:@"专家资历：%@", dict[@"longevity"]];
+        cell.ReadingN.text= [NSString stringWithFormat:@"咨询人数：%@", dict[@"orderCount"]];
+    cell.Personality.text=[NSString stringWithFormat:@"个性签名%@",dict [@"descripition"]];
         NSURL *photoUrl = [NSURL URLWithString:dict[@"headimage"]];
         [cell.image sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
         return cell;
@@ -152,17 +154,20 @@
 - (IBAction)SearchAction:(UIBarButtonItem *)sender {
 
     if (flag == NO) {
-        //设置搜索框的提示语
+        //设置搜索框的提示语\风格
         _searchController.searchBar.placeholder = @"搜索专家名";
+        _searchController.searchBar.searchBarStyle=UISearchBarStyleMinimal;
+        _searchController.searchBar.barStyle=UIBarStyleBlackOpaque;
         //签协议
         _searchController.delegate = self;
         _searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
         _searchController.searchResultsUpdater = self;
         _searchController.dimsBackgroundDuringPresentation = NO;
-        _searchController.hidesNavigationBarDuringPresentation = NO;
+        _searchController. hidesNavigationBarDuringPresentation = NO;
         _searchController.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
         _tableView.tableHeaderView = _searchController.searchBar;
         flag = YES;
+        
        
     } else {
         _tableView.tableHeaderView = [[UIView alloc]init];
@@ -177,6 +182,7 @@
     
     [_searchArr removeAllObjects];
     NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", self.searchController.searchBar.text];
+    
     _searchArr = [[_objArr filteredArrayUsingPredicate:searchPredicate] mutableCopy];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];

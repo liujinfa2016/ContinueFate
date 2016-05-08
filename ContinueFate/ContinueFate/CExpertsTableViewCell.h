@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ReadingN;
 
 @property (weak, nonatomic) IBOutlet UIView *styleView;
+@property (weak, nonatomic) IBOutlet UILabel *Personality;//个性签名
 
 @end

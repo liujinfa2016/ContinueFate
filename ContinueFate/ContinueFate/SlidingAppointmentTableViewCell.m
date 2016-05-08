@@ -7,12 +7,13 @@
 //
 
 #import "SlidingAppointmentTableViewCell.h"
-
+#import "slidingAppointmentViewController.h"
 @implementation SlidingAppointmentTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,8 +25,6 @@
 
 
 
-
-- (IBAction)OrderAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    
+- (IBAction)photoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
