@@ -154,7 +154,7 @@
         }];
     }else {
         [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
-            [self delCollection];
+            [self addCollection];
         } flaseAction:^(UIAlertAction * _Nonnull action) {
             [MBProgressHUD hideHUDForView:self.view];
         }];
@@ -162,7 +162,7 @@
     }
 }
 
-//网络请求 提取数据
+//网络请求 保存数据
 - (void) addCollection {
     
     NSDictionary *parameters = @{@"articleid":_articleId,@"usertype":@1,@"userid":userid};
@@ -195,7 +195,7 @@
     NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/DelCollection";
     NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
-    [[AppAPIClient sharedClient] POST:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+    [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSLog(@"delete = %ld",[responseObject[@"resultFlag"]integerValue]);
         [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {

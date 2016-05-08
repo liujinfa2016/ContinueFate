@@ -82,6 +82,7 @@
 		C46B3CE81CD3637A009E98FD /* AMASucCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46B3CE71CD3637A009E98FD /* AMASucCellTableViewCell.m */; };
 		C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */; };
 		C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2F30F1CC48AB800F24727 /* ArticleObject.m */; };
+		C4E627991CDF064B00F0DE99 /* CollectionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E627981CDF064B00F0DE99 /* CollectionObject.m */; };
 		ED46316C1CC3888A0000FB71 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */; };
 		ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */; };
 		ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631831CC39B1E0000FB71 /* ArticleViewController.m */; };
@@ -256,6 +257,8 @@
 		C4C2F30C1CC489AA00F24727 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		C4C2F30E1CC48AB800F24727 /* ArticleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleObject.h; sourceTree = "<group>"; };
 		C4C2F30F1CC48AB800F24727 /* ArticleObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleObject.m; sourceTree = "<group>"; };
+		C4E627971CDF064B00F0DE99 /* CollectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionObject.h; sourceTree = "<group>"; };
+		C4E627981CDF064B00F0DE99 /* CollectionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionObject.m; sourceTree = "<group>"; };
 		ED4631691CC3888A0000FB71 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		ED46316A1CC3888A0000FB71 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+NJ.h"; path = "MBProgressHUD/MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		ED46316B1CC3888A0000FB71 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+NJ.m"; path = "MBProgressHUD/MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
@@ -427,6 +430,8 @@
 				C4C2F30F1CC48AB800F24727 /* ArticleObject.m */,
 				85640F991CCB7AD400BA9B90 /* QuestionObject.h */,
 				85640F9A1CCB7AD400BA9B90 /* QuestionObject.m */,
+				C4E627971CDF064B00F0DE99 /* CollectionObject.h */,
+				C4E627981CDF064B00F0DE99 /* CollectionObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -927,6 +932,7 @@
 				F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */,
 				C424DC3D1CCC7A7300B39ED8 /* ArticleDetailViewController.m in Sources */,
 				64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */,
+				C4E627991CDF064B00F0DE99 /* CollectionObject.m in Sources */,
 				05079BCF1CC21A8E00E7CFC8 /* AppAPIClient.m in Sources */,
 				8562A4031CC639E800288F16 /* QuestionTableViewCell.m in Sources */,
 				F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */,

@@ -64,6 +64,7 @@
         [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
     }];
     [[StorageMgr singletonStorageMgr] removeObjectForKey:@"UserID"];
+    [[StorageMgr singletonStorageMgr] removeObjectForKey:@"UserType"];
 }
 
 - (IBAction)Return:(UIBarButtonItem *)sender {
