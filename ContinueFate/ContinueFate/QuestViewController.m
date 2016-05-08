@@ -10,9 +10,10 @@
 #import "DetailTableViewCell.h"
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
+#import "ViewController.h"
 #import "CEDetailsViewController.h"
 
-@interface QuestViewController (){
+@interface QuestViewController ()<UITableViewDelegate>{
     NSInteger page;
     NSInteger perpage;
     NSInteger total;
@@ -22,6 +23,10 @@
 @property (strong,nonatomic)NSMutableArray *experts;
 @property (strong,nonatomic)NSMutableArray *customer;
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
+@property (strong,nonatomic)UIButton *save;
+@property (strong,nonatomic)UIButton *cancel;
+@property (strong,nonatomic)UIView *ansview;
+@property (strong,nonatomic)UITextView *comment;
 
 @end
 
@@ -125,6 +130,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSLog(@"sdsdsdsd");
 }
 
 
@@ -196,6 +202,8 @@
     if (obj.usertype.integerValue == 1) {
         cell.actBtn.hidden = YES;
     }
+    
+    [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:obj.answerID];
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
@@ -216,34 +224,85 @@
 }
 
 - (void)addAnswerView{
-    UIView *ansview = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 190, UI_SCREEN_W, 190)];
-    ansview.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
+    _ansview = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 190, UI_SCREEN_W, 190)];
+    _ansview.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
     ;
-    UIButton *cancel = [[UIButton alloc]initWithFrame:CGRectMake(5, ansview.frame.size.height - 180, 60, 20)];
-    [cancel setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [cancel setTitle:@"Cancel" forState:UIControlStateNormal];
-    [ansview addSubview:cancel];
+    _cancel = [[UIButton alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 180, 60, 20)];
+    [_cancel setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [_cancel setTitle:@"Cancel" forState:UIControlStateNormal];
+    [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [_ansview addSubview:_cancel];
     
-    UIButton *save = [[UIButton alloc]initWithFrame:CGRectMake(UI_SCREEN_W - 60, ansview.frame.size.height - 180, 60, 20)];
-    [save setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
-    [save setTitle:@"OK" forState:UIControlStateNormal];
-    [ansview addSubview:save];
+    _save = [[UIButton alloc]initWithFrame:CGRectMake(UI_SCREEN_W - 60, _ansview.frame.size.height - 180, 60, 20)];
+    [_save setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [_save setTitle:@"OK" forState:UIControlStateNormal];
+    [_save addTarget:self action:@selector(ansRequest) forControlEvents:UIControlEventTouchUpInside];
+    [_ansview addSubview:_save];
     
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake((UI_SCREEN_W - 30)/ 2 , ansview.frame.size.height - 180, 60, 20)];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake((UI_SCREEN_W - 30)/ 2 , _ansview.frame.size.height - 180, 60, 20)];
     title.text = @"评论";
     title.textColor = [UIColor blackColor];
     title.font = [UIFont systemFontOfSize:B_Font];
-    [ansview addSubview:title];
+    [_ansview addSubview:title];
     
-    UITextView *comment = [[UITextView alloc]initWithFrame:CGRectMake(5, ansview.frame.size.height - 155, UI_SCREEN_W - 15, 85)];
-    [ansview addSubview:comment];
+    _comment = [[UITextView alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 155, UI_SCREEN_W - 15, 85)];
+    [_ansview addSubview:_comment];
     
-    [self.view addSubview:ansview];
+    [self.view addSubview:_ansview];
    
+}
+
+- (void)cancelAction{
+    _ansview.hidden = YES;
+    NSLog(@"取消");
+}
+
+- (void)ansRequest{
+    NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSLog(@"userid = %@",userid);
+    
+    NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
+    NSLog(@"answerSUB = %@",sub);
+    NSString *answer = [[StorageMgr singletonStorageMgr]objectForKey:@"answerID"];
+    NSLog(@"answer = %@",answer);
+    NSDictionary * parameters = @{@"substance":sub,@"usertype":@1,@"answerid":answer,@"id":userid};
+    [RequestAPI postURL:@"/probingAppend" withParameters:parameters success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        
+        [self queryData];
+    } failure:^(NSError *error) {
+        NSLog(@"error = %@",error.description);
+    }];
+    _ansview.hidden = YES;
 }
 
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
-    [self addAnswerView];
+    if ([Utilities loginState]){
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertView addAction:confirmAction];
+        [alertView addAction:cancelAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }else{
+        [self addAnswerView];
+    }
+}
+
+- (void)queryData{
+    NSString *answer = [[StorageMgr singletonStorageMgr]objectForKey:@"answerID"];
+    NSDictionary *parameters = @{@"answerid":answer};
+    [RequestAPI postURL:@"/probingList" withParameters:parameters success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        
+    } failure:^(NSError *error) {
+        NSLog(@"error = %@",error.description);
+    }];
 }
 @end
