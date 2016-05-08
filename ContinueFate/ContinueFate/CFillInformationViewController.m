@@ -353,7 +353,7 @@
     //性别
     NSString *grender = _grenderTF.text;
     //预约状态
-    NSString *orderStateid = [NSString stringWithFormat:@"%@",_getOrderState[@"id"]];
+    NSString *orderStateid = _getOrderState;
     //获取所选咨询类型
     NSString *orderTypeid = [NSString stringWithFormat:@"%@",_objectForShow[@"id"]];
     

@@ -36,5 +36,5 @@
 //接收传值 （传值入口）
 @property (strong ,nonatomic)NSDictionary *expertsM;
 @property (strong ,nonatomic)NSDictionary * objectForShow;
-@property (strong ,nonatomic)NSDictionary * getOrderState;
+@property (strong ,nonatomic)NSString * getOrderState;
 @end
