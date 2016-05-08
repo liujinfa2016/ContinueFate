@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="91E-xJ-QA2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="91E-xJ-QA2">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -1180,12 +1180,20 @@
                                                     <color key="textColor" red="0.00063063835409999996" green="0.17438396780000001" blue="0.27888268290000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-uZ-9Ss">
+                                                    <rect key="frame" x="254" y="148" width="46" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="paybutAction:forEvent:" destination="xxT-QO-0jU" eventType="touchUpInside" id="WYw-3a-C4f"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="8a1-sX-Sur" secondAttribute="trailing" constant="10" id="070-tE-VXB"/>
                                                 <constraint firstItem="nd2-fY-sHF" firstAttribute="leading" secondItem="8a1-sX-Sur" secondAttribute="leading" id="0TZ-4O-igu"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bkp-y0-jWT" secondAttribute="trailing" constant="10" id="3yp-bF-ixg"/>
                                                 <constraint firstAttribute="trailing" secondItem="TWe-kZ-SRg" secondAttribute="trailing" constant="20" id="5fJ-fP-4er"/>
+                                                <constraint firstAttribute="trailing" secondItem="KcF-uZ-9Ss" secondAttribute="trailing" constant="20" id="82N-vE-h81"/>
                                                 <constraint firstItem="nd2-fY-sHF" firstAttribute="trailing" secondItem="8a1-sX-Sur" secondAttribute="trailing" id="8WU-LB-5oM"/>
                                                 <constraint firstItem="nd2-fY-sHF" firstAttribute="top" secondItem="8a1-sX-Sur" secondAttribute="bottom" constant="5" id="8Zb-Ds-0NP"/>
                                                 <constraint firstItem="TWe-kZ-SRg" firstAttribute="top" secondItem="pb6-R7-5tP" secondAttribute="top" id="9ic-hN-FAJ"/>
@@ -1200,6 +1208,7 @@
                                                 <constraint firstItem="aHQ-WT-tfP" firstAttribute="leading" secondItem="YrF-dN-Mx5" secondAttribute="leading" constant="20" id="Vx8-c8-BZR"/>
                                                 <constraint firstItem="1cT-B1-HlL" firstAttribute="top" secondItem="YrF-dN-Mx5" secondAttribute="top" id="byy-41-fwl"/>
                                                 <constraint firstItem="8a1-sX-Sur" firstAttribute="top" secondItem="QVf-Am-95k" secondAttribute="top" id="czl-lE-Q5m"/>
+                                                <constraint firstItem="KcF-uZ-9Ss" firstAttribute="centerY" secondItem="aHQ-WT-tfP" secondAttribute="centerY" id="dwt-eB-rvn"/>
                                                 <constraint firstItem="4bQ-rT-UDN" firstAttribute="bottom" secondItem="QVf-Am-95k" secondAttribute="bottom" id="p0D-lk-BcK"/>
                                                 <constraint firstItem="1cT-B1-HlL" firstAttribute="leading" secondItem="YrF-dN-Mx5" secondAttribute="leading" constant="10" id="piq-Sq-pyt"/>
                                                 <constraint firstItem="TWe-kZ-SRg" firstAttribute="bottom" secondItem="pb6-R7-5tP" secondAttribute="bottom" id="tIf-w7-TkN"/>
@@ -1218,6 +1227,7 @@
                                             <outlet property="IfSuccessLab" destination="TWe-kZ-SRg" id="wWT-1b-8Q2"/>
                                             <outlet property="MoneyLab" destination="4bQ-rT-UDN" id="Nd9-ax-K6U"/>
                                             <outlet property="cardIM" destination="QVf-Am-95k" id="XtA-7W-aAW"/>
+                                            <outlet property="paybut" destination="KcF-uZ-9Ss" id="ufq-a8-vfj"/>
                                             <outlet property="photo" destination="1cT-B1-HlL" id="JX9-fJ-OGh"/>
                                         </connections>
                                     </tableViewCell>

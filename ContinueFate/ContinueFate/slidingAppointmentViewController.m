@@ -118,7 +118,12 @@
             break;
     }
 }
-
+-(void)buttonPressed:(UIButton *)button{
+    NSUInteger index = button.tag;
+    NSLog(@"ddd = %lu",(unsigned long)index);
+    // 根据tag就可以知道哪一个cell上的按钮
+    
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _array.count;
 }
@@ -128,14 +133,11 @@
     NSDictionary *dit = _array[indexPath.row];
      NSLog(@"66666===%@",dit);
     if ([dit[@"orderStateName"] isEqual: @"待付款"]) {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(cell.bounds.size.width-85, cell.bounds.size.height-60, 75, 75);
-    [button setTitle:@"去付款" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        //给button添加委托方法，即点击触发的事件。
-//        [button addTarget:selfaction:@selector(touchButton1:)  forControlEvents :UIControl EventTouchUp Inside];
-      [cell addSubview:button];
-        
+        cell.paybut.hidden = NO;
+        [cell.paybut addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.paybut.tag = [indexPath row];
+    }else{
+        cell.paybut.hidden = YES;
     }
    
     //专家名字
