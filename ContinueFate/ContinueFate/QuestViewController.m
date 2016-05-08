@@ -41,7 +41,10 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -212,7 +215,35 @@
     
 }
 
-- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+- (void)addAnswerView{
+    UIView *ansview = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 190, UI_SCREEN_W, 190)];
+    ansview.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
+    ;
+    UIButton *cancel = [[UIButton alloc]initWithFrame:CGRectMake(5, ansview.frame.size.height - 180, 60, 20)];
+    [cancel setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [cancel setTitle:@"Cancel" forState:UIControlStateNormal];
+    [ansview addSubview:cancel];
+    
+    UIButton *save = [[UIButton alloc]initWithFrame:CGRectMake(UI_SCREEN_W - 60, ansview.frame.size.height - 180, 60, 20)];
+    [save setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [save setTitle:@"OK" forState:UIControlStateNormal];
+    [ansview addSubview:save];
+    
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake((UI_SCREEN_W - 30)/ 2 , ansview.frame.size.height - 180, 60, 20)];
+    title.text = @"评论";
+    title.textColor = [UIColor blackColor];
+    title.font = [UIFont systemFontOfSize:B_Font];
+    [ansview addSubview:title];
+    
+    UITextView *comment = [[UITextView alloc]initWithFrame:CGRectMake(5, ansview.frame.size.height - 155, UI_SCREEN_W - 15, 85)];
+    [ansview addSubview:comment];
+    
+    [self.view addSubview:ansview];
    
+}
+
+
+- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self addAnswerView];
 }
 @end

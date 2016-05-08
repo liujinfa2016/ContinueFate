@@ -43,6 +43,11 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
+}
+
 - (void)textViewDidChange:(UITextView *)textView{
     
     if ([_substanceView.text length] == 0) {
