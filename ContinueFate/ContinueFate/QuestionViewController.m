@@ -65,11 +65,6 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"EnableGesture" object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
-}
-
 
 -(void)btnPressed:(id)sender{
     FSDropDownMenu *menu = (FSDropDownMenu*)[self.view viewWithTag:1001];

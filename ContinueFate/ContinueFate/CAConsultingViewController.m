@@ -15,7 +15,7 @@
     NSInteger perPage;
 }
 @property (strong ,nonatomic)NSMutableArray *objectForShow;
-@property (strong ,nonatomic)NSMutableArray *getOrderState;
+@property (strong , nonatomic)NSString *orderId;
 @end
 
 @implementation CAConsultingViewController
@@ -30,7 +30,6 @@
     //删除分隔线
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _objectForShow = [NSMutableArray new];
-    _getOrderState = [NSMutableArray new];
     // Do any additional setup after loading the view.
    
     _name.text = _expertsM[@"name"];
@@ -92,15 +91,12 @@
             
             NSDictionary *result = responseObject[@"result"];
             NSArray *models = result[@"models"];
-            if (page == 1){
-                _getOrderState = nil;
-                _getOrderState = [NSMutableArray new];
-                perPage = 4;
-            }
+            
             //遍历models的内容
             for (NSDictionary *dic in models) {
-                [_getOrderState addObject:dic];
-                NSLog(@"dic ===%@",dic);
+                if ([dic[@"name"]isEqualToString:@"待回复"]){
+                    _orderId = dic[@"id"];
+                }
             }
         }
         
@@ -137,10 +133,9 @@
     CFillInformationViewController *date = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"Information"];
     //传值入口
    NSDictionary *dictB = _objectForShow[indexPath.row];
-    NSDictionary *dictC = _getOrderState[indexPath.row];
     date.expertsM = _expertsM;
     date.objectForShow = dictB;
-    date.getOrderState = dictC;
+    date.getOrderState = _orderId;
     [self.navigationController pushViewController:date animated:YES];
 }
 

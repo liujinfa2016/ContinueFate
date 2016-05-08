@@ -10,9 +10,10 @@
 #import "DetailTableViewCell.h"
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
+#import "ViewController.h"
 #import "CEDetailsViewController.h"
 
-@interface QuestViewController (){
+@interface QuestViewController ()<UITableViewDelegate>{
     NSInteger page;
     NSInteger perpage;
     NSInteger total;
@@ -22,6 +23,10 @@
 @property (strong,nonatomic)NSMutableArray *experts;
 @property (strong,nonatomic)NSMutableArray *customer;
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
+@property (strong,nonatomic)UIButton *save;
+@property (strong,nonatomic)UIButton *cancel;
+@property (strong,nonatomic)UIView *ansview;
+@property (strong,nonatomic)UITextView *comment;
 
 @end
 
@@ -41,7 +46,10 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DisableGesture" object:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -113,6 +121,23 @@
         [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
     }];
 }
+
+- (NSString *)answeridForTag:(NSInteger *)section row:(NSInteger *)row {
+    NSString *answerId = @"";
+    NSDictionary *dic1 = _objectsForShow[1];
+    NSDictionary *dic2 = _objectsForShow[0];
+    if (section == 0) {
+        NSArray *arr = dic2[@"usertype"];
+        QuestionObject *quest = arr[(long)row];
+        answerId = quest.Id;
+    }else{
+        NSArray *arr = dic1[@"usertype"];
+        QuestionObject *quest = arr[(long)row];
+        answerId = quest.Id;
+    }
+    return answerId;
+}
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -193,6 +218,8 @@
     if (obj.usertype.integerValue == 1) {
         cell.actBtn.hidden = YES;
     }
+    
+    [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:obj.answerID];
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
@@ -212,7 +239,87 @@
     
 }
 
-- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+- (void)addAnswerView{
+    _ansview = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 190, UI_SCREEN_W, 190)];
+    _ansview.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
+    ;
+    _cancel = [[UIButton alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 180, 60, 20)];
+    [_cancel setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [_cancel setTitle:@"Cancel" forState:UIControlStateNormal];
+    [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [_ansview addSubview:_cancel];
+    
+    _save = [[UIButton alloc]initWithFrame:CGRectMake(UI_SCREEN_W - 60, _ansview.frame.size.height - 180, 60, 20)];
+    [_save setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    [_save setTitle:@"OK" forState:UIControlStateNormal];
+    [_save addTarget:self action:@selector(ansRequest) forControlEvents:UIControlEventTouchUpInside];
+    [_ansview addSubview:_save];
+    
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake((UI_SCREEN_W - 30)/ 2 , _ansview.frame.size.height - 180, 60, 20)];
+    title.text = @"评论";
+    title.textColor = [UIColor blackColor];
+    title.font = [UIFont systemFontOfSize:B_Font];
+    [_ansview addSubview:title];
+    
+    _comment = [[UITextView alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 155, UI_SCREEN_W - 15, 85)];
+    [_ansview addSubview:_comment];
+    
+    [self.view addSubview:_ansview];
    
+}
+
+- (void)cancelAction{
+    _ansview.hidden = YES;
+    NSLog(@"取消");
+}
+
+- (void)ansRequest{
+    NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSLog(@"userid = %@",userid);
+    
+    NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
+    NSLog(@"answerSUB = %@",sub);
+    NSString *answer = [[StorageMgr singletonStorageMgr]objectForKey:@"answerID"];
+    NSLog(@"answer = %@",answer);
+    NSDictionary * parameters = @{@"substance":sub,@"usertype":@1,@"answerid":answer,@"id":userid};
+    [RequestAPI postURL:@"/probingAppend" withParameters:parameters success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        
+        [self queryData];
+    } failure:^(NSError *error) {
+        NSLog(@"error = %@",error.description);
+    }];
+    _ansview.hidden = YES;
+}
+
+
+- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+     NSLog(@"send = %ld, row = %ld",sender.tag%10,sender.tag/10);
+    if ([Utilities loginState]){
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertView addAction:confirmAction];
+        [alertView addAction:cancelAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }else{
+        [self addAnswerView];
+    }
+}
+
+- (void)queryData{
+    NSString *answer = [[StorageMgr singletonStorageMgr]objectForKey:@"answerID"];
+    NSDictionary *parameters = @{@"answerid":answer};
+    [RequestAPI postURL:@"/probingList" withParameters:parameters success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        
+    } failure:^(NSError *error) {
+        NSLog(@"error = %@",error.description);
+    }];
 }
 @end

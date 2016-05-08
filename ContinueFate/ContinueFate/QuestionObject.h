@@ -23,5 +23,6 @@
 @property (strong,nonatomic)NSString *userHeadImage;
 @property (strong,nonatomic)NSString *expertName;
 @property (strong,nonatomic)NSString *expertHeadImage;
+@property (strong,nonatomic)NSString *answerID;
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end

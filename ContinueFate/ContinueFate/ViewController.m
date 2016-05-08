@@ -91,6 +91,7 @@
     NSString *exponent = [[StorageMgr singletonStorageMgr] objectForKey:@"exponent"];
     if (modulus == NULL || modulus.length == 0 || exponent == NULL || exponent.length == 0) {
         [MBProgressHUD showMessage:@"您当前的网络状态不稳定，请稍后再试！" toView:self.view];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         return ;
     }
     password = [NSString encryptWithPublicKeyFromModulusAndExponent:[password getMD5_32BitString].UTF8String modulus:modulus exponent:exponent];
@@ -105,6 +106,7 @@
             
             
             [[StorageMgr singletonStorageMgr] addKey:@"UserID" andValue:models[@"id"]];
+            [[StorageMgr singletonStorageMgr] addKey:@"UserType" andValue:models[@"usertype"]];
           
             [[StorageMgr singletonStorageMgr] addKey:@"Nickname" andValue:models[@"nickname"]];
                 //记忆用户名
