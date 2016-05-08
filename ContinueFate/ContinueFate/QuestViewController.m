@@ -18,6 +18,7 @@
     NSInteger perpage;
     NSInteger total;
     NSInteger type;
+    NSInteger answerid;
     
 }
 @property (strong,nonatomic)NSMutableArray *experts;
@@ -122,7 +123,7 @@
     }];
 }
 
-- (NSString *)answeridForTag:(NSInteger *)section row:(NSInteger *)row {
+- (NSString *)answeridForTag:(NSInteger)section row:(NSInteger)row {
     NSString *answerId = @"";
     NSDictionary *dic1 = _objectsForShow[1];
     NSDictionary *dic2 = _objectsForShow[0];
@@ -279,7 +280,7 @@
     
     NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
     NSLog(@"answerSUB = %@",sub);
-    NSString *answer = [[StorageMgr singletonStorageMgr]objectForKey:@"answerID"];
+    NSString *answer = [self answeridForTag:answerid % 10 row:answerid / 10];
     NSLog(@"answer = %@",answer);
     NSDictionary * parameters = @{@"substance":sub,@"usertype":@1,@"answerid":answer,@"id":userid};
     [RequestAPI postURL:@"/probingAppend" withParameters:parameters success:^(id responseObject) {
@@ -294,7 +295,8 @@
 
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
-     NSLog(@"send = %ld, row = %ld",sender.tag%10,sender.tag/10);
+    answerid = sender.tag;
+   
     if ([Utilities loginState]){
         NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
         
