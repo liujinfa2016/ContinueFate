@@ -17,4 +17,6 @@
 - (IBAction)ConsultingAction:(UIButton *)sender forEvent:(UIEvent *)event;//点击预约
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tvHeight;//获取textView的高度
 @property (strong ,nonatomic)NSDictionary *dict;//传值容器
+@property (strong ,nonatomic)NSString *expertId;
+@property (nonatomic)NSInteger  tags;
 @end
