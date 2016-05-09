@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *DetailsTV;//专家咨询服务
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)ConsultingAction:(UIButton *)sender forEvent:(UIEvent *)event;//点击预约
+@property (weak, nonatomic) IBOutlet UIButton *ConsultingButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tvHeight;//获取textView的高度
 @property (strong ,nonatomic)NSDictionary *dict;//传值容器
+
+@property (strong ,nonatomic)NSString *expertId;
+@property (nonatomic)NSInteger  tags;
 @end
