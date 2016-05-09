@@ -11,7 +11,7 @@
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
 #import "ViewController.h"
-#import "CEDetailsViewController.h"
+
 
 @interface QuestViewController ()<UITableViewDelegate>{
     NSInteger page;
@@ -155,7 +155,27 @@
 }
 
 - (void)saveData{
-    [self answerView];
+    _ansview.hidden = YES;
+    NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
+    NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSDictionary *parameters = @{@"sustance":sub,@"usertype":@1,@"questionid":_detail.Id,@"id":userid};
+    [RequestAPI postURL:@"/answerAppend" withParameters:parameters success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+            NSDictionary *dict = responseObject[@"result"];
+            NSDictionary *totalData = dict[@"paginginfo"];
+            total = [totalData[@"total"]integerValue];
+            _ansNumber.text = [NSString stringWithFormat:@"回答数:%ld",(long)total];
+            NSLog(@"sub = %@",sub);
+            NSLog(@"id = %@",userid);
+            NSLog(@"questionid = %@",_detail.Id);
+            
+            [_tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"error = %@",error.description);
+        [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
+    }];
 }
 
 - (NSString *)answeridForTag:(NSInteger)section row:(NSInteger)row {
@@ -300,8 +320,6 @@
     NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
     
     NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
-    [[StorageMgr singletonStorageMgr]addKey:@"substance" andValue:sub];
-    
     NSString *answer = [self answeridForTag:answerid % 10 row:answerid / 10];
     [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:answer];
     
