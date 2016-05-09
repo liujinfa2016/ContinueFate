@@ -27,4 +27,6 @@
 
 - (IBAction)photoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
+- (IBAction)paybutAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end
