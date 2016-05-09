@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _SCView.contentSize  = CGSizeMake(UI_SCREEN_W,0);
+    _SCView.showsHorizontalScrollIndicator = NO;
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 

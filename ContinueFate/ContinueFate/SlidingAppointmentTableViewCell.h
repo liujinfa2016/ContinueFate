@@ -18,5 +18,11 @@
 - (IBAction)photoAction:(UIButton *)sender forEvent:(UIEvent *)event;//专家头像按钮
 @property (weak, nonatomic) IBOutlet UIButton *photo;//专家头像
 
+- (IBAction)paybutAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
+@property (weak, nonatomic) IBOutlet UIButton *paybut;
+
+
+
 
 @end
