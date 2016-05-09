@@ -119,28 +119,45 @@
             break;
     }
 }
--(void)buttonPressed:(UIButton *)button{
-    NSUInteger index = button.tag;
-    NSLog(@"ddd = %lu",(unsigned long)index);
-    // 根据tag就可以知道哪一个cell上的按钮
-    
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _array.count;
 }
-
+//点击去付款获取金额
+-(void)buttonPressed:(UIButton *)button{
+    NSUInteger index = button.tag;
+    NSDictionary *dic = _array[index];
+    NSNumber *money =dic[@"orderTypePrice"];
+    NSLog(@"金额 ＝ %@",money);
+    
+    // 根据tag就可以知道哪一个cell上的按钮
+}
+//点击头像执行跳转
+-(void)exbutton:(UIButton *)button{
+    NSUInteger index = button.tag;
+    NSDictionary *dic = _array[index];
+    NSString *exid =dic[@"expertId"];
+    NSLog(@"专家id ＝＝ %@",exid);
+    [self dismissViewControllerAnimated:[Utilities getStoryboardInstanceByIdentity:@"" byIdentity:@""] completion:^{
+        
+    }];
+}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SlidingAppointmentTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //激活点击事件
+    tableView.delaysContentTouches = YES;
     NSDictionary *dit = _array[indexPath.row];
-     NSLog(@"66666===%@",dit);
-    if ([dit[@"orderStateName"] isEqual: @"待付款"]) {
+    //查询"待付款"的标签
+    if ([dit[@"orderStateName"] isEqualToString:@"待付款"]) {
         cell.paybut.hidden = NO;
-        [cell.paybut addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         cell.paybut.tag = [indexPath row];
+        //点击按钮触发事件
+        [cell.paybut addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
     }else{
         cell.paybut.hidden = YES;
     }
-   
+    
     //专家名字
     cell.ExpertsnameLab.text = dit[@"expertName"];
     //预约状态
@@ -149,11 +166,12 @@
     cell.CardLab.text = dit[@"orderTypeName"];
     //卡片的图片
     [cell.cardIM sd_setImageWithURL:dit[@"orderTypeImage"] placeholderImage:[UIImage imageNamed:@"专家入驻"]];
-//  专家头像
-    [cell.photo.imageView sd_setImageWithURL:dit[@"expertHeadImage"] placeholderImage:[UIImage imageNamed:@"图1"]];
+    //添加头像跳转事件
+    [cell.exButton addTarget:self action:@selector(exbutton:) forControlEvents:UIControlEventTouchUpInside];
+    //  专家头像
+    [cell.eximage sd_setImageWithURL:dit[@"expertHeadImage"] placeholderImage:[UIImage imageNamed:@"图1"]];
     //金额
     cell.MoneyLab.text = [NSString stringWithFormat:@"¥%@",dit[@"orderTypePrice"]];
-    
     
     return cell;
     

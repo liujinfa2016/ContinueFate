@@ -24,9 +24,10 @@
 
 
 
-
+//专家头像按钮
 - (IBAction)photoAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
+//去付款按钮
 - (IBAction)paybutAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
