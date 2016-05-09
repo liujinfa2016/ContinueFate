@@ -43,10 +43,11 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    NSLog(@" dd %@  tag = %ld",_expertId,(long)_tags);
     if (_expertId != nil) {
         [self requestData];
         if (_tags == 1) {
-            NSLog(@"sdfg");
+            _ConsultingButton.hidden = YES;
             
         }
     }
@@ -55,13 +56,15 @@
 }
 
 - (void) requestData {
-    NSDictionary *parameters = @{@"id":_expertId};
+    NSDictionary *parameters = @{@"expertId":_expertId,@"page":@(page),@"perPage":@(perPage)};
     [RequestAPI postURL:@"/expertsList" withParameters:parameters success:^(id responseObject) {
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
             
             NSDictionary *result = responseObject[@"result"];
             NSArray *models = result[@"models"];
+            NSLog(@"%@",models);
             NSDictionary *dict = models[0];
+            NSLog(@"%@",dict);
             //显示服务咨询
             _DetailsTV.text = [NSString stringWithFormat:@"%@",dict[@"descripition"]];
             //显示咨询过的人数

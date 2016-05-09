@@ -9,6 +9,7 @@
 #import "slidingAppointmentViewController.h"
 #import "SlidingAppointmentTableViewCell.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "CEDetailsViewController.h"
 @interface slidingAppointmentViewController ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSString *userid;
 }
@@ -137,9 +138,13 @@
     NSDictionary *dic = _array[index];
     NSString *exid =dic[@"expertId"];
     NSLog(@"专家id ＝＝ %@",exid);
-    [self dismissViewControllerAnimated:[Utilities getStoryboardInstanceByIdentity:@"" byIdentity:@""] completion:^{
-        
-    }];
+    
+    CEDetailsViewController *detailView = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
+    detailView.expertId = dic[@"expertId"];
+    NSLog(@"%@",detailView.expertId);
+    detailView.tags = 1;
+    [self.navigationController pushViewController:detailView animated:YES];
+  
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SlidingAppointmentTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
