@@ -217,6 +217,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    NSDictionary *dic2 = _objectsForShow[0];
+    NSArray *arr = dic2[@"usertype"];
+    if (section == 0){
+        if (arr.count == 0){
+            return 0;
+        }
+    }
     return 25;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
