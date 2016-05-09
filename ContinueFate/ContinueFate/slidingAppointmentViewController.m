@@ -31,6 +31,7 @@
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [UIView new];
     _array=[NSMutableArray new];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 //当没有预约信息，执行的方法
@@ -152,6 +153,7 @@
     [cell.photo.imageView sd_setImageWithURL:dit[@"expertHeadImage"] placeholderImage:[UIImage imageNamed:@"图1"]];
     //金额
     cell.MoneyLab.text = [NSString stringWithFormat:@"¥%@",dit[@"orderTypePrice"]];
+    
     
     return cell;
     

@@ -36,6 +36,7 @@
     _tableView.editing = NO;
     flag = false;
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 
