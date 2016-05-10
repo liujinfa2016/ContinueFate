@@ -59,6 +59,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)dataDataTransfer{
     _objectsForShow = [NSMutableArray new];
     NSURL *URL = [NSURL URLWithString:_detail.userHeadImage];
@@ -106,7 +107,7 @@
                     [_experts addObject:quest];
                 }
                 
-                NSDictionary *dic1 = @{@"group":@"用户回答",@"usertype":_customer};
+                NSDictionary *dic1 = @{@"group": @"用户回答",@"usertype":_customer};
                 NSDictionary *dic2 = @{@"group":@"专家回答",@"usertype":_experts};
                 _objectsForShow = [[NSMutableArray alloc] initWithObjects:dic2, dic1, nil];
                 
@@ -114,7 +115,6 @@
             
             [_tableView reloadData];
         }else{
-            NSLog(@"暂无更多评论！");
             _ansNumber.text = [NSString stringWithFormat:@"暂无更多评论"];
             [self createTableFooter];
             
@@ -127,6 +127,7 @@
     }];
 }
 
+//创建“我来回答”视图
 - (void)createTableFooter{
     
     _footerView = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 114, UI_SCREEN_W, 50)];
@@ -144,9 +145,45 @@
 }
 
 - (void)addAnswer{
-    _myComment.hidden = YES;
-    [self addAnswerView];
+    
+    if ([Utilities loginState]) {
+        [self isLogin];
+    }else{
+        [self answerView];
+        [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+        [_save addTarget:self action:@selector(saveData) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
+
+- (void)saveData{
+    _ansview.hidden = YES;
+    NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
+    NSLog(@"sub = %@",sub);
+    NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSDictionary *parameters = @{@"substance":sub,@"usertype":@1,@"questionid":_detail.Id,@"id":userid};
+    if (_comment.text.length == 0) {
+        NSLog(@"无内容输入");
+    }else{
+        [RequestAPI postURL:@"/answerAppend" withParameters:parameters success:^(id responseObject) {
+            NSLog(@"responseObject = %@",responseObject);
+            if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+                NSDictionary *dict = responseObject[@"result"];
+                NSDictionary *totalData = dict[@"paginginfo"];
+                total = [totalData[@"total"]integerValue];
+                _ansNumber.text = [NSString stringWithFormat:@"回答数:%ld",(long)total];
+                [_tableView reloadData];
+                
+            }else{
+                NSLog(@"无数据");
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"error = %@",error.description);
+            [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
+        }];
+        
+    }
+}
+
 
 - (NSString *)answeridForTag:(NSInteger)section row:(NSInteger)row {
     NSString *answerId = @"";
@@ -186,7 +223,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    NSDictionary *dic2 = _objectsForShow[0];
+    NSArray *arr = dic2[@"usertype"];
+    if (section == 0){
+        if (arr.count == 0){
+            return 0;
+        }
+    }
     return 25;
+    
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     //根据当前渲染的细胞的组号，获得该组所对应字典信息
@@ -253,7 +298,7 @@
 
 - (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event {
     
-   // self.navigationController.tabBarController.selectedIndex = 3;
+    // self.navigationController.tabBarController.selectedIndex = 3;
     CEDetailsViewController *segData = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
     NSDictionary *dic =  _objectsForShow[sender.tag];
     NSArray *arr = dic[@"usertype"];
@@ -267,19 +312,22 @@
 }
 
 - (void)addAnswerView{
+    [self answerView];
+    [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [_save addTarget:self action:@selector(ansRequest) forControlEvents:UIControlEventTouchUpInside];}
+
+- (void)answerView{
     _ansview = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 190, UI_SCREEN_W, 190)];
     _ansview.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
     ;
     _cancel = [[UIButton alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 180, 60, 20)];
     [_cancel setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [_cancel setTitle:@"Cancel" forState:UIControlStateNormal];
-    [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
     [_ansview addSubview:_cancel];
     
     _save = [[UIButton alloc]initWithFrame:CGRectMake(UI_SCREEN_W - 60, _ansview.frame.size.height - 180, 60, 20)];
     [_save setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [_save setTitle:@"OK" forState:UIControlStateNormal];
-    [_save addTarget:self action:@selector(ansRequest) forControlEvents:UIControlEventTouchUpInside];
     [_ansview addSubview:_save];
     
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake((UI_SCREEN_W - 30)/ 2 , _ansview.frame.size.height - 180, 60, 20)];
@@ -292,8 +340,8 @@
     [_ansview addSubview:_comment];
     
     [self.view addSubview:_ansview];
-    
 }
+
 
 - (void)cancelAction{
     _ansview.hidden = YES;
@@ -326,10 +374,10 @@
 
 - (void)isLogin{
     if ([Utilities loginState]){
-        NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，无法评论，是否立即前往"];
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，是否立即前往"];
         
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"前往登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
             [self presentViewController:alert animated:YES completion:nil];
         }];
@@ -344,9 +392,12 @@
 }
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
-    
     answerid = sender.tag;
-    [self isLogin];
+    if ([Utilities loginState]){
+        [self isLogin];
+    }else{
+        [self addAnswerView];
+    }
 }
 
 - (void)queryData{
