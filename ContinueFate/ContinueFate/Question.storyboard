@@ -72,8 +72,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="额外国家队后IE请我喝咖啡成怒IE看坚强不屈次就看到微博才能破女王 i 了开发你的 u 就千万别吃腻了的我看你吃；哦ID我看清了你，can；哦IE巧克力我能从 i 我；lec" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmy-mD-XFn">
-                                                    <rect key="frame" x="15" y="78" width="290" height="51"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="额外国家队后IE请我喝咖啡成怒IE看坚强不屈次就看到微博才能破女王 i 了开发你的 u 就千万别吃腻了的我看你吃；哦ID我看清了你，can；哦IE巧克力我能从 i 我；lec" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmy-mD-XFn">
+                                                    <rect key="frame" x="15" y="78" width="290" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -109,15 +109,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVo-P6-fca">
-                                                    <rect key="frame" x="0.0" y="134" width="320" height="1"/>
+                                                    <rect key="frame" x="0.0" y="117" width="320" height="1"/>
                                                     <color key="backgroundColor" red="0.92156862750000001" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="Jmd-5D-bIL"/>
+                                                        <constraint firstAttribute="height" constant="1" id="9od-Qb-ggD"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.92156862750000001" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstItem="dVo-P6-fca" firstAttribute="top" secondItem="jmy-mD-XFn" secondAttribute="bottom" constant="5" id="25l-z9-WFz"/>
                                                 <constraint firstItem="x7s-hs-ni2" firstAttribute="centerY" secondItem="VK1-8d-Zlz" secondAttribute="centerY" id="3i1-ZY-j2l"/>
                                                 <constraint firstItem="NrB-vt-x7Z" firstAttribute="top" secondItem="p76-H4-iwg" secondAttribute="bottom" constant="10" id="9pW-ZT-6Z6"/>
                                                 <constraint firstItem="jmy-mD-XFn" firstAttribute="trailing" secondItem="NrB-vt-x7Z" secondAttribute="trailing" id="DSL-rn-hIp"/>
@@ -140,10 +141,21 @@
                                                 <constraint firstItem="X3n-Ml-BuY" firstAttribute="top" secondItem="dVo-P6-fca" secondAttribute="bottom" constant="10" id="ger-c8-vfI"/>
                                                 <constraint firstItem="X3n-Ml-BuY" firstAttribute="leading" secondItem="VK1-8d-Zlz" secondAttribute="trailing" constant="5" id="hBk-Sb-wIa"/>
                                                 <constraint firstItem="iIh-aA-Kbd" firstAttribute="leading" secondItem="p76-H4-iwg" secondAttribute="trailing" constant="15" id="j2j-kE-7aA"/>
+                                                <constraint firstAttribute="trailing" secondItem="dVo-P6-fca" secondAttribute="trailing" id="ldv-0C-YRI"/>
                                                 <constraint firstAttribute="trailing" secondItem="NrB-vt-x7Z" secondAttribute="trailing" constant="15" id="m1J-gc-FfU"/>
                                                 <constraint firstAttribute="bottom" secondItem="x7s-hs-ni2" secondAttribute="bottom" constant="25" id="n3b-HF-qhs"/>
+                                                <constraint firstItem="wPq-1q-LqC" firstAttribute="leading" secondItem="dt0-Xs-NYe" secondAttribute="leading" id="uJg-8T-9kj"/>
                                                 <constraint firstItem="x7s-hs-ni2" firstAttribute="leading" secondItem="X3n-Ml-BuY" secondAttribute="trailing" constant="10" id="vAu-it-Ie3"/>
+                                                <constraint firstItem="dVo-P6-fca" firstAttribute="leading" secondItem="dt0-Xs-NYe" secondAttribute="leading" id="w9q-JH-hnm"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="PAC-5u-HQg"/>
+                                                    <exclude reference="ItG-Ez-awA"/>
+                                                    <exclude reference="PFm-Ug-Gzo"/>
+                                                    <exclude reference="ger-c8-vfI"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="substance" destination="jmy-mD-XFn" id="Ecj-db-NYh"/>
