@@ -87,6 +87,7 @@
 
 - (void)menu:(FSDropDownMenu *)menu tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //  [menu.leftTableView reloadData];
+    
     [_tableView reloadData];
 }
 
@@ -112,7 +113,7 @@
 }
 
 - (void)requestData{
-    
+    //    NSString *questionType = [[StorageMgr singletonStorageMgr]objectForKey:@"type"];
     NSDictionary *parameters = @{@"type":@"",@"page":@(page),@"perPage":@(perPage)};
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.userInteractionEnabled = NO;
@@ -181,16 +182,17 @@
     
     
     QuestionTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
-        [cell setPreservesSuperviewLayoutMargins:NO];
-    }
-    //将留白设置为0
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+    //    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+    //        [cell setSeparatorInset:UIEdgeInsetsZero];
+    //    }
+    //    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+    //        [cell setPreservesSuperviewLayoutMargins:NO];
+    //    }
+    //    //将留白设置为0
+    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    //        [cell setLayoutMargins:UIEdgeInsetsZero];
+    //    }
+    
     
     QuestionObject *obj = _objectsForShow[indexPath.row];
     
@@ -203,6 +205,8 @@
     NSString *name = obj.userNickname;
     NSURL *URL = [NSURL URLWithString:obj.userHeadImage];
     [cell.userImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"初始头像"]];
+    cell.userImage.contentMode = UIViewContentModeScaleAspectFill | UIViewContentModeScaleAspectFit;
+    
     cell.username.text = name;
     cell.type.text = type;
     cell.time.attributedText = inputDate;
@@ -218,7 +222,7 @@
     CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
     CGSize timeSize = [question.time boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.time.font} context:nil].size;
     return cell.time.frame.origin.y + timeSize.height;
- 
+    
 }
 
 - (IBAction)askAction:(UIBarButtonItem *)sender {
