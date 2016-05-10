@@ -11,7 +11,7 @@
 #import "QuestionTableViewCell.h"
 #import "QuestionObject.h"
 #import "ViewController.h"
-
+#import "CEDetailsViewController.h"
 
 @interface QuestViewController ()<UITableViewDelegate>{
     NSInteger page;
@@ -144,38 +144,8 @@
 }
 
 - (void)addAnswer{
-    
-    if ([Utilities loginState]) {
-        [self isLogin];
-    }else{
-        [self answerView];
-        [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-        [_save addTarget:self action:@selector(saveData) forControlEvents:UIControlEventTouchUpInside];
-    }
-}
-
-- (void)saveData{
-    _ansview.hidden = YES;
-    NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
-    NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
-    NSDictionary *parameters = @{@"sustance":sub,@"usertype":@1,@"questionid":_detail.Id,@"id":userid};
-    [RequestAPI postURL:@"/answerAppend" withParameters:parameters success:^(id responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
-        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            NSDictionary *dict = responseObject[@"result"];
-            NSDictionary *totalData = dict[@"paginginfo"];
-            total = [totalData[@"total"]integerValue];
-            _ansNumber.text = [NSString stringWithFormat:@"回答数:%ld",(long)total];
-            NSLog(@"sub = %@",sub);
-            NSLog(@"id = %@",userid);
-            NSLog(@"questionid = %@",_detail.Id);
-            
-            [_tableView reloadData];
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"error = %@",error.description);
-        [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
-    }];
+    _myComment.hidden = YES;
+    [self addAnswerView];
 }
 
 - (NSString *)answeridForTag:(NSInteger)section row:(NSInteger)row {
@@ -201,7 +171,6 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -217,13 +186,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    NSDictionary *dic2 = _objectsForShow[0];
-    NSArray *arr = dic2[@"usertype"];
-    if (section == 0){
-        if (arr.count == 0){
-            return 0;
-        }
-    }
     return 25;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -286,24 +248,19 @@
 }
 
 - (void)addAnswerView{
-    [self answerView];
-    [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
-    [_save addTarget:self action:@selector(ansRequest) forControlEvents:UIControlEventTouchUpInside];
-}
-
-
-- (void)answerView{
     _ansview = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 190, UI_SCREEN_W, 190)];
     _ansview.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
     ;
     _cancel = [[UIButton alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 180, 60, 20)];
     [_cancel setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [_cancel setTitle:@"Cancel" forState:UIControlStateNormal];
+    [_cancel addTarget:self action:@selector(cancelAction) forControlEvents:UIControlEventTouchUpInside];
     [_ansview addSubview:_cancel];
     
     _save = [[UIButton alloc]initWithFrame:CGRectMake(UI_SCREEN_W - 60, _ansview.frame.size.height - 180, 60, 20)];
     [_save setTitleColor:[UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
     [_save setTitle:@"OK" forState:UIControlStateNormal];
+    [_save addTarget:self action:@selector(ansRequest) forControlEvents:UIControlEventTouchUpInside];
     [_ansview addSubview:_save];
     
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake((UI_SCREEN_W - 30)/ 2 , _ansview.frame.size.height - 180, 60, 20)];
@@ -316,6 +273,7 @@
     [_ansview addSubview:_comment];
     
     [self.view addSubview:_ansview];
+    
 }
 
 - (void)cancelAction{
@@ -327,6 +285,7 @@
     NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
     
     NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
+    
     NSString *answer = [self answeridForTag:answerid % 10 row:answerid / 10];
     [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:answer];
     
@@ -347,27 +306,28 @@
 
 
 - (void)isLogin{
-    NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，无法评论，是否立即前往"];
-    
-    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
-        [self presentViewController:alert animated:YES completion:nil];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alertView addAction:confirmAction];
-    [alertView addAction:cancelAction];
-    [self presentViewController:alertView animated:YES completion:nil];
+    if ([Utilities loginState]){
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，无法评论，是否立即前往"];
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertView addAction:confirmAction];
+        [alertView addAction:cancelAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }else{
+        [self addAnswerView];
+    }
     
 }
 
 - (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+    
     answerid = sender.tag;
-    if ([Utilities loginState]){
-        [self isLogin];
-    }else{
-        [self addAnswerView];
-    }
+    [self isLogin];
 }
 
 - (void)queryData{
