@@ -59,6 +59,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)dataDataTransfer{
     _objectsForShow = [NSMutableArray new];
     NSURL *URL = [NSURL URLWithString:_detail.userHeadImage];
@@ -105,7 +106,7 @@
                     QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                     [_experts addObject:quest];
                 }
-            
+                
                 NSDictionary *dic1 = @{@"group": @"用户回答",@"usertype":_customer};
                 NSDictionary *dic2 = @{@"group":@"专家回答",@"usertype":_experts};
                 _objectsForShow = [[NSMutableArray alloc] initWithObjects:dic2, dic1, nil];
@@ -114,7 +115,6 @@
             
             [_tableView reloadData];
         }else{
-            NSLog(@"暂无更多评论！");
             _ansNumber.text = [NSString stringWithFormat:@"暂无更多评论"];
             [self createTableFooter];
             
@@ -127,6 +127,7 @@
     }];
 }
 
+//创建“我来回答”视图
 - (void)createTableFooter{
     
     _footerView = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 114, UI_SCREEN_W, 50)];
@@ -157,9 +158,9 @@
 - (void)saveData{
     _ansview.hidden = YES;
     NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
-    NSLog(@"%@",sub);
+    NSLog(@"sub = %@",sub);
     NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
-    NSDictionary *parameters = @{@"sustance":sub,@"usertype":@1,@"questionid":_detail.Id,@"id":userid};
+    NSDictionary *parameters = @{@"substance":sub,@"usertype":@1,@"questionid":_detail.Id,@"id":userid};
     if (_comment.text.length == 0) {
         NSLog(@"无内容输入");
     }else{
@@ -171,7 +172,7 @@
                 total = [totalData[@"total"]integerValue];
                 _ansNumber.text = [NSString stringWithFormat:@"回答数:%ld",(long)total];
                 [_tableView reloadData];
-
+                
             }else{
                 NSLog(@"无数据");
             }
@@ -179,7 +180,7 @@
             NSLog(@"error = %@",error.description);
             [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
         }];
-
+        
     }
 }
 
@@ -230,7 +231,7 @@
         }
     }
     return 25;
-
+    
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     //根据当前渲染的细胞的组号，获得该组所对应字典信息
@@ -297,7 +298,7 @@
 
 - (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event {
     
-   // self.navigationController.tabBarController.selectedIndex = 3;
+    // self.navigationController.tabBarController.selectedIndex = 3;
     CEDetailsViewController *segData = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
     NSDictionary *dic =  _objectsForShow[sender.tag];
     NSArray *arr = dic[@"usertype"];
@@ -373,10 +374,10 @@
 
 - (void)isLogin{
     if ([Utilities loginState]){
-        NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，无法评论，是否立即前往"];
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，是否立即前往"];
         
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"前往登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
             [self presentViewController:alert animated:YES completion:nil];
         }];
