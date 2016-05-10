@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {

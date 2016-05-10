@@ -19,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
 

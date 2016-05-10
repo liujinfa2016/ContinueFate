@@ -33,6 +33,7 @@
     self.tableView.tableFooterView = [UIView new];
     _array=[NSMutableArray new];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
+     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
 }
 //当没有预约信息，执行的方法

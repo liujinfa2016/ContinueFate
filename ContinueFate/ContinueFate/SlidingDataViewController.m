@@ -7,8 +7,11 @@
 //
 
 #import "SlidingDataViewController.h"
+#import "SimplePickerView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate>
+
+@property (strong ,nonatomic)UIDatePicker *datepicker;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
 @property(strong,nonatomic)NSMutableArray *menuList;
 @end
@@ -18,12 +21,63 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationItem.title = @"请填写资料";
+
+
+    _ageTF.delegate = self;
+    _textView.delegate = self;
+    _SCView.delegate = self;
     _SCView.contentSize  = CGSizeMake(UI_SCREEN_W,0);
     _SCView.showsHorizontalScrollIndicator = NO;
+    
+    //_scrollView.contentOffset=CGPointMake(0, 0);
+    _tapTrick.enabled = NO;
+    _tapTrick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bgTap:)];
+    
+    [self.view addGestureRecognizer:_tapTrick];
+    //监听键盘打开这一操作，打开后执行keyboardWillShow:方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    //监听键盘收起这一操作，收起后执行keyboardWillHide:方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
 }
+- (void )bgTap: (UITapGestureRecognizer *)sender{
+    if (sender.state == UIGestureRecognizerStateRecognized) {
+        [self.view endEditing:YES];
+    }
+}
+
+//键盘打开时的操作
+- (void)keyboardWillShow:(NSNotification *)notification{
+    NSLog(@"jian pan da kai le");
+    //获得键盘的位置
+    _tapTrick.enabled = YES;
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    NSLog(@"jian pan de gao du:%f",keyboardRect.size.height);
+    //计算键盘出现后，为确保_scrollView的内容都能显示，它应该滚动到的y轴位置
+    CGFloat newOffset = (_SCView.contentSize.height - _SCView.frame.size.height) + keyboardRect.size.height;
+    //将_scrollView滚动到上述位置
+    [_SCView setContentOffset:CGPointMake(0, newOffset) animated:YES];
+}
+//键盘收起时的操作
+- (void)keyboardWillHide: (NSNotification *)notification{
+    NSLog(@"jian pan guan bi le");
+    //计算键盘消失后，_scrollView应该滚动回到的y轴位置
+    _tapTrick.enabled = NO;
+    // CGFloat newOffset = (_scrollView.contentSize.height - _scrollView.frame.size.height);
+    CGFloat newOffset = -64;
+    //将_scrollView滚动到上述位置
+    [_SCView setContentOffset:CGPointMake(0, newOffset) animated:YES];
+}
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -115,6 +169,7 @@
     }
     
 }
+
 //返回
 - (IBAction)ReturnAction:(UIBarButtonItem *)sender {
     
