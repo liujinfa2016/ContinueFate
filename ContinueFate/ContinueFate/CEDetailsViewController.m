@@ -43,9 +43,45 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    NSLog(@" dd %@  tag = %ld",_expertId,(long)_tags);
+    if (_expertId != nil) {
+        [self requestData];
+        if (_tags == 1) {
+            _ConsultingButton.hidden = YES;
+            
+        }
+    }
 
    
 }
+
+- (void) requestData {
+    NSDictionary *parameters = @{@"expertId":_expertId,@"page":@(page),@"perPage":@(perPage)};
+    [RequestAPI postURL:@"/expertsList" withParameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+            
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *models = result[@"models"];
+            NSLog(@"%@",models);
+            NSDictionary *dict = models[0];
+            NSLog(@"%@",dict);
+            //显示服务咨询
+            _DetailsTV.text = [NSString stringWithFormat:@"%@",dict[@"descripition"]];
+            //显示咨询过的人数
+            _ConsultantLab.text = [NSString stringWithFormat:@"有%@个人咨询过",dict[@"orderCount"]];
+            //显示专家上传的照片若无则显示默认图
+            NSURL *photoUrl = [NSURL URLWithString:dict[@"headimage"]];
+            //结合SDWebImage通过图片路径来实现异步加载和缓存（本案中加载到一个图片视图中）
+            [_EImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"专家1"]];
+
+        }
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error.description);
+    }];
+}
+
+
+
 - (void)constant {
     //获得文字内容
     NSString *content = _DetailsTV.text;
@@ -70,6 +106,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 
 /*

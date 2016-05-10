@@ -19,7 +19,6 @@
     NSInteger total;
     NSInteger type;
     NSInteger answerid;
-    
 }
 @property (strong,nonatomic)NSMutableArray *experts;
 @property (strong,nonatomic)NSMutableArray *customer;
@@ -28,6 +27,8 @@
 @property (strong,nonatomic)UIButton *cancel;
 @property (strong,nonatomic)UIView *ansview;
 @property (strong,nonatomic)UITextView *comment;
+@property (strong,nonatomic)UIView *footerView;
+@property (strong,nonatomic)UIButton *myComment;
 
 @end
 
@@ -43,6 +44,7 @@
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
     perpage = 10;
+    
     [self requestData];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
@@ -114,6 +116,8 @@
         }else{
             NSLog(@"暂无更多评论！");
             _ansNumber.text = [NSString stringWithFormat:@"暂无更多评论"];
+            [self createTableFooter];
+            
         }
         
     } failure:^(NSError *error) {
@@ -121,6 +125,27 @@
         
         [Utilities popUpAlertViewWithMsg:@"服务器连接失败，请稍候重试" andTitle:nil onView:self];
     }];
+}
+
+- (void)createTableFooter{
+    
+    _footerView = [[UIView alloc]initWithFrame:CGRectMake(0, UI_SCREEN_H - 114, UI_SCREEN_W, 50)];
+    _footerView.backgroundColor = [UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f];
+    ;
+    _myComment = [[UIButton alloc]initWithFrame:CGRectMake(10, _footerView.frame.size.height - 42, _footerView.frame.size.width - 20, 35)];
+    _myComment.layer.cornerRadius = 5;
+    _myComment.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:199.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
+    
+    [_myComment setTitle:@"我来回答" forState:UIControlStateNormal];
+    [_myComment addTarget:self action:@selector(addAnswer) forControlEvents:UIControlEventTouchUpInside];
+    [_footerView addSubview:_myComment];
+    
+    [self.view addSubview:_footerView];
+}
+
+- (void)addAnswer{
+    _myComment.hidden = YES;
+    [self addAnswerView];
 }
 
 - (NSString *)answeridForTag:(NSInteger)section row:(NSInteger)row {
@@ -137,9 +162,8 @@
         answerId = quest.Id;
     }
     return answerId;
+    
 }
-
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _objectsForShow.count;
@@ -159,26 +183,6 @@
     return arr.count;
     
 }
-
-
-//-(void)layoutSubviews{
-//
-//}
-
-//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-//    static NSString *cellIndentifiter = @"CellIndentifiter";
-//
-//    DetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-//
-//    if (cell == nil) {
-//        //cell的自定义绘制
-//    }
-//
-//    //cell的属性设置
-//
-//    return cell;
-//}
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -220,7 +224,7 @@
         cell.actBtn.hidden = YES;
     }
     
-    [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:obj.answerID];
+    //    [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:obj.answerID];
     NSString *substance = obj.substance;
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
@@ -230,6 +234,9 @@
     cell.expertName.text = name;
     cell.substance.text = substance;
     cell.time.attributedText = inputDate;
+    NSString  *tag = [NSString stringWithFormat:@"%ld%ld",(long)indexPath.row,(long)indexPath.section];
+    
+    cell.answer.tag = tag.intValue;
     
     return cell;
 }
@@ -262,11 +269,11 @@
     title.font = [UIFont systemFontOfSize:B_Font];
     [_ansview addSubview:title];
     
-    _comment = [[UITextView alloc]initWithFrame:CGRectMake(5, _ansview.frame.size.height - 155, UI_SCREEN_W - 15, 85)];
+    _comment = [[UITextView alloc]initWithFrame:CGRectMake(10, _ansview.frame.size.height - 155, UI_SCREEN_W - 20, 85)];
     [_ansview addSubview:_comment];
     
     [self.view addSubview:_ansview];
-   
+    
 }
 
 - (void)cancelAction{
@@ -276,29 +283,31 @@
 
 - (void)ansRequest{
     NSString *userid = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
-    NSLog(@"userid = %@",userid);
     
     NSString *sub = [NSString stringWithFormat:@"%@",_comment.text];
-    NSLog(@"answerSUB = %@",sub);
+    
     NSString *answer = [self answeridForTag:answerid % 10 row:answerid / 10];
-    NSLog(@"answer = %@",answer);
+    [[StorageMgr singletonStorageMgr]addKey:@"answerID" andValue:answer];
+    
     NSDictionary * parameters = @{@"substance":sub,@"usertype":@1,@"answerid":answer,@"id":userid};
-    [RequestAPI postURL:@"/probingAppend" withParameters:parameters success:^(id responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
-        
-        [self queryData];
-    } failure:^(NSError *error) {
-        NSLog(@"error = %@",error.description);
-    }];
+    if (sub.length == 0) {
+        NSLog(@"您当前并未输入评论内容");
+    }else{
+        [RequestAPI postURL:@"/probingAppend" withParameters:parameters success:^(id responseObject) {
+            NSLog(@"responseObject = %@",responseObject);
+            
+            [self queryData];
+        } failure:^(NSError *error) {
+            NSLog(@"error = %@",error.description);
+        }];
+    }
     _ansview.hidden = YES;
 }
 
 
-- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
-    answerid = sender.tag;
-   
+- (void)isLogin{
     if ([Utilities loginState]){
-        NSString *msg = [NSString stringWithFormat:@"您当前未登录，是否立即前往"];
+        NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，无法评论，是否立即前往"];
         
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -312,10 +321,18 @@
     }else{
         [self addAnswerView];
     }
+    
+}
+
+- (IBAction)comment:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    answerid = sender.tag;
+    [self isLogin];
 }
 
 - (void)queryData{
     NSString *answer = [[StorageMgr singletonStorageMgr]objectForKey:@"answerID"];
+    
     NSDictionary *parameters = @{@"answerid":answer};
     [RequestAPI postURL:@"/probingList" withParameters:parameters success:^(id responseObject) {
         NSLog(@"responseObject = %@",responseObject);

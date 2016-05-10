@@ -366,6 +366,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="actBtn" destination="NNC-5W-aAI" id="1pm-Ad-4dX"/>
+                                            <outlet property="answer" destination="Ey1-Ed-5Re" id="U2j-tk-BNx"/>
                                             <outlet property="expertImage" destination="EMi-VZ-fqB" id="Qa1-3M-CIL"/>
                                             <outlet property="expertName" destination="s7e-4s-9Uf" id="y8S-tT-aSh"/>
                                             <outlet property="substance" destination="pmr-rE-tw2" id="OR0-Uf-aGp"/>
