@@ -28,6 +28,7 @@
     [self According];
     [self setImageButtonStyle];
     
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

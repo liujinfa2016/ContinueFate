@@ -21,6 +21,7 @@
     _TelLable.text =tellArr;
     [[StorageMgr singletonStorageMgr] removeObjectForKey:@"Tell"];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {
