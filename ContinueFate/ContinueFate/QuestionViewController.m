@@ -33,7 +33,7 @@
     _objectsForShow = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
-    perPage = 5;
+    perPage = 10;
     [self requestData];
     [self refreshDownAndUp];
     [self screening];
@@ -130,7 +130,7 @@
             if (page == 1) {
                 _objectsForShow = nil;
                 _objectsForShow = [NSMutableArray new];
-                perPage = 5;
+                perPage = 10;
             }
             for(NSDictionary *question in data){
                 QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];

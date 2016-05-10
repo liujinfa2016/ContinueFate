@@ -24,7 +24,7 @@
     self.userNickname = [dict[@"userNickname"]isKindOfClass:[NSNull class]]?@"":dict[@"userNickname"];
     self.userHeadImage = [dict[@"userHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"userHeadImage"];
     self.expertName = [dict[@"expertName"]isKindOfClass:[NSNull class]]?@"":dict[@"expertName"];
-
+    self.expertid = [dict[@"expertid"]isKindOfClass:[NSNull class]]?@"":dict[@"expertid"];
     self.expertHeadImage = [dict[@"expertHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"expertHeadImage"];
     self.answerID = [dict[@"id"]isKindOfClass:[NSNull class]]?@"":dict[@"id"];
     return self;

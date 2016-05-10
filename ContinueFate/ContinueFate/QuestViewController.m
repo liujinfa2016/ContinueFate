@@ -229,13 +229,23 @@
     NSString *date = [obj.time substringToIndex:19];
     NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
     NSString *name = obj.expertName;
+    NSString *username = obj.userNickname;
     NSURL *url = [NSURL URLWithString:obj.expertHeadImage];
-    [cell.expertImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"初始头像"]];
-    cell.expertName.text = name;
+    NSURL *userImage = [NSURL URLWithString:obj.userHeadImage];
+    
+    if (indexPath.section == 1) {
+        cell.expertName.text = username;
+        [cell.expertImage sd_setImageWithURL:userImage placeholderImage:[UIImage imageNamed:@"初始头像"]];
+    }else {
+        cell.expertName.text = name;
+        [cell.expertImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"初始头像"]];
+    }
+    
     cell.substance.text = substance;
     cell.time.attributedText = inputDate;
     NSString  *tag = [NSString stringWithFormat:@"%ld%ld",(long)indexPath.row,(long)indexPath.section];
-    
+    NSString *convention = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    cell.actBtn.tag = convention.intValue;
     cell.answer.tag = tag.intValue;
     
     return cell;
@@ -243,7 +253,16 @@
 
 - (IBAction)convention:(UIButton *)sender forEvent:(UIEvent *)event {
     
-    self.navigationController.tabBarController.selectedIndex = 3;
+   // self.navigationController.tabBarController.selectedIndex = 3;
+    CEDetailsViewController *segData = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
+    NSDictionary *dic =  _objectsForShow[sender.tag];
+    NSArray *arr = dic[@"usertype"];
+    QuestionObject *obj = [[QuestionObject alloc]init];
+    obj = arr[0];
+    NSLog(@"arr = %@",obj.expertid);
+    segData.expertId = obj.expertid;
+    
+    [self.navigationController pushViewController:segData animated:YES];
     
 }
 
@@ -310,7 +329,7 @@
         NSString *msg = [NSString stringWithFormat:@"您当前未登录账号，无法评论，是否立即前往"];
         
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"前往登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
             [self presentViewController:alert animated:YES completion:nil];
         }];

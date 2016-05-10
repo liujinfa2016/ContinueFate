@@ -19,6 +19,7 @@
 @property (nonatomic) int hits;
 @property (strong,nonatomic)NSString *questionid;
 @property (strong,nonatomic)NSString *userid;
+@property (strong,nonatomic)NSString *expertid;
 @property (strong,nonatomic)NSString *userNickname;
 @property (strong,nonatomic)NSString *userHeadImage;
 @property (strong,nonatomic)NSString *expertName;
