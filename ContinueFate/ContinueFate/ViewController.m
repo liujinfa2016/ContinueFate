@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     //初始化一个bool格式的单例化全局标量来表示是否成功执行了注册  默认为否
     [[StorageMgr singletonStorageMgr] addKey:@"SignUpSuccessfully" andValue:@NO];
 //    //显示加载
