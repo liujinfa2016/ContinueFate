@@ -14,4 +14,5 @@
 - (IBAction)ReturnAction:(UIBarButtonItem *)sender;//返回
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;//segment的设置
 
+
 @end

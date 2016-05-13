@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self According];
     [self setImageButtonStyle];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
 }
@@ -42,7 +43,7 @@
 -(void)setImageButtonStyle{
     
    
-    _imageLable.layer.borderColor = [[UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:0.5f] CGColor];
+    _imageLable.layer.borderColor = [[UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f] CGColor];
     
      _imageLable.layer.opacity = 1.0;
     
@@ -155,7 +156,7 @@
             [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"ExpertsJoin"] animated:YES completion:nil];
             break;
         case 5:
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Idea"] animated:YES completion:nil];
             break;
         default:
             break;

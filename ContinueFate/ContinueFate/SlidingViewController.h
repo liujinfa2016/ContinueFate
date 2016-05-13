@@ -13,6 +13,7 @@
 //图片按钮
 - (IBAction)PhotoAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *nameLbl;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end

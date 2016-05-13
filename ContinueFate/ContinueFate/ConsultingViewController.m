@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     page = 1;
     perPage = 4;
     _tableView.dataSource = self;
