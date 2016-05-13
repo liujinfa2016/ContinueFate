@@ -27,6 +27,7 @@
     self.expertid = [dict[@"expertid"]isKindOfClass:[NSNull class]]?@"":dict[@"expertid"];
     self.expertHeadImage = [dict[@"expertHeadImage"]isKindOfClass:[NSNull class]]?@"":dict[@"expertHeadImage"];
     self.answerID = [dict[@"id"]isKindOfClass:[NSNull class]]?@"":dict[@"id"];
+    self.answerCount = [dict[@"answerCount"]isKindOfClass:[NSNull class]]?0:dict[@"answerCount"];
     return self;
 }
 
