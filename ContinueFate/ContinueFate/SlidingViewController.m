@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self According];
     [self setImageButtonStyle];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
 }

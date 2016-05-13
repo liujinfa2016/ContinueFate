@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
      self.navigationItem.title = @"预约咨询";
     _tableView.dataSource = self;
     _tableView.delegate = self;

@@ -173,6 +173,7 @@
                     <connections>
                         <outlet property="imageLable" destination="ysq-uV-Qip" id="o2K-wa-37G"/>
                         <outlet property="nameLbl" destination="HMe-Pz-gAG" id="odi-sm-RiT"/>
+                        <outlet property="tableView" destination="M1a-1Q-yl5" id="5fN-Rg-JcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0lO-NN-TvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1202,17 +1203,21 @@
                                     <action selector="SegmentAction:forEvent:" destination="kb9-oW-iXs" eventType="valueChanged" id="wsp-c6-p38"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="201" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ClG-VU-J9Q">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="183" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ClG-VU-J9Q">
                                 <rect key="frame" x="0.0" y="97" width="320" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="166" id="2xG-ZG-hnc" customClass="SlidingAppointmentTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="166"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="183" id="2xG-ZG-hnc" customClass="SlidingAppointmentTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="183"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xG-ZG-hnc" id="ijo-qv-ilr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="165.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="182.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1N-zn-o2V">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="172.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文字咨询卡" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sln-Jb-08F">
                                                     <rect key="frame" x="135" y="72" width="60" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -1297,10 +1302,13 @@
                                                 <constraint firstItem="rbn-N0-G8t" firstAttribute="top" secondItem="asw-A4-qhz" secondAttribute="bottom" constant="15" id="9uP-05-lOn"/>
                                                 <constraint firstItem="asw-A4-qhz" firstAttribute="top" secondItem="IZm-Jw-Ieh" secondAttribute="bottom" constant="5" id="Bhm-TU-icB"/>
                                                 <constraint firstItem="sln-Jb-08F" firstAttribute="top" secondItem="a1R-Dh-Rpi" secondAttribute="bottom" constant="5" id="Bxh-sD-RW4"/>
+                                                <constraint firstAttribute="trailing" secondItem="m1N-zn-o2V" secondAttribute="trailing" id="D01-ku-7zN"/>
                                                 <constraint firstItem="a1R-Dh-Rpi" firstAttribute="top" secondItem="asw-A4-qhz" secondAttribute="top" id="EJN-0R-EhF"/>
+                                                <constraint firstItem="m1N-zn-o2V" firstAttribute="top" secondItem="ijo-qv-ilr" secondAttribute="top" id="Kxh-ej-S1k"/>
                                                 <constraint firstItem="9Ji-ru-F46" firstAttribute="leading" secondItem="ijo-qv-ilr" secondAttribute="leading" constant="10" id="LvO-i8-c1B"/>
                                                 <constraint firstItem="r2A-dN-WNn" firstAttribute="trailing" secondItem="fEQ-pm-Py0" secondAttribute="trailing" id="NFT-kQ-UZR"/>
                                                 <constraint firstItem="rbn-N0-G8t" firstAttribute="leading" secondItem="asw-A4-qhz" secondAttribute="leading" id="T3f-Dk-QYe"/>
+                                                <constraint firstItem="m1N-zn-o2V" firstAttribute="leading" secondItem="ijo-qv-ilr" secondAttribute="leading" id="U0j-c6-hYd"/>
                                                 <constraint firstItem="IZm-Jw-Ieh" firstAttribute="width" secondItem="IZm-Jw-Ieh" secondAttribute="height" multiplier="1:1" id="Y8H-XN-0A1"/>
                                                 <constraint firstItem="RAK-Ob-i4L" firstAttribute="centerY" secondItem="IZm-Jw-Ieh" secondAttribute="centerY" id="c2b-Ub-OI4"/>
                                                 <constraint firstItem="IZm-Jw-Ieh" firstAttribute="leading" secondItem="ijo-qv-ilr" secondAttribute="leading" constant="10" id="dMn-B0-1W4"/>
@@ -1311,11 +1319,13 @@
                                                 <constraint firstItem="9Ji-ru-F46" firstAttribute="top" secondItem="ijo-qv-ilr" secondAttribute="top" constant="5" id="jRf-kO-7m3"/>
                                                 <constraint firstItem="kcB-1q-Wd9" firstAttribute="top" secondItem="IZm-Jw-Ieh" secondAttribute="top" id="l9F-pg-c7d"/>
                                                 <constraint firstItem="fEQ-pm-Py0" firstAttribute="bottom" secondItem="asw-A4-qhz" secondAttribute="bottom" id="q1P-UV-abx"/>
+                                                <constraint firstAttribute="bottom" secondItem="m1N-zn-o2V" secondAttribute="bottom" constant="10" id="rz0-fq-hu0"/>
                                                 <constraint firstItem="asw-A4-qhz" firstAttribute="width" secondItem="asw-A4-qhz" secondAttribute="height" multiplier="5:3" id="uRZ-1J-QrC"/>
                                                 <constraint firstItem="sln-Jb-08F" firstAttribute="leading" secondItem="a1R-Dh-Rpi" secondAttribute="leading" id="wXt-e5-cMR"/>
                                                 <constraint firstItem="a1R-Dh-Rpi" firstAttribute="leading" secondItem="asw-A4-qhz" secondAttribute="trailing" constant="5" id="zVU-Pg-4GX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="CardLab" destination="sln-Jb-08F" id="3iD-Ea-skc"/>
                                             <outlet property="DateLab" destination="rbn-N0-G8t" id="e4k-ko-w2k"/>
@@ -1357,7 +1367,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="segment" destination="ij4-od-J0b" id="98R-nj-Kds"/>
-                        <outlet property="tableView" destination="ClG-VU-J9Q" id="3gd-tS-a2z"/>
+                        <outlet property="tableView" destination="ClG-VU-J9Q" id="ILC-E6-YD2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awA-Nh-0aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
