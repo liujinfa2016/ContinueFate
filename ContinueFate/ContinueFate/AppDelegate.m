@@ -10,7 +10,7 @@
 #import "TabBarViewController.h"
 #import "SlidingViewController.h"
 #import <SMS_SDK/SMSSDK.h>
-
+#import <AlipaySDK/AlipaySDK.h>
 @interface AppDelegate ()
 @property(strong, nonatomic)ECSlidingViewController *sligingVC;
 
@@ -162,7 +162,7 @@
         }
     }
 }
-/*- (BOOL)application:(UIApplication *)application
+- (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
@@ -186,6 +186,6 @@
         }];
     }
     return YES;
-}*/
+}
 
 @end
