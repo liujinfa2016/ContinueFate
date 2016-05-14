@@ -10,8 +10,13 @@
 #import "SlidingAppointmentTableViewCell.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "CEDetailsViewController.h"
-#import "Order.h"
+#import "Alipay/Order.h"
 #import "DataSigner.h"
+#import "Alipay/AlipaySDK.framework/Headers/AlipaySDK.h"
+@implementation Product
+
+
+@end
 @interface slidingAppointmentViewController ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSString *userid;
 }
@@ -127,6 +132,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _array.count;
 }
+//产生随机订单号
 - (NSString *)generateTradeNO
 {
     static int kNumber = 15;
@@ -142,7 +148,7 @@
     }
     return resultStr;
 }
-//点击去付款获取金额
+//点击去付款获取金额    点击订单支付行为
 -(void)buttonPressed:(UIButton *)button{
     NSUInteger index = button.tag;
     NSDictionary *dic = _array[index];
@@ -165,7 +171,7 @@
     /*============================================================================*/
     NSString *partner = @"2088221188008648";
     NSString *seller = @"1326431681@qq.com";
-    NSString *privateKey = @"7ba97c77d49044d99369d506b9b0b1a6";
+    NSString *privateKey = @"7q91nn9g96bwv64fzh02tvahds1tz5cf";
     /*============================================================================*/
     /*============================================================================*/
     /*============================================================================*/
@@ -174,7 +180,8 @@
     if ([partner length] == 0 ||
         [seller length] == 0 ||
         [privateKey length] == 0)
-    {   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:@"缺少partner或者seller或者私钥。"
                                                        delegate:self
                                               cancelButtonTitle:@"确定"
@@ -204,28 +211,30 @@
     order.showURL = @"m.alipay.com";
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-    NSString *appScheme = @"xyalipay";
+    NSString *appScheme = @"alisdkdemo";
     
     //将商品信息拼接成字符串
     NSString *orderSpec = [order description];
     NSLog(@"orderSpec = %@",orderSpec);
-    
-    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+//
+//    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    NSLog(@"dddd = %@",privateKey);
     id<DataSigner> signer = CreateRSADataSigner(privateKey);
     NSString *signedString = [signer signString:orderSpec];
     
     //将签名成功字符串格式化为订单字符串,请严格按照该格式
     NSString *orderString = nil;
-    /*if (signedString != nil) {
-     orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-     orderSpec, signedString, @"RSA"];
-     
-     [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-     NSLog(@"reslut = %@",resultDic);
-     }];
-     }*/
-    
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
 }
+
+
 
 
 //点击头像执行跳转
