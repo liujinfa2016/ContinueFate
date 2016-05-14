@@ -186,7 +186,8 @@
 // 返回
 - (IBAction)ReturnAction:(UIBarButtonItem *)sender {
     
-  [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"] animated:NO completion:nil];
-
+    [[StorageMgr singletonStorageMgr]addKey:@"back" andValue:@"1"];
+    [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"] animated:NO completion:nil];
+    
 }
 @end
