@@ -34,4 +34,7 @@
 //清理内存
 #define FRelease(x) {[x removeFromSuperview]; x = nil;}
 
+//关联登录
+#define QQ_APPID @"222222"
+
 #endif

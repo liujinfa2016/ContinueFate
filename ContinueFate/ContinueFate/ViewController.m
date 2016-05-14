@@ -8,10 +8,23 @@
 
 #import "ViewController.h"
 #import "MBProgressHUD+NJ.h"
+#import "TabBarViewController.h"
+#import "RegisterViewController.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
 
+@interface ViewController () <TencentSessionDelegate>  {
+    NSString *nickname;
+    NSString *address;
+    NSString *headImage;
+    NSString *gender;
+}
 
-@interface ViewController ()
-
+@property (strong ,nonatomic) TencentOAuth *tencentOA;
+@property (strong ,nonatomic) NSArray *permissions ;
+@property (strong ,nonatomic)NSString *accessToken;
+@property (strong ,nonatomic)NSString *openId;
+@property (strong ,nonatomic)NSDate *expirationDate;
 @end
 
 @implementation ViewController
@@ -142,4 +155,93 @@
     [[StorageMgr singletonStorageMgr]addKey:@"back" andValue:@"1"];
     [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"] animated:NO completion:nil];
 }
+//**********************************************************************************************
+
+- (IBAction)QQLoginAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _tencentOA = [[TencentOAuth alloc]initWithAppId:QQ_APPID andDelegate:self];
+    _tencentOA.redirectURI = @"www.qq.com";
+    _permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_GET_USER_INFO,kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,kOPEN_PERMISSION_GET_INFO,kOPEN_PERMISSION_ADD_SHARE, nil];
+    [_tencentOA authorize:_permissions inSafari:NO];
+
+}
+
+- (void) tencentDidLogin {
+    if (_tencentOA.accessToken && _tencentOA.accessToken.length  != 0) {
+        
+        _accessToken =  [_tencentOA accessToken];
+        _openId =  [_tencentOA openId];
+        _expirationDate = [_tencentOA expirationDate];
+        NSLog(@"success==== %@,%@,%@", [_tencentOA accessToken], [_tencentOA openId], [_tencentOA expirationDate]);
+        NSDictionary *parameters  = @{@"tokenId":_accessToken,@"openId":_openId,@"expirationDate":_expirationDate,@"platform":@"QQ"};
+        
+        
+        
+        //将关联用户获取到的数据存到全局变量中
+        [[StorageMgr singletonStorageMgr]addKey:@"tokenId" andValue:_accessToken];
+        [[StorageMgr singletonStorageMgr]addKey:@"openId" andValue:_openId];
+        [[StorageMgr singletonStorageMgr]addKey:@"expirationDate" andValue:_expirationDate];
+        
+        [_tencentOA setAccessToken:_accessToken];
+        [_tencentOA setOpenId:_openId];
+        [_tencentOA setExpirationDate:_expirationDate];
+        [_tencentOA getUserInfo];
+        
+        NSLog(@"openid = %@",_openId);
+        [RequestAPI postURL:@"/cognateLogin" withParameters:parameters success:^(id responseObject) {
+            NSLog(@"responseObject ===== %@",responseObject);
+            //判断当前QQ号是否有账号关联
+            if ([responseObject[@"resultFlag"]integerValue] == 8001){
+                NSDictionary *result = responseObject[@"result"];
+                NSArray *model = result[@"models"];
+                NSDictionary *dit = model[0];
+                //清空openId 、UserID的全局变量
+                [[StorageMgr singletonStorageMgr]removeObjectForKey:@"openId"];
+                [[StorageMgr singletonStorageMgr]removeObjectForKey:@"UserID"];
+                
+                //将openId 、UserID、nickname添加到全局变量
+                [[StorageMgr singletonStorageMgr] addKey:@"UserID" andValue:dit[@"userId"]];
+                [[StorageMgr singletonStorageMgr] addKey:@"UserType" andValue:dit[@"usertype"]];
+                [[StorageMgr singletonStorageMgr] addKey:@"Nickname" andValue:dit[@"nickname"]];
+                
+                //记忆用户名
+                [Utilities setUserDefaults:@"Username" content:dit[@"Username"]];
+                TabBarViewController *tableBarVC = [Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"];
+                [self presentViewController:tableBarVC animated:YES completion:nil];
+            } else {
+                
+                [Utilities popUpAlertViewWithMsg:@"是否已有账号" andTitle:nil onView:self trueStr:@"是" falseStr:@"否" tureAction:^(UIAlertAction * _Nonnull action) {
+                    
+                } flaseAction:^(UIAlertAction * _Nonnull action) {
+                    NSLog(@"meiyouzhanghao ");
+                    RegisterViewController *registerVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Register"];
+                    [self.navigationController pushViewController:registerVC animated:YES];
+                }];
+                
+            }
+            
+        } failure:^(NSError *error) {
+            NSLog(@"error ====== %@",error.description);
+        }];
+        
+    }else{
+        
+    }
+}
+//退出登录的回调
+- (void)tencentDidLogout {
+    NSLog(@"tencentDidLogout");
+   // [Utilities popUpAlertViewWithMsg:@"" andTitle:<#(NSString *)#> onView:<#(UIViewController *)#>]
+}
+
+-(void) tencentDidNotNetWork {
+    [Utilities popUpAlertViewWithMsg:@"无网络连接，请设置网络" andTitle:nil onView:self];
+}
+- (void) tencentDidNotLogin:(BOOL)cancelled {
+    if (cancelled) {
+        [Utilities popUpAlertViewWithMsg:@"用户取消登录" andTitle:nil onView:self];
+    }else {
+        [Utilities popUpAlertViewWithMsg:@"登录失败" andTitle:nil onView:self];
+    }
+}
+
 @end
