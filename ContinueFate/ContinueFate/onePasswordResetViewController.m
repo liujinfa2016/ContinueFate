@@ -78,11 +78,10 @@
     [SMSSDK commitVerificationCode:GetCode phoneNumber:tell zone:@"86" result:^(NSError *error) {
         [avi stopAnimating];
         self.navigationController.view.self.userInteractionEnabled= YES;
+        if (error == nil) {
+            [self presentViewController:Reset animated:YES completion:nil];
+        }else{
         switch (error.code) {
-            case 200:
-                NSLog(@"验证成功");
-                [self presentViewController:Reset animated:YES completion:nil];
-                break;
             case 466:
                 [Utilities popUpAlertViewWithMsg:@"请输入验证码" andTitle:nil onView:self];
                 break;
@@ -90,7 +89,9 @@
                 [Utilities popUpAlertViewWithMsg:@"输入的验证码错误" andTitle:nil onView:self];
                 break;
             default:
+                [Utilities popUpAlertViewWithMsg:@"您当前的网络状态不稳定，请稍后再试" andTitle:nil onView:self];
                 break;
+        }
         }
 
     }];
