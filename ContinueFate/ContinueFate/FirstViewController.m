@@ -44,6 +44,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"EnableGesture" object:nil];
+    if ([[[StorageMgr singletonStorageMgr]objectForKey:@"back"]isEqualToString:@"1"]){
+        [[StorageMgr singletonStorageMgr]removeObjectForKey:@"back"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"AddGesture" object:nil];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

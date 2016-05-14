@@ -10,7 +10,7 @@
 #import "TabBarViewController.h"
 #import "SlidingViewController.h"
 #import <SMS_SDK/SMSSDK.h>
-
+#import <AlipaySDK/AlipaySDK.h>
 @interface AppDelegate ()
 @property(strong, nonatomic)ECSlidingViewController *sligingVC;
 
@@ -21,6 +21,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self addGestureAction];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addGestureAction) name:@"AddGesture" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableGestureAction) name:@"EnableGesture" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableGestureAction) name:@"DisableGesture" object:nil];
+    [SMSSDK registerApp:@"120658fed6bce"
+             withSecret:@"ace3fc2f25c5ee177b1aeab16e1583ca"];
+    
+    return YES;
+}
+
+- (void)addGestureAction {
     TabBarViewController *tabVc =[Utilities  getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"];
     //初始化移门的门框
     _sligingVC = [ECSlidingViewController slidingWithTopViewController:tabVc];
@@ -36,14 +48,8 @@
     _sligingVC.underLeftViewController = leftVC;
     //设置移门开闭层度(设置左侧页面被显示时，宽度能够显示频幕的1/4)
     _sligingVC.anchorRightPeekAmount = UI_SCREEN_W /4 ;
-    [SMSSDK registerApp:@"120658fed6bce"
-             withSecret:@"ace3fc2f25c5ee177b1aeab16e1583ca"];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableGestureAction) name:@"EnableGesture" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableGestureAction) name:@"DisableGesture" object:nil];
     
     [self.window setRootViewController:_sligingVC];
-    return YES;
 }
 
 //激活移门手势
@@ -162,7 +168,7 @@
         }
     }
 }
-/*- (BOOL)application:(UIApplication *)application
+- (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
@@ -186,6 +192,6 @@
         }];
     }
     return YES;
-}*/
+}
 
 @end
