@@ -191,7 +191,9 @@
 
 
 - (IBAction)Return:(UIBarButtonItem *)sender {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [[StorageMgr singletonStorageMgr]addKey:@"back" andValue:@"1"];
+    [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"] animated:NO completion:nil];
 }
 
 - (IBAction)rightButAction:(UIBarButtonItem *)sender {

@@ -197,24 +197,21 @@
     
     QuestionObject *obj = _objectsForShow[indexPath.row];
     
-    NSString *titlename = obj.titlename;
-    NSString *substance = obj.substance;
-    NSString *date = [obj.time substringToIndex:19];
-    NSAttributedString *inputDate = [Utilities getIntervalAttrStr:date];
-    NSString *type = obj.type;
-    
-    NSString *name = obj.userNickname;
+    NSAttributedString *inputDate = [Utilities getIntervalAttrStr:[obj.time substringToIndex:19]];
+
     NSURL *URL = [NSURL URLWithString:obj.userHeadImage];
     [cell.userImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"初始头像"]];
     cell.userImage.contentMode = UIViewContentModeScaleAspectFill | UIViewContentModeScaleAspectFit;
-    
-    cell.username.text = name;
-    cell.type.text = type;
+    cell.answerCount.text = [NSString stringWithFormat:@"%@",obj.answerCount];
+    cell.username.text = [NSString stringWithFormat:@"%@",obj.userNickname];
+    cell.type.text = [NSString stringWithFormat:@"%@",obj.type];
     cell.time.attributedText = inputDate;
-    cell.tiltlename.text = titlename;
-    cell.substance.text = substance;
+    cell.tiltlename.text = [NSString stringWithFormat:@"%@",obj.titlename];
+    cell.substance.text = [NSString stringWithFormat:@"%@",obj.substance];
     return cell;
 }
+
+
 
 //自适应高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
