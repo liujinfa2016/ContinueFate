@@ -13,10 +13,7 @@
 #import "Alipay/Order.h"
 #import "DataSigner.h"
 #import "Alipay/AlipaySDK.framework/Headers/AlipaySDK.h"
-@implementation Product
 
-
-@end
 @interface slidingAppointmentViewController ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSString *userid;
 }
@@ -154,12 +151,12 @@
     NSDictionary *dic = _array[index];
     NSNumber *money =dic[@"orderTypePrice"];
     NSLog(@"金额 ＝ %@",money);
-    NSLog(@" dic  == %@",dic);
+    NSString *ordername =dic[@"orderType"];
     // 根据tag就可以知道哪一个cell上的按钮
     Product *product = nil;
-    product.price =10;
-    product.body = @"this is body";
-    product.subject = @"sub";
+    product.price =money;
+    product.body = ordername;
+    product.subject = @"续缘心理咨询";
     product.orderId = [self generateTradeNO];
     /*
      *商户的唯一的parnter和seller。
@@ -201,7 +198,7 @@
     order.outTradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
     order.subject = product.subject; //商品标题
     order.body = product.body; //商品描述
-    order.totalFee = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
+    order.totalFee = [NSString stringWithFormat:@"%@",product.price]; //商品价格
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
     order.service = @"mobile.securitypay.pay";
@@ -211,14 +208,14 @@
     order.showURL = @"m.alipay.com";
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-    NSString *appScheme = @"alisdkdemo";
+    NSString *appScheme = @"xuyuanAlipay";
     
     //将商品信息拼接成字符串
     NSString *orderSpec = [order description];
     NSLog(@"orderSpec = %@",orderSpec);
 //
 //    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
-    NSLog(@"dddd = %@",privateKey);
+
     id<DataSigner> signer = CreateRSADataSigner(privateKey);
     NSString *signedString = [signer signString:orderSpec];
     
@@ -241,11 +238,8 @@
 -(void)exbutton:(UIButton *)button{
     NSUInteger index = button.tag;
     NSDictionary *dic = _array[index];
-    NSString *exid =dic[@"expertId"];
-    NSLog(@"专家id ＝＝ %@",exid);    
     CEDetailsViewController *detailView = [Utilities getStoryboardInstanceByIdentity:@"Consulting" byIdentity:@"EDetails"];
     detailView.expertId = dic[@"expertId"];
-    NSLog(@"%@",detailView.expertId);
     detailView.tags = 1;
     [self.navigationController pushViewController:detailView animated:YES];
   
