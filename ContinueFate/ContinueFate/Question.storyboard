@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="28r-ry-7sT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="28r-ry-7sT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--问答-->
         <scene sceneID="ksi-TT-uIQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9ar-aJ-cPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="28r-ry-7sT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="问答" id="Q08-D5-yJU"/>
                     <toolbarItems/>
@@ -24,13 +23,13 @@
                         <segue destination="OVi-Uo-uea" kind="relationship" relationship="rootViewController" id="laF-SO-Shx"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ar-aJ-cPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="175" y="403"/>
         </scene>
         <!--问答-->
         <scene sceneID="tMW-eC-oGL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0he-pT-GVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OVi-Uo-uea" customClass="QuestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jFl-h1-iot"/>
@@ -48,7 +47,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sur-oP-c7f" id="dt0-Xs-NYe">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="178.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPq-1q-LqC">
@@ -60,8 +59,8 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="额外国家队后IE请我喝咖啡成怒IE看坚强不屈次就看到微博才能破女王 i 了开发你的 u 就千万别吃腻了的我看你吃；哦ID我看清了你，can；哦IE巧克力我能从 i 我；lec" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmy-mD-XFn">
-                                                            <rect key="frame" x="15" y="78" width="290" height="33.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="额外国家队后IE请我喝咖啡成怒IE看坚强不屈次就看到微博才能破女王 i 了开发你的 u 就千万别吃腻了的我看你吃；哦ID我看清了你，can；哦IE巧克力我能从 i 我；lec" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmy-mD-XFn">
+                                                            <rect key="frame" x="15" y="78" width="290" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -104,14 +103,14 @@
                                                                 <constraint firstAttribute="height" constant="35" id="wAQ-6s-mer"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2755DFBE-9671-4DFE-AE3E-7118E943A674" translatesAutoresizingMaskIntoConstraints="NO" id="VK1-8d-Zlz">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="672F249D-F5D7-4CD7-A685-A05FADE06A60" translatesAutoresizingMaskIntoConstraints="NO" id="VK1-8d-Zlz">
                                                             <rect key="frame" x="15" y="132" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="VK1-8d-Zlz" secondAttribute="height" multiplier="1:1" id="Q8T-8F-TvB"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4人回答" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8X-xa-zg4">
-                                                            <rect key="frame" x="261" y="134.5" width="44" height="15"/>
+                                                            <rect key="frame" x="261" y="135" width="44" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -153,6 +152,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="answerCount" destination="e8X-xa-zg4" id="YPd-JG-Wl3"/>
                                             <outlet property="substance" destination="jmy-mD-XFn" id="Ecj-db-NYh"/>
                                             <outlet property="tiltlename" destination="NrB-vt-x7Z" id="XOQ-GW-pFW"/>
                                             <outlet property="time" destination="x7s-hs-ni2" id="iFL-zo-bTQ"/>
@@ -196,6 +196,7 @@
                         <outlet property="tableView" destination="1ra-aC-jfu" id="xem-mi-Qw5"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0he-pT-GVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="530" y="403"/>
         </scene>
@@ -297,7 +298,7 @@
                                         <rect key="frame" x="0.0" y="194" width="320" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pcm-fW-d2L" id="dSe-19-ykY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-VZ-fqB">
@@ -554,7 +555,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2755DFBE-9671-4DFE-AE3E-7118E943A674" width="20" height="20">
+        <image name="672F249D-F5D7-4CD7-A685-A05FADE06A60" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

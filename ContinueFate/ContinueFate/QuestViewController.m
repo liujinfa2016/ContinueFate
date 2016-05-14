@@ -43,9 +43,10 @@
     _customer = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
-    perpage = 10;
-    
+    perpage = 5;
+    [self createTableFooter];
     [self requestData];
+    //[self answerShow];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
 
@@ -59,6 +60,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+//判断是否上拉界面，修改“我来回答”的存在
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    //当内容高度大于框架高度时执行if中的操作，反之执行else中的操作(两种情况下判断是否上拉的方式是不同的)
+    if(scrollView.contentSize.height + 64 > scrollView.frame.size.height){
+        //当内容高度大于框架高度的情况下，如果Y轴方向的offset值加上框架高度的和大于内容高度时说明上拉了
+        if(scrollView.contentOffset.y + scrollView.frame.size.height > scrollView.contentSize.height){
+            NSLog(@"上拉了");
+            [self thePullView];
+        }else{
+            [self createTableFooter];
+        }
+    }else{
+        //当框架高度大于内容高度的情况下，如果y轴方向的offset方向的值小于0，则说明上拉了
+        if(scrollView.contentOffset.y > -64){
+            NSLog(@"上拉了");
+            [self thePullView];
+        }else{
+            [self createTableFooter];
+        }
+    }
+}
+
+//当前页面大于1时，隐藏"我来回答"
+//- (void)answerShow{
+//    if (page > 1) {
+//        [self thePullView];
+//    }else{
+//        [self createTableFooter];
+//    }
+//}
 
 - (void)dataDataTransfer{
     _objectsForShow = [NSMutableArray new];
@@ -142,6 +173,11 @@
     [_footerView addSubview:_myComment];
     
     [self.view addSubview:_footerView];
+}
+
+//隐藏“我来回答”
+- (void)thePullView{
+    _footerView.hidden = YES;
 }
 
 - (void)addAnswer{
