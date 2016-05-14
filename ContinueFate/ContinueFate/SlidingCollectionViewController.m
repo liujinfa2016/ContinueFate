@@ -209,7 +209,7 @@
         // 选中的行
         NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
         NSLog(@"selectedRows = %@",selectedRows);
-        [Utilities popUpAlertViewWithMsg:@"是否确认删除?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
+        [Utilities popUpAlertViewWithMsg:@"是否确认删除?" andTitle:@"提示" onView:self trueStr:@"是" falseStr:@"否" tureAction:^(UIAlertAction * _Nonnull action) {
             NSString *collids = @"";
             for (NSIndexPath *obj in selectedRows){
                 NSLog(@"obj = %ld",(long)obj.row);

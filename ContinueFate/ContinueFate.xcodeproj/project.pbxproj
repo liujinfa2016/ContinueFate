@@ -97,6 +97,11 @@
 		ED4631881CC39B1E0000FB71 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631831CC39B1E0000FB71 /* ArticleViewController.m */; };
 		ED46318A1CC39B1E0000FB71 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4631871CC39B1E0000FB71 /* QuestionViewController.m */; };
 		ED46318E1CC39B480000FB71 /* XZMTabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */; };
+		F803A09F1CE6E5660008EFC2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F803A09E1CE6E5660008EFC2 /* libsqlite3.tbd */; };
+		F803A0A21CE6E5780008EFC2 /* TencentOpenApi_IOS_Bundle.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = F803A0A01CE6E5780008EFC2 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		F803A0A31CE6E5780008EFC2 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F803A0A11CE6E5780008EFC2 /* TencentOpenAPI.framework */; };
+		F803A0A51CE6E6080008EFC2 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F803A0A41CE6E6080008EFC2 /* libiconv.tbd */; };
+		F803A0A71CE6E61B0008EFC2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F803A0A61CE6E61B0008EFC2 /* Security.framework */; };
 		F80DBBA41CC5CA0800EE39BD /* AMArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */; };
 		F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA01CC5CA0800EE39BD /* AMSuccessAViewController.m */; };
 		F80DBBA61CC5CA0800EE39BD /* AMACellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA21CC5CA0800EE39BD /* AMACellTableViewCell.m */; };
@@ -361,6 +366,11 @@
 		ED4631871CC39B1E0000FB71 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		ED46318C1CC39B480000FB71 /* XZMTabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMTabbarExtension.h; sourceTree = "<group>"; };
 		ED46318D1CC39B480000FB71 /* XZMTabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMTabbarExtension.m; sourceTree = "<group>"; };
+		F803A09E1CE6E5660008EFC2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F803A0A01CE6E5780008EFC2 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TencentOpenApi_IOS_Bundle.bundle; path = ContinueFate/TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		F803A0A11CE6E5780008EFC2 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ContinueFate/TencentOpenAPI.framework; sourceTree = "<group>"; };
+		F803A0A41CE6E6080008EFC2 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		F803A0A61CE6E61B0008EFC2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F80DBB9D1CC5CA0800EE39BD /* AMArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMArticleViewController.h; sourceTree = "<group>"; };
 		F80DBB9E1CC5CA0800EE39BD /* AMArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMArticleViewController.m; sourceTree = "<group>"; };
 		F80DBB9F1CC5CA0800EE39BD /* AMSuccessAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSuccessAViewController.h; sourceTree = "<group>"; };
@@ -394,6 +404,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057D5C891CCC6CEB00C72341 /* libstdc++.tbd in Frameworks */,
+				F803A0A71CE6E61B0008EFC2 /* Security.framework in Frameworks */,
+				F803A0A51CE6E6080008EFC2 /* libiconv.tbd in Frameworks */,
+				F803A0A21CE6E5780008EFC2 /* TencentOpenApi_IOS_Bundle.bundle in Frameworks */,
+				F803A0A31CE6E5780008EFC2 /* TencentOpenAPI.framework in Frameworks */,
+				F803A09F1CE6E5660008EFC2 /* libsqlite3.tbd in Frameworks */,
 				05FB35E91CE5F6050022186C /* libcrypto.a in Frameworks */,
 				05FB35EA1CE5F6050022186C /* libssl.a in Frameworks */,
 				059E25F01CE2055D0065A9C4 /* CoreMotion.framework in Frameworks */,
@@ -406,7 +422,6 @@
 				059E25E21CE204AA0065A9C4 /* CoreTelephony.framework in Frameworks */,
 				059E25DF1CE2047F0065A9C4 /* AlipaySDK.bundle in Frameworks */,
 				059E25E01CE2047F0065A9C4 /* AlipaySDK.framework in Frameworks */,
-				057D5C891CCC6CEB00C72341 /* libstdc++.tbd in Frameworks */,
 				057D5C871CCC6CDE00C72341 /* JavaScriptCore.framework in Frameworks */,
 				057D5C851CCC6CD300C72341 /* MessageUI.framework in Frameworks */,
 				057D5C831CCC6CC900C72341 /* libicucore.tbd in Frameworks */,
@@ -734,6 +749,11 @@
 		371F5A40FD09462836D40BF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F803A0A61CE6E61B0008EFC2 /* Security.framework */,
+				F803A0A41CE6E6080008EFC2 /* libiconv.tbd */,
+				F803A0A01CE6E5780008EFC2 /* TencentOpenApi_IOS_Bundle.bundle */,
+				F803A0A11CE6E5780008EFC2 /* TencentOpenAPI.framework */,
+				F803A09E1CE6E5660008EFC2 /* libsqlite3.tbd */,
 				059E25EF1CE2055D0065A9C4 /* CoreMotion.framework */,
 				059E25ED1CE205420065A9C4 /* CFNetwork.framework */,
 				059E25EB1CE205340065A9C4 /* Foundation.framework */,

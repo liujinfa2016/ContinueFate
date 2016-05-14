@@ -48,6 +48,25 @@
         [[StorageMgr singletonStorageMgr]removeObjectForKey:@"back"];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"AddGesture" object:nil];
     }
+    if ([[StorageMgr singletonStorageMgr]objectForKey:@"openId"] != nil){
+        NSString *userId = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+        NSString *openId = [[StorageMgr singletonStorageMgr]objectForKey:@"openId"];
+        NSString *tokenId = [[StorageMgr singletonStorageMgr]objectForKey:@"tokenId"];
+        NSDate *expirationDate = [[StorageMgr singletonStorageMgr]objectForKey:@"expirationDate"];
+        NSDictionary *parametent = @{@"bindType":@2,@"userid":userId,@"openId":openId,@"tokenId":tokenId,@"expirationDate":expirationDate,@"platform":@"QQ"};
+        NSLog(@"%@",parametent);
+        [RequestAPI postURL:@"/cognateAppend" withParameters:parametent success:^(id responseObject) {
+            NSLog(@"111111responseObject ====== %@",responseObject );
+            
+            
+        } failure:^(NSError *error) {
+            NSLog(@"error = %@",error.description);
+        }];
+    }else {
+        NSLog(@"[[StorageMgr singletonStorageMgr]objectForKey:openId] = 0000");
+    }
+    
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -147,13 +147,13 @@
     }else {
          [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     if (flag) {
-        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
+        [Utilities popUpAlertViewWithMsg:@"确认取消收藏?" andTitle:nil onView:self trueStr:@"是" falseStr:@"否" tureAction:^(UIAlertAction * _Nonnull action) {
             [self delCollection];
         } flaseAction:^(UIAlertAction * _Nonnull action) {
             [MBProgressHUD hideHUDForView:self.view];
         }];
     }else {
-        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:@"提示" onView:self tureAction:^(UIAlertAction *action) {
+        [Utilities popUpAlertViewWithMsg:@"确认收藏?" andTitle:nil onView:self trueStr:@"是" falseStr:@"否" tureAction:^(UIAlertAction * _Nonnull action) {
             [self addCollection];
         } flaseAction:^(UIAlertAction * _Nonnull action) {
             [MBProgressHUD hideHUDForView:self.view];

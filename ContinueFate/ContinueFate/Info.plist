@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Lite Project</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,6 +28,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>xyalipay</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>xy.ContinueFate</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent222222</string>
 			</array>
 		</dict>
 	</array>

@@ -9,7 +9,13 @@
 #import "RegisterViewController.h"
 #import <SMS_SDK/SMSSDK.h>
 #import "MBProgressHUD+NJ.h"
-@interface RegisterViewController ()
+@interface RegisterViewController () {
+    NSString *username;
+    NSString *password;
+    NSString *PasswordAgainTF;
+    NSString *TelTF;
+    NSString *registertf;
+}
 
 @end
 
@@ -38,11 +44,12 @@
 }
 */
 //注册
-- (IBAction)Registered:(UIButton *)sender forEvent:(UIEvent *)event { NSString *username = _UsernameTF.text;
-    NSString *password = _PasswordTF.text;
-    NSString *PasswordAgainTF = _PasswordAgainTF.text;
-    NSString *TelTF =_TelTF.text;
-    NSString *registertf = _registertf.text;
+- (IBAction)Registered:(UIButton *)sender forEvent:(UIEvent *)event {
+    username = _UsernameTF.text;
+    password = _PasswordTF.text;
+    PasswordAgainTF = _PasswordAgainTF.text;
+    TelTF =_TelTF.text;
+    registertf = _registertf.text;
     
     
     if (username.length == 0 || password.length == 0 || PasswordAgainTF.length == 0 || registertf.length == 0) {
@@ -104,6 +111,9 @@
                 [[StorageMgr singletonStorageMgr] addKey:@"Username" andValue:username];
                 //在单例化全局变量中保存用户名和密码以供登录页面自动登录使用
                 [[StorageMgr singletonStorageMgr] addKey:@"Password" andValue:password];
+                
+                 [self addCognateAppend];
+                
                 //回到登录页面
                 [self.navigationController popViewControllerAnimated:YES];
                 break;
@@ -119,9 +129,26 @@
         NSLog(@"注册失败");
         
     }];
-    
-
 }
+
+- (void)addCognateAppend {
+    NSString *openId = [[StorageMgr singletonStorageMgr]objectForKey:@"openId"];
+    NSString *tokenId = [[StorageMgr singletonStorageMgr]objectForKey:@"tokenId"];
+    NSDate *expirationDate = [[StorageMgr singletonStorageMgr]objectForKey:@"expirationDate"];
+    NSDictionary *parametent = @{@"bindType":@1,@"openId":openId,@"tokenId":tokenId,@"expirationDate":expirationDate,@"platform":@"QQ",@"code":username,@"pwd":password,@"mobile":TelTF,@"deviceId":[Utilities uniqueVendor]};
+    NSLog(@"register parametent = %@",parametent);
+    [RequestAPI postURL:@"/cognateAppend" withParameters:parametent success:^(id responseObject) {
+        NSLog(@"aaaaa = %@",responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.description);
+    }];
+    
+}
+
+
+
+
+
 //当按了验证码
 - (IBAction)TestGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *TelTF =_TelTF.text;
