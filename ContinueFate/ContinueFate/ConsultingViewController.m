@@ -47,8 +47,18 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
      self.automaticallyAdjustsScrollViewInsets=NO;
-    [self requestData];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
+    [self requestData];
+    
+//    if ([Utilities getKeyedArchiver:@"consultion"] == nil){
+//        [self requestData];
+//    }else{
+//        NSArray *dataArr = [Utilities getKeyedArchiver:@"consultion"];
+//        for (NSDictionary *dic in dataArr) {
+//            [_objArr addObject:dic];
+//        }
+//        [self.tableView reloadData];
+//    }
 
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -87,6 +97,7 @@
                 _objArr = [NSMutableArray new];
                 perPage = 4;
             }
+            [Utilities setKeyedArchiver:@"consultion" content:models];
             //遍历models的内容
             for (NSDictionary *dic in models) {
                 [_objArr addObject:dic];
