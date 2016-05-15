@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q5Y-K4-TcZ">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q5Y-K4-TcZ">
+>>>>>>> b9121bc82e57271c12fb404af87e2ed3e9fb067a
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -115,7 +119,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="设置新密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-bi-aCs">
                                 <rect key="frame" x="30" y="138" width="260" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="xED-4o-kII" id="hpl-67-zFJ"/>
                                 </connections>
@@ -123,7 +127,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请再次输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-z2-wu6">
                                 <rect key="frame" x="30" y="183" width="260" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="xED-4o-kII" id="C88-7x-Zs3"/>
                                 </connections>
@@ -375,7 +379,11 @@
                                             <rect key="frame" x="0.0" y="169" width="320" height="126"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pml-1R-OBG">
+<<<<<<< HEAD
                                                     <rect key="frame" x="0.0" y="0.0" width="159.5" height="126"/>
+=======
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="127"/>
+>>>>>>> b9121bc82e57271c12fb404af87e2ed3e9fb067a
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" image="预约咨询-1">
                                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -385,16 +393,27 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="竖线" translatesAutoresizingMaskIntoConstraints="NO" id="vw1-hq-7Tk">
+<<<<<<< HEAD
                                                     <rect key="frame" x="159" y="0.0" width="1" height="126"/>
+=======
+                                                    <rect key="frame" x="160" y="0.0" width="1" height="127"/>
+>>>>>>> b9121bc82e57271c12fb404af87e2ed3e9fb067a
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="f1W-Ql-Etl"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tjk-u7-om2">
+<<<<<<< HEAD
                                                     <rect key="frame" x="160" y="0.0" width="159.5" height="126"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-0C-vrr">
                                                             <rect key="frame" x="0.0" y="0.0" width="159.5" height="62.5"/>
+=======
+                                                    <rect key="frame" x="161" y="0.0" width="159" height="127"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-0C-vrr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="159" height="63"/>
+>>>>>>> b9121bc82e57271c12fb404af87e2ed3e9fb067a
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="-10"/>
                                                             <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
@@ -404,13 +423,21 @@
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="横线" translatesAutoresizingMaskIntoConstraints="NO" id="kX2-pB-TZA">
+<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="62" width="159.5" height="1"/>
+=======
+                                                            <rect key="frame" x="0.0" y="63" width="159" height="1"/>
+>>>>>>> b9121bc82e57271c12fb404af87e2ed3e9fb067a
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="kCx-94-Luz"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbc-46-XhC">
+<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="63" width="159.5" height="62.5"/>
+=======
+                                                            <rect key="frame" x="0.0" y="64" width="159" height="63"/>
+>>>>>>> b9121bc82e57271c12fb404af87e2ed3e9fb067a
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <inset key="contentEdgeInsets" minX="-29" minY="0.0" maxX="0.0" maxY="9"/>
                                                             <state key="normal" image="问答"/>

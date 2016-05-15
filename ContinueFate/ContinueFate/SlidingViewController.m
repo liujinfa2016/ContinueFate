@@ -41,13 +41,12 @@
 }
 
 -(void)setImageButtonStyle{
-    
-   
+    [_imageLable setImage:[[StorageMgr singletonStorageMgr] objectForKey:@"image"] forState:UIControlStateNormal];
     _imageLable.layer.borderColor = [[UIColor colorWithRed:240.0f/255.0f green:248.0f/255.0f blue:254.0f/255.0f alpha:1.0f] CGColor];
     
      _imageLable.layer.opacity = 1.0;
     
-    /* _imageLable.layer.shadowColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f].CGColor;//shadowColor阴影颜色
+       /* _imageLable.layer.shadowColor = [UIColor colorWithRed:234.0f/255.0f green:67.0f/255.0f blue:112.0f/255.0f alpha:1.0f].CGColor;//shadowColor阴影颜色
      _imageLable.layer.shadowOffset = CGSizeMake(-2,-2);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
      _imageLable.layer.shadowOpacity = 0.8;//阴影透明度，默认0
      _imageLable.layer.shadowRadius = 3;//阴影半径，默认3
