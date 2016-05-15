@@ -18,9 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *regionTF;//地区
 @property (weak, nonatomic) IBOutlet UITextField *telTF;//手机号码
 @property (weak, nonatomic) IBOutlet UITextView *textView;//简介输入框
-@property (weak, nonatomic) IBOutlet UIButton *modifaction;//确定修改
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *modifyeiet;//修改
-@property (weak, nonatomic) IBOutlet UIScrollView *Scroll;//滚动视图
 - (IBAction)imageAction:(UIButton *)sender forEvent:(UIEvent *)event;//图片按钮
 - (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event;//确定修改
 - (IBAction)modifyEiet:(UIBarButtonItem *)sender;//修改

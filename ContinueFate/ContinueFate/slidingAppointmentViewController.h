@@ -18,15 +18,15 @@
 @end
 @interface Product : NSObject{
 @private
-    NSNumber  *_price;
+    float     _price;
     NSString *_subject;
     NSString *_body;
     NSString *_orderId;
 }
 
-@property (nonatomic, assign) NSNumber * price;//价格
-@property (nonatomic, copy) NSString *subject;//产品名称
-@property (nonatomic, copy) NSString *body;//产品简介
-@property (nonatomic, copy) NSString *orderId;//产品订单号
+@property (nonatomic, assign) float price;
+@property (nonatomic, copy) NSString *subject;
+@property (nonatomic, copy) NSString *body;
+@property (nonatomic, copy) NSString *orderId;
 
 @end

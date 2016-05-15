@@ -9,14 +9,11 @@
 #import "SlidingDataViewController.h"
 #import "SimplePickerView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate>
 
 @property (strong ,nonatomic)UIDatePicker *datepicker;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
 @property(strong,nonatomic)NSMutableArray *menuList;
-@property (strong ,nonatomic)UIPickerView *grenderView;
-
-@property (strong ,nonatomic)NSArray *arr;
 @end
 
 @implementation SlidingDataViewController
@@ -25,34 +22,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    _neckName.delegate = self;
-    _nameTF.delegate = self;
-    _ageTF.delegate = self;
-    _regionTF.delegate = self;
-    _telTF.delegate = self;
-    _textView.delegate =self;
-    _Scroll.delegate =self;
-
-    _arr = [NSArray arrayWithObjects:@"男",@"女", nil];
     self.navigationItem.title = @"请填写资料";
-    //设置修改按钮隐藏
-    _modifaction.enabled = NO;
-   //设置性别隐藏
-    _sexTF.enabled = NO;
-    //设置昵称隐藏
-    _neckName.enabled = NO;
-    //设置姓名隐藏
-    _nameTF.enabled = NO;
-    //设置出生日期隐藏
-    _ageTF.enabled = NO;
-    //设置地区隐藏
-    _regionTF.enabled = NO;
-    //设置手机号码隐藏
-    _telTF.enabled = NO;
-    //设置简介输入框隐藏
-    _textView.editable = NO;
+
+
     _ageTF.delegate = self;
-    
     _textView.delegate = self;
     _SCView.delegate = self;
     _SCView.contentSize  = CGSizeMake(UI_SCREEN_W,0);
@@ -63,10 +36,6 @@
     _tapTrick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bgTap:)];
     
     [self.view addGestureRecognizer:_tapTrick];
-    
-    
-    [self grenderTFC];
-    
     //监听键盘打开这一操作，打开后执行keyboardWillShow:方法
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     //监听键盘收起这一操作，收起后执行keyboardWillHide:方法
@@ -106,29 +75,6 @@
 
 
 
-- (void) grenderTFC {
-    _grenderView = [[UIPickerView alloc] init];
-    _grenderView.delegate = self;
-    _grenderView.dataSource = self;
-    _sexTF.inputView = _grenderView;
-    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    // 选取日期完成钮并给他一個 selector
-    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDidEndEditing:)];
-    right.width = 80;
-    [right setTitle:@"wancheng"];
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
-    fixedSpace.width = self.view.frame.size.width - 80;
-    // 把按钮加进 UIToolbar
-    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
-    
-    
-    // 以下這行也是重點 (螢光筆畫兩行)
-    // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
-    _sexTF.inputAccessoryView = toolBar;
-    
-}
-
-
 
 
 
@@ -146,7 +92,6 @@
     UIImage *image =info [UIImagePickerControllerEditedImage];
     //将上面拿到的图片设置为按钮的图片
     [_image setBackgroundImage:image forState:UIControlStateNormal];
-    [[StorageMgr singletonStorageMgr] addKey:@"image" andValue:image];
     NSString *url = [Utilities saveHeadImage:image];
     NSLog(@"url === %@",url);
     
@@ -194,37 +139,10 @@
 }
 //确定修改
 - (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    NSString* userId = [[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
-    NSDictionary *parameter = @{@"userid":userId,@"nickname":@"",@"name":@"",@"sex":@"",@"headimage":@"",@"birthday":@"",@"mobile":@"",@"address":@"",@"email":@"",@"descripition":@""};
-    [RequestAPI postURL:@"/userModification" withParameters:parameter success:^(id responseObject) {
-        if ([responseObject[@""]integerValue] == 8001) {
-            [MBProgressHUD showSuccess:@"修改成功" toView:self.view];
-        }else{
-            [MBProgressHUD showError:@"修改失败" toView:self.view];
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"error = %@",error.description);
-    }];
+    
 }
 //修改
 - (IBAction)modifyEiet:(UIBarButtonItem *)sender {
-   _modifaction.enabled = NO;
-    //设置修改按钮显示
-    _modifaction.enabled = YES;
-    //设置性别隐藏显示
-    _sexTF.enabled = YES;
-    //设置昵称隐藏显示
-    _neckName.enabled = YES;
-    //设置姓名隐藏显示
-    _nameTF.enabled = YES;
-    //设置出生日期隐藏显示
-    _ageTF.enabled = YES;
-    //设置地区隐藏显示
-    _regionTF.enabled = YES;
-    //设置手机号码隐藏显示
-    _telTF.enabled = YES;
-    //设置简介输入框隐藏显示
-    _textView.editable = YES;
     
 }
 -(void)pickImage:(UIImagePickerControllerSourceType)sourceType{
@@ -257,27 +175,4 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-/////////////
-// returns the number of 'columns' to display.
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
-
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return _arr.count;
-}
-- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component __TVOS_PROHIBITED {
-    return _arr[row];
-}
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    if ([self.view endEditing:NO]) {
-        NSInteger row = [_grenderView selectedRowInComponent:0];
-        _sexTF.text = [_arr objectAtIndex:row];
-    }
-    
-}
-
 @end
