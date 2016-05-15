@@ -48,16 +48,17 @@
     
      self.automaticallyAdjustsScrollViewInsets=NO;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
+    [self requestData];
     
-    if ([Utilities getKeyedArchiver:@"consultion"] == nil){
-        [self requestData];
-    }else{
-        NSArray *dataArr = [Utilities getKeyedArchiver:@"consultion"];
-        for (NSDictionary *dic in dataArr) {
-            [_objArr addObject:dic];
-        }
-        [self.tableView reloadData];
-    }
+//    if ([Utilities getKeyedArchiver:@"consultion"] == nil){
+//        [self requestData];
+//    }else{
+//        NSArray *dataArr = [Utilities getKeyedArchiver:@"consultion"];
+//        for (NSDictionary *dic in dataArr) {
+//            [_objArr addObject:dic];
+//        }
+//        [self.tableView reloadData];
+//    }
 
 }
 - (void)viewWillDisappear:(BOOL)animated {
