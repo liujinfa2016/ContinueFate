@@ -37,9 +37,20 @@
     [self cycleScrollBegin];
     [self refreshDownAndUp];
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
-    [self netWorkRequest];
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
+    
+    if ([Utilities getKeyedArchiver:@"Article"] == nil){
+        [self netWorkRequest];
+    }else{
+        NSArray *dataArr = [Utilities getKeyedArchiver:@"Article"];
+        for (NSDictionary *dict in dataArr) {
+            ArticleObject *artObj = [[ArticleObject alloc]initWithDictionary:dict];
+            [_objArr addObject:artObj];
+        }
+        [self.tableView reloadData];
+        [MBProgressHUD hideHUDForView:self.view];
+    }
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -148,7 +159,7 @@
     
     NSArray *image = @[image1,image2,image3];
     
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(netWorkRequest)];
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshRequest)];
     // 设置普通状态的动画图片
     [header setImages:image forState:MJRefreshStateIdle];
     // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
@@ -172,6 +183,11 @@
     
 }
 
+- (void)refreshRequest{
+    page = 1;
+    [self netWorkRequest];
+}
+
 //网络请求 提取数据
 - (void) netWorkRequest {
     NSDictionary *parameters = @{@"type":@"",@"subtype":@"",@"page":@(page),@"perPage":@(perPage)};
@@ -192,7 +208,7 @@
                 _objArr = [NSMutableArray new];
                 perPage = 4;
             }
-            
+            [Utilities setKeyedArchiver:@"Article" content:dataArr];
             for (NSDictionary *dict in dataArr) {
                 ArticleObject *artObj = [[ArticleObject alloc]initWithDictionary:dict];
                 [_objArr addObject:artObj];

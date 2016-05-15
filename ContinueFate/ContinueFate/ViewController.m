@@ -177,7 +177,7 @@
         //初始化保护膜
         //UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
         [MBProgressHUD showMessage:@"正在加载" toView:self.view];
-
+        self.navigationController.view.userInteractionEnabled = NO;
         
         //将关联用户获取到的数据存到全局变量中
         [[StorageMgr singletonStorageMgr]addKey:@"tokenId" andValue:_accessToken];
@@ -194,6 +194,7 @@
             //停转保护膜
             // [avi stopAnimating];
             [MBProgressHUD hideHUDForView:self.view];
+            self.navigationController.view.userInteractionEnabled = YES;
             NSLog(@"responseObject ===== %@",responseObject);
             //判断当前QQ号是否有账号关联
             if ([responseObject[@"resultFlag"]integerValue] == 8001){
