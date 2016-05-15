@@ -36,4 +36,7 @@
 }
 */
 
+- (IBAction)backAction:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

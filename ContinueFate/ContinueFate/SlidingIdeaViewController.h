@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingIdeaViewController : UIViewController
+- (IBAction)backAction:(UIBarButtonItem *)sender;
 
 @end
