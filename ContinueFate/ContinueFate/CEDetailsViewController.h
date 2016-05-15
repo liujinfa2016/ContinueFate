@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CEDetailsViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *styleView;
 @property (weak, nonatomic) IBOutlet UIImageView *EImage;//专家照片
 @property (weak, nonatomic) IBOutlet UILabel *ConsultantLab;//咨询过的人数
-@property (weak, nonatomic) IBOutlet UIView *viewStyle;
 
 @property (weak, nonatomic) IBOutlet UITextView *DetailsTV;//专家咨询服务
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
