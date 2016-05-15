@@ -28,6 +28,21 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (id)getKeyedArchiver:(NSString *)key
+{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+    NSString *filename = [path stringByAppendingPathComponent:key];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+}
+
++ (void)setKeyedArchiver:(NSString *)key content:(id)value
+{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+    NSString *filename = [path stringByAppendingPathComponent:key];
+    [NSKeyedArchiver archiveRootObject:value toFile:filename];
+}
+
+
 + (NSString *)uniqueVendor
 {
     NSString *uniqueIdentifier = [Utilities getUserDefaults:@"kKeyVendor"];

@@ -25,6 +25,14 @@
  */
 + (void)removeUserDefaults:(NSString *)key;
 /**
+ *根据key获取数据缓存KeyedArchiver
+ */
++ (id)getKeyedArchiver:(NSString *)key;
+/**
+ *根据key设置KeyedArchiver
+ */
++ (void)setKeyedArchiver:(NSString *)key content:(id)value;
+/**
  *获得venderID的UUID字符串
  */
 + (NSString *)uniqueVendor;
