@@ -28,7 +28,6 @@
     [super viewDidLoad];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view.
-    [self appointmentview];
     _segment.selectedSegmentIndex = 0;
     userid =[[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
     _dic = @{@"userid":userid,@"typeid":@1};
@@ -41,6 +40,7 @@
      self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
 }
+
 //当没有预约信息，执行的方法
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
@@ -61,10 +61,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)appointmentview{
-   
 
-}
 /*
 #pragma mark - Navigation
 
@@ -77,10 +74,16 @@
 //请求卡片的所有信息
 -(void)Request{
     [_array removeAllObjects];
+    //菊花
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    self.navigationController.view.self.userInteractionEnabled = NO;
     [RequestAPI postURL:@"/getOrderList" withParameters:_dic success:^(id responseObject) {
 //        if ([responseObject[@"resultFlag"]integerValue]  == 6002) {
 //           
 //        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        self.navigationController.view.self.userInteractionEnabled = YES;
+        
         if ([responseObject[@"resultFlag"]integerValue]  == 8001) {
             NSDictionary *dic = responseObject[@"result"];
             
@@ -126,9 +129,7 @@
             break;
     }
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _array.count;
-}
+
 //产生随机订单号
 - (NSString *)generateTradeNO
 {
@@ -217,6 +218,7 @@
 //    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
 
     id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    //NSString *signedString = [signer signString:orderSpec];
     NSString *signedString = [signer signString:orderSpec];
     
     //将签名成功字符串格式化为订单字符串,请严格按照该格式
@@ -230,10 +232,6 @@
         }];
     }
 }
-
-
-
-
 //点击头像执行跳转
 -(void)exbutton:(UIButton *)button{
     NSUInteger index = button.tag;
@@ -243,6 +241,9 @@
     detailView.tags = 1;
     [self.navigationController pushViewController:detailView animated:YES];
   
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _array.count;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     SlidingAppointmentTableViewCell * cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
