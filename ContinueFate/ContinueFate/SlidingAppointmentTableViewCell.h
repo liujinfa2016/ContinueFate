@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SlidingAppointmentTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *viewStyle;
 @property (weak, nonatomic) IBOutlet UILabel *ExpertsnameLab;//专家名称
 @property (weak, nonatomic) IBOutlet UIImageView *cardIM;//图片
 @property (weak, nonatomic) IBOutlet UILabel *CardLab;//卡片类型
