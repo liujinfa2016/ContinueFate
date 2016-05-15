@@ -19,6 +19,8 @@
     _styleView.layer.shadowRadius = 4;//阴影半径，默认3
     _styleView.layer.cornerRadius=8.0;
     
+  
+    
     
     
 }
