@@ -10,9 +10,12 @@
 #import "SlidingAppointmentTableViewCell.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "CEDetailsViewController.h"
-
+#import "Alipay/AlipaySDK.framework/Headers/AlipaySDK.h"
+#import "Order.h"
+#import "DataSigner.h"
 @interface slidingAppointmentViewController ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSString *userid;
+    BOOL flag;
 }
 @property(strong,nonatomic)NSMutableArray *array;//声明一个数组用放预约信息
 @property(strong,nonatomic)NSDictionary *dic;
@@ -23,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    flag = false;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view.
     _segment.selectedSegmentIndex = 0;
@@ -38,20 +42,29 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    flag = false;
+}
+
 //当没有预约信息，执行的方法
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"您暂时没有预约信息";
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    if (flag) {
+        NSString *text = @"您暂时没有预约信息";
+        
+        NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+        paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraph.alignment = NSTextAlignmentCenter;
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0f],
+                                     NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                     NSParagraphStyleAttributeName: paragraph};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    } else {
+        return nil;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -80,7 +93,7 @@
 //        }
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         self.navigationController.view.self.userInteractionEnabled = YES;
-        
+        flag = true;
         if ([responseObject[@"resultFlag"]integerValue]  == 8001) {
             NSDictionary *dic = responseObject[@"result"];
             
@@ -94,6 +107,7 @@
         [_tableView reloadData];
         
     } failure:^(NSError *error) {
+        flag = true;
         [Utilities popUpAlertViewWithMsg:@"请保持网络畅通" andTitle:nil onView:self];
        
     }];
@@ -154,11 +168,79 @@
     NSLog(@" dic  == %@",dic);
     // 根据tag就可以知道哪一个cell上的按钮
     Product *product = nil;
-    product.price =10;
-    product.body = @"this is body";
-    product.subject = @"sub";
+    product.price =money;
+    product.body = dic[@"orderType"];
+    product.subject = @"续缘心理咨询";
     product.orderId = [self generateTradeNO];
+    /*============================================================================*/
+    /*=======================需要填写商户app申请的===================================*/
+    /*============================================================================*/
+    NSString *partner = @"2088221188008648";
+    NSString *seller = @"1326431681@qq.com";
+    NSString *privateKey= @"7q91nn9g96bwv64fzh02tvahds1tz5cf";
+    /*============================================================================*/
+    /*============================================================================*/
+    /*============================================================================*/
+    
+    //partner和seller获取失败,提示
+    if ([partner length] == 0 ||
+        [seller length] == 0 ||
+        [privateKey length] == 0)
+    {  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"缺少partner或者seller或者私钥。"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+    
+        return;
+    }
+    
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
+    order.partner = partner;
+    order.sellerID = seller;
+    order.outTradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.subject = product.subject; //商品标题
+    order.body = product.body; //商品描述
+    order.totalFee = [NSString stringWithFormat:@"%@",product.price]; //商品价格
+    order.notifyURL =  @"http://www.xxx.com"; //回调URL
+    
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showURL = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"xuyuanAlipay";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    NSLog(@"dddd = %@",privateKey);
+    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
+    
 }
+
+
 //点击头像执行跳转
 -(void)exbutton:(UIButton *)button{
     NSUInteger index = button.tag;
