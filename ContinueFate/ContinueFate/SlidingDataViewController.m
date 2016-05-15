@@ -9,11 +9,20 @@
 #import "SlidingDataViewController.h"
 #import "SimplePickerView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate>
+@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate> {
+    NSLocale *datelocale;
+   
+}
 
 @property (strong ,nonatomic)UIDatePicker *datepicker;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
 @property(strong,nonatomic)NSMutableArray *menuList;
+
+@property (strong ,nonatomic)NSArray *arr;
+
+@property (strong ,nonatomic)UIPickerView *grenderView;
+
+
 @end
 
 @implementation SlidingDataViewController
@@ -26,11 +35,13 @@
 
 
     _ageTF.delegate = self;
+    _regionTF.delegate = self;
     _textView.delegate = self;
     _SCView.delegate = self;
+   
     _SCView.contentSize  = CGSizeMake(UI_SCREEN_W,0);
     _SCView.showsHorizontalScrollIndicator = NO;
-    
+   _arr = [NSArray arrayWithObjects:@"男",@"女", nil];
     //_scrollView.contentOffset=CGPointMake(0, 0);
     _tapTrick.enabled = NO;
     _tapTrick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bgTap:)];
@@ -42,6 +53,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
+    [self grenderTFC];
+    
+     [self creatDate];
     
 }
 - (void )bgTap: (UITapGestureRecognizer *)sender{
@@ -175,4 +189,119 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+- (void) grenderTFC {
+    _grenderView = [[UIPickerView alloc] init];
+    _grenderView.dataSource = self;
+    _grenderView.delegate = self;
+    _sexTF.inputView = _grenderView;
+   
+       
+    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // 选取日期完成钮并给他一個 selector
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDidEndEditing:)];
+    right.width = 80;
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
+    fixedSpace.width = self.view.frame.size.width - 80;
+    // 把按钮加进 UIToolbar
+    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
+        // 以下這行也是重點 (螢光筆畫兩行)
+        // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
+    _sexTF.inputAccessoryView = toolBar;
+
+}
+
+
+- (void)creatDate {
+    // 建立 UIDatePicker
+    _datepicker = [[UIDatePicker alloc]init];
+    // 時區的問題請再找其他協助 不是本篇重點
+    datelocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_TW"];
+    _datepicker.locale = datelocale;
+    _datepicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    _datepicker.datePickerMode = UIDatePickerModeDate;
+    _ageTF.inputView = _datepicker;
+    // 建立 UIToolbar
+    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    // 选取日期完成钮并给他一個 selector
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action: nil];
+    fixedSpace.width = self.view.frame.size.width - 80;
+    
+    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(ordertimeActionDatePicka)];
+    
+    // UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(ordertimeActionDatePick)];
+    right.width = 80;
+    // 把按钮加进 UIToolbar
+    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
+    // 以下這行也是重點 (螢光筆畫兩行)
+    // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
+    _ageTF.inputAccessoryView = toolBar;
+    
+}
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+
+           return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return _arr.count;
+}
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component __TVOS_PROHIBITED {
+
+    return _arr[row];
+    
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([self.view endEditing:NO]) {
+        NSInteger row = [_grenderView selectedRowInComponent:0];
+         _sexTF.text = [_arr objectAtIndex:row];
+    }
+}
+
+-(void)ordertimeActionDatePicka {
+    
+    // endEditing: 是結束編輯狀態的 method
+    if ([self.view endEditing:NO]) {
+        //获取当前选择的年月日；
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        //设置年月日的格式
+        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:datelocale];
+        //formatter为有格式的年月日
+        [formatter setDateFormat:dateFormat];
+        //封装本地化相关的各种信息
+        [formatter setLocale:datelocale];
+        //NSString *chooseTimeS = [NSString stringWithFormat:@"%@",[formatter stringFromDate:_datepicker.date]];
+        NSString *chooseTimeS = [formatter stringFromDate: _datepicker.date];
+        NSLog(@"%@",formatter);
+        NSString *strTime = [chooseTimeS stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
+        NSLog(@"%@",strTime);
+        _ageTF.text = strTime;
+        
+    }
+}
+
+
+
+
+//点击return 按钮 去掉
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//点击屏幕空白处去掉键盘
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view resignFirstResponder];
+}
+
+
+
+
+
 @end
