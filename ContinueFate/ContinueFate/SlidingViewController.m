@@ -129,7 +129,7 @@
                     [self presentViewController:loginVc animated:YES completion:nil];
                 }];
             } else {
-                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Appointment"] animated:YES completion:nil];
+                [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"AnswerAndQuestion"] animated:YES completion:nil];
             }
             break;
         case 2:

@@ -78,6 +78,7 @@
 		64F86DED1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */; };
 		64F86DF21CCB7B0C00696CA5 /* ExpertsJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */; };
 		64F86DF51CCB96FC00696CA5 /* dateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F86DF41CCB96FC00696CA5 /* dateViewController.m */; };
+		64F8DE341CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F8DE331CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.m */; };
 		64F9E8B11CC24FD200D805EF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F9E8B01CC24FD200D805EF /* RegisterViewController.m */; };
 		855ABF341CCC9289006F3208 /* FSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 855ABF331CCC9289006F3208 /* FSDropDownMenu.m */; };
 		855ABF3A1CCCCAEB006F3208 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 855ABF391CCCCAEB006F3208 /* Colours.m */; };
@@ -327,6 +328,8 @@
 		64F86DF11CCB7B0C00696CA5 /* ExpertsJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertsJoinViewController.m; sourceTree = "<group>"; };
 		64F86DF31CCB96FC00696CA5 /* dateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dateViewController.h; sourceTree = "<group>"; };
 		64F86DF41CCB96FC00696CA5 /* dateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dateViewController.m; sourceTree = "<group>"; };
+		64F8DE321CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingAnswerAndQuestionViewController.h; sourceTree = "<group>"; };
+		64F8DE331CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingAnswerAndQuestionViewController.m; sourceTree = "<group>"; };
 		64F9E8AF1CC24FD200D805EF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		64F9E8B01CC24FD200D805EF /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		749EE38E82DCC02178E6F2CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -888,6 +891,8 @@
 				05364E9D1CCF1D3400D83115 /* SlidingContributeViewController.m */,
 				648BD6A11CE56A1800987B00 /* SlidingIdeaViewController.h */,
 				648BD6A21CE56A1800987B00 /* SlidingIdeaViewController.m */,
+				64F8DE321CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.h */,
+				64F8DE331CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.m */,
 			);
 			name = Sliding;
 			sourceTree = "<group>";
@@ -1163,6 +1168,7 @@
 				C4C2F3101CC48AB800F24727 /* ArticleObject.m in Sources */,
 				059E260E1CE207380065A9C4 /* NSDataEx.m in Sources */,
 				C4C2F30D1CC489AA00F24727 /* FirstTableViewCell.m in Sources */,
+				64F8DE341CE7EFAC004B0B70 /* SlidingAnswerAndQuestionViewController.m in Sources */,
 				05060C401CC32E5500525F17 /* TabBarViewController.m in Sources */,
 				05079BD01CC21A8E00E7CFC8 /* NSData+Base64.m in Sources */,
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,

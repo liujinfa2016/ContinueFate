@@ -1,24 +1,24 @@
 //
-//  SlidingIdeaViewController.m
+//  SlidingAnswerAndQuestionViewController.m
 //  ContinueFate
 //
-//  Created by demon on 16/5/13.
+//  Created by demon on 16/5/15.
 //  Copyright © 2016年 XuYuan. All rights reserved.
 //
 
-#import "SlidingIdeaViewController.h"
+#import "SlidingAnswerAndQuestionViewController.h"
 
-@interface SlidingIdeaViewController ()
+@interface SlidingAnswerAndQuestionViewController ()
 
 @end
 
-@implementation SlidingIdeaViewController
+@implementation SlidingAnswerAndQuestionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
