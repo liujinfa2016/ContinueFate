@@ -10,7 +10,6 @@
 #import "openssl_wrapper.h"
 #import "NSDataEx.h"
 
-
 @implementation RSADataSigner
 
 - (id)initWithPrivateKey:(NSString *)privateKey {
@@ -69,7 +68,6 @@
 	// 把密钥写入文件
 	//
 	NSString *formatKey = [self formatPrivateKey:_privateKey];
-    
 	[formatKey writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
 	
 	const char *message = [string cStringUsingEncoding:NSUTF8StringEncoding];
@@ -83,7 +81,7 @@
 		//NSData * UTF8Data = [base64String dataUsingEncoding:NSUTF8StringEncoding];
 		signedString = [self urlEncodedString:base64String];
     }
-    
+	
 	free(sig);
     return signedString;
 }
