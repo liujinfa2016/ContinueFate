@@ -10,7 +10,7 @@
 #import "TabBarViewController.h"
 #import "SlidingViewController.h"
 #import <SMS_SDK/SMSSDK.h>
-#import <AlipaySDK/AlipaySDK.h>
+/#import <AlipaySDK/AlipaySDK.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 @interface AppDelegate ()
 @property(strong, nonatomic)ECSlidingViewController *sligingVC;

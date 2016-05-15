@@ -563,10 +563,10 @@
 				05079B901CC20F7000E7CFC8 /* Main.storyboard */,
 				64BE16551CC37CF400B2FDB4 /* Assets.xcassets */,
 				05060C381CC3292500525F17 /* TabBar.storyboard */,
+				05060C321CC327D600525F17 /* Sliding.storyboard */,
 				05060C341CC3285200525F17 /* Article.storyboard */,
 				05060C301CC3270D00525F17 /* Question.storyboard */,
 				05060C361CC328A300525F17 /* Consulting.storyboard */,
-				05060C321CC327D600525F17 /* Sliding.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
