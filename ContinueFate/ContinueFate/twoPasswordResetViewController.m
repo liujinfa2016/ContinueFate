@@ -18,7 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSString *tellArr =[[StorageMgr singletonStorageMgr] objectForKey:@"Tell"];
-    _Tell =tellArr;
     _TelLable.text =tellArr;
     [[StorageMgr singletonStorageMgr] removeObjectForKey:@"Tell"];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
@@ -31,14 +30,14 @@
 }
 
 /*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 - (IBAction)confirmAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *pass = _nPasswordTF.text;
@@ -47,30 +46,20 @@
         [Utilities popUpAlertViewWithMsg:@"请输入不少于6位密码" andTitle:nil onView:self];
         return ;
     }
-    if (![pass isEqualToString:passArr]) {
-        [Utilities popUpAlertViewWithMsg:@"您两次输入的密码不同，请重新输入" andTitle:nil onView:self];
-        return;
-    }
     NSString *modulus = [[StorageMgr singletonStorageMgr] objectForKey:@"modulus"];
     NSString *exponent = [[StorageMgr singletonStorageMgr] objectForKey:@"exponent"];
     pass = [NSString encryptWithPublicKeyFromModulusAndExponent:[pass getMD5_32BitString].UTF8String modulus:modulus exponent:exponent];
-    NSLog(@"modulus = %@ **** modulus = %@",modulus, exponent);
-    NSDictionary *dic = @{@"pwd":pass,@"mobile":_Tell,@"deviceId":[Utilities uniqueVendor]};
-    [RequestAPI postURL:@"/updatePwd" withParameters:dic success:^(id responseObject) {
-        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
-            [Utilities popUpAlertViewWithMsg:@"修改成功，请登录！"andTitle:nil onView:self];
-            [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"HomeTF"]animated:YES completion:nil];
-        }
-        if ([responseObject[@"resultFlag"]integerValue] == 6002) {
-            [Utilities popUpAlertViewWithMsg:@"您的手机号还没注册，请先注册"andTitle:nil onView:self];
-        }
-        
+    
+    NSDictionary *dic = @{@"pwd":passArr,@"mobile":_Tell,@"deviceId":[Utilities uniqueVendor]};
+    [RequestAPI postURL:@"/editPwd" withParameters:dic success:^(id responseObject) {
+        NSLog(@"responseObject = %@ 成功",responseObject);
+//        UIViewController *view =[Utilities getStoryboardInstanceByIdentity:@"Mian" byIdentity:@"HomeTF"];
+//        
+//        [self presentViewController:view animated:YES completion:Nil];
     } failure:^(NSError *error) {
-        
         [Utilities popUpAlertViewWithMsg:@"修改失败，请保持网络畅通" andTitle:nil onView:self];
     }];
 }
-
 - (IBAction)Return:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
