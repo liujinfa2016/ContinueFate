@@ -33,7 +33,17 @@
      self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"请填写资料";
 
-
+    
+    _neckName.hidden = YES;
+    _nameTF.hidden = YES;
+    _ageTF.hidden  = YES;
+    _sexTF.hidden = YES;
+    _telTF.hidden = YES;
+    _regionTF.hidden = YES;
+    _textView.selectable = NO
+    ;
+    
+    
     _ageTF.delegate = self;
     _regionTF.delegate = self;
     _textView.delegate = self;
