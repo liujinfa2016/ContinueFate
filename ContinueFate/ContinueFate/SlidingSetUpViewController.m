@@ -38,8 +38,27 @@
 //按个人资料按钮
 - (IBAction)Personal:(UIButton *)sender forEvent:(UIEvent *)event {
 //  [self.navigationController pushViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES];
-   [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
-    
+//    NSString *userid = [[StorageMgr singletonStorageMgr] objectForKey:@"UserID"];
+//    //提示框
+//    if (userid == nil && userid.length == 0) {
+//        
+//        UIViewController *tabVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+//        
+//        [self presentViewController:tabVc animated:YES completion:nil];
+//        
+//    }else{
+//
+//   [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
+//    
+//    }
+    if ([Utilities loginState]) {
+        [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
+            UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+            [self presentViewController:loginVc animated:YES completion:nil];
+        }];
+    } else {
+        [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"Data"] animated:YES completion:nil];
+    }
 }
 //按帮助按钮
 - (IBAction)HlepAction:(UIButton *)sender forEvent:(UIEvent *)event {

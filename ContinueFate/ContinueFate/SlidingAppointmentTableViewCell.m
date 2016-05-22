@@ -13,10 +13,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    _viewStyle .layer.shadowColor = [UIColor blackColor].CGColor;//shadowColor阴影颜色
-    _viewStyle.layer.shadowOffset = CGSizeMake(1,1);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
-    _viewStyle.layer.shadowOpacity = 0.2;//阴影透明度，默认0
-    _viewStyle.layer.shadowRadius = 1;//阴影半径，默认3
    
 }
 

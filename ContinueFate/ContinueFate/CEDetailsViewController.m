@@ -24,18 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _viewStyle .layer.shadowColor = [UIColor blackColor].CGColor;//shadowColor阴影颜色
-    _viewStyle.layer.shadowOffset = CGSizeMake(1,1);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
-    _viewStyle.layer.shadowOpacity = 0.4;//阴影透明度，默认0
-    _viewStyle.layer.shadowRadius = 1;//阴影半径，默认3
-    _viewStyle.layer.cornerRadius=2.0;
-    
-    _styleView .layer.shadowColor = [UIColor blackColor].CGColor;//shadowColor阴影颜色
-    _styleView.layer.shadowOffset = CGSizeMake(1,1);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
-    _styleView.layer.shadowOpacity = 0.4;//阴影透明度，默认0
-    _styleView.layer.shadowRadius = 1;//阴影半径，默认3
-    _styleView.layer.cornerRadius=2.0;
-    
     page = 1;
     perPage = 4;
     _DetailsTV.userInteractionEnabled = NO;
@@ -141,7 +129,6 @@
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             ViewController *alert = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
-             [[StorageMgr singletonStorageMgr]addKey:@"CED" andValue:@"2"];
             [self presentViewController:alert animated:YES completion:nil];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];

@@ -19,7 +19,7 @@
 }
 @property(strong,nonatomic)NSMutableArray *array;//声明一个数组用放预约信息
 @property(strong,nonatomic)NSDictionary *dic;
-@property(strong,nonatomic)NSMutableArray *arrayTV;
+
 @end
 
 @implementation slidingAppointmentViewController
@@ -83,12 +83,10 @@
 */
 //请求卡片的所有信息
 -(void)Request{
-    
     [_array removeAllObjects];
     //菊花
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.self.userInteractionEnabled = NO;
-    _dic = @{@"userid":userid,@"typeid":@1};
     [RequestAPI postURL:@"/getOrderList" withParameters:_dic success:^(id responseObject) {
 //        if ([responseObject[@"resultFlag"]integerValue]  == 6002) {
 //           
@@ -125,8 +123,9 @@
             [self Request];
             break;
         case 1:
+            
             _dic = @{@"userid":userid,@"typeid":@1,@"ordername":@"待回复"};
-            [self Request];
+             [self Request];
             break;
         case 2:
            

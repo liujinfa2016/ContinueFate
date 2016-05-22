@@ -29,30 +29,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _objectsForShow = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc]init];
     page = 1;
     perPage = 10;
+    [self requestData];
     [self refreshDownAndUp];
     [self screening];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestData) name:@"RefreshHome" object:nil];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    if ([Utilities getKeyedArchiver:@"question"] == nil){
-        [self requestData];
-    }else{
-        NSArray *dataArr = [Utilities getKeyedArchiver:@"question"];
-        for(NSDictionary *question in dataArr){
-            QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
-            [_objectsForShow addObject:quest];
-        }
-
-        [self.tableView reloadData];
-    }
 }
 
 - (void)screening{
@@ -145,7 +134,6 @@
                 _objectsForShow = [NSMutableArray new];
                 perPage = 10;
             }
-            [Utilities setKeyedArchiver:@"question" content:data];
             for(NSDictionary *question in data){
                 QuestionObject *quest = [[QuestionObject alloc]initWithDictionary:question];
                 [_objectsForShow addObject:quest];

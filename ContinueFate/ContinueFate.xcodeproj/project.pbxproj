@@ -69,6 +69,7 @@
 		643E6EC81CCDB946005FA605 /* SlidingCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643E6EC71CCDB946005FA605 /* SlidingCollectionTableViewCell.m */; };
 		646E30AF1CC9C04200093A33 /* onePasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */; };
 		646E30B21CC9C05A00093A33 /* twoPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */; };
+		647CDC021CCA2C7B00961111 /* SlidingDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */; };
 		647CDC051CCA2CAE00961111 /* SlidingHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */; };
 		648BD6A31CE56A1800987B00 /* SlidingIdeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648BD6A21CE56A1800987B00 /* SlidingIdeaViewController.m */; };
 		64BE16561CC37CF400B2FDB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BE16551CC37CF400B2FDB4 /* Assets.xcassets */; };
@@ -107,7 +108,6 @@
 		F80DBBAB1CC5CA2600EE39BD /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBA81CC5CA2600EE39BD /* HMSegmentedControl.m */; };
 		F80DBBAC1CC5CA2600EE39BD /* JRSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */; };
 		F8189A671CCE21E200789B59 /* SimplePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8189A661CCE21E200789B59 /* SimplePickerView.m */; };
-		F81D9BCE1CE842E4003E0987 /* SlidingDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D9BCD1CE842E4003E0987 /* SlidingDataViewController.m */; };
 		F8ACC9951CDE09B4003CEEE1 /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC9881CDE09B4003CEEE1 /* ConsultingViewController.m */; };
 		F8ACC9961CDE09B4003CEEE1 /* CExpertsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC98A1CDE09B4003CEEE1 /* CExpertsTableViewCell.m */; };
 		F8ACC9971CDE09B4003CEEE1 /* CEDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ACC98C1CDE09B4003CEEE1 /* CEDetailsViewController.m */; };
@@ -310,6 +310,8 @@
 		646E30AE1CC9C04200093A33 /* onePasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = onePasswordResetViewController.m; sourceTree = "<group>"; };
 		646E30B01CC9C05A00093A33 /* twoPasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoPasswordResetViewController.h; sourceTree = "<group>"; };
 		646E30B11CC9C05A00093A33 /* twoPasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoPasswordResetViewController.m; sourceTree = "<group>"; };
+		647CDC001CCA2C7B00961111 /* SlidingDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingDataViewController.h; sourceTree = "<group>"; };
+		647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingDataViewController.m; sourceTree = "<group>"; };
 		647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingHelpViewController.h; sourceTree = "<group>"; };
 		647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingHelpViewController.m; sourceTree = "<group>"; };
 		648BD6A11CE56A1800987B00 /* SlidingIdeaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingIdeaViewController.h; sourceTree = "<group>"; };
@@ -381,8 +383,6 @@
 		F80DBBAA1CC5CA2600EE39BD /* JRSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSegmentControl.m; sourceTree = "<group>"; };
 		F8189A651CCE21E200789B59 /* SimplePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePickerView.h; sourceTree = "<group>"; };
 		F8189A661CCE21E200789B59 /* SimplePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePickerView.m; sourceTree = "<group>"; };
-		F81D9BCC1CE842E4003E0987 /* SlidingDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingDataViewController.h; sourceTree = "<group>"; };
-		F81D9BCD1CE842E4003E0987 /* SlidingDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingDataViewController.m; sourceTree = "<group>"; };
 		F8ACC9871CDE09B4003CEEE1 /* ConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingViewController.h; sourceTree = "<group>"; };
 		F8ACC9881CDE09B4003CEEE1 /* ConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingViewController.m; sourceTree = "<group>"; };
 		F8ACC9891CDE09B4003CEEE1 /* CExpertsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpertsTableViewCell.h; sourceTree = "<group>"; };
@@ -868,8 +868,8 @@
 				05A15B3D1CC6246900BEB367 /* slidingAppointmentViewController.m */,
 				64F86DEB1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.h */,
 				64F86DEC1CCB1DA200696CA5 /* SlidingAppointmentTableViewCell.m */,
-				F81D9BCC1CE842E4003E0987 /* SlidingDataViewController.h */,
-				F81D9BCD1CE842E4003E0987 /* SlidingDataViewController.m */,
+				647CDC001CCA2C7B00961111 /* SlidingDataViewController.h */,
+				647CDC011CCA2C7B00961111 /* SlidingDataViewController.m */,
 				647CDC031CCA2CAE00961111 /* SlidingHelpViewController.h */,
 				647CDC041CCA2CAE00961111 /* SlidingHelpViewController.m */,
 				64F86DF01CCB7B0C00696CA5 /* ExpertsJoinViewController.h */,
@@ -1109,6 +1109,7 @@
 				F80DBBA51CC5CA0800EE39BD /* AMSuccessAViewController.m in Sources */,
 				ED46316D1CC3888A0000FB71 /* MBProgressHUD+NJ.m in Sources */,
 				85640F9B1CCB7AD400BA9B90 /* QuestionObject.m in Sources */,
+				647CDC021CCA2C7B00961111 /* SlidingDataViewController.m in Sources */,
 				05A15B3B1CC61AF300BEB367 /* SlidingSetUpViewController.m in Sources */,
 				F8ACC9981CDE09B4003CEEE1 /* CAConsultingViewController.m in Sources */,
 				648BD6A31CE56A1800987B00 /* SlidingIdeaViewController.m in Sources */,
@@ -1167,7 +1168,6 @@
 				05079BC81CC21A7A00E7CFC8 /* StorageMgr.m in Sources */,
 				05079C061CC21E9B00E7CFC8 /* RequestAPI.m in Sources */,
 				05079BC51CC21A6F00E7CFC8 /* Utilities.m in Sources */,
-				F81D9BCE1CE842E4003E0987 /* SlidingDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1318,7 +1318,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ContinueFate/PrefixHeader.pch;
 				INFOPLIST_FILE = ContinueFate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/ContinueFate",
@@ -1345,7 +1345,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ContinueFate/PrefixHeader.pch;
 				INFOPLIST_FILE = ContinueFate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/ContinueFate",

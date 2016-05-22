@@ -20,7 +20,5 @@
 @property (strong ,nonatomic)NSDictionary *dict;//传值容器
 
 @property (strong ,nonatomic)NSString *expertId;
-@property (weak, nonatomic) IBOutlet UIView *viewStyle;
-@property (weak, nonatomic) IBOutlet UIView *styleView;
 @property (nonatomic)NSInteger  tags;
 @end

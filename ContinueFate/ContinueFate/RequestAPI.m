@@ -11,7 +11,7 @@
 @implementation RequestAPI
 
 + (void)getURL:(NSString *)request withParameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-    NSString *server = @"http://192.168.61.249:8080/XuYuanProject";
+    NSString *server = @"http://192.168.11.27:8080/XuYuanProject";
     NSString *url = [NSString stringWithFormat:@"%@%@", server, request];
     NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [[AppAPIClient sharedClient] GET:decodedURL parameters:parameter progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
@@ -23,7 +23,7 @@
 
 + (void)postURL:(NSString *)request withParameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
 
-    NSString *server = @"http://192.168.61.249:8080/XuYuanProject";
+    NSString *server = @"http://192.168.11.27:8080/XuYuanProject";
 
     NSString *url = [NSString stringWithFormat:@"%@%@", server, request];
     NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];

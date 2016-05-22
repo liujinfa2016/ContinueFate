@@ -9,20 +9,14 @@
 #import "SlidingDataViewController.h"
 #import "SimplePickerView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate> {
-    NSLocale *datelocale;
-   
-}
+#import <SDWebImage/UIImageView+WebCache.h>
+@interface SlidingDataViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UITextViewDelegate,UITextFieldDelegate>
 
 @property (strong ,nonatomic)UIDatePicker *datepicker;
 @property(strong,nonatomic)UIImagePickerController *imagePc;
 @property(strong,nonatomic)NSMutableArray *menuList;
-
-@property (strong ,nonatomic)NSArray *arr;
-
-@property (strong ,nonatomic)UIPickerView *grenderView;
-
-
+@property(strong,nonatomic)NSMutableArray *array;//声明一个可变数组
+@property(strong,nonatomic)NSDictionary *dic;//声明一个字典
 @end
 
 @implementation SlidingDataViewController
@@ -32,30 +26,27 @@
     // Do any additional setup after loading the view.
      self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"请填写资料";
+    _neckName.enabled = NO;
+    _nameTF.enabled = NO;
+    _ageTF.enabled = NO;
+    _telTF.enabled = NO;
+    _textView.editable = NO;
+    
+    _image.enabled = NO;
+    _regionTF.enabled = NO;
+    _sexTF.enabled = NO;
+    _modifytv.hidden = YES;
 
-    
-    _neckName.hidden = YES;
-    _nameTF.hidden = YES;
-    _ageTF.hidden  = YES;
-    _sexTF.hidden = YES;
-    _telTF.hidden = YES;
-    _regionTF.hidden = YES;
-    _textView.selectable = NO
-    ;
-    
-    
     _ageTF.delegate = self;
-    _regionTF.delegate = self;
     _textView.delegate = self;
     _SCView.delegate = self;
-   
     _SCView.contentSize  = CGSizeMake(UI_SCREEN_W,0);
     _SCView.showsHorizontalScrollIndicator = NO;
-   _arr = [NSArray arrayWithObjects:@"男",@"女", nil];
+    
     //_scrollView.contentOffset=CGPointMake(0, 0);
     _tapTrick.enabled = NO;
     _tapTrick = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bgTap:)];
-    
+    _array=[NSMutableArray new];
     [self.view addGestureRecognizer:_tapTrick];
     //监听键盘打开这一操作，打开后执行keyboardWillShow:方法
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -63,10 +54,36 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
-    [self grenderTFC];
+    [self Request];
     
-     [self creatDate];
-    
+}
+-(void)Request{
+    [_array removeAllObjects];
+   NSString *userID =[[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSLog(@"userID = %@",userID);
+    NSDictionary *ditarr = @{@"userid":@1};
+    [RequestAPI postURL:@"/getPersonal" withParameters:ditarr success:^(id responseObject) {
+         NSLog(@"%@",responseObject);
+        NSDictionary *dic = responseObject[@"result"];
+        
+//        NSArray *arr = dic[@"models"];
+//        for (NSDictionary *dic in arr) {
+//            [_array addObject:dic];
+//            
+//        }
+        _neckName.text =dic[@"nickname"];
+        _nameTF.text =dic[@"name"];
+        _telTF.text =dic[@"mobile"];
+        _ageTF.text =dic[@"birthday"];
+        _regionTF.text =dic[@"address"];
+        _sexTF.text =dic[@"sex"];
+        _textView.text =dic[@"descripition"];
+        [_image.imageView sd_setImageWithURL:dic
+         [@"headimage"]placeholderImage:[UIImage imageNamed:@"专家入驻"]];
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error.description);
+        [Utilities popUpAlertViewWithMsg:@"数据请求失败，请保持网络畅通" andTitle:nil onView:self];
+    }];
 }
 - (void )bgTap: (UITapGestureRecognizer *)sender{
     if (sender.state == UIGestureRecognizerStateRecognized) {
@@ -163,11 +180,37 @@
 }
 //确定修改
 - (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    
+    NSString *userid =[[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
+    NSLog(@"userid =  %@",userid);
+_dic=@{@"userid":userid,@"nickname":_neckName,@"name":_nameTF,@"sex":_sexTF,@"headimage":_image,@"birthday":_ageTF,@"mobile":_telTF,@"address":_regionTF,@"email":@0,@"descripition":_textView,};
+    //菊花
+    [MBProgressHUD showMessage:@"正在加载" toView:self.view];
+    self.navigationController.view.self.userInteractionEnabled = NO;
+    [RequestAPI postURL:@"/userModification" withParameters:_dic success:^(id responseObject) {
+        [MBProgressHUD hideHUDForView:self.view];
+        self.navigationController.view.self.userInteractionEnabled = YES;
+        [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:nil onView:self];
+        
+    } failure:^(NSError *error) {
+        [Utilities popUpAlertViewWithMsg:@"修改失败，请检查你的网络" andTitle:nil onView:self];
+        NSLog(@"error = %@",error.description);
+    }];
+   [self Request];
+  
+    self.navigationItem.rightBarButtonItem.enabled =YES;
 }
 //修改
 - (IBAction)modifyEiet:(UIBarButtonItem *)sender {
-    
+    _neckName.enabled = YES;
+    _nameTF.enabled = YES;
+    _ageTF.enabled = YES;
+    _telTF.enabled = YES;
+    _textView.editable = YES;
+    _image.enabled = YES;
+    _regionTF.enabled = YES;
+    _sexTF.enabled = YES;
+    _modifytv.hidden = NO;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 -(void)pickImage:(UIImagePickerControllerSourceType)sourceType{
     //判断图片选择类型是否可用
@@ -199,119 +242,4 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-- (void) grenderTFC {
-    _grenderView = [[UIPickerView alloc] init];
-    _grenderView.dataSource = self;
-    _grenderView.delegate = self;
-    _sexTF.inputView = _grenderView;
-   
-       
-    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    // 选取日期完成钮并给他一個 selector
-    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDidEndEditing:)];
-    right.width = 80;
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
-    fixedSpace.width = self.view.frame.size.width - 80;
-    // 把按钮加进 UIToolbar
-    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
-        // 以下這行也是重點 (螢光筆畫兩行)
-        // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
-    _sexTF.inputAccessoryView = toolBar;
-
-}
-
-
-- (void)creatDate {
-    // 建立 UIDatePicker
-    _datepicker = [[UIDatePicker alloc]init];
-    // 時區的問題請再找其他協助 不是本篇重點
-    datelocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_TW"];
-    _datepicker.locale = datelocale;
-    _datepicker.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
-    _datepicker.datePickerMode = UIDatePickerModeDate;
-    _ageTF.inputView = _datepicker;
-    // 建立 UIToolbar
-    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    // 选取日期完成钮并给他一個 selector
-    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action: nil];
-    fixedSpace.width = self.view.frame.size.width - 80;
-    
-    
-    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(ordertimeActionDatePicka)];
-    
-    // UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(ordertimeActionDatePick)];
-    right.width = 80;
-    // 把按钮加进 UIToolbar
-    toolBar.items = [NSArray arrayWithObjects:fixedSpace,right,nil];
-    // 以下這行也是重點 (螢光筆畫兩行)
-    // 原本應該是鍵盤上方附帶內容的區塊 改成一個 UIToolbar 並加上完成鈕
-    _ageTF.inputAccessoryView = toolBar;
-    
-}
-
-// returns the number of 'columns' to display.
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-
-           return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return _arr.count;
-}
-- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component __TVOS_PROHIBITED {
-
-    return _arr[row];
-    
-}
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    if ([self.view endEditing:NO]) {
-        NSInteger row = [_grenderView selectedRowInComponent:0];
-         _sexTF.text = [_arr objectAtIndex:row];
-    }
-}
-
--(void)ordertimeActionDatePicka {
-    
-    // endEditing: 是結束編輯狀態的 method
-    if ([self.view endEditing:NO]) {
-        //获取当前选择的年月日；
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        //设置年月日的格式
-        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:datelocale];
-        //formatter为有格式的年月日
-        [formatter setDateFormat:dateFormat];
-        //封装本地化相关的各种信息
-        [formatter setLocale:datelocale];
-        //NSString *chooseTimeS = [NSString stringWithFormat:@"%@",[formatter stringFromDate:_datepicker.date]];
-        NSString *chooseTimeS = [formatter stringFromDate: _datepicker.date];
-        NSLog(@"%@",formatter);
-        NSString *strTime = [chooseTimeS stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-        NSLog(@"%@",strTime);
-        _ageTF.text = strTime;
-        
-    }
-}
-
-
-
-
-//点击return 按钮 去掉
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-//点击屏幕空白处去掉键盘
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view resignFirstResponder];
-}
-
-
-
-
-
 @end

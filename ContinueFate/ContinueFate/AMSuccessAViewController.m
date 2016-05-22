@@ -34,18 +34,8 @@
     perPage = 4;
     _objArr = [NSMutableArray new];
     [self refreshDownAndUp];
+    [self requestData];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
-    
-    if ([Utilities getKeyedArchiver:@"successArticle"] == nil){
-        [self requestData];
-    }else{
-        NSArray *dataArr = [Utilities getKeyedArchiver:@"ArticleShow"];
-        for (NSDictionary *dict in dataArr) {
-            ArticleObject *artObj = [[ArticleObject alloc]initWithDictionary:dict];
-            [_objArr addObject:artObj];
-        }
-        [self.tableView reloadData];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -87,7 +77,6 @@
                 
                 perPage = 4;
             }
-            [Utilities setKeyedArchiver:@"successArticle" content:dataArr];
             for  (NSDictionary *art in dataArr) {
                 ArticleObject *artObj = [[ArticleObject alloc]initWithDictionary:art];
                 
@@ -149,30 +138,10 @@
 //下拉刷新及上拉刷新
 - (void) refreshDownAndUp {
     
-//    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        page = 1;
-//        [self requestData];
-//    }];
-    //动画下拉功能
-    UIImage *image1 = [UIImage imageNamed:@"图1"];
-    UIImage *image2 = [UIImage imageNamed:@"图2"];
-    UIImage *image3 = [UIImage imageNamed:@"图3"];
-    /*  UIImage *image4 = [UIImage imageNamed:@"04"];
-     UIImage *image5 = [UIImage imageNamed:@"05"];
-     UIImage *image6 = [UIImage imageNamed:@"06"];
-     UIImage *image7 = [UIImage imageNamed:@"07"];*/
-    
-    NSArray *image = @[image1,image2,image3];
-    
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshRequest)];
-    // 设置普通状态的动画图片
-    [header setImages:image forState:MJRefreshStateIdle];
-    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
-    [header setImages:image forState:MJRefreshStatePulling];
-    // 设置正在刷新状态的动画图片
-    [header setImages:image forState:MJRefreshStateRefreshing];
-    // 设置header
-    self.tableView.mj_header = header;
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page = 1;
+        [self requestData];
+    }];
     
     _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
@@ -185,11 +154,6 @@
         }
     }];
     
-}
-
-- (void)refreshRequest{
-    page = 1;
-    [self requestData];
 }
 
 @end

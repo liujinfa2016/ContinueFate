@@ -46,7 +46,6 @@
     perpage = 5;
     [self createTableFooter];
     [self requestData];
-    [self setUpForDismissKeyboard];
     //[self answerShow];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
 }
@@ -447,22 +446,5 @@
     } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
     }];
-}
-- (void)setUpForDismissKeyboard{
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    UITapGestureRecognizer *singleTapGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAnywhereToDismissKeyboard:)];
-    NSOperationQueue *mainQuene = [NSOperationQueue mainQueue];
-    [nc addObserverForName:UIKeyboardWillShowNotification object:nil queue:mainQuene usingBlock:^(NSNotification * _Nonnull note) {
-        [self.view addGestureRecognizer:singleTapGR];
-    }];
-    
-    [nc addObserverForName:UIKeyboardWillHideNotification object:nil queue:mainQuene usingBlock:^(NSNotification * _Nonnull note) {
-        [self.view addGestureRecognizer:singleTapGR];
-    }];
-    
-}
-
-- (void)tapAnywhereToDismissKeyboard:(UIGestureRecognizer *)gestureRecognizer{
-    [self.view endEditing:YES];
 }
 @end

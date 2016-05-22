@@ -10,14 +10,15 @@
 
 @interface SlidingDataViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *sexTF;//性别
-
 @property (weak, nonatomic) IBOutlet UITextField *neckName;//昵称
 @property (weak, nonatomic) IBOutlet UIButton *image;//头像图片
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;//姓名
-@property (weak, nonatomic) IBOutlet UITextField * ageTF;//出生日期
+@property (weak, nonatomic) IBOutlet UITextField *ageTF;//出生日期
 @property (weak, nonatomic) IBOutlet UITextField *regionTF;//地区
 @property (weak, nonatomic) IBOutlet UITextField *telTF;//手机号码
+@property (weak, nonatomic) IBOutlet UIButton *modifytv;//确定修改
 @property (weak, nonatomic) IBOutlet UITextView *textView;//简介输入框
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *modifyeiet;//修改
 - (IBAction)imageAction:(UIButton *)sender forEvent:(UIEvent *)event;//图片按钮
 - (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event;//确定修改
 - (IBAction)modifyEiet:(UIBarButtonItem *)sender;//修改

@@ -171,13 +171,9 @@
         _accessToken =  [_tencentOA accessToken];
         _openId =  [_tencentOA openId];
         _expirationDate = [_tencentOA expirationDate];
-        NSLog(@"success==== %@,%@,%@", [_tencentOA accessToken], [_tencentOA openId], [_tencentOA expirationDate]);
         NSDictionary *parameters  = @{@"tokenId":_accessToken,@"openId":_openId,@"expirationDate":_expirationDate,@"platform":@"QQ"};
         
-        //初始化保护膜
-        //UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
-        [MBProgressHUD showMessage:@"正在加载" toView:self.view];
-        self.navigationController.view.userInteractionEnabled = NO;
+        
         
         //将关联用户获取到的数据存到全局变量中
         [[StorageMgr singletonStorageMgr]addKey:@"tokenId" andValue:_accessToken];
@@ -189,13 +185,9 @@
         [_tencentOA setExpirationDate:_expirationDate];
         [_tencentOA getUserInfo];
         
-        NSLog(@"openid = %@",_openId);
+       
         [RequestAPI postURL:@"/cognateLogin" withParameters:parameters success:^(id responseObject) {
-            //停转保护膜
-            // [avi stopAnimating];
-            [MBProgressHUD hideHUDForView:self.view];
-            self.navigationController.view.userInteractionEnabled = YES;
-            NSLog(@"responseObject ===== %@",responseObject);
+           ;
             //判断当前QQ号是否有账号关联
             if ([responseObject[@"resultFlag"]integerValue] == 8001){
                 NSDictionary *result = responseObject[@"result"];
@@ -212,13 +204,8 @@
                 
                 //记忆用户名
                 [Utilities setUserDefaults:@"Username" content:dit[@"Username"]];
-                if ([[[StorageMgr singletonStorageMgr]objectForKey:@"CED"]isEqualToString:@"2"]) {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    
-                }else {
-                    TabBarViewController *tableBarVC = [Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"];
-                    [self presentViewController:tableBarVC animated:YES completion:nil];
-                }
+                TabBarViewController *tableBarVC = [Utilities getStoryboardInstanceByIdentity:@"TabBar" byIdentity:@"TabBar"];
+                [self presentViewController:tableBarVC animated:YES completion:nil];
             } else {
                 
                 [Utilities popUpAlertViewWithMsg:@"是否已有账号" andTitle:nil onView:self trueStr:@"是" falseStr:@"否" tureAction:^(UIAlertAction * _Nonnull action) {

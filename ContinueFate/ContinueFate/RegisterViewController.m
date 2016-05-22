@@ -151,11 +151,10 @@
 
 //当按了验证码
 - (IBAction)TestGetCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    NSString *TelTF =_TelTF.text;
     
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.self.userInteractionEnabled = NO;
-    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:TelTF zone:@"86" customIdentifier:nil result:^(NSError *error) {
+    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:_TelTF.text zone:@"86" customIdentifier:nil result:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
         self.navigationController.view.self.userInteractionEnabled=YES;
         switch (error.code) {
