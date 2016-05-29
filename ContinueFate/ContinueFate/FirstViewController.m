@@ -176,9 +176,7 @@
 - (void) netWorkRequest {
     NSDictionary *parameters = @{@"type":@"",@"subtype":@"",@"page":@(page),@"perPage":@(perPage)};
     
-    NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/showArticle";
-    NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+    [RequestAPI postURL:@"/articleList" withParameters:parameters success:^(id responseObject) {
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
         [MBProgressHUD hideHUDForView:self.view];
@@ -204,16 +202,9 @@
         } else {
             [Utilities popUpAlertViewWithMsg:@"获取数据失败" andTitle:nil onView:self];
         }
-    } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
     }];
-    
-    
-    //    [RequestAPI getURL:@"" withParameters:parameters success:^(id responseObject) {
-    //
-    //    } failure:^(NSError *error) {
-    //
-    //    }];
 }
 
 //创建图片轮播器

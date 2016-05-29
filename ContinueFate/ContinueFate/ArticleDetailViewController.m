@@ -160,6 +160,7 @@
         }];
     }
     }
+    
 }
 
 //网络请求 保存数据
@@ -167,10 +168,7 @@
     
     NSDictionary *parameters = @{@"articleid":_articleId,@"usertype":@1,@"userid":userid};
     
-    NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/Collection";
-    NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    [[AppAPIClient sharedClient] POST:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+    [RequestAPI postURL:@"/collectionAppend" withParameters:parameters success:^(id responseObject) {
         NSLog(@"add = %ld",[responseObject[@"resultFlag"]integerValue]);
         [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
@@ -181,7 +179,7 @@
             [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
             flag = NO;
         }
-    } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
         [MBProgressHUD hideHUDForView:self.view];
     }];
@@ -192,10 +190,26 @@
     
     NSDictionary *parameters = @{@"articleid":_articleId,@"userid":userid};
     
-    NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/DelCollection";
-    NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//    NSString *url = @"http://192.168.61.154:8080/XY_Project/servlet/DelCollection";
+//    NSString *decodedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
-    [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+//    [[AppAPIClient sharedClient] GET:decodedURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
+//        NSLog(@"delete = %ld",[responseObject[@"resultFlag"]integerValue]);
+//        [MBProgressHUD hideHUDForView:self.view];
+//        if ([responseObject[@"resultFlag"]integerValue] == 8001) {
+//            [MBProgressHUD showSuccess:@"取消成功" toView:self.view];
+//            flag = NO;
+//            [self exists];
+//        }else{
+//            [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
+//            flag = YES;
+//        }
+//    } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
+//        NSLog(@"error = %@",error.description);
+//        [MBProgressHUD hideHUDForView:self.view];
+//    }];
+    
+    [RequestAPI postURL:@"/collectionRemove" withParameters:parameters success:^(id responseObject) {
         NSLog(@"delete = %ld",[responseObject[@"resultFlag"]integerValue]);
         [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"resultFlag"]integerValue] == 8001) {
@@ -206,7 +220,8 @@
             [MBProgressHUD showError:@"请保持网络通畅" toView:self.view];
             flag = YES;
         }
-    } failure: ^(NSURLSessionDataTask *operation, NSError *error) {
+
+    } failure:^(NSError *error) {
         NSLog(@"error = %@",error.description);
         [MBProgressHUD hideHUDForView:self.view];
     }];
