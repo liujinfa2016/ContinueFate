@@ -17,6 +17,7 @@
 @property(strong,nonatomic)NSMutableArray *menuList;
 @property(strong,nonatomic)NSMutableArray *array;//声明一个可变数组
 @property(strong,nonatomic)NSDictionary *dic;//声明一个字典
+
 @end
 
 @implementation SlidingDataViewController
@@ -61,26 +62,39 @@
     [_array removeAllObjects];
    NSString *userID =[[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
     NSLog(@"userID = %@",userID);
-    NSDictionary *ditarr = @{@"userid":@1};
+    NSDictionary *ditarr = @{@"userid":userID};
     [RequestAPI postURL:@"/getPersonal" withParameters:ditarr success:^(id responseObject) {
          NSLog(@"%@",responseObject);
-        NSDictionary *dic = responseObject[@"result"];
-        
-//        NSArray *arr = dic[@"models"];
-//        for (NSDictionary *dic in arr) {
-//            [_array addObject:dic];
-//            
-//        }
-        _neckName.text =dic[@"nickname"];
-        _nameTF.text =dic[@"name"];
-        _telTF.text =dic[@"mobile"];
-        _ageTF.text =dic[@"birthday"];
-        _regionTF.text =dic[@"address"];
-        _sexTF.text =dic[@"sex"];
-        _textView.text =dic[@"descripition"];
-        [_image.imageView sd_setImageWithURL:dic
-         [@"headimage"]placeholderImage:[UIImage imageNamed:@"专家入驻"]];
-    } failure:^(NSError *error) {
+        NSLog(@"fhdshfhashdfahdfafad");
+         if ([responseObject[@"resultFlag"]integerValue] == 8001){
+             NSDictionary *dic = responseObject[@"result"];
+                     NSArray *arr = dic[@"models"];
+                     for (NSDictionary *dic in arr) {
+             
+                         _neckName.text = [NSString stringWithFormat:@"%@",dic[@"nickname"]];
+                         _nameTF.text = [NSString stringWithFormat:@"%@",dic[@"name"]];
+                         _telTF.text = [NSString stringWithFormat:@"%@",dic[@"mobile"]];
+                         _sexTF.text = [NSString stringWithFormat:@"%@",dic[@"sex"]];
+                         _textView.text = [NSString stringWithFormat:@"%@",dic[@"descripition"]];
+                         
+    NSURL *URL = [NSURL URLWithString:dic[@"headimage"]];
+    [_image.imageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"专家入驻"]];
+
+                         
+                         if ([_ageTF.text isEqualToString:@""] || [_regionTF.text isEqualToString:@""]) {
+                             _ageTF.text = @"";
+                             _regionTF.text = @"";
+                         }else{
+                             _ageTF.text = [NSString stringWithFormat:@"%@",dic[@"birthday"]];
+                             _regionTF.text = [NSString stringWithFormat:@"%@",dic[@"address"]];
+
+                         }
+                }
+
+         }else{
+             NSLog(@"f123");
+         }
+           } failure:^(NSError *error) {
         NSLog(@"%@",error.description);
         [Utilities popUpAlertViewWithMsg:@"数据请求失败，请保持网络畅通" andTitle:nil onView:self];
     }];
@@ -182,7 +196,10 @@
 - (IBAction)modifyAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *userid =[[StorageMgr singletonStorageMgr]objectForKey:@"UserID"];
     NSLog(@"userid =  %@",userid);
-_dic=@{@"userid":userid,@"nickname":_neckName,@"name":_nameTF,@"sex":_sexTF,@"headimage":_image,@"birthday":_ageTF,@"mobile":_telTF,@"address":_regionTF,@"email":@0,@"descripition":_textView,};
+    
+
+
+_dic=@{@"userid":userid,@"nickname":_neckName.text,@"name":_nameTF.text,@"sex":_sexTF.text,@"headimage":_image,@"birthday":_ageTF.text,@"mobile":_telTF.text,@"address":_regionTF.text,@"email":@0,@"descripition":_textView.text};
     //菊花
     [MBProgressHUD showMessage:@"正在加载" toView:self.view];
     self.navigationController.view.self.userInteractionEnabled = NO;
@@ -192,11 +209,12 @@ _dic=@{@"userid":userid,@"nickname":_neckName,@"name":_nameTF,@"sex":_sexTF,@"he
         [Utilities popUpAlertViewWithMsg:@"修改成功" andTitle:nil onView:self];
         
     } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view];
+        self.navigationController.view.self.userInteractionEnabled = YES;
         [Utilities popUpAlertViewWithMsg:@"修改失败，请检查你的网络" andTitle:nil onView:self];
         NSLog(@"error = %@",error.description);
     }];
    [self Request];
-  
     self.navigationItem.rightBarButtonItem.enabled =YES;
 }
 //修改

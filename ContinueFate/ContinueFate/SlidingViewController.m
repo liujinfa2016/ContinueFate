@@ -34,10 +34,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //显示昵称
     NSString *name = [[StorageMgr singletonStorageMgr] objectForKey:@"Nickname"];
     _nameLbl.text = name;
     NSLog(@"username%@",name);
-    
+    //显示头像
+//    UIImage *imagetv =[[StorageMgr singletonStorageMgr] objectForKey:@"image"];
+//    _imageLable.imageView.image = imagetv;
+  
 }
 
 -(void)setImageButtonStyle{
@@ -123,14 +127,14 @@
             }
             break;
          case 1:
-            if ([Utilities loginState]) {
-                [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
-                    UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
-                    [self presentViewController:loginVc animated:YES completion:nil];
-                }];
-            } else {
+//            if ([Utilities loginState]) {
+//                [Utilities popUpAlertViewWithMsg:@"您当前还未登录，请问您是否要登录！" andTitle:nil onView:self tureAction:^(UIAlertAction *action) {
+//                    UIViewController *loginVc =[Utilities  getStoryboardInstanceByIdentity:@"Main" byIdentity:@"Login"];
+//                    [self presentViewController:loginVc animated:YES completion:nil];
+//                }];
+//            } else {
                 [self presentViewController:[Utilities getStoryboardInstanceByIdentity:@"Sliding" byIdentity:@"AnswerAndQuestion"] animated:YES completion:nil];
-            }
+//            }
             break;
         case 2:
             if ([Utilities loginState]) {

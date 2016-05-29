@@ -133,6 +133,8 @@
         }
     
     } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view];
+         self.navigationController.view.self.userInteractionEnabled = YES;
         NSLog(@"error:%@",error.description);
         [MBProgressHUD showError:@"网络不给力，请稍后再试！" toView:self.view];
         [MBProgressHUD hideHUDForView:self.view];

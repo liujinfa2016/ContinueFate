@@ -35,6 +35,6 @@
 #define FRelease(x) {[x removeFromSuperview]; x = nil;}
 
 //关联登录
-#define QQ_APPID @"222222"
+#define QQ_APPID @"1105396440"
 
 #endif
